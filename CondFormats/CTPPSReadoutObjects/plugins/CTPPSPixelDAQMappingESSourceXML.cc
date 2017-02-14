@@ -189,6 +189,11 @@ CTPPSPixelDAQMappingESSourceXML::CTPPSPixelDAQMappingESSourceXML(const edm::Para
 
   setWhatProduced(this, subSystemName);
   findingRecord<CTPPSPixelReadoutRcd>();
+
+
+  std::cout << " Inside  CTPPSPixelDAQMappingESSourceXML" << std::endl;
+
+
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -422,14 +427,12 @@ void CTPPSPixelDAQMappingESSourceXML::ParseTreePixel(ParseType pType, xercesc::D
 
       uint32_t symbId = (id << offsetROCinDetId);
 
-      cout <<"   CACCA       " << id << " " <<symbId <<  " " ;
-
       symbId |= CTPPSPixelDetId(armIdx, stIdx, rpIdx, plIdx);
-      cout << symbId << endl;
+ 
       
       CTPPSPixelROCAnalysisMask am;
       am.fullMask = fullMask;
-      GetPixels(n, am.maskedChannels);  
+      GetPixels(n, am.maskedPixels);  
 
       mask->insert(symbId, am);
 
@@ -453,6 +456,7 @@ CTPPSPixelFramePosition CTPPSPixelDAQMappingESSourceXML::ChipFramePosition(xerce
   for (unsigned int j = 0; j < attr->getLength(); j++)
   {
     DOMNode *a = attr->item(j);
+
     if (fp.setXMLAttribute(XMLString::transcode(a->getNodeName()), XMLString::transcode(a->getNodeValue()), attributeFlag) > 1)
     {
       throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") <<
@@ -467,7 +471,7 @@ CTPPSPixelFramePosition CTPPSPixelDAQMappingESSourceXML::ChipFramePosition(xerce
     throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") <<
       "Wrong/incomplete DAQ channel specification (attributeFlag = " << attributeFlag << ")." << endl;
   }
-
+ 
   return fp;
 }
 
@@ -530,7 +534,7 @@ void CTPPSPixelDAQMappingESSourceXML::GetPixels(xercesc::DOMNode *n, set<std::pa
       }
     }
 
-    cout << " CCACCCA : inserted pixel " << currentPixel.first << " "<< currentPixel.second << endl; 
+  
 
     if (!pixelSet)
     {

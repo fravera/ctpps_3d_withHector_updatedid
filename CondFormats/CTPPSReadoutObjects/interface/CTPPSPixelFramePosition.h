@@ -26,8 +26,8 @@
 class CTPPSPixelFramePosition
 {
   public:
-    static const unsigned int offsetROC = 0, maskROC = 0x3;
-    static const unsigned int offsetFiberIdx = 3, maskFiberIdx = 0x3;
+    static const unsigned int offsetROC = 0, maskROC = 0x7;
+    static const unsigned int offsetFiberIdx = 3, maskFiberIdx = 0x7;
     static const unsigned int offsetFMCId = 6, maskFMCId = 0x1;
     static const unsigned int offsetFEDId = 7, maskFEDId = 0x3FF;
   
@@ -106,7 +106,7 @@ class CTPPSPixelFramePosition
     /// returns true if all attributes have been set
     static bool checkXMLAttributeFlag(unsigned char flag)
     {
-      return (flag == 0x8);
+      return (flag == 0xF);
     }
 
   protected:

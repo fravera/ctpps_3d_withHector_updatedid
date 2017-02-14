@@ -25,7 +25,7 @@ class CTPPSPixelROCAnalysisMask
     bool fullMask;
 
     /// list of channels to be masked
-    std::set<std::pair<unsigned char, unsigned char> > maskedChannels;
+    std::set<std::pair<unsigned char, unsigned char> > maskedPixels;
 };
 
 //----------------------------------------------------------------------------------------------------

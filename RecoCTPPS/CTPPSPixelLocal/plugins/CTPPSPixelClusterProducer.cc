@@ -49,24 +49,39 @@ void CTPPSPixelClusterProducer::produce(edm::Event& iEvent, const edm::EventSetu
 	edm::Handle<edm::DetSetVector<CTPPSPixelDigi> > rpd;
 	iEvent.getByToken(tokenCTPPSPixelDigi_, rpd);
 
- // get geometry
+ // get mappings
  //----------------------------------
 /*
 	edm::ESHandle<TotemRPGeometry> geometry;
 	iSetup.get<VeryForwardMeasuredGeometryRecord>().get(geometry);
 
 	geometryWatcher.check(iSetup);
+*/
+  // get DAQ mapping
+	edm::ESHandle<CTPPSPixelDAQMapping> mapping;
+	iSetup.get<CTPPSPixelReadoutRcd>().get("RPix", mapping);
 
+  // get analysis mask to mask channels
+	edm::ESHandle<CTPPSPixelAnalysisMask> analysisMask;
+	iSetup.get<CTPPSPixelReadoutRcd>().get("RPix", analysisMask);
 
 // dry checks to be removed
-	unsigned int rpId = 2031091712;//  1997537280;
-//	double z0 = geometry->GetRPDevice(rpId)->translation().z();
-	CLHEP::Hep3Vector localV(-4.43825,2.05224,0.115);
-	CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(rpId,localV);
 
-//	std::cout << " z0 = " << z0 <<std::endl;
-	std::cout << "id: "<< rpId <<"   local " << localV <<"   to global "<<globalV<< std::endl;
-*/
+ // print mapping
+  printf("* DAQ mapping\n");
+  for (const auto &p : mapping->ROCMapping)
+    std::cout << "    " << p.first << " -> " << p.second << std::endl;
+
+  // print mapping
+  printf("* mask\n");
+  for (const auto &p : analysisMask->analysisMask){
+    std::cout << "    " << p.first
+      << ": fullMask=" << p.second.fullMask
+	      << ", number of masked pixels " << p.second.maskedPixels.size() << std::endl;
+    
+
+
+  }
 //---------------------------------------------
 
 

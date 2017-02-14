@@ -36,6 +36,9 @@
 #include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
 
+#include "CondFormats/DataRecord/interface/CTPPSPixelReadoutRcd.h"
+#include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelDAQMapping.h"
+#include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelAnalysisMask.h"
 
 #include <vector>
 #include <set>
