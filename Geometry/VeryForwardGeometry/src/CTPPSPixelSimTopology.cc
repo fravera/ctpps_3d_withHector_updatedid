@@ -25,11 +25,7 @@ std::vector<pixel_info> CTPPSPixelSimTopology::GetPixelsInvolved(double x, doubl
   hit_pos_y = y + simY_width_/2.;
   assert(hit_pos_x*hit_pos_y > 0);
 
-
-
   double hit_factor = ActiveEdgeFactor(x, y);
-
-//NOTA BENE: charge sharing to be implemented
 
   unsigned int interested_row = Row(x);
   unsigned int interested_col = Col(y);
