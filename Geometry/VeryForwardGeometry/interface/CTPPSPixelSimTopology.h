@@ -144,22 +144,16 @@ public:
 
 private:
   std::vector<pixel_info> theRelevantPixels_;
-  //   double no_of_sigms_to_include_;
-  //(0,0) in the center of the wafer
-//    double top_edge_x_;
-//    double bot_edge_x_;
+
   double active_edge_x_;
   double active_edge_y_;
     
-//    double top_edge_sigma_;
-//    double bot_edge_sigma_;
+
   double active_edge_sigma_;
     
   int verbosity_;
     
-//    const LocalVector strip_readout_direction_;
-//    const LocalVector strip_direction_;
-//    const LocalVector normal_direction_;
+
   
   inline double ActiveEdgeFactor(double x, double y)
   {
@@ -171,28 +165,11 @@ private:
     double AEF = TopEdgeFactor*BottomEdgeFactor*RightEdgeFactor*LeftEdgeFactor;
 
     assert(AEF<=1);
-/*
-  std::cout << " Top, bottom, Right, left distances : " <<  DistanceFromTopActiveEdge(x,y)<< " "<<DistanceFromBottomActiveEdge(x,y) << " "<<DistanceFromRightActiveEdge(x,y) <<" "<<DistanceFromLeftActiveEdge(x,y) <<std::endl;
-  std::cout << " Top, bottom, Right, left factors : " <<  TopEdgeFactor<< " "<<BottomEdgeFactor << " "<<RightEdgeFactor <<" "<<LeftEdgeFactor <<std::endl;
-  std::cout << " Active edge factor : " <<  AEF << std::endl;
-*/
+
     return AEF;
   }
     
-/*    inline double BottomEdgeFactor(double x, double y)
-      {
-      return TMath::Erf(DistanceFromBottomEdge(x, y)/sqrt_2/bot_edge_sigma_)/2+0.5;
-      }
-    
-      inline double TopEdgeFactor(double x, double y)
-      {
-      return TMath::Erf(DistanceFromTopEdge(x, y)/sqrt_2/top_edge_sigma_)/2+0.5;
-      }
-*/   
-  /*   inline double DistanceFromActiveEdge(double x, double y)
-       {
-       return ((x-active_edge_x_) + (y-active_edge_y_))/sqrt_2;
-       }
+
   */
   inline double DistanceFromTopActiveEdge(double x, double y)
   {
@@ -214,29 +191,7 @@ private:
     double d=-x-active_edge_x_;
     return d;
   }
-  /*   inline double DistanceFromBottomEdge(double x, double y)
-       {
-       return x-bot_edge_x_;
-       }
-       inline double DistanceFromTopEdge(double x, double y)
-       {
-       return top_edge_x_ - x;
-       }
-  */
-/*
-  inline double DistanceFromActiveEdge(double x, double y)
-  {
-  double a,b,c,d,e;
-  a=DistanceFromTopActiveEdge(x,y);
-  b=DistanceFromBottomActiveEdge(x,y);
-  c=DistanceFromRightActiveEdge(x,y);
-  d=DistanceFromLeftActiveEdge(x,y);
-  e=sqrt(a*a+b*b+c*c+d*d);
 
-  std::cout << " CACCA2 " << a << " " << b << " " << c << " " << d <<std::endl;
-  return e;
-  }
-*/
 
   inline unsigned int Row(double x){
 // x in the G4 simulation system
@@ -277,7 +232,7 @@ x = x + simX_width_/2.;
 // y in the G4 simulation system
 
 // columns (y segmentation)
- // now y in the system centered in the bottom left corner of the sensor (sensor view, rocs behind)
+// now y in the system centered in the bottom left corner of the sensor (sensor view, rocs behind)
     y = y + simY_width_/2.;
     assert(y>=0 && y <=simY_width_);
 
