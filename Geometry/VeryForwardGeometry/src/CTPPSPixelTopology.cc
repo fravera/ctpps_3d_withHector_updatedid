@@ -26,24 +26,3 @@ CTPPSPixelTopology::~CTPPSPixelTopology()
   delete indici_;
 }
 
-
-/*
-bool CTPPSPixelTopology::IsHit(double u, double v, double insensitiveMargin)
-{
-  // assumes square shape
-
-  if (fabs(u) > last_strip_to_center_dist_)
-    return false;
-
-  if (fabs(v) > last_strip_to_center_dist_)
-    return false;
-
-  double sqrt_2 = sqrt(2.);
-  double y = (u + v) / sqrt_2;
-  double edge_to_ceter_dist = (x_width_ - phys_edge_lenght_ / sqrt_2) / sqrt_2 - insensitiveMargin;
-  if (y < -edge_to_ceter_dist)
-    return false;
-
-  return true;
-}
-*/
