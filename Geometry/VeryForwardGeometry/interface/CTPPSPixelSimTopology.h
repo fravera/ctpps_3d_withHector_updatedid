@@ -170,7 +170,6 @@ private:
   }
     
 
-  */
   inline double DistanceFromTopActiveEdge(double x, double y)
   {
     double d=y-active_edge_y_;
