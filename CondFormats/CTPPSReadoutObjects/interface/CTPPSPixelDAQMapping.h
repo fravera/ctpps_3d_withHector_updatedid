@@ -32,7 +32,7 @@ class CTPPSPixelROCInfo
 //----------------------------------------------------------------------------------------------------
 
 /**
- *\brief The mapping between FramePosition and VFATInfo.
+ *\brief The mapping between FramePosition and ROCInfo.
  */
 class CTPPSPixelDAQMapping
 {

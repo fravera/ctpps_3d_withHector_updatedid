@@ -73,8 +73,6 @@ class CTPPSPixelFramePosition
     { v &= maskFMCId; rawPosition &= 0xFFFFFFFF - (maskFMCId << offsetFMCId); rawPosition |= (v << offsetFMCId); }
 
 
- 
-    /// don't use this method unless you have a good reason
     unsigned int getRawPosition() const
     {
       return rawPosition;
@@ -91,8 +89,7 @@ class CTPPSPixelFramePosition
     }
 
     /// Condensed representation of the DAQ channel.
-    /// prints 5-digit hex number, the digits correspond to SubSystem, TOTFED ID, FMC ID, 
-    /// GOH ID, index within fiber in this order
+    /// prints 5-digit hex number,
     friend std::ostream& operator << (std::ostream& s, const CTPPSPixelFramePosition &fp);
     
     /// prints XML formatted DAQ channel to stdout
