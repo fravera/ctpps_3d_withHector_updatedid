@@ -41,15 +41,6 @@ void RPixCluster2Hit::make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPix
 
 // take a cluster, generate a rec hit and push it in the rec hit vector
 
-// fill test ++++++
-/*
-  LocalPoint lp(2,3,4);
-  LocalError le(10,5,9);
-  CTPPSPixelRecHit prh(lp,le,true,true,false,4,11,6,3,3);
-  hits.push_back(prh);
-*/
-//+++++++
-
 // get information from the cluster 
 
 // get the whole cluster size and row/col size
@@ -63,9 +54,11 @@ void RPixCluster2Hit::make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPix
 
   CTPPSPixelIndices pxlInd;
 
+  if(thisClusterSize<=0) throw cms::Exception("RPixCluster2Hit") << "Fatal: CTPPS cluster size <= 0!" << std::endl;
+
 // calculate "on edge" flag
   bool anEdgePixel = false;
-  if(aCluster.minPixelRow() == 0 || aCluster.minPixelCol() == 0 ||  (aCluster.minPixelRow()+aCluster.rowSpan()) == (pxlInd.getDefaultRowDetSize()-1) ||    (aCluster.minPixelCol()+aCluster.colSpan()) == (pxlInd.getDefaultColDetSize()-1) ) anEdgePixel = true;
+  if(aCluster.minPixelRow() == 0 || aCluster.minPixelCol() == 0 ||  (aCluster.minPixelRow()+aCluster.rowSpan()) == (pxlInd.getDefaultRowDetSize()-1) ||  (aCluster.minPixelCol()+aCluster.colSpan()) == (pxlInd.getDefaultColDetSize()-1) ) anEdgePixel = true;
 
 // check for bad (ADC=0) pixels in cluster  // CHECK IF IT IS TRUE IN CLUSTERIZER !!!!!!!!!!!!!!!!!!!!! the dead/noisy pixels are set with adc=0 in the calibration. 
   bool aBadPixel = false;
@@ -76,15 +69,17 @@ void RPixCluster2Hit::make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPix
 // check for spanning two ROCs
 
   bool twoRocs = false;
-  for(int i = 0; i < thisClusterSize; i++){
-    uint16_t currCol = aCluster.pixelCol(i);
-    uint16_t currRow = aCluster.pixelRow(i);
-    int currROCId = pxlInd.getROCId(currCol,currRow);
+  int currROCId = pxlInd.getROCId(aCluster.pixelCol(0),aCluster.pixelRow(0) ); 
+  if(thisClusterSize>1)
+  for(int i = 1; i < thisClusterSize; i++){
+    if(  pxlInd.getROCId(aCluster.pixelCol(i),aCluster.pixelRow(i) ) != currROCId ){
+      twoRocs = true;
+      break;
+    }
+  }
 
 
-//etc etc
-
-  } 
+ 
 //temporary +++++
   LocalPoint lp(0,0,0);
   LocalError le(0,0,0);
