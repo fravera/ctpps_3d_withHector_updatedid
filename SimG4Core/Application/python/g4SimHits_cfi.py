@@ -460,6 +460,7 @@ g4SimHits = cms.EDProducer("OscarMTProducer",
     CTPPS_Timing_SD = cms.PSet(
        Verbosity = cms.int32(1)
     )
+   
 )
 
 

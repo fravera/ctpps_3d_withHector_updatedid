@@ -123,7 +123,8 @@ process.genfiltersummary_step = cms.EndPath(process.genFilterSummary)
 
 process.outpath = cms.EndPath(process.o1)
 
-process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary_step,process.transport_step,process.g4Simhits_step,process.mixedigi_step,process.outpath)
+
+process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary_step,process.transport_step,process.g4Simhits_step,process.outpath)
 
 # filter all path with the production filter sequence
 for path in process.paths:

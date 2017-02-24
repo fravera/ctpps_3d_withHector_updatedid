@@ -10,8 +10,8 @@ LHCTransport = cms.EDProducer("HectorProducerForCTPPS",
         Beam1 = cms.string('SimTransport/HectorProducerForCTPPS/data/LHCB1_Beta0.60_6.5TeV_CR142.5_v6.503.tfs'),
         Beam2 = cms.string('SimTransport/HectorProducerForCTPPS/data/LHCB2_Beta0.60_6.5TeV_CR142.5_v6.503.tfs'),
         BeamLineLengthCTPPS = cms.double(250.0),
-	CTPPSf = cms.double(202.78),
-        CTPPSb = cms.double(202.78),
+	CTPPSf = cms.double(219.55),
+        CTPPSb = cms.double(219.55),
         smearEnergy = cms.bool(True),       ## if False: no Energy smearing(i.e. sigmaEnergy =0.0)
         sigmaEnergy = cms.double(1.11e-4),     ## beam energy dispersion (GeV); if =0.0 the default(=0.79) is used
         smearAng = cms.bool(True),       ## if False: no Angle smearing(i.e. sigmaSTX(Y) =0.0)

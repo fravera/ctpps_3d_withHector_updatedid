@@ -16,55 +16,100 @@ XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
         'Geometry/ForwardCommonData/data/totemt1.xml', 
         'Geometry/ForwardCommonData/data/totemt2.xml', 
         'Geometry/ForwardCommonData/data/ionpump.xml', 
-        'Geometry/VeryForwardData/data/RP_Box.xml',
+        'Geometry/VeryForwardData/data/RP_Box.xml',#totem->
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_000.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_001.xml',
         'Geometry/VeryForwardData/data/RP_Box/RP_Box_002.xml',
         'Geometry/VeryForwardData/data/RP_Box/RP_Box_003.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_004.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_005.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_020.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_021.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_022.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_023.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_024.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_025.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_100.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_101.xml',
         'Geometry/VeryForwardData/data/RP_Box/RP_Box_102.xml',
         'Geometry/VeryForwardData/data/RP_Box/RP_Box_103.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_104.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_105.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_120.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_121.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_122.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_123.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_124.xml',
+        'Geometry/VeryForwardData/data/RP_Box/RP_Box_125.xml',#totem<-
         'Geometry/VeryForwardData/data/RP_Hybrid.xml',
         'Geometry/VeryForwardData/data/RP_Materials.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Timing_Station_Parameters.xml',#timing
+        'Geometry/VeryForwardData/data/CTPPS_Timing_Horizontal_Pot.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Materials.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Parameters.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_X_Distance.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Detector_Assembly.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Planes/CTPPS_Diamond_Plane1.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Planes/CTPPS_Diamond_Plane2.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Planes/CTPPS_Diamond_Plane3.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Planes/CTPPS_Diamond_Plane4.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern1_Segment1.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern2_Segment1.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern2_Segment2.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern3_Segment1.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern3_Segment2.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern3_Segment3.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern3_Segment4.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern4_Segment1.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern4_Segment2.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern4_Segment3.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern4_Segment4.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Segments/CTPPS_Diamond_Pattern4_Segment5.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Diamond_Transformations.xml',#timing
         'Geometry/VeryForwardData/data/RP_Transformations.xml',
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_002.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_003.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_102.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_103.xml',
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_000.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_001.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_002.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_003.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_004.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_005.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_020.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_021.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_022.xml',#totem
+        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_023.xml',
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_023.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_024.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_025.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_100.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_101.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_102.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_103.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_104.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_105.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_120.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_121.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_122.xml',#totem
+        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_123.xml',
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_124.xml',#totem
+        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_125.xml',#totem
         'Geometry/VeryForwardData/data/RP_Device.xml',
+        'Geometry/VeryForwardData/data/RP_Vertical_Device.xml',#totem
         'Geometry/VeryForwardData/data/RP_Horizontal_Device.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Positive_Station.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Negative_Station.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Stations_Assembly.xml',
-        'Geometry/VeryForwardData/data/RP_Sensitive_Dets.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Cuts_Per_Region.xml',
+        'Geometry/VeryForwardData/data/CTPPS_220_Right_Station.xml',#totem, from RP -> CTPPS(trackers and timing)
+        'Geometry/VeryForwardData/data/CTPPS_220_Left_Station.xml',#totem, from RP -> CTPPS (trackers and timing)
+        'Geometry/VeryForwardData/data/CTPPS_210_Right_Station.xml',#totem, from RP -> CTPPS
+        'Geometry/VeryForwardData/data/CTPPS_210_Left_Station.xml',#totem, from RP -> CTPPS
+        'Geometry/VeryForwardData/data/CTPPS_Stations_Assembly.xml',#totem, from RP -> CTPPS
+        'Geometry/VeryForwardData/data/CTPPS_Cuts_Per_Region.xml',#totem, from RP -> CTPPS
         'Geometry/CTPPSCommonData/data/ppstrackerMaterials.xml',
         'Geometry/CTPPSCommonData/data/CTPPSPixelModule.xml',
         'Geometry/CTPPSSimData/data/CTPPSPixelsens.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Materials.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Transformations.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Horizontal_Pot.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbar.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_A13.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_A24.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_B13.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_B24.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_C13.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_C24.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_D13.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_D24.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_E13.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Lbars/CTPPS_Timing_Lbar_E24.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Box_Negative.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Box_Positive.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Negative_Detector_Assembly.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Positive_Detector_Assembly.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Negative_Station.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Positive_Station.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_Timing_Stations_Assembly.xml',
-        'Geometry/CTPPSCommonData/data/CTPPS_XDistance_From_Beam.xml'
+        'Geometry/VeryForwardData/data/RP_Position/RP_Dist_Beam_Cent.xml'
 ),
     rootNodeName = cms.string('cms:CMSE')
 )
-XMLIdealGeometryESSource.geomXMLFiles.append("Geometry/VeryForwardData/data/2016_ctpps_15sigma_margin0/RP_Dist_Beam_Cent.xml")
+XMLIdealGeometryESSource.geomXMLFiles.append("Geometry/VeryForwardData/data/RP_Position/RP_Dist_Beam_Cent.xml")
 # real geometry
 TotemRPGeometryESModule = cms.ESProducer("TotemRPGeometryESModule",
     verbosity = cms.untracked.uint32(3)
