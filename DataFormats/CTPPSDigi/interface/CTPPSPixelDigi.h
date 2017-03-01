@@ -1,20 +1,22 @@
-#ifndef CTPPS_TRACKER_DIGI_H
-#define CTPPS_TRACKER_DIGI_H
+#ifndef CTPPS_PIXEL_DIGI_H
+#define CTPPS_PIXEL_DIGI_H
+/**
+ * Persistent digi for CTPPS Pixels.
+ * Author: F.Ferro ferro@ge.infn.it
+ */
 
 
 #include <utility>
 #include <algorithm>
-#include "DataFormats/CTPPSDetId/interface/RPixPacking.h"    // for packing algorithm
+#include <stdint.h>
 
-/**
- * Persistent digi for the Pixels.
- */
+
+#include "FWCore/Utilities/interface/Exception.h"
+
 
 class CTPPSPixelDigi {
 public:
 
-  typedef unsigned int PackedDigiType;
-  typedef unsigned int ChannelType;
 
   CTPPSPixelDigi( int packed_value) : theData(packed_value) {}
 
@@ -29,47 +31,40 @@ public:
 
   CTPPSPixelDigi() : theData(0)  {}
 
-  void init( int row, int col, int adc) {
-
-  // Set adc to max_adc in case of overflow
-  adc = (adc > RPixPacking::thePacking.max_adc) ? RPixPacking::thePacking.max_adc : std::max(adc,0);
-
-  theData = (row << RPixPacking::thePacking.row_shift) |
-    (col << RPixPacking::thePacking.column_shift) |
-    (adc << RPixPacking::thePacking.adc_shift);
-
-  }
+  void init( int row, int col, int adc) ;
 
   // Access to digi information
-  int row() const     {return (theData >> RPixPacking::thePacking.row_shift) & RPixPacking::thePacking.row_mask;}
-  int column() const  {return (theData >> RPixPacking::thePacking.column_shift) & RPixPacking::thePacking.column_mask;} 
-  unsigned short adc() const  {return (theData >> RPixPacking::thePacking.adc_shift) & RPixPacking::thePacking.adc_mask;}
-  PackedDigiType packedData() const {return theData;}
+  int row() const     {return (theData >> row_shift) & row_mask;}
+  int column() const  {return (theData >> column_shift) & column_mask;} 
+  unsigned short adc() const  {return (theData >> adc_shift) & adc_mask;}
+  uint32_t packedData() const {return theData;}
 
   static std::pair<int,int> channelToPixel( int ch) {
-    int row = ( ch >> RPixPacking::thePacking.column_width) & RPixPacking::thePacking.row_mask;
-    int col = ch & RPixPacking::thePacking.column_mask;
+    int row = ( ch >> column_width) & row_mask;
+    int col = ch & column_mask;
     return std::pair<int,int>(row,col);
   }
 
   static int pixelToChannel( int row, int col) {
-    return (row << RPixPacking::thePacking.column_width) | col;
+    return (row << column_width) | col;
   }
 
-  int channel() const {return RPixPacking::pixelToChannel( row(), column());}
+  int channel() const {return pixelToChannel( row(), column());}
+
+
+  static const uint32_t row_shift, column_shift, adc_shift;
+  static const uint32_t row_mask, column_mask, adc_mask, rowcol_mask;
+  static const uint32_t row_width, column_width, adc_width;
+  static const uint32_t max_row, max_column, max_adc;
 
  private:
-  PackedDigiType theData;
+  uint32_t theData;
 };  
 
-// Comparison operators
-
-//inline bool operator<( const CTPPSPixelDigi& one, const CTPPSPixelDigi& other) {
-//  return one.channel() < other.channel();
-//}
+// Comparison operator
 
 inline bool operator<( const CTPPSPixelDigi& one, const CTPPSPixelDigi& other) {
-  return (one.packedData()&RPixPacking::thePacking.rowcol_mask) < (other.packedData()&RPixPacking::thePacking.rowcol_mask);
+  return (one.row() < other.row());
 }
 
 #include<iostream>
