@@ -11,6 +11,7 @@
 #include "DataFormats/Common/interface/DetSetVector.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelCluster.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelRecHit.h"
+#include "Geometry/VeryForwardGeometry/interface/CTPPSPixelSimTopology.h"
 
 #include <vector>
 #include <set>
@@ -32,6 +33,7 @@ private:
 
   const edm::ParameterSet &params_;
   int verbosity_;
+  const CTPPSPixelSimTopology *theTopology;
 
 };
 

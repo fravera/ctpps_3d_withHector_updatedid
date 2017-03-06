@@ -60,9 +60,11 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
 
 	geometryWatcher.check(iSetup);
 
-
 // dry checks to be removed
-	unsigned int rpId = 2031091712;//  1997537280;
+	CTPPSPixelDetId iid(0,2,3,1);
+	std::cout << iid << std::endl;
+	std::cout << iid.rawId() << std::endl;
+	unsigned int rpId = 2023292928;//2031091712;//  1997537280;
 //	double z0 = geometry->GetRPDevice(rpId)->translation().z();
 	CLHEP::Hep3Vector localV(-4.43825,2.05224,0.115);
 	CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(rpId,localV);

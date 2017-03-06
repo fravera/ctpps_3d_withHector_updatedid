@@ -2,19 +2,22 @@
 
 
 #include "RecoCTPPS/CTPPSPixelLocal/interface/RPixCluster2Hit.h"
-#include "Geometry/VeryForwardGeometry/interface/CTPPSPixelTopology.h"
+
 
 
 RPixCluster2Hit::RPixCluster2Hit(edm::ParameterSet const& conf):
-  params_(conf)
+  params_(conf), theTopology(new CTPPSPixelSimTopology(conf))
 {
 verbosity_ = conf.getParameter<int>("RPixVerbosity");
+
 //SeedADCThreshold_ = conf.getParameter<int>("SeedADCThreshold");
 //ADCThreshold_ = conf.getParameter<int>("ADCThreshold");
 //ElectronADCGain_ = conf.getParameter<double>("ElectronADCGain");
 }
 
-RPixCluster2Hit::~RPixCluster2Hit(){}
+RPixCluster2Hit::~RPixCluster2Hit(){
+  delete theTopology;
+}
 
 void RPixCluster2Hit::buildHits(unsigned int detId, const std::vector<CTPPSPixelCluster> &clusters, std::vector<CTPPSPixelRecHit> &hits)
 {
@@ -78,6 +81,15 @@ void RPixCluster2Hit::make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPix
     }
   }
 
+// tentative +++++
+
+  std::cout << " INSIDE RPIXCluster2Hit::make_hit " << std::endl;
+  std::cout << " hit pixels: " << std::endl;
+  for(int i = 0; i < thisClusterSize; i++){
+
+    std::cout <<aCluster.pixelRow(i)<< " "<< aCluster.pixelCol(i)<<" " << aCluster.pixelADC(i)<<" " << std::endl;
+
+  } 
 
  
 //temporary +++++
