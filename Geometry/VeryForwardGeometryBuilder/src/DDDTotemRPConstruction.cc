@@ -10,7 +10,7 @@
 #include "DetectorDescription/Core/interface/DDFilteredView.h"
 #include "DetectorDescription/Core/interface/DDCompactView.h"
 #include "DataFormats/CTPPSDetId/interface/TotemRPDetId.h"
-#include "DataFormats/CTPPSDetId/interface/CTPPSTrackerDetId.h"
+#include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
 
 // this might be useful one day
 //.#include "Geometry/TrackerNumberingBuilder/interface/ExtractStringFromDDD.h"
@@ -112,7 +112,7 @@ void DDDTotemRPContruction::buildDetGeomDesc(DDFilteredView *fv, DetGeomDesc *gd
       const unsigned int station = (A % 100) / 10;
       const unsigned int rp = A % 10;
       const unsigned int detector = cN[cN.size() - 2]-1;
-      newGD->setGeographicalID(CTPPSTrackerDetId(arm, station, rp, detector));
+      newGD->setGeographicalID(CTPPSPixelDetId(arm, station, rp, detector));
       std::cout << "NewGD " << arm << " "  << station << " "  << rp << " "  << detector << " "  << cN.size() << " " << A << std::endl; 
 
     }

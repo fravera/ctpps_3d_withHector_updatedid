@@ -26,7 +26,7 @@
 
 #include "SimG4CMS/CTPPS/interface/CTPPSSD.h"
 //#include "SimG4CMS/Forward/interface/TotemNumberMerger.h"
-#include "SimG4CMS/CTPPS/interface/CTPPSTrackerNumberingScheme.h"
+#include "SimG4CMS/CTPPS/interface/CTPPSPixelNumberingScheme.h"
 
 #include "DataFormats/GeometryVector/interface/LocalPoint.h"
 #include "DataFormats/GeometryVector/interface/LocalVector.h"
@@ -89,9 +89,9 @@ CTPPSSD::CTPPSSD(std::string name,
     this->AssignSD(*it);
     edm::LogInfo("CTPPSSim") << "CTPPSSD : Assigns SD to LV " << (*it);
   }
+  if      (name == "CTPPSPixelHits") {
+    numberingScheme = dynamic_cast<CTPPSVDetectorOrganization*>(new CTPPSPixelNumberingScheme());
 
-  if      (name == "CTPPSTrackerHits") {
-    numberingScheme = dynamic_cast<CTPPSVDetectorOrganization*>(new CTPPSTrackerNumberingScheme());
 //  } else if (name == "TotemHitsT2Gem") {
 //    numberingScheme = dynamic_cast<TotemVDetectorOrganization*>(new TotemT2NumberingSchemeGem(4));
 //  } else if (name == "TotemHitsRP") {
@@ -524,8 +524,9 @@ void CTPPSSD::StoreHit(CTPPSG4Hit* hit) {
 }
 
 void CTPPSSD::ResetForNewPrimary() {
-  
+
   entrancePoint  = SetToLocal(hitPoint);
+  
   incidentEnergy = preStepPoint->GetKineticEnergy();
 }
 

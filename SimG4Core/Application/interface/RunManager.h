@@ -47,9 +47,11 @@ class RunAction;
 class EventAction;
 class TrackingAction;
 class SteppingAction;
+class CMSSteppingVerbose;
 
 class DDDWorld;
 class DDG4ProductionCuts;
+class CustomUIsession;
 
 class G4RunManagerKernel;
 class G4Run;
@@ -110,14 +112,18 @@ private:
   edm::EDGetTokenT<edm::LHCTransportLinkContainer> m_LHCtr;
     
   bool m_nonBeam;
-  std::auto_ptr<PhysicsList> m_physicsList;
+  std::unique_ptr<CustomUIsession> m_UIsession;
+  std::unique_ptr<PhysicsList> m_physicsList;
   PrimaryTransformer * m_primaryTransformer;
+
   bool m_managerInitialized;
   bool m_runInitialized;
   bool m_runTerminated;
   bool m_runAborted;
   bool firstRun;
   bool m_pUseMagneticField;
+  bool m_hasWatchers;
+
   G4Run * m_currentRun;
   G4Event * m_currentEvent;
   G4SimEvent * m_simEvent;
@@ -148,11 +154,12 @@ private:
   std::vector<SensitiveCaloDetector*> m_sensCaloDets;
 
   std::unique_ptr<DDG4ProductionCuts> m_prodCuts;
+  std::unique_ptr<CMSSteppingVerbose> m_sVerbose;
   SimActivityRegistry m_registry;
   std::vector<std::shared_ptr<SimWatcher> > m_watchers;
   std::vector<std::shared_ptr<SimProducer> > m_producers;
     
-  std::auto_ptr<SimTrackManager> m_trackManager;
+  std::unique_ptr<SimTrackManager> m_trackManager;
   sim::FieldBuilder             *m_fieldBuilder;
   sim::ChordFinderSetter        *m_chordFinderSetter;
     

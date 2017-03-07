@@ -27,12 +27,12 @@
     </SpecPar>
     <SpecPar name="RP_Other_Det_Parts_Range_Cuts">
       <PartSelector path="//RP_Device_Hor_Corp_3"/>
-      <PartSelector path="//CTPPS_Tracker_Positive_Station_Tube_5"/>
-      <PartSelector path="//CTPPS_Tracker_Positive_Station_Tube_3"/>
-      <PartSelector path="//CTPPS_Tracker_Positive_Station_Tube_1"/>
-      <PartSelector path="//CTPPS_Tracker_Negative_Station_Tube_5"/>
-      <PartSelector path="//CTPPS_Tracker_Negative_Station_Tube_3"/>
-      <PartSelector path="//CTPPS_Tracker_Negative_Station_Tube_1"/>
+      <PartSelector path="//CTPPS_Pixel_Positive_Station_Tube_5"/>
+      <PartSelector path="//CTPPS_Pixel_Positive_Station_Tube_3"/>
+      <PartSelector path="//CTPPS_Pixel_Positive_Station_Tube_1"/>
+      <PartSelector path="//CTPPS_Pixel_Negative_Station_Tube_5"/>
+      <PartSelector path="//CTPPS_Pixel_Negative_Station_Tube_3"/>
+      <PartSelector path="//CTPPS_Pixel_Negative_Station_Tube_1"/>
       <Parameter name="CMSCutsRegion" value="RPOtherDetPartsCuts" eval="false"/>
       <Parameter name="ProdCutsForElectrons" value="10*mm"/>
       <Parameter name="ProdCutsForPositrons" value="10*mm"/>
@@ -41,8 +41,8 @@
     <SpecPar name="RP_Non_dense_materials_cuts">
       <PartSelector path="//.*:RP_box_primary_vacuum"/>
       <PartSelector path="//.*:RP_box_secondary_vacuum"/>
-      <PartSelector path="//CTPPS_Tracker_Positive_Station_Vacuum_5"/>
-      <PartSelector path="//CTPPS_Tracker_Negative_Station_Vacuum_5"/>
+      <PartSelector path="//CTPPS_Pixel_Positive_Station_Vacuum_5"/>
+      <PartSelector path="//CTPPS_Pixel_Negative_Station_Vacuum_5"/>
       <Parameter name="CMSCutsRegion" value="RP_NonDenseMaterialsCuts" eval="false"/>
       <Parameter name="ProdCutsForElectrons" value="50*m"/>
       <Parameter name="ProdCutsForPositrons" value="50*m"/>

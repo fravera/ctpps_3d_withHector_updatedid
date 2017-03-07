@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../DDLSchema/DDLSchema.xsd">
+    <ConstantsSection label="CTPPS_Pixel_Negative_Station.xml">
+        <Constant name="CTPPS_Pixel_Negative_Station_Length" value="(-([CTPPS_Stations_Assembly:CTPPS_Pixel_Negative_Station_endZ]-[CTPPS_Stations_Assembly:CTPPS_Pixel_Negative_Station_Position_z]))*mm"/>
+        <!--Positions calculated from the wall closer to IP point-->
+        <Constant name="CTPPS_Pixel_Negative_Prim_Vert_z" value="608*mm"/>
+        <Constant name="CTPPS_Pixel_Negative_Prim_Hor_z" value="1058*mm"/>
+        <Constant name="CTPPS_Pixel_Negative_Sec_Hor_z" value="9781*mm"/>
+        <Constant name="CTPPS_Pixel_Negative_Sec_Vert_z" value="10231*mm"/>
+
+        <Constant name="CTPPS_Pixel_Negative_Sec_Rot_Angle" value="8"/>
+        <Constant name="CTPPS_Pixel_Negative_Sec_Rot_Angle_neg8" value="-8"/>
+        <Constant name="CTPPS_Pixel_Negative_Sec_Rot_Angle_180" value="180"/>
+        <Constant name="CTPPS_Pixel_Negative_Sec_Rot_Angle_172" value="172"/>
+
+        <Constant name="CTPPS_Pixel_Negative_Hor_Vac_Length" value="[RP_Device:RP_Device_Envelope_Radius]+[RP_Device:RP_Device_Length_y]/2-[RP_Horizontal_Device:RP_Device_Hor_Closed_Wall_Thick_Int]"/>
+    </ConstantsSection>
+
+    <RotationSection label="CTPPS_Pixel_Negative_Station.xml">
+        <Rotation name="CTPPS_Pixel_Negative_Sec_Rotation" 
+            phiX="[CTPPS_Pixel_Negative_Sec_Rot_Angle]*deg" thetaX="90*deg" 
+            phiY="(90+[CTPPS_Pixel_Negative_Sec_Rot_Angle])*deg" thetaY="90*deg"
+            phiZ="0*deg" thetaZ="0*deg"/>
+        <Rotation name="CTPPS_Pixel_Negative_90_y_Sec_Rotation_neg8" 
+            phiX="0*deg" thetaX="180*deg" 
+            phiY="(90+[CTPPS_Pixel_Negative_Sec_Rot_Angle_neg8])*deg" thetaY="90*deg" 
+            phiZ="(0+[CTPPS_Pixel_Negative_Sec_Rot_Angle_neg8])*deg" thetaZ="90*deg"/>
+        <Rotation name="CTPPS_Pixel_Negative_90_x_Sec_Rotation_neg8" 
+            phiX="(0+[CTPPS_Pixel_Negative_Sec_Rot_Angle_neg8])*deg" thetaX="90*deg" 
+            phiY="0*deg" thetaY="180*deg" 
+            phiZ="(90+[CTPPS_Pixel_Negative_Sec_Rot_Angle_neg8])*deg" thetaZ="90*deg"/>
+        <Rotation name="CTPPS_Pixel_Negative_Sec_Rotation_neg8" 
+            phiX="[CTPPS_Pixel_Negative_Sec_Rot_Angle_neg8]*deg" thetaX="90*deg" 
+            phiY="(90+[CTPPS_Pixel_Negative_Sec_Rot_Angle_neg8])*deg" thetaY="90*deg"
+            phiZ="0*deg" thetaZ="0*deg"/>
+        <Rotation name="CTPPS_Pixel_Negative_Sec_Rotation_180" 
+            phiX="[CTPPS_Pixel_Negative_Sec_Rot_Angle_180]*deg" thetaX="90*deg" 
+            phiY="(90+[CTPPS_Pixel_Negative_Sec_Rot_Angle_180])*deg" thetaY="90*deg"
+            phiZ="0*deg" thetaZ="0*deg"/>
+        <Rotation name="CTPPS_Pixel_Negative_Sec_Rotation_172" 
+            phiX="[CTPPS_Pixel_Negative_Sec_Rot_Angle_172]*deg" thetaX="90*deg" 
+            phiY="(90+[CTPPS_Pixel_Negative_Sec_Rot_Angle_172])*deg" thetaY="90*deg"
+            phiZ="0*deg" thetaZ="0*deg"/>
+    </RotationSection>
+
+    <SolidSection label="CTPPS_Pixel_Negative_Station.xml">  
+        <Tube rMin="0*mm" rMax="[RP_Device:RP_Device_Envelope_Radius]*1.1" dz="[CTPPS_Pixel_Negative_Station_Length]/2" name="CTPPS_Pixel_Negative_Station"/>
+        <Tube rMin="[RP_Device:RP_Device_Beam_Hole_Diam]/2" rMax="[RP_Device:RP_Device_Beam_Hole_Diam]/2+[RP_Device:RP_Device_Wall_Thickness]" dz="([CTPPS_Pixel_Negative_Prim_Hor_z]-[RP_Device:RP_Device_Length_z]/2)/2" name="CTPPS_Pixel_Negative_Station_Tube_1"/>
+        <Tube rMin="[RP_Device:RP_Device_Beam_Hole_Diam]/2" rMax="[RP_Device:RP_Device_Beam_Hole_Diam]/2+[RP_Device:RP_Device_Wall_Thickness]" dz="([CTPPS_Pixel_Negative_Sec_Hor_z]-[CTPPS_Pixel_Negative_Prim_Hor_z]-[RP_Device:RP_Device_Length_z])/2" name="CTPPS_Pixel_Negative_Station_Tube_3"/>
+        <Tube rMin="[RP_Device:RP_Device_Beam_Hole_Diam]/2" rMax="[RP_Device:RP_Device_Beam_Hole_Diam]/2+[RP_Device:RP_Device_Wall_Thickness]" dz="([CTPPS_Pixel_Negative_Station_Length]-[CTPPS_Pixel_Negative_Sec_Hor_z]-[RP_Device:RP_Device_Length_z]/2)/2" name="CTPPS_Pixel_Negative_Station_Tube_5"/>
+        <Tube rMin="0*mm" rMax="[RP_Device:RP_Device_Beam_Hole_Diam]/2" dz="[CTPPS_Pixel_Negative_Station_Length]/2" name="CTPPS_Pixel_Negative_Station_Vacuum_1"/>
+        <Tube rMin="0*mm" rMax="[RP_Device:RP_Device_RP_Hole_Diam]/2" dz="[RP_Device:RP_Device_Envelope_Radius]" name="CTPPS_Pixel_Negative_Station_Vert_Vacuum"/>
+        <Polycone name="CTPPS_Pixel_Negative_Station_Hor_Vacuum" startPhi="0*deg" deltaPhi="360*deg" >
+            <ZSection z="-[RP_Device:RP_Device_Length_y]/2+[RP_Horizontal_Device:RP_Device_Hor_Closed_Wall_Thick_Int]" rMin="0*mm" rMax="[RP_Device:RP_Device_RP_Hole_Diam]/2"/>
+            <ZSection z="-[RP_Device:RP_Device_Length_y]/2+[RP_Horizontal_Device:RP_Device_Hor_Closed_Wall_Thick_Int] + [CTPPS_Pixel_Negative_Hor_Vac_Length]" rMin="0*mm" rMax="[RP_Device:RP_Device_RP_Hole_Diam]/2"/>
+        </Polycone> 
+        <UnionSolid name="CTPPS_Pixel_Negative_Station_Vacuum_4">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Vacuum_1"/>
+            <rSolid name="CTPPS_Pixel_Negative_Station_Hor_Vacuum"/>
+            <rRotation name="RP_Transformations:RP_y_90_rot"/>
+            <Translation x="0*mm" y="0*mm" z="-(-[CTPPS_Pixel_Negative_Station_Length]/2+[CTPPS_Pixel_Negative_Prim_Hor_z])"/>
+        </UnionSolid>
+        <UnionSolid name="CTPPS_Pixel_Negative_Station_Vacuum_5">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Vacuum_4"/>
+            <rSolid name="CTPPS_Pixel_Negative_Station_Hor_Vacuum"/>
+            <rRotation name="CTPPS_Pixel_Negative_90_y_Sec_Rotation_neg8"/>
+            <Translation x="0*mm" y="0*mm" z="-(-[CTPPS_Pixel_Negative_Station_Length]/2+[CTPPS_Pixel_Negative_Sec_Hor_z])"/>
+        </UnionSolid>
+
+        <Polycone name="CTPPS_Pixel_Negative_Station_Vacuum_1_Far" startPhi="0*deg" deltaPhi="360*deg" >
+            <ZSection z="0*mm" rMin="0*mm" rMax="[RP_Device:RP_Device_Beam_Hole_Diam]/2"/>
+            <ZSection z="-([CTPPS_Pixel_Negative_Station_Length]/2)" rMin="0*mm" rMax="[RP_Device:RP_Device_Beam_Hole_Diam]/2"/>
+        </Polycone> 
+        <UnionSolid name="CTPPS_Pixel_Negative_Station_Vacuum_3_Far">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Vacuum_1_Far"/>
+            <rSolid name="CTPPS_Pixel_Negative_Station_Hor_Vacuum"/>
+            <rRotation name="RP_Transformations:RP_y_90_rot"/>
+            <Translation x="0*mm" y="0*mm" z="-(-[CTPPS_Pixel_Negative_Station_Length]/2+[CTPPS_Pixel_Negative_Sec_Hor_z])"/>
+        </UnionSolid>
+    </SolidSection>
+
+    <LogicalPartSection label="CTPPS_Pixel_Negative_Station.xml">
+        <LogicalPart name="CTPPS_Pixel_Negative_Station">
+            <rSolid name="CTPPS_Pixel_Negative_Station"/>
+            <rMaterial name="RP_Materials:Air"/>
+        </LogicalPart>
+        <LogicalPart name="CTPPS_Pixel_Negative_Station_Tube_1">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Tube_1"/>
+            <rMaterial name="RP_Materials:AISI-316L-Steel"/>
+        </LogicalPart>
+        <LogicalPart name="CTPPS_Pixel_Negative_Station_Tube_2">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Tube_2"/>
+            <rMaterial name="RP_Materials:AISI-316L-Steel"/>
+        </LogicalPart>
+        <LogicalPart name="CTPPS_Pixel_Negative_Station_Tube_3">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Tube_3"/>
+            <rMaterial name="RP_Materials:AISI-316L-Steel"/>
+        </LogicalPart>
+        <LogicalPart name="CTPPS_Pixel_Negative_Station_Tube_4">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Tube_4"/>
+            <rMaterial name="RP_Materials:AISI-316L-Steel"/>
+        </LogicalPart>
+        <LogicalPart name="CTPPS_Pixel_Negative_Station_Tube_5">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Tube_5"/>
+            <rMaterial name="RP_Materials:AISI-316L-Steel"/>
+        </LogicalPart>
+        <LogicalPart name="CTPPS_Pixel_Negative_Station_Vacuum_5">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Vacuum_5"/>
+            <rMaterial name="RP_Materials:RP_Primary_Vacuum"/>
+        </LogicalPart>
+        <LogicalPart name="CTPPS_Pixel_Negative_Station_Vacuum_3_Far">
+            <rSolid name="CTPPS_Pixel_Negative_Station_Vacuum_3_Far"/>
+            <rMaterial name="RP_Materials:RP_Primary_Vacuum"/>
+        </LogicalPart>
+    </LogicalPartSection>
+
+    <PosPartSection label="CTPPS_Pixel_Negative_Station.xml">
+        <PosPart copyNumber="1">
+            <rParent name="CTPPS_Pixel_Negative_Station"/>
+            <rChild name="RP_Horizontal_Device:RP_Device_Hor_Corp_3"/>
+            <rRotation name="CTPPS_Pixel_Negative_Sec_Rotation_180"/>
+            <Translation x="0*mm" y="0*mm" z="-(-[CTPPS_Pixel_Negative_Station_Length]/2+[CTPPS_Pixel_Negative_Prim_Hor_z])"/>
+        </PosPart>
+        <PosPart copyNumber="2">
+            <rParent name="CTPPS_Pixel_Negative_Station"/>
+            <rChild name="RP_Horizontal_Device:RP_Device_Hor_Corp_3"/>
+            <rRotation name="CTPPS_Pixel_Negative_Sec_Rotation_172"/>
+            <Translation x="0*mm" y="0*mm" z="-(-[CTPPS_Pixel_Negative_Station_Length]/2+[CTPPS_Pixel_Negative_Sec_Hor_z])"/>
+        </PosPart>
+
+        <PosPart>
+            <rParent name="CTPPS_Pixel_Negative_Station"/>
+            <rChild name="CTPPS_Pixel_Negative_Station_Tube_1"/>
+            <Translation x="0*mm" y="0*mm" z="-(-[CTPPS_Pixel_Negative_Station_Length]/2+([CTPPS_Pixel_Negative_Prim_Hor_z]-[RP_Device:RP_Device_Length_z]/2)/2)"/>
+        </PosPart>
+        <PosPart>
+            <rParent name="CTPPS_Pixel_Negative_Station"/>
+            <rChild name="CTPPS_Pixel_Negative_Station_Tube_3"/>
+            <Translation x="0*mm" y="0*mm" z="-(-[CTPPS_Pixel_Negative_Station_Length]/2+([CTPPS_Pixel_Negative_Prim_Hor_z]+[CTPPS_Pixel_Negative_Sec_Hor_z])/2)"/>
+        </PosPart>
+        <PosPart>
+            <rParent name="CTPPS_Pixel_Negative_Station"/>
+            <rChild name="CTPPS_Pixel_Negative_Station_Tube_5"/>
+            <Translation x="0*mm" y="0*mm" z="-([CTPPS_Pixel_Negative_Station_Length]/2-([CTPPS_Pixel_Negative_Station_Length]-[CTPPS_Pixel_Negative_Sec_Hor_z]-[RP_Device:RP_Device_Length_z]/2)/2)"/>
+        </PosPart>
+        <PosPart>
+            <rParent name="CTPPS_Pixel_Negative_Station"/>
+            <rChild name="CTPPS_Pixel_Negative_Station_Vacuum_5"/>
+            <rRotation name="CTPPS_Pixel_Negative_Sec_Rotation_180"/>
+        </PosPart>
+
+        <PosPart>
+            <rParent name="CTPPS_Pixel_Negative_Station_Vacuum_5"/>
+            <rChild name="CTPPS_Pixel_Negative_Station_Vacuum_3_Far"/>
+            <rRotation name="CTPPS_Pixel_Negative_Sec_Rotation_neg8"/>
+        </PosPart>
+
+        <PosPart copyNumber="2">
+            <rParent name="CTPPS_Pixel_Negative_Station_Vacuum_5"/>
+            <rChild name="RP_Box_002:RP_box_primary_vacuum"/>
+            <rRotation name="RP_Transformations:RP_90_z_cw_180_y_rot"/>
+            <Translation x="-(-[CTPPS_XDistance_From_Beam:CTPPS_Pixel_Negative_Det_Dist_2]-[RP_Box:RP_Box_primary_vacuum_y]/2)" y="0*mm" z="-([CTPPS_Pixel_Negative_Prim_Hor_z]-[CTPPS_Pixel_Negative_Station_Length]/2)"/>
+        </PosPart>
+        <PosPart copyNumber="3">
+            <rParent name="CTPPS_Pixel_Negative_Station_Vacuum_3_Far"/>
+            <rChild name="RP_Box_003:RP_box_primary_vacuum"/>
+            <rRotation name="RP_Transformations:RP_90_z_cw_180_y_rot"/>
+            <Translation x="-(-[CTPPS_XDistance_From_Beam:CTPPS_Pixel_Negative_Det_Dist_3]-[RP_Box:RP_Box_primary_vacuum_y]/2)" y="0*mm" z="-([CTPPS_Pixel_Negative_Sec_Hor_z]-[CTPPS_Pixel_Negative_Station_Length]/2)"/>
+        </PosPart>
+    </PosPartSection>
+</DDDefinition>

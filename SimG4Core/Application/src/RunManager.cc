@@ -31,6 +31,8 @@
 #include "SimG4Core/Notification/interface/BeginOfJob.h"
 #include "SimG4Core/Notification/interface/CurrentG4Track.h"
 #include "SimG4Core/Notification/interface/SimG4Exception.h"
+#include "SimG4Core/Notification/interface/CMSSteppingVerbose.h"
+#include "SimG4Core/Application/interface/CustomUIsession.h"
 
 #include "SimG4Core/Geometry/interface/G4CheckOverlap.h"
 
@@ -85,19 +87,16 @@ void createWatchers(const edm::ParameterSet& iP,
 {
   using namespace std;
   using namespace edm;
-  vector<ParameterSet> watchers;
-  try {
-    watchers = iP.getParameter<vector<ParameterSet> >("Watchers");
-  } catch( edm::Exception) {
-  }
+
+  vector<ParameterSet> watchers = iP.getParameter<vector<ParameterSet> >("Watchers");
   
   for(vector<ParameterSet>::iterator itWatcher = watchers.begin();
       itWatcher != watchers.end();
       ++itWatcher) {
-    std::auto_ptr<SimWatcherMakerBase> maker( 
+    std::shared_ptr<SimWatcherMakerBase> maker( 
       SimWatcherFactory::get()->create
       (itWatcher->getParameter<std::string> ("type")) );
-    if(maker.get()==0) {
+    if(maker.get()==nullptr) {
       throw edm::Exception(edm::errors::Configuration)
 	<< "Unable to find the requested Watcher";
     }
@@ -139,6 +138,7 @@ RunManager::RunManager(edm::ParameterSet const & p, edm::ConsumesCollector&& iC)
       m_G4Commands(p.getParameter<std::vector<std::string> >("G4Commands")),
       m_p(p), m_fieldBuilder(nullptr), m_chordFinderSetter(nullptr)
 {    
+  m_UIsession.reset(new CustomUIsession());
   m_kernel = new G4RunManagerKernel();
 
   m_check = p.getUntrackedParameter<bool>("CheckOverlap",false);
@@ -146,8 +146,8 @@ RunManager::RunManager(edm::ParameterSet const & p, edm::ConsumesCollector&& iC)
   m_FieldFile = p.getUntrackedParameter<std::string>("FileNameField","");
   m_RegionFile = p.getUntrackedParameter<std::string>("FileNameRegions","");
 
-  m_userRunAction = 0;
-  m_runInterface = 0;
+  m_userRunAction = nullptr;
+  m_runInterface = nullptr;
 
   //Look for an outside SimActivityRegistry
   // this is used by the visualization code
@@ -155,8 +155,15 @@ RunManager::RunManager(edm::ParameterSet const & p, edm::ConsumesCollector&& iC)
   if(otherRegistry){
     m_registry.connect(*otherRegistry);
   }
+  m_sVerbose.reset(nullptr);
 
-  createWatchers(m_p, m_registry, m_watchers, m_producers);
+  std::vector<edm::ParameterSet> watchers 
+    = p.getParameter<std::vector<edm::ParameterSet> >("Watchers");
+  m_hasWatchers = (watchers.empty()) ? false : true;
+
+  if(m_hasWatchers) {
+    createWatchers(m_p, m_registry, m_watchers, m_producers);
+  }
 }
 
 RunManager::~RunManager() 
@@ -219,7 +226,7 @@ void RunManager::initG4(const edm::EventSetup & es)
     }
 
   // we need the track manager now
-  m_trackManager = std::auto_ptr<SimTrackManager>(new SimTrackManager);
+  m_trackManager = std::unique_ptr<SimTrackManager>(new SimTrackManager);
 
   // attach sensitive detector
   m_attach = new AttachSD;
@@ -246,7 +253,7 @@ void RunManager::initG4(const edm::EventSetup & es)
 
   m_primaryTransformer = new PrimaryTransformer();
 
-  std::auto_ptr<PhysicsListMakerBase> 
+  std::unique_ptr<PhysicsListMakerBase> 
     physicsMaker(PhysicsListFactory::get()->create(
       m_pPhysics.getParameter<std::string> ("type")));
   if (physicsMaker.get()==nullptr) {
@@ -274,12 +281,14 @@ void RunManager::initG4(const edm::EventSetup & es)
   edm::LogInfo("SimG4CoreApplication") 
     << "RunManager: start initialisation of PhysicsList";
 
-  int verb = m_pPhysics.getUntrackedParameter<int>("Verbosity",0);
+  int verb = std::max(m_pPhysics.getUntrackedParameter<int>("Verbosity",0),
+		      m_p.getParameter<int>("SteppingVerbosity"));
+
   m_physicsList->SetDefaultCutValue(m_pPhysics.getParameter<double>("DefaultCutValue")*CLHEP::cm);
   m_physicsList->SetCutsWithDefault();
   m_prodCuts.reset(new DDG4ProductionCuts(map_, verb, m_pPhysics));	
   m_prodCuts->update();
-  
+
   m_kernel->SetPhysics(phys);
   m_kernel->InitializePhysics();
 
@@ -303,6 +312,15 @@ void RunManager::initG4(const edm::EventSetup & es)
   BeginOfJob aBeginOfJob(&es);
   m_registry.beginOfJobSignal_(&aBeginOfJob);
   
+  G4int sv = m_p.getParameter<int>("SteppingVerbosity");
+  G4double elim = m_p.getParameter<double>("StepVerboseThreshold")*CLHEP::GeV;
+  std::vector<int> ve = m_p.getParameter<std::vector<int> >("VerboseEvents");
+  std::vector<int> vn = m_p.getParameter<std::vector<int> >("VertexNumber");
+  std::vector<int> vt = m_p.getParameter<std::vector<int> >("VerboseTracks");
+
+  if(sv > 0) {
+    m_sVerbose.reset(new CMSSteppingVerbose(sv, elim, ve, vn, vt));
+  }
   initializeUserActions();
   
   if(0 < m_G4Commands.size()) {
@@ -361,15 +379,18 @@ void RunManager::produce(edm::Event& inpevt, const edm::EventSetup & es)
        
     abortRun(false);
   } else {
+    edm::LogInfo("SimG4CoreApplication") 
+      << "RunManager::produce: start Event " << inpevt.id().event() 
+      << " of weight " << m_simEvent->weight()
+      << " with " << m_simEvent->nTracks() << " tracks and " 
+      << m_simEvent->nVertices()
+      << " vertices, generated by " << m_simEvent->nGenParts() << " particles ";
+
     m_kernel->GetEventManager()->ProcessOneEvent(m_currentEvent);
-  }
-    
-  edm::LogInfo("SimG4CoreApplication") 
-    << " RunManager: saved : Event  " << inpevt.id().event() 
-    << " of weight " << m_simEvent->weight()
-    << " with " << m_simEvent->nTracks() << " tracks and " 
-    << m_simEvent->nVertices()
-    << " vertices, generated by " << m_simEvent->nGenParts() << " particles ";
+
+    edm::LogInfo("SimG4CoreApplication")
+      << " RunManager::produce: ended Event " << inpevt.id().event(); 
+  }    
 }
  
 G4Event * RunManager::generateEvent(edm::Event & inpevt)
@@ -431,30 +452,31 @@ void RunManager::initializeUserActions()
 {
   m_runInterface = new SimRunInterface(this, false);
 
-  m_userRunAction = new RunAction(m_pRunAction, m_runInterface);
+  m_userRunAction = new RunAction(m_pRunAction, m_runInterface, true);
   Connect(m_userRunAction);
 
   G4EventManager * eventManager = m_kernel->GetEventManager();
   eventManager->SetVerboseLevel(m_EvtMgrVerbosity);
 
-  if (m_generator!=0) {
+  if (m_generator!=nullptr) {
     EventAction * userEventAction = 
-      new EventAction(m_pEventAction, m_runInterface, m_trackManager.get());
+      new EventAction(m_pEventAction, m_runInterface, m_trackManager.get(),
+		      m_sVerbose.get());
     Connect(userEventAction);
     eventManager->SetUserAction(userEventAction);
 
     TrackingAction* userTrackingAction = 
-      new TrackingAction(userEventAction,m_pTrackingAction);
+      new TrackingAction(userEventAction,m_pTrackingAction,m_sVerbose.get());
     Connect(userTrackingAction);
     eventManager->SetUserAction(userTrackingAction);
 	
     SteppingAction* userSteppingAction = 
-      new SteppingAction(userEventAction,m_pSteppingAction); 
+      new SteppingAction(userEventAction,m_pSteppingAction,m_sVerbose.get(),m_hasWatchers); 
     Connect(userSteppingAction);
     eventManager->SetUserAction(userSteppingAction);
 
     eventManager->SetUserAction(new StackingAction(userTrackingAction, 
-						   m_pStackingAction));
+						   m_pStackingAction,m_sVerbose.get()));
 
   } else {
     edm::LogWarning("SimG4CoreApplication") << " RunManager: WARNING : "

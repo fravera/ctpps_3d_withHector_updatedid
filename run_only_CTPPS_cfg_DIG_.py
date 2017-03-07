@@ -97,7 +97,7 @@ process.common_maximum_timex = cms.PSet( # need to be localy redefined
         )
 
 process.load("SimGeneral.MixingModule.MYmixNoPU_cfi")
-process.load("SimCTPPS.CTPPSTrackerDigiProducer.RPixDetConf_cfi")
+process.load("SimCTPPS.CTPPSPixelDigiProducer.RPixDetConf_cfi")
 
 
 process.generation_step = cms.Path(process.pgen)
@@ -123,7 +123,8 @@ process.genfiltersummary_step = cms.EndPath(process.genFilterSummary)
 
 process.outpath = cms.EndPath(process.o1)
 
-process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary_step,process.transport_step,process.g4Simhits_step,process.mixedigi_step,process.outpath)
+
+process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary_step,process.transport_step,process.g4Simhits_step,process.outpath)
 
 # filter all path with the production filter sequence
 for path in process.paths:

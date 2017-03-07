@@ -254,7 +254,7 @@ void HectorForCTPPS::filterCTPPS(TRandom3* rootEngine){
 
 		    m_xAtTrPoint[line]  = x1_ctpps;
 		    m_yAtTrPoint[line]  = y1_ctpps;
-		    m_TxAtTrPoint[line] = part->getTX();
+		    m_TxAtTrPoint[line] = -part->getTX();
 		    m_TyAtTrPoint[line] = part->getTY();
 		    m_eAtTrPoint[line]  = part->getE();
 

@@ -9,7 +9,7 @@
 #define Geometry_VeryForwardGeometryBuilder_TotemRPGeometry
 
 #include "DataFormats/CTPPSDetId/interface/TotemRPDetId.h"
-#include "DataFormats/CTPPSDetId/interface/CTPPSTrackerDetId.h"
+#include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
 #include "CLHEP/Vector/ThreeVector.h"
 #include "CLHEP/Vector/Rotation.h"
 #include "Geometry/VeryForwardGeometryBuilder/interface/DetGeomDesc.h"

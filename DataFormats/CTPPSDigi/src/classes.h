@@ -1,49 +1,76 @@
-#ifndef CTPPS_TRACKERDIGI_CLASSES_H
-#define CTPPS_TRACKERDIGI_CLASSES_H
+/****************************************************************************
+*
+* This is a part of the TOTEM offline software.
+* Authors: 
+*  Jan Kašpar (jan.kaspar@gmail.com) 
+*    
+****************************************************************************/
 
-#include "DataFormats/CTPPSDigi/interface/CTPPSTrackerDigi.h"
-#include "DataFormats/CTPPSDigi/interface/CTPPSTrackerDigiCollection.h"
-//#include "DataFormats/CTPPSTrackerDigi/interface/SiPixelCalibDigi.h"
-//#include "DataFormats/CTPPSTrackerDigi/interface/SiPixelCalibDigiError.h"
 #include "DataFormats/Common/interface/Wrapper.h"
+#include "DataFormats/Common/interface/DetSet.h"
 #include "DataFormats/Common/interface/DetSetVector.h"
-#include "DataFormats/Common/interface/DetSetVectorNew.h"
-#include "boost/cstdint.hpp"
+
+#include "DataFormats/CTPPSDigi/interface/TotemRPDigi.h"
+#include "DataFormats/CTPPSDigi/interface/TotemTriggerCounters.h"
+#include "DataFormats/CTPPSDigi/interface/TotemVFATStatus.h"
+#include "DataFormats/CTPPSDigi/interface/TotemFEDInfo.h"
+#include "DataFormats/CTPPSDigi/interface/CTPPSDiamondDigi.h"
+
+#include "DataFormats/CTPPSDigi/interface/CTPPSPixelDigi.h"
+#include "DataFormats/CTPPSDigi/interface/CTPPSPixelDigiCollection.h"
+
 #include <vector>
 
-namespace DataFormats_RPixDigi {
+namespace DataFormats_CTPPSDigi {
   struct dictionary {
-/*
-    SiPixelCalibDigi::datacontainer calibdatacontainer;
-    SiPixelCalibDigi calibdigiitself;
-    edm::Wrapper<SiPixelCalibDigi::datacontainer> calibdatacontainer0;
-    edm::Wrapper<std::vector<SiPixelCalibDigi::datacontainer> > calibdatacontainervec0;
-    edm::Wrapper<SiPixelCalibDigi> calibdigi;
-    edm::Wrapper<std::vector<SiPixelCalibDigi> > calibdigivec;
-    edm::Wrapper<edm::DetSet<SiPixelCalibDigi> > calibdigidetvec;
-    edm::Wrapper<std::vector<edm::DetSet<SiPixelCalibDigi> > > calibdigidetset;
-    edm::Wrapper<edm::DetSetVector<SiPixelCalibDigi> > calibdigidetsetvec;
+    TotemRPDigi rp_str_dig;
+    edm::DetSet<TotemRPDigi> ds_rp_str_dig;
+    std::vector<TotemRPDigi> vec_rp_str_dig;
+    edm::DetSetVector<TotemRPDigi> dsv_rp_str_dig;
+    std::vector<edm::DetSet<TotemRPDigi> > vec_ds_rp_str_dig;
+    edm::Wrapper<edm::DetSet<TotemRPDigi> > wds_rp_str_dig;
+    edm::Wrapper<edm::DetSetVector<TotemRPDigi> > wdsv_rp_str_dig;
 
-    
-    SiPixelCalibDigiError calibdigierr;
-    edm::Wrapper<SiPixelCalibDigiError> calibdigierrw;
-    edm::Wrapper<std::vector<SiPixelCalibDigiError> > calibdigierrvec;
-    edm::Wrapper<edm::DetSet<SiPixelCalibDigiError> > calibdigierrdetvec;
-    edm::Wrapper<std::vector<edm::DetSet<SiPixelCalibDigiError> > > calibdigierrdetset;
-    edm::Wrapper<edm::DetSetVector<SiPixelCalibDigiError> > calibdigierrdetsetvec;
-*/
-    edm::Wrapper<RPixDigi> ff0;
-    edm::Wrapper<RPixDigiCollection> ffc0;
-    edm::Wrapper< std::vector<RPixDigi>  > ff1;
-    edm::Wrapper< edm::DetSet<RPixDigi> > ff2;
-    edm::Wrapper< std::vector<edm::DetSet<RPixDigi> > > ff3;
-    edm::Wrapper< edm::DetSetVector<RPixDigi> > ff4;
+    TotemTriggerCounters dummy10;
+    edm::Wrapper<TotemTriggerCounters> dummy11;
 
-    edm::Wrapper<edmNew::DetSetVector<RPixDigi> > ff4_bis;
-    //   edm::Wrapper<edmNew::DetSetVector<SiPixelCalibDigi> > calibdigidetsetvec_bis;
-//    edm::Wrapper<edmNew::DetSetVector<SiPixelCalibDigiError> > calibdigierrdetsetvec_bis;
-    
+    std::map<unsigned int, uint64_t> dummy27;
+
+    TotemVFATStatus dummy30;
+    edm::Wrapper< TotemVFATStatus > dummy31;
+    edm::DetSetVector<TotemVFATStatus> dummy32;
+    edm::Wrapper< edm::DetSetVector<TotemVFATStatus> > dummy33;
+
+    std::bitset<8> dummy50;
+    edm::Wrapper< std::bitset<8> > dummy51;
+
+    TotemFEDInfo fi;
+    std::vector<TotemFEDInfo> v_fi;
+    edm::Wrapper<std::vector<TotemFEDInfo>> w_v_fi;
+
+    CTPPSDiamondDigi rm_diamo_dig;
+    edm::DetSet<CTPPSDiamondDigi> ds_rp_diamo_dig;
+    std::vector<CTPPSDiamondDigi> vec_rp_diamo_dig;
+    edm::DetSetVector<CTPPSDiamondDigi> dsv_rp_diamo_dig;
+    std::vector<edm::DetSet<CTPPSDiamondDigi> > vec_ds_rp_diamo_dig;
+    edm::Wrapper<edm::DetSet<CTPPSDiamondDigi> > wds_rp_diamo_dig;
+    edm::Wrapper<edm::DetSetVector<CTPPSDiamondDigi> > wdsv_rp_diamo_dig;
+
+    HPTDCErrorFlags rm_hptdcerr;
+    CTPPSPixelDigi ff0;
+    CTPPSPixelDigiCollection ffc0;
+    std::vector<CTPPSPixelDigi>  ff1;
+    edm::DetSet<CTPPSPixelDigi>  ff2;
+    std::vector<edm::DetSet<CTPPSPixelDigi> >  ff3;
+    edm::DetSetVector<CTPPSPixelDigi> ff4;
+
+
+    edm::Wrapper<CTPPSPixelDigi> wff0;
+    edm::Wrapper<CTPPSPixelDigiCollection> wffc0;
+    edm::Wrapper< std::vector<CTPPSPixelDigi>  > wff1;
+    edm::Wrapper< edm::DetSet<CTPPSPixelDigi> > wff2;
+    edm::Wrapper< std::vector<edm::DetSet<CTPPSPixelDigi> > > wff3;
+    edm::Wrapper< edm::DetSetVector<CTPPSPixelDigi> > wff4;
+
   };
 }
-
-#endif

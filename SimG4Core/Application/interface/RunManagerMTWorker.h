@@ -28,6 +28,7 @@ class RunAction;
 class EventAction;
 class TrackingAction;
 class SteppingAction;
+class CMSSteppingVerbose;
 
 class SensitiveTkDetector;
 class SensitiveCaloDetector;
@@ -74,9 +75,12 @@ private:
   Generator m_generator;
   edm::EDGetTokenT<edm::HepMCProduct> m_InToken;
   edm::EDGetTokenT<edm::LHCTransportLinkContainer> m_theLHCTlinkToken;
-  const bool m_nonBeam;
-  const bool m_pUseMagneticField;
-  const int m_EvtMgrVerbosity;
+
+  bool m_nonBeam;
+  bool m_pUseMagneticField;
+  bool m_hasWatchers;
+  int  m_EvtMgrVerbosity;
+
   edm::ParameterSet m_pField;
   edm::ParameterSet m_pRunAction;
   edm::ParameterSet m_pEventAction;
@@ -90,6 +94,7 @@ private:
   static thread_local TLSData *m_tls;
 
   std::unique_ptr<G4SimEvent> m_simEvent;
+  std::unique_ptr<CMSSteppingVerbose> m_sVerbose;
 };
 
 #endif

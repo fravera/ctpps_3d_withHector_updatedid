@@ -102,12 +102,14 @@ void HectorProducerForCTPPS::produce(edm::Event & iEvent, const edm::EventSetup 
       evt_->print();
     }
   
-    auto_ptr<HepMCProduct> NewProduct(new edm::HepMCProduct()) ;
+//    auto_ptr<HepMCProduct> NewProduct(new edm::HepMCProduct()) ;
+    unique_ptr<edm::HepMCProduct> NewProduct(new edm::HepMCProduct());
     NewProduct->addHepMCData( evt_ ) ;
   
-    iEvent.put( NewProduct ) ;
+    iEvent.put( std::move(NewProduct) ) ;
 
-    auto_ptr<LHCTransportLinkContainer> NewCorrespondenceMap(new edm::LHCTransportLinkContainer() );
+//    auto_ptr<LHCTransportLinkContainer> NewCorrespondenceMap(new edm::LHCTransportLinkContainer() );
+    unique_ptr<edm::LHCTransportLinkContainer> NewCorrespondenceMap(new edm::LHCTransportLinkContainer());
     edm::LHCTransportLinkContainer thisLink(hector_ctpps->getCorrespondenceMap());
     (*NewCorrespondenceMap).swap(thisLink);
 
@@ -116,7 +118,7 @@ void HectorProducerForCTPPS::produce(edm::Event & iEvent, const edm::EventSetup 
         LogDebug("HectorEventProcessing") << "Hector correspondence table: " << (*NewCorrespondenceMap)[i];
     }
 
-    iEvent.put( NewCorrespondenceMap );
+    iEvent.put( std::move(NewCorrespondenceMap) );
     hector_ctpps->clear();
 
 }

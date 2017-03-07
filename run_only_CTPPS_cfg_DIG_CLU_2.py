@@ -97,7 +97,7 @@ process.common_maximum_timex = cms.PSet( # need to be localy redefined
         )
 
 process.load("SimGeneral.MixingModule.MYmixNoPU_cfi")
-process.load("SimCTPPS.CTPPSTrackerDigiProducer.RPixDetConf_cfi")
+process.load("SimCTPPS.CTPPSPixelDigiProducer.RPixDetConf_cfi")
 process.RPixDetDigitizer.RPixVerbosity = cms.int32(0)
 
 process.generation_step = cms.Path(process.pgen)
@@ -114,9 +114,9 @@ process.g4SimHits.Watchers = cms.VPSet(cms.PSet(
 ))
 '''
 
-#process.load("RecoCTPPS.CTPPSTrackerLocal.CTPPSTrackerClusterizer_cfi")
+#process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelClusterizer_cfi")
 #process.clusterProd.RPixVerbosity = cms.int32(0)
-process.clusterProd = cms.EDProducer("CTPPSTrackerClusterProducer",
+process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
                                      label=cms.untracked.string("RPixDetDigitizer"),
                                      RPixVerbosity = cms.int32(2),
                                      SeedADCThreshold = cms.int32(50),

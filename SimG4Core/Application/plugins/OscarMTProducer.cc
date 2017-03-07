@@ -87,14 +87,15 @@ OscarMTProducer::OscarMTProducer(edm::ParameterSet const & p, const OscarMTMaste
   produces<edm::PSimHitContainer>("TotemHitsT1");
   produces<edm::PSimHitContainer>("TotemHitsT2Gem");
   produces<edm::PSimHitContainer>("TotemHitsRP");
-  produces<edm::PSimHitContainer>("CTPPSTrackerHits");
+  produces<edm::PSimHitContainer>("CTPPSPixelHits");
   produces<edm::PSimHitContainer>("CTPPSTimingHits");
   produces<edm::PSimHitContainer>("FP420SI");
   produces<edm::PSimHitContainer>("BSCHits");
   produces<edm::PSimHitContainer>("PLTHits");
   produces<edm::PSimHitContainer>("BCM1FHits");
   produces<edm::PSimHitContainer>("BHMHits");
-  produces<edm::PSimHitContainer>("FastTimerHits");
+  produces<edm::PSimHitContainer>("FastTimerHitsBarrel");
+  produces<edm::PSimHitContainer>("FastTimerHitsEndcap");
 
   produces<edm::PCaloHitContainer>("EcalHitsEB");
   produces<edm::PCaloHitContainer>("EcalHitsEE");
@@ -178,16 +179,16 @@ void OscarMTProducer::produce(edm::Event & e, const edm::EventSetup & es)
   try {
     m_runManagerWorker->produce(e, es, globalCache()->runManagerMaster());
 
-    std::auto_ptr<edm::SimTrackContainer> 
+    std::unique_ptr<edm::SimTrackContainer>
       p1(new edm::SimTrackContainer);
-    std::auto_ptr<edm::SimVertexContainer> 
+    std::unique_ptr<edm::SimVertexContainer>
       p2(new edm::SimVertexContainer);
     G4SimEvent * evt = m_runManagerWorker->simEvent();
     evt->load(*p1);
     evt->load(*p2);   
 
-    e.put(p1);
-    e.put(p2);
+    e.put(std::move(p1));
+    e.put(std::move(p2));
 
     for (std::vector<SensitiveTkDetector*>::iterator it = sTk.begin();
 	 it != sTk.end(); ++it) {
@@ -196,10 +197,10 @@ void OscarMTProducer::produce(edm::Event & e, const edm::EventSetup & es)
       for (std::vector<std::string>::iterator in = v.begin();
 	   in!= v.end(); ++in) {
 
-	std::auto_ptr<edm::PSimHitContainer>
+	std::unique_ptr<edm::PSimHitContainer>
 	  product(new edm::PSimHitContainer);
 	(*it)->fillHits(*product,*in);
-	e.put(product,*in);
+	e.put(std::move(product),*in);
       }
     }
     for (std::vector<SensitiveCaloDetector*>::iterator it = sCalo.begin();
@@ -210,10 +211,10 @@ void OscarMTProducer::produce(edm::Event & e, const edm::EventSetup & es)
       for (std::vector<std::string>::iterator in = v.begin();
 	   in!= v.end(); in++) {
 
-	std::auto_ptr<edm::PCaloHitContainer>
+	std::unique_ptr<edm::PCaloHitContainer>
 	  product(new edm::PCaloHitContainer);
 	(*it)->fillHits(*product,*in);
-	e.put(product,*in);
+	e.put(std::move(product),*in);
       }
     }
 

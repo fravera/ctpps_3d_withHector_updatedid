@@ -7,7 +7,8 @@
 #include "DataFormats/CTPPSReco/interface/TotemRPUVPattern.h"
 #include "DataFormats/CTPPSReco/interface/TotemRPLocalTrack.h"
 
-#include "DataFormats/CTPPSReco/interface/RPixCluster.h"
+#include "DataFormats/CTPPSReco/interface/CTPPSPixelCluster.h"
+#include "DataFormats/CTPPSReco/interface/CTPPSPixelRecHit.h"
 
 #include <vector>
 
@@ -38,12 +39,20 @@ namespace {
     edm::DetSetVector<TotemRPLocalTrack::FittedRecHit> dsv_ft_frh;
     edm::Wrapper<edm::DetSetVector<TotemRPLocalTrack::FittedRecHit>> w_dsv_ft_frh;
 
-    RPixCluster rpcl;
-    edm::DetSet<RPixCluster> dsrpcl;
-    std::vector<RPixCluster> svrpcl;
-    std::vector<edm::DetSet<RPixCluster> > svdsrpcl;
-    edm::DetSetVector<RPixCluster> dsvrpcl;
-    edm::Wrapper<edm::DetSetVector<RPixCluster> > wdsvrpcl;
+    CTPPSPixelCluster rpcl;
+    edm::DetSet<CTPPSPixelCluster> dsrpcl;
+    std::vector<CTPPSPixelCluster> svrpcl;
+    std::vector<edm::DetSet<CTPPSPixelCluster> > svdsrpcl;
+    edm::DetSetVector<CTPPSPixelCluster> dsvrpcl;
+    edm::Wrapper<edm::DetSetVector<CTPPSPixelCluster> > wdsvrpcl;
+
+    CTPPSPixelRecHit rprh;
+    edm::DetSet<CTPPSPixelRecHit> dsrprh;
+    std::vector<CTPPSPixelRecHit> svrprh;
+    std::vector<edm::DetSet<CTPPSPixelRecHit> > svdsrprh;
+    edm::DetSetVector<CTPPSPixelRecHit> dsvrprh;
+    edm::Wrapper<edm::DetSetVector<CTPPSPixelRecHit> > wdsvrprh;
+
 
 
   }
