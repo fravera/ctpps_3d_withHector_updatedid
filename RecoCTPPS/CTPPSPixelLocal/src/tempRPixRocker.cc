@@ -9,9 +9,10 @@ void tempRPixRocker::run()
 {
 // checking that the mapping is read
   printf("* DAQ mapping\n");
-  for (const auto &p : mapping_)
+  for (const auto &p : mapping_){
     std::cout << "    " << p.first << " -> " << p.second << std::endl;
-
+    
+  }
 
 
 
