@@ -1,0 +1,15 @@
+09-Mar-2017 14:32:04 CET  Initiating request to open file file:./PixelAlive_1294_153_RAW_v3.root
+09-Mar-2017 14:32:04 CET  Successfully opened file file:./PixelAlive_1294_153_RAW_v3.root
+%MSG-w FastCloningDisabled:  AfterModBeginStream 09-Mar-2017 14:32:05 CET  BeforeEvents
+Fast copying of file file:./PixelAlive_1294_153_RAW_v3.root to file file:digis.root is disabled because:
+some events were skipped because of duplicate checking.
+
+%MSG
+%MSG-w DuplicateEvent:  PostProcessPath 09-Mar-2017 14:32:07 CET  PostProcessEvent
+Duplicate Events found in entire set of input files.
+Both events were from run 153 and luminosity block 1 with event number 274.
+The duplicate was from file file:./PixelAlive_1294_153_RAW_v3.root.
+The duplicate will be skipped.
+
+%MSG
+09-Mar-2017 14:32:07 CET  Closed file file:./PixelAlive_1294_153_RAW_v3.root
