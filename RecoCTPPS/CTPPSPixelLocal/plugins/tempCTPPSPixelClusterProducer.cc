@@ -89,6 +89,17 @@ void tempCTPPSPixelClusterProducer::produce(edm::Event& iEvent, const edm::Event
 	tempRPixRocker tRPR(param_,mapping->ROCMapping);
 
 	tRPR.run();
+
+  for (const auto &pp : mapping->fedIds() ){
+    std::cout << "           " << pp << std::endl;
+  }
+  std::set<unsigned int> fedIds = mapping->fedIds() ;
+  for (auto aFed = fedIds.begin(); aFed != fedIds.end(); ++aFed) {
+    int fedId = *aFed;
+    std::cout << "                            " << fedId << std::endl;
+  }
+
+
 	
       //     theClusterVector.reserve(400);
       //    theClusterVector.clear();

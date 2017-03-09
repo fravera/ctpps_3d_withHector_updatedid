@@ -12,6 +12,7 @@
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelFramePosition.h"
 
 #include <map>
+#include <set>
 
 //----------------------------------------------------------------------------------------------------
 
@@ -40,6 +41,8 @@ class CTPPSPixelDAQMapping
     std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo> ROCMapping;
     
     void insert(const CTPPSPixelFramePosition &fp, const CTPPSPixelROCInfo &vi);
+
+    std::set<unsigned int> fedIds() const;
 };
 
 #endif
