@@ -18,8 +18,8 @@
  * The internal representation has the following structure:
  * \verbatim
  * |                                     32 bits raw position                                                                      |
- * | 13 bits  |  2 bits |   10 bits |  1  bit          |       4 bits                        |  2bits     |
- * |  empty  | empty  |  FED ID  |    FMC   0-1  |   fiber index      0-12          | ROC 0-2 |
+ * | 11 bits  |   12 bits |  1  bit          |      6 bits                        |  2bits     |
+ * |  empty   |  FED ID  |    FMC   0-1  |   fiber index      0-12          | ROC 0-2 |
  * \endverbatim
  *
  **/
@@ -27,9 +27,9 @@ class CTPPSPixelFramePosition
 {
   public:
     static const unsigned int offsetROC = 0, maskROC = 0x3;
-    static const unsigned int offsetChannelIdx = 2, maskChannelIdx = 0xF;
-    static const unsigned int offsetFMCId = 6, maskFMCId = 0x1;
-    static const unsigned int offsetFEDId = 7, maskFEDId = 0x3FF;
+    static const unsigned int offsetChannelIdx = 2, maskChannelIdx = 0x3F;
+    static const unsigned int offsetFMCId = 8, maskFMCId = 0x1;
+    static const unsigned int offsetFEDId = 9, maskFEDId = 0xFFF;
   
 
     /// the preferred constructor
