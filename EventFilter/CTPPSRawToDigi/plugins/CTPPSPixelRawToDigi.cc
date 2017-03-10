@@ -258,10 +258,11 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
     LogDebug("CTPPSPixelRawToDigi") << "region2unpack #modules (BPIX,EPIX,total): "<<regions_->nBarrelModules()<<" "<<regions_->nForwardModules()<<" "<<regions_->nModules();
   }
 */
+
   for (auto aFed = fedIds.begin(); aFed != fedIds.end(); ++aFed) {
     int fedId = *aFed;
 
-    LogDebug("CTPPSPixelRawToDigi")<< " PRODUCE DIGI FOR FED: " <<  fedId << endl;
+    edm::LogInfo("CTPPSPixelRawToDigi")<< " PRODUCE DIGI FOR FED: " <<  fedId << endl;
 
 //    PixelDataFormatter::Errors errors;
 

@@ -5,8 +5,9 @@ process = cms.Process("myRawToDigi")
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 
 ############### using only CTPPS geometry
-process.load("Configuration.Geometry.geometry_CTPPS_cfi")
+#process.load("Configuration.Geometry.geometry_CTPPS_cfi")
 process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
+process.ctppsPixelDAQMappingESSourceXML.mappingFileNames = cms.vstring("CondFormats/CTPPSReadoutObjects/xml/rpix_mapping_220_far_TEST1.xml")
 #
 
 #process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
@@ -16,7 +17,7 @@ process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cf
 process.load("Configuration.StandardSequences.Services_cff")
 
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100))
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1))
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100))
 
 process.source = cms.Source("PoolSource",
 # fileNames =  cms.untracked.vstring('file:rawdata.root')
@@ -62,7 +63,7 @@ process.ctppsPixelDigis.IncludeErrors = False
 process.MessageLogger = cms.Service("MessageLogger",
     debugModules = cms.untracked.vstring('ctppsPixelDigis'),
     destinations = cms.untracked.vstring('r2d'),
-    r2d = cms.untracked.PSet( threshold = cms.untracked.string('WARNING'))
+    r2d = cms.untracked.PSet( threshold = cms.untracked.string('DEBUG'))
 )
 
 process.out = cms.OutputModule("PoolOutputModule",
