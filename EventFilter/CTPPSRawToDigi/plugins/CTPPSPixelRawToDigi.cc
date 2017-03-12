@@ -29,6 +29,9 @@
 #include "DataFormats/FEDRawData/interface/FEDNumbering.h"
 #include "DataFormats/DetId/interface/DetIdCollection.h"
 
+
+#include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelROC.h"
+
 //--not needed?
 /*
 #include "CondFormats/SiPixelObjects/interface/SiPixelFedCablingMap.h"
@@ -259,8 +262,11 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
   }
 */
 
+  std::map<CTPPSPixelFramePosition,CTPPSPixelROCInfo> theMap = mapping->ROCMapping;
+
   for (auto aFed = fedIds.begin(); aFed != fedIds.end(); ++aFed) {
     int fedId = *aFed;
+    int FMC = 0;
 
     edm::LogInfo("CTPPSPixelRawToDigi")<< " PRODUCE DIGI FOR FED: " <<  dec <<fedId << endl;
 
@@ -270,7 +276,28 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
     const FEDRawData& fedRawData = buffers->FEDData( fedId );
 
 
+    int link = 2; int roc = 1;
+    int dcol = 5;
+    int pxl = 7;
+    
+    CTPPSPixelFramePosition fPos(fedId, FMC, link, roc);
+    std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo>::iterator mit;
+    mit = theMap.find(fPos);
+    CTPPSPixelROCInfo rocInfo = (*mit).second;
 
+//    std::cout << rocInfo << std::endl;
+ 
+    CTPPSPixelROC rocp(rocInfo.iD, rocInfo.roc, roc);
+ 
+//    CTPPSPixelROC  rocp(5,2,1);
+  std::pair<int,int> rocPixel;
+   std::pair<int,int> modPixel;
+   std::cout << rocp.idInDetUnit() << std::endl;
+
+    rocPixel = std::make_pair(dcol,pxl);
+    modPixel = rocp.toGlobalfromDcol(rocPixel);
+
+    std::cout << modPixel.first << " " << modPixel.second << std::endl;
 
 // HERE DOING OUR OWN UNPACKING
     //convert data to digi and strip off errors
