@@ -63,7 +63,8 @@ CTPPSPixelROC() : theDetUnit(0), theIdDU(0), theIdLk(0) {
 
   std::pair<int,int>  toGlobal(const std::pair<int,int> &rocPixel ) const {
  
-    int modulePixelRow, modulePixelColumn;
+    int modulePixelRow=-1;
+    int modulePixelColumn=-1;
     int rocPixelRow = rocPixel.first; 
     int rocPixelColumn = rocPixel.second;
 
@@ -71,7 +72,7 @@ CTPPSPixelROC() : theDetUnit(0), theIdDU(0), theIdLk(0) {
 
     std::pair<int,int> modulePixel;
     modulePixel = std::make_pair(modulePixelRow, modulePixelColumn);
-
+    
     return modulePixel;
 
   }
@@ -79,7 +80,8 @@ CTPPSPixelROC() : theDetUnit(0), theIdDU(0), theIdLk(0) {
 
   std::pair<int,int>  toGlobalfromDcol(const std::pair<int,int> &rocPixel ) const {
  
-    int modulePixelRow, modulePixelColumn;
+    int modulePixelRow=-1;
+    int modulePixelColumn=-1;
     int rocDcol = rocPixel.first; 
     int rocPxl = rocPixel.second;
 
