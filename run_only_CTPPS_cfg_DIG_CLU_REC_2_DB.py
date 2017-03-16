@@ -45,11 +45,13 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
     toGet = cms.VPSet(
       cms.PSet(
         record = cms.string('CTPPSPixelDAQMappingRcd'),
-        tag = cms.string("PixelDAQMapping")
+        tag = cms.string("PixelDAQMapping"),
+        label = cms.untracked.string("RPix")
       ),
       cms.PSet(
         record = cms.string('CTPPSPixelAnalysisMaskRcd'),
-        tag = cms.string("PixelAnalysisMask")
+        tag = cms.string("PixelAnalysisMask"),
+        label = cms.untracked.string("RPix")
       )
     )
 )
