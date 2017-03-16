@@ -12,6 +12,8 @@
 #include <iostream>
 #include <string>
 
+#include "CondFormats/Serialization/interface/Serializable.h"
+
 /**
  * Uniquely identifies the DAQ channel through which a ROC frame has been received.
  * 
@@ -108,6 +110,9 @@ class CTPPSPixelFramePosition
 
   protected:
     unsigned int rawPosition;
+
+  COND_SERIALIZABLE;
+
 };
 
 #endif

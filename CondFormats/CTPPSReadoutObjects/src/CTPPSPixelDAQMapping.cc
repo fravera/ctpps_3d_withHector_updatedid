@@ -45,4 +45,4 @@ void CTPPSPixelDAQMapping::insert(const CTPPSPixelFramePosition &fp, const CTPPS
 
 //----------------------------------------------------------------------------------------------------
 
-TYPELOOKUP_DATA_REG(CTPPSPixelDAQMapping);
+//TYPELOOKUP_DATA_REG(CTPPSPixelDAQMapping);

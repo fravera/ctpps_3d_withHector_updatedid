@@ -9,7 +9,9 @@
 #ifndef CondFormats_CTPPSReadoutObjects_CTPPSPixelDAQMapping
 #define CondFormats_CTPPSReadoutObjects_CTPPSPixelDAQMapping
 
+#include "CondFormats/Serialization/interface/Serializable.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelFramePosition.h"
+#include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelIndices.h"
 
 #include <map>
 #include <set>
@@ -28,6 +30,8 @@ class CTPPSPixelROCInfo
     unsigned int roc;
     
     friend std::ostream& operator << (std::ostream& s, const CTPPSPixelROCInfo &fp);
+
+    COND_SERIALIZABLE;
 };
 
 //----------------------------------------------------------------------------------------------------
@@ -43,6 +47,9 @@ class CTPPSPixelDAQMapping
     void insert(const CTPPSPixelFramePosition &fp, const CTPPSPixelROCInfo &vi);
 
     std::set<unsigned int> fedIds() const;
+
+    COND_SERIALIZABLE;
+
 };
 
 #endif

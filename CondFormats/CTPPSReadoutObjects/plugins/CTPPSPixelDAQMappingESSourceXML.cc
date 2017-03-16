@@ -1,8 +1,9 @@
 /****************************************************************************
 *
-* 
+*
 * Authors:
-* F.Ferro ferro@ge.infn.it  
+* F.Ferro ferro@ge.infn.it
+* H. Malbouisson malbouis@cern.ch
 *
 ****************************************************************************/
 
@@ -20,7 +21,8 @@
 
 #include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
 
-#include "CondFormats/DataRecord/interface/CTPPSPixelReadoutRcd.h"
+#include "CondFormats/DataRecord/interface/CTPPSPixelDAQMappingRcd.h"
+#include "CondFormats/DataRecord/interface/CTPPSPixelAnalysisMaskRcd.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelDAQMapping.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelAnalysisMask.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelFramePosition.h"
@@ -46,7 +48,7 @@ using namespace std;
 class CTPPSPixelDAQMappingESSourceXML: public edm::ESProducer, public edm::EventSetupRecordIntervalFinder
 {
 public:
- 
+
   static const std::string tagAnalysisMask;
   static const std::string tagRPixPlane;
   static const std::string tagROC;
@@ -62,7 +64,8 @@ public:
   CTPPSPixelDAQMappingESSourceXML(const edm::ParameterSet &);
   ~CTPPSPixelDAQMappingESSourceXML();
 
-  edm::ESProducts< boost::shared_ptr<CTPPSPixelDAQMapping>, boost::shared_ptr<CTPPSPixelAnalysisMask> > produce( const CTPPSPixelReadoutRcd & );
+  std::unique_ptr<CTPPSPixelAnalysisMask> produceCTPPSPixelAnalysisMask( const CTPPSPixelAnalysisMaskRcd & );
+  std::unique_ptr<CTPPSPixelDAQMapping> produceCTPPSPixelDAQMapping( const CTPPSPixelDAQMappingRcd &);
 
 private:
   unsigned int verbosity;
@@ -100,13 +103,13 @@ private:
   enum ParseType { pMapping, pMask };
 
   /// parses XML file
-  void ParseXML(ParseType, const string &file, const boost::shared_ptr<CTPPSPixelDAQMapping>&, const boost::shared_ptr<CTPPSPixelAnalysisMask>&);
+  void ParseXML(ParseType, const string &file, const std::unique_ptr<CTPPSPixelDAQMapping>&, const std::unique_ptr<CTPPSPixelAnalysisMask>&);
 
-  
+
 
   /// recursive method to extract Pixel-related information from the DOM tree
   void ParseTreePixel(ParseType, xercesc::DOMNode *, NodeType, unsigned int parentID,
-    const boost::shared_ptr<CTPPSPixelDAQMapping>&, const boost::shared_ptr<CTPPSPixelAnalysisMask>&);
+    const std::unique_ptr<CTPPSPixelDAQMapping>&, const std::unique_ptr<CTPPSPixelAnalysisMask>&);
 
 private:
   /// adds the path prefix, if needed
@@ -187,8 +190,11 @@ CTPPSPixelDAQMappingESSourceXML::CTPPSPixelDAQMappingESSourceXML(const edm::Para
     configuration.push_back(b);
   }
 
-  setWhatProduced(this, subSystemName);
-  findingRecord<CTPPSPixelReadoutRcd>();
+  setWhatProduced(this, &CTPPSPixelDAQMappingESSourceXML::produceCTPPSPixelAnalysisMask, es::Label(subSystemName));
+  findingRecord<CTPPSPixelAnalysisMaskRcd>();
+
+  setWhatProduced(this, &CTPPSPixelDAQMappingESSourceXML::produceCTPPSPixelDAQMapping, es::Label(subSystemName));
+  findingRecord<CTPPSPixelDAQMappingRcd>();
 
 
   std::cout << " Inside  CTPPSPixelDAQMappingESSourceXML" << std::endl;
@@ -221,11 +227,11 @@ void CTPPSPixelDAQMappingESSourceXML::setIntervalFor(const edm::eventsetup::Even
     {
       currentBlockValid = true;
       currentBlock = idx;
-  
+
       const IOVSyncValue begin(startEventID);
       const IOVSyncValue end(bl.validityRange.endEventID());
       oValidity = ValidityInterval(begin, end);
-      
+
       LogVerbatim("CTPPSPixelDAQMappingESSourceXML")
         << "    block found: index=" << currentBlock
         << ", interval=(" << startEventID << " - " << bl.validityRange.endEventID() << ")";
@@ -244,7 +250,7 @@ void CTPPSPixelDAQMappingESSourceXML::setIntervalFor(const edm::eventsetup::Even
 //----------------------------------------------------------------------------------------------------
 
 CTPPSPixelDAQMappingESSourceXML::~CTPPSPixelDAQMappingESSourceXML()
-{ 
+{
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -257,13 +263,46 @@ string CTPPSPixelDAQMappingESSourceXML::CompleteFileName(const string &fn)
 
 //----------------------------------------------------------------------------------------------------
 
-edm::ESProducts< boost::shared_ptr<CTPPSPixelDAQMapping>, boost::shared_ptr<CTPPSPixelAnalysisMask> >
-  CTPPSPixelDAQMappingESSourceXML::produce( const CTPPSPixelReadoutRcd & )
+ std::unique_ptr<CTPPSPixelDAQMapping> CTPPSPixelDAQMappingESSourceXML::produceCTPPSPixelDAQMapping( const CTPPSPixelDAQMappingRcd & )
 {
   assert(currentBlockValid);
 
-  boost::shared_ptr<CTPPSPixelDAQMapping> mapping(new CTPPSPixelDAQMapping());
-  boost::shared_ptr<CTPPSPixelAnalysisMask> mask(new CTPPSPixelAnalysisMask());
+  auto mapping = std::make_unique<CTPPSPixelDAQMapping>();
+  auto mask = std::make_unique<CTPPSPixelAnalysisMask>();
+
+  // initialize Xerces
+  try
+  {
+    XMLPlatformUtils::Initialize();
+  }
+  catch (const XMLException& toCatch)
+  {
+    char* message = XMLString::transcode(toCatch.getMessage());
+    throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") << "An XMLException caught with message: " << message << ".\n";
+    XMLString::release(&message);
+  }
+
+  // load mapping files
+  for (const auto &fn : configuration[currentBlock].mappingFileNames)
+    ParseXML(pMapping, CompleteFileName(fn), mapping, mask);
+
+  // load mask files
+  for (const auto &fn : configuration[currentBlock].maskFileNames)
+    ParseXML(pMask, CompleteFileName(fn), mapping, mask);
+
+  // release Xerces
+  XMLPlatformUtils::Terminate();
+
+  // commit the product
+  return mapping;
+}
+
+std::unique_ptr<CTPPSPixelAnalysisMask> CTPPSPixelDAQMappingESSourceXML::produceCTPPSPixelAnalysisMask( const CTPPSPixelAnalysisMaskRcd & )
+{
+  assert(currentBlockValid);
+
+  auto mapping = std::make_unique<CTPPSPixelDAQMapping>();
+  auto mask = std::make_unique<CTPPSPixelAnalysisMask>();
 
   // initialize Xerces
   try
@@ -289,13 +328,14 @@ edm::ESProducts< boost::shared_ptr<CTPPSPixelDAQMapping>, boost::shared_ptr<CTPP
   XMLPlatformUtils::Terminate();
 
   // commit the products
-  return edm::es::products(mapping, mask);
+  //return edm::es::products(mapping, mask);
+  return mask;
 }
 
 //----------------------------------------------------------------------------------------------------
 
 void CTPPSPixelDAQMappingESSourceXML::ParseXML(ParseType pType, const string &file,
-  const boost::shared_ptr<CTPPSPixelDAQMapping> &mapping, const boost::shared_ptr<CTPPSPixelAnalysisMask> &mask)
+  const std::unique_ptr<CTPPSPixelDAQMapping> &mapping, const std::unique_ptr<CTPPSPixelAnalysisMask> &mask)
 {
   unique_ptr<XercesDOMParser> parser(new XercesDOMParser());
   parser->parse(file.c_str());
@@ -314,14 +354,14 @@ void CTPPSPixelDAQMappingESSourceXML::ParseXML(ParseType pType, const string &fi
 
   ParseTreePixel(pType, elementRoot, nTop, 0, mapping, mask);
 
- 
+
 }
 
 //-----------------------------------------------------------------------------------------------------------
 
 void CTPPSPixelDAQMappingESSourceXML::ParseTreePixel(ParseType pType, xercesc::DOMNode * parent, NodeType parentType,
-  unsigned int parentID, const boost::shared_ptr<CTPPSPixelDAQMapping>& mapping,
-  const boost::shared_ptr<CTPPSPixelAnalysisMask>& mask)
+  unsigned int parentID, const std::unique_ptr<CTPPSPixelDAQMapping>& mapping,
+  const std::unique_ptr<CTPPSPixelAnalysisMask>& mask)
 {
 #ifdef DEBUG
   printf(">> CTPPSPixelDAQMappingESSourceXML::ParseTreeRP(%s, %u, %u)\n", XMLString::transcode(parent->getNodeName()),
@@ -345,7 +385,7 @@ void CTPPSPixelDAQMappingESSourceXML::ParseTreePixel(ParseType pType, xercesc::D
     // structure control
     if (!PixelNode(type))
       continue;
-  
+
     NodeType expectedParentType;
     switch (type)
     {
@@ -366,7 +406,7 @@ void CTPPSPixelDAQMappingESSourceXML::ParseTreePixel(ParseType pType, xercesc::D
 
     // parse tag attributes
     unsigned int id = 0;
-    bool id_set = false; 
+    bool id_set = false;
     bool fullMask = false;
     DOMNamedNodeMap* attr = n->getAttributes();
 
@@ -404,10 +444,10 @@ void CTPPSPixelDAQMappingESSourceXML::ParseTreePixel(ParseType pType, xercesc::D
       CTPPSPixelROCInfo rocInfo;
       rocInfo.roc = id;
 
-      const unsigned int armIdx = (parentID / 1000) % 10; 
-      const unsigned int stIdx = (parentID / 100) % 10; 
-      const unsigned int rpIdx = (parentID / 10) % 10;                    
-      const unsigned int plIdx = parentID % 10; 
+      const unsigned int armIdx = (parentID / 1000) % 10;
+      const unsigned int stIdx = (parentID / 100) % 10;
+      const unsigned int rpIdx = (parentID / 10) % 10;
+      const unsigned int plIdx = parentID % 10;
 
       rocInfo.iD = CTPPSPixelDetId(armIdx, stIdx, rpIdx, plIdx);
 
@@ -419,20 +459,20 @@ void CTPPSPixelDAQMappingESSourceXML::ParseTreePixel(ParseType pType, xercesc::D
     // store mask data
     if (pType == pMask && type == nROC)
     {
-      const unsigned int armIdx = (parentID / 1000) % 10; 
-      const unsigned int stIdx = (parentID / 100) % 10; 
-      const unsigned int rpIdx = (parentID / 10) % 10; 
-      const unsigned int plIdx = parentID % 10; 
+      const unsigned int armIdx = (parentID / 1000) % 10;
+      const unsigned int stIdx = (parentID / 100) % 10;
+      const unsigned int rpIdx = (parentID / 10) % 10;
+      const unsigned int plIdx = parentID % 10;
 
 
       uint32_t symbId = (id << offsetROCinDetId);
 
       symbId |= CTPPSPixelDetId(armIdx, stIdx, rpIdx, plIdx);
- 
-      
+
+
       CTPPSPixelROCAnalysisMask am;
       am.fullMask = fullMask;
-      GetPixels(n, am.maskedPixels);  
+      GetPixels(n, am.maskedPixels);
 
       mask->insert(symbId, am);
 
@@ -471,7 +511,7 @@ CTPPSPixelFramePosition CTPPSPixelDAQMappingESSourceXML::ChipFramePosition(xerce
     throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") <<
       "Wrong/incomplete DAQ channel specification (attributeFlag = " << attributeFlag << ")." << endl;
   }
- 
+
   return fp;
 }
 
@@ -482,7 +522,7 @@ CTPPSPixelDAQMappingESSourceXML::NodeType CTPPSPixelDAQMappingESSourceXML::GetNo
   // common node types
   if (Test(n, tagArm)) return nArm;
   if (Test(n, tagROC)) return nROC;
-  
+
   // RP node types
   if (Test(n, tagRPStation)) return nRPStation;
   if (Test(n, tagRPPot)) return nRPPot;
@@ -526,15 +566,15 @@ void CTPPSPixelDAQMappingESSourceXML::GetPixels(xercesc::DOMNode *n, set<std::pa
         currentPixel.second = col;
         colSet = true;
       }
-      
-      pixelSet = rowSet & colSet; 
+
+      pixelSet = rowSet & colSet;
       if(pixelSet){
 	pixels.insert(currentPixel);
 	break;
       }
     }
 
-  
+
 
     if (!pixelSet)
     {
