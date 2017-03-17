@@ -59,11 +59,11 @@ void CTPPSPixelClusterProducer::produce(edm::Event& iEvent, const edm::EventSetu
 */
   // get DAQ mapping
 	edm::ESHandle<CTPPSPixelDAQMapping> mapping;
-	iSetup.get<CTPPSPixelReadoutRcd>().get("RPix", mapping);
+	iSetup.get<CTPPSPixelDAQMappingRcd>().get("RPix",mapping);
 
   // get analysis mask to mask channels
 	edm::ESHandle<CTPPSPixelAnalysisMask> analysisMask;
-	iSetup.get<CTPPSPixelReadoutRcd>().get("RPix", analysisMask);
+	iSetup.get<CTPPSPixelAnalysisMaskRcd>().get("RPix",analysisMask);
 
 // dry checks to be removed
 
@@ -113,7 +113,7 @@ void CTPPSPixelClusterProducer::run(const edm::DetSetVector<CTPPSPixelDigi> &inp
       unsigned int cluN=0;
       for(std::vector<CTPPSPixelCluster>::iterator iit = ds_cluster.data.begin(); iit != ds_cluster.data.end(); iit++){
 	
-	if(verbosity_)	std::cout << "Cluster " << ++cluN <<" avg row " << (*iit).avg_row()<< " avg col " << (*iit).avg_col()<<std::endl;
+	if(verbosity_)	std::cout << "Cluster " << ++cluN <<" avg row " << (*iit).avg_row()<< " avg col " << (*iit).avg_col()<<" ADC.size " << (*iit).size()<<std::endl;
 
 
 

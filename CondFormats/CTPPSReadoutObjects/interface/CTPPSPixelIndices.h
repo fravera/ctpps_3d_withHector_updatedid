@@ -21,6 +21,43 @@
  * d.k. 10/2005
  */
 
+/*
+
+  sensor side = bump bonding side = wire bonding side
+
+
+                   ^   sim y
+                   |
+                   |
+                   |
+  0-----------------------------------
+  |                |                  |
+  |        2      |       3         |
+  |                |                  0
+  --------------------------------------
+  0-----------------------------------
+  |                |                  |
+  |       1       |-------4---------|--------------> sim x        
+  |                |                  0
+  --------------------------------------
+  0-----------------------------------   ^
+  |                |                  |    | det cols 
+  |      0        |        5        |    |
+  |                |                  0   |
+  --------------------------------------   |
+  |
+  <------------------------------------------ 0,0
+  det rows x
+                    0  beam
+
+
+
+
+
+*/
+
+
+
 namespace {
   // A few constants just for error checking
   // The maximum number of ROCs in the X (row) direction per sensor.
@@ -32,7 +69,7 @@ namespace {
   // Default ROC size 
   const int ROCSizeInX = 80;  // ROC row size in pixels 
   const int ROCSizeInY = 52;  // ROC col size in pixels 
-  // Default DET size 
+  // Default DET barrel size 
   const int defaultDetSizeInX = 160;  // Det row size in pixels (2 ROCs) 
   const int defaultDetSizeInY = 156; //  Det col size in pixels (3 ROCs) // 416 for Det barrel col size in pixels 
   
@@ -42,12 +79,13 @@ namespace {
 
 class CTPPSPixelIndices {
 
- public:
+public:
   
   //*********************************************************************
   // Constructor with the ROC size fixed to the default.
-   CTPPSPixelIndices() : 
-                theColsInDet(defaultDetSizeInY), theRowsInDet (defaultDetSizeInX) {
+
+CTPPSPixelIndices() : 
+  theColsInDet(defaultDetSizeInY), theRowsInDet (defaultDetSizeInX) {
  
     theChipsInX = theRowsInDet / ROCSizeInX; // number of ROCs in X
     theChipsInY = theColsInDet / ROCSizeInY;    // number of ROCs in Y
@@ -55,14 +93,15 @@ class CTPPSPixelIndices {
     if(CTPPS_CHECK_LIMITS) {
       if(theChipsInX<1 || theChipsInX>maxROCsInX) 
 	std::cout << " CTPPSPixelIndices: Error in ROCsInX " 
-	     << theChipsInX <<" "<<theRowsInDet<<" "<<ROCSizeInX<<std::endl;
+		  << theChipsInX <<" "<<theRowsInDet<<" "<<ROCSizeInX<<std::endl;
       if(theChipsInY<1 || theChipsInY>maxROCsInY) 
 	std::cout << " CTPPSPixelIndices: Error in ROCsInY " 
-	     << theChipsInY <<" "<<theColsInDet<<" "<<ROCSizeInY<<std::endl;
+		  << theChipsInY <<" "<<theColsInDet<<" "<<ROCSizeInY<<std::endl;
     }
   } 
-   CTPPSPixelIndices(const int colsInDet,  const int rowsInDet ) : 
-                theColsInDet(colsInDet), theRowsInDet (rowsInDet) {
+
+CTPPSPixelIndices(const int colsInDet,  const int rowsInDet ) : 
+  theColsInDet(colsInDet), theRowsInDet (rowsInDet) {
  
     theChipsInX = theRowsInDet / ROCSizeInX; // number of ROCs in X
     theChipsInY = theColsInDet / ROCSizeInY;    // number of ROCs in Y
@@ -70,10 +109,10 @@ class CTPPSPixelIndices {
     if(CTPPS_CHECK_LIMITS) {
       if(theChipsInX<1 || theChipsInX>maxROCsInX) 
 	std::cout << " CTPPSPixelIndices: Error in ROCsInX " 
-	     << theChipsInX <<" "<<theRowsInDet<<" "<<ROCSizeInX<<std::endl;
+		  << theChipsInX <<" "<<theRowsInDet<<" "<<ROCSizeInX<<std::endl;
       if(theChipsInY<1 || theChipsInY>maxROCsInY) 
 	std::cout << " CTPPSPixelIndices: Error in ROCsInY " 
-	     << theChipsInY <<" "<<theColsInDet<<" "<<ROCSizeInY<<std::endl;
+		  << theChipsInY <<" "<<theColsInDet<<" "<<ROCSizeInY<<std::endl;
     }
   } 
   //************************************************************************
@@ -85,14 +124,14 @@ class CTPPSPixelIndices {
 
   //***********************************************************************
 
- void print(void) const {
+  void print(void) const {
 
     std::cout << " Pixel det with " << theChipsInX << " chips in x and "
-	 << theChipsInY << " in y " << std::endl; 
+	      << theChipsInY << " in y " << std::endl; 
     std::cout << " Pixel rows " << theRowsInDet << " and columns " 
-	 << theColsInDet << std::endl;  
+	      << theColsInDet << std::endl;  
     std::cout << " Rows in one chip " << ROCSizeInX << " and columns " 
-	 << ROCSizeInY << std::endl;  
+	      << ROCSizeInY << std::endl;  
     std::cout << " Double columns per ROC " << DColsPerROC << std::endl;
   }
 
@@ -106,72 +145,72 @@ class CTPPSPixelIndices {
   inline static int convertDcolToCol(const int dcol, const int pix, 
 				     int & colROC, int & rowROC) {
 
-      if(CTPPS_CHECK_LIMITS) { 
-	if(dcol<0||dcol>=DColsPerROC||pix<2||pix>161) {
-	  std::cout<<"CTPPSPixelIndices: wrong dcol or pix "<<dcol<<" "<<pix<<std::endl;
-	  rowROC = -1;     // dummy row Address
-	  colROC = -1;     // dummy col Address
-	  return -1; // Signal error
-	}
+    if(CTPPS_CHECK_LIMITS) { 
+      if(dcol<0||dcol>=DColsPerROC||pix<2||pix>161) {
+	std::cout<<"CTPPSPixelIndices: wrong dcol or pix "<<dcol<<" "<<pix<<std::endl;
+	rowROC = -1;     // dummy row Address
+	colROC = -1;     // dummy col Address
+	return -1; // Signal error
       }
-
-      // First find if we are in the first or 2nd col of a dcol.
-      int colEvenOdd = pix%2;  // module(2), 0-1st sol, 1-2nd col.
-      // Transform
-      colROC = dcol * 2 + colEvenOdd; // col address, starts from 0
-      rowROC = abs( int(pix/2) - 80); // row addres, starts from 0
-
-      if(CTPPS_CHECK_LIMITS) {
-	if(colROC<0||colROC>=ROCSizeInY||rowROC<0||rowROC>=ROCSizeInX ) {
-	  std::cout<<"CTPPSPixelIndices: wrong col or row "<<colROC<<" "<<rowROC<<" "
-	      <<dcol<<" "<<pix<<std::endl;
-	  rowROC = -1;    // dummy row Address
-	  colROC = -1;    // dummy col Address
-	  return -1;
-	}
-      }
-      return 0;
     }
 
- //********************************************************************
- // colROC, rowROC are coordinates in the ROC frame, for ROC=rocId
- // (Start from 0).
- // cols, row are coordinates in the module frame, start from 0.
- // row is X, col is Y.
- // At the moment this works only for modules read with a single TBM.
+    // First find if we are in the first or 2nd col of a dcol.
+    int colEvenOdd = pix%2;  // module(2), 0-1st sol, 1-2nd col.
+    // Transform
+    colROC = dcol * 2 + colEvenOdd; // col address, starts from 0
+    rowROC = abs( int(pix/2) - 80); // row addres, starts from 0
+
+    if(CTPPS_CHECK_LIMITS) {
+      if(colROC<0||colROC>=ROCSizeInY||rowROC<0||rowROC>=ROCSizeInX ) {
+	std::cout<<"CTPPSPixelIndices: wrong col or row "<<colROC<<" "<<rowROC<<" "
+		 <<dcol<<" "<<pix<<std::endl;
+	rowROC = -1;    // dummy row Address
+	colROC = -1;    // dummy col Address
+	return -1;
+      }
+    }
+    return 0;
+  }
+
+  //********************************************************************
+  // colROC, rowROC are coordinates in the ROC frame, for ROC=rocId
+  // (Start from 0).
+  // cols, row are coordinates in the module frame, start from 0.
+  // row is X, col is Y.
+  // At the moment this works only for modules read with a single TBM.
   int transformToModule(const int colROC,const int rowROC,
 			const int rocId,
 			int & col,int & row ) const {
-
-       if(CTPPS_CHECK_LIMITS) {
-	if(colROC<0 || colROC>=ROCSizeInY || rowROC<0 ||rowROC>=ROCSizeInX) {
-	  std::cout<<"CTPPSPixelIndices: wrong index "<<colROC<<" "<<rowROC<<std::endl;
-	  return -1;
-	}
-      }
-
-      // The transformation depends on the ROC-ID
-      if(rocId>=0 && rocId<3) {
-	row = 159-rowROC;
-	//col = rocId*52 + colROC;
-	col = (3-rocId)*ROCSizeInY - colROC - 1;
-      } else if(rocId>=3 && rocId<6) {
-	row = rowROC;
-	//col = (16-rocId)*52 - colROC - 1;
-	col = (rocId-3)*ROCSizeInY + colROC;
-      } else {
-	std::cout<<"CTPPSPixelIndices: wrong ROC ID "<<rocId<<std::endl;
+    if(CTPPS_CHECK_LIMITS) {
+      if(colROC<0 || colROC>=ROCSizeInY || rowROC<0 ||rowROC>=ROCSizeInX) {
+	std::cout<<"CTPPSPixelIndices: wrong index "<<colROC<<" "<<rowROC<<std::endl;
 	return -1;
       }
-      if(CTPPS_CHECK_LIMITS) {
-	if(col<0 || col>=(ROCSizeInY*theChipsInY) || row<0 || 
-			     row>=(ROCSizeInX*theChipsInX)) {
+    }
+
+// The transformation depends on the ROC-ID
+    if(rocId>=0 && rocId<3) {
+      row = 159-rowROC;
+      //col = rocId*52 + colROC;
+      col = (rocId+1)*ROCSizeInY - colROC - 1 ;
+    } else if(rocId>=3 && rocId<6) {
+      row = rowROC;
+      //col = (16-rocId)*52 - colROC - 1;
+      col = (5-rocId)*ROCSizeInY + colROC;
+    } else {
+      std::cout<<"CTPPSPixelIndices: wrong ROC ID "<<rocId<<std::endl;
+      return -1;
+    }
+    if(CTPPS_CHECK_LIMITS) {
+      if(col<0 || col>=(ROCSizeInY*theChipsInY) || row<0 || 
+	 row>=(ROCSizeInX*theChipsInX)) {
 	std::cout<<"CTPPSPixelIndices: wrong index "<<col<<" "<<row<<std::endl;
 	return -1;
-	}
       }
+    }
 
-      return 0;
+    return 0;
+  
   }
   //**************************************************************************
   // Transform from the module indixes to the ROC indices.
@@ -180,45 +219,46 @@ class CTPPSPixelIndices {
   // colROC, rowROC - indices in the ROC frame.
   int transformToROC(const int col,const int row,
 		     int & rocId, int & colROC, int & rowROC ) const {
-
-      if(CTPPS_CHECK_LIMITS) {
-	if(col<0 || col>=(ROCSizeInY*theChipsInY) || row<0 || 
-			     row>=(ROCSizeInX*theChipsInX)) {
-	  std::cout<<"CTPPSPixelIndices: wrong index 3 "<<std::endl;
-	  return -1;
-	}
-      }
-
-      // Get the 2d ROC coordinate
-      int chipX = row / ROCSizeInX; // row index of the chip 0-1
-      int chipY = col / ROCSizeInY; // col index of the chip 0-2  (7 for barrel)
-
-      // Get the ROC id from the 2D index
-      rocId = rocIndex(chipX,chipY); 
-      if(CTPPS_CHECK_LIMITS && (rocId<0 || rocId>=6) ) {
-	std::cout<<"CTPPSPixelIndices: wrong roc index "<<rocId<<std::endl;
+    if(CTPPS_CHECK_LIMITS) {
+      if(col<0 || col>=(ROCSizeInY*theChipsInY) || row<0 || 
+	 row>=(ROCSizeInX*theChipsInX)) {
+	std::cout<<"CTPPSPixelIndices: wrong index 3 "<<std::endl;
 	return -1;
       }
-      // get the local ROC coordinates
-      rowROC = (row%ROCSizeInX); // row in chip
-      colROC = (col%ROCSizeInY); // col in chip
+    }
 
-      if(rocId<3) { // For lower 8 ROCs the coordinates are reversed
-	colROC = 51 - colROC;
-	rowROC = 79 - rowROC;
+// Get the 2d ROC coordinate
+    int chipX = row / ROCSizeInX; // row index of the chip 0-1
+    int chipY = col / ROCSizeInY; // col index of the chip 0-2  (7 for barrel)
+
+// Get the ROC id from the 2D index
+    rocId = rocIndex(chipX,chipY); 
+    if(CTPPS_CHECK_LIMITS && (rocId<0 || rocId>=6) ) {
+      std::cout<<"CTPPSPixelIndices: wrong roc index "<<rocId<<std::endl;
+      return -1;
+    }
+// get the local ROC coordinates
+    rowROC = (row%ROCSizeInX); // row in chip
+    colROC = (col%ROCSizeInY); // col in chip
+
+    if(rocId<3) { // For lower 8 ROCs the coordinates are reversed
+      colROC = 51 - colROC;
+      rowROC = 79 - rowROC;
+    }
+
+    if(CTPPS_CHECK_LIMITS) {
+      if(colROC<0||colROC>=ROCSizeInY||rowROC<0||rowROC>=ROCSizeInX) {
+	std::cout<<"CTPPSPixelIndices: wrong index "<<colROC<<" "<<rowROC<<std::endl;
+	return -1;
       }
+    }
 
-      if(CTPPS_CHECK_LIMITS) {
-	if(colROC<0||colROC>=ROCSizeInY||rowROC<0||rowROC>=ROCSizeInX) {
-	  std::cout<<"CTPPSPixelIndices: wrong index "<<colROC<<" "<<rowROC<<std::endl;
-	  return -1;
-	}
-      }
-
-      return 0;
+    return 0;
   }
- 
+
 // get ROC ID from module row and column
+ 
+ // get ROC ID from module row and column
  
   int getROCId(const int col,const int row) const {
 
@@ -245,12 +285,15 @@ class CTPPSPixelIndices {
  
       return rocId;
   }
+ 
+
 
 // is pixel on the edge?
   bool isOnEdge(const int col, const int row) const {
     if(col == 0 || row == 0 || col == (defaultDetSizeInY-1) || row == (defaultDetSizeInX-1)) return true;
        return false;
   }
+
 
 
   //***********************************************************************
@@ -266,8 +309,8 @@ class CTPPSPixelIndices {
 	return -1;
       }
     }
-    if(chipX==0) rocId = chipY + 3;  // should be 3-5
-    else if(chipX==1) rocId = 2 - chipY; // should be 0-2
+    if(chipX==0) rocId = 5 - chipY;  // should be 3-5
+    else if(chipX==1) rocId = chipY; // should be 0-2
 
     if(CTPPS_CHECK_LIMITS) {
       if(rocId < 0 || rocId >= (maxROCsInX*maxROCsInY) ) {
@@ -309,18 +352,18 @@ class CTPPSPixelIndices {
     int colROC = chan & 0x3F;
     return std::pair<int,int>(rowROC,colROC);
   }
-  
+    
  inline int getDefaultRowDetSize() const { return defaultDetSizeInX;}
  inline int getDefaultColDetSize() const { return defaultDetSizeInY;}
 
 
   //***********************************************************************
- private:
+private:
 
-    int theColsInDet;      // Columns per Det
-    int theRowsInDet;      // Rows per Det
-    int theChipsInX;       // Chips in det in X (column direction)
-    int theChipsInY;       // Chips in det in Y (row direction)
+  int theColsInDet;      // Columns per Det
+  int theRowsInDet;      // Rows per Det
+  int theChipsInX;       // Chips in det in X (column direction)
+  int theChipsInY;       // Chips in det in Y (row direction)
 };
 
 #endif

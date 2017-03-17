@@ -12,29 +12,31 @@
 #include <iostream>
 #include <string>
 
+#include "CondFormats/Serialization/interface/Serializable.h"
+
 /**
  * Uniquely identifies the DAQ channel through which a ROC frame has been received.
  * 
  * The internal representation has the following structure:
  * \verbatim
  * |                                     32 bits raw position                                                                      |
- * | 13 bits  |  2 bits |   10 bits |  1  bit          |       3 bits                        |  3bits     |
- * |  empty  | empty  |  FED ID  |    FMC   0-1  |   fiber index      0-5          | ROC 0-5 |
+ * | 11 bits  |   12 bits |  1  bit          |      6 bits                        |  2bits     |
+ * |  empty   |  FED ID  |    FMC   0-1  |   fiber index      0-12          | ROC 0-2 |
  * \endverbatim
  *
  **/
 class CTPPSPixelFramePosition
 {
   public:
-    static const unsigned int offsetROC = 0, maskROC = 0x7;
-    static const unsigned int offsetFiberIdx = 3, maskFiberIdx = 0x7;
-    static const unsigned int offsetFMCId = 6, maskFMCId = 0x1;
-    static const unsigned int offsetFEDId = 7, maskFEDId = 0x3FF;
+    static const unsigned int offsetROC = 0, maskROC = 0x3;
+    static const unsigned int offsetChannelIdx = 2, maskChannelIdx = 0x3F;
+    static const unsigned int offsetFMCId = 8, maskFMCId = 0x1;
+    static const unsigned int offsetFEDId = 9, maskFEDId = 0xFFF;
   
 
     /// the preferred constructor
-    CTPPSPixelFramePosition( unsigned short FEDId, unsigned short FMCId, unsigned short FiberIdx, unsigned short ROC) :
-      rawPosition(ROC<<offsetROC | FiberIdx<<offsetFiberIdx | FMCId<<FMCId | FEDId<<offsetFEDId )
+    CTPPSPixelFramePosition( unsigned short FEDId, unsigned short FMCId, unsigned short ChannelIdx, unsigned short ROC) :
+      rawPosition(ROC<<offsetROC | ChannelIdx<<offsetChannelIdx | FMCId<<FMCId | FEDId<<offsetFEDId )
     {
     }
 
@@ -57,10 +59,10 @@ class CTPPSPixelFramePosition
     void setFEDId(unsigned short v)
     { v &= maskFEDId; rawPosition &= 0xFFFFFFFF - (maskFEDId << offsetFEDId); rawPosition |= (v << offsetFEDId); }
 
-    unsigned short getFiberIdx() const       { return (rawPosition >> offsetFiberIdx) & maskFiberIdx; }
+    unsigned short getChannelIdx() const       { return (rawPosition >> offsetChannelIdx) & maskChannelIdx; }
 
-    void setFiberIdx(unsigned short v)
-    { v &= maskFiberIdx; rawPosition &= 0xFFFFFFFF - (maskFiberIdx << offsetFiberIdx); rawPosition |= (v << offsetFiberIdx); }
+    void setChannelIdx(unsigned short v)
+    { v &= maskChannelIdx; rawPosition &= 0xFFFFFFFF - (maskChannelIdx << offsetChannelIdx); rawPosition |= (v << offsetChannelIdx); }
 
     unsigned short getROC() const  { return (rawPosition >> offsetROC) & maskROC; }
     
@@ -108,6 +110,9 @@ class CTPPSPixelFramePosition
 
   protected:
     unsigned int rawPosition;
+
+  COND_SERIALIZABLE;
+
 };
 
 #endif

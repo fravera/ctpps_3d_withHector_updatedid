@@ -14,6 +14,14 @@ using namespace std;
 
 //----------------------------------------------------------------------------------------------------
 
+std::set<unsigned int> CTPPSPixelDAQMapping::fedIds() const {
+  std::set<unsigned int> fedSet;
+   for (const auto &p : ROCMapping){
+     fedSet.insert(p.first.getFEDId() );
+   }
+   return fedSet;
+}
+
 std::ostream& operator << (std::ostream& s, const CTPPSPixelROCInfo &vi)
 {
   s << "ID="<< vi.iD << "  ROC=" << vi.roc;
@@ -37,4 +45,4 @@ void CTPPSPixelDAQMapping::insert(const CTPPSPixelFramePosition &fp, const CTPPS
 
 //----------------------------------------------------------------------------------------------------
 
-TYPELOOKUP_DATA_REG(CTPPSPixelDAQMapping);
+//TYPELOOKUP_DATA_REG(CTPPSPixelDAQMapping);

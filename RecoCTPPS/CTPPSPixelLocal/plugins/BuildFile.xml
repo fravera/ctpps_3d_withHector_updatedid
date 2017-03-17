@@ -6,9 +6,11 @@
 <use name="DataFormats/CTPPSDigi"/>
 <use name="DataFormats/CTPPSReco"/>
 
+<use name="CondFormats/CTPPSReadoutObjects"/>
+<use name="CondFormats/DataRecord"/>
 <use name="Geometry/Records"/>
 <use name="Geometry/VeryForwardGeometryBuilder"/>
- 
+
 <use name="RecoCTPPS/CTPPSPixelLocal"/>
 <library name="RecoCTPPSCTPPSPixelLocalPlugins" file="*.cc">
 <flags EDM_PLUGIN="1"/>

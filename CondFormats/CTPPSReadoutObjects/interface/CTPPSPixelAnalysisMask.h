@@ -10,6 +10,8 @@
 #include <set>
 #include <map>
 
+#include "CondFormats/Serialization/interface/Serializable.h"
+#include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelIndices.h"
 
 //----------------------------------------------------------------------------------------------------
 
@@ -26,6 +28,9 @@ class CTPPSPixelROCAnalysisMask
 
     /// list of channels to be masked
     std::set<std::pair<unsigned char, unsigned char> > maskedPixels;
+
+  COND_SERIALIZABLE;
+
 };
 
 //----------------------------------------------------------------------------------------------------
@@ -39,6 +44,9 @@ class CTPPSPixelAnalysisMask
     std::map<uint32_t, CTPPSPixelROCAnalysisMask> analysisMask;
 
     void insert(const uint32_t &sid, const CTPPSPixelROCAnalysisMask &am);
+
+  COND_SERIALIZABLE;
+
 };
 
 #endif

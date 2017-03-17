@@ -20,7 +20,7 @@ std::ostream& operator << (std::ostream& s, const CTPPSPixelFramePosition &fp)
   return s
     << fp.getFEDId() << ":"
     << fp.getFMCId() << ":"
-    << fp.getFiberIdx() << ":"
+    << fp.getChannelIdx() << ":"
     << fp.getROC();
 }
 
@@ -30,7 +30,7 @@ void CTPPSPixelFramePosition::printXML()
 {
   cout << "\" FEDId=\"" << getFEDId()
        << "\" FMCId=\"" << getFMCId()
-       << "\" FiberIdx=\"" << getFiberIdx()
+       << "\" ChannelIdx=\"" << getChannelIdx()
        << "\" ROC=\"" << getROC()
        << "\"";
 }
@@ -58,12 +58,12 @@ unsigned char CTPPSPixelFramePosition::setXMLAttribute(const std::string &attrib
 
   if (attribute == "FEDChannel")
     {
-      setFiberIdx(v);
+      setChannelIdx(v);
       flag |= 0x2;
       return 0;
     }
 
-  if (attribute == "id")
+  if (attribute == "ROCinChannel")
     {
       setROC(v);
       flag |= 0x1;

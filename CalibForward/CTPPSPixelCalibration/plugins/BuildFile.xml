@@ -1,0 +1,8 @@
+<use   name="CondFormats/CTPPSReadoutObjects"/>
+<use   name="CondCore/PopCon"/>
+<use   name="FWCore/Framework"/>
+<use   name="FWCore/ParameterSet"/>
+<use   name="CondFormats/DataRecord"/>
+<library   file="*.cc" name="CondTools*">
+   <flags   EDM_PLUGIN="1"/>
+</library>

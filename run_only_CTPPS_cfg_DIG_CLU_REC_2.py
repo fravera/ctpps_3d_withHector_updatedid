@@ -19,6 +19,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 ############### using only CTPPS geometry 
 process.load("Configuration.Geometry.geometry_CTPPS_cfi")
+process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 ##########SimTransport###########
 process.load('SimTransport.HectorProducerForCTPPS.HectorTransport_cfi')
 
@@ -98,7 +99,7 @@ process.common_maximum_timex = cms.PSet( # need to be localy redefined
 
 process.load("SimGeneral.MixingModule.MYmixNoPU_cfi")
 process.load("SimCTPPS.CTPPSPixelDigiProducer.RPixDetConf_cfi")
-process.RPixDetDigitizer.RPixVerbosity = cms.int32(0)
+process.RPixDetDigitizer.RPixVerbosity = cms.int32(2)
 
 process.generation_step = cms.Path(process.pgen)
 process.simulation_step = cms.Path(process.psim)

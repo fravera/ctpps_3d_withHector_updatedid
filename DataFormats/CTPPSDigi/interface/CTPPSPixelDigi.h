@@ -64,7 +64,7 @@ public:
 // Comparison operator
 
 inline bool operator<( const CTPPSPixelDigi& one, const CTPPSPixelDigi& other) {
-  return (one.row() < other.row());
+  return (one.packedData()&CTPPSPixelDigi::rowcol_mask) < (other.packedData()&CTPPSPixelDigi::rowcol_mask);
 }
 
 #include<iostream>

@@ -17,4 +17,4 @@ void CTPPSPixelAnalysisMask::insert(const uint32_t &sid, const CTPPSPixelROCAnal
 
 //----------------------------------------------------------------------------------------------------
 
-TYPELOOKUP_DATA_REG(CTPPSPixelAnalysisMask);
+//TYPELOOKUP_DATA_REG(CTPPSPixelAnalysisMask);
