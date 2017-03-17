@@ -1,5 +1,5 @@
 #include "DataFormats/CTPPSDigi/interface/CTPPSPixelDigiCollection.h"
-#include <iostream>
+
 #include <algorithm>
 
 void CTPPSPixelDigiCollection::put(Range input, unsigned int detID) {

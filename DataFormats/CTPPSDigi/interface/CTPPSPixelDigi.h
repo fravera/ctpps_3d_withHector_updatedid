@@ -5,14 +5,7 @@
  * Author: F.Ferro ferro@ge.infn.it
  */
 
-
-#include <utility>
-#include <algorithm>
-#include <stdint.h>
-
-
 #include "FWCore/Utilities/interface/Exception.h"
-
 
 class CTPPSPixelDigi {
 public:
