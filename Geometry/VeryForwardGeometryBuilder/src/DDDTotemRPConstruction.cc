@@ -11,6 +11,7 @@
 #include "DetectorDescription/Core/interface/DDCompactView.h"
 #include "DataFormats/CTPPSDetId/interface/TotemRPDetId.h"
 #include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
+#include "DataFormats/CTPPSDetId/interface/CTPPSDiamondDetId.h"
 
 // this might be useful one day
 //.#include "Geometry/TrackerNumberingBuilder/interface/ExtractStringFromDDD.h"
@@ -32,7 +33,8 @@ DDDTotemRPContruction::DDDTotemRPContruction()
 const DetGeomDesc* DDDTotemRPContruction::construct(const DDCompactView* cpv)
 {
   // create DDFilteredView and apply the filter
-  DDFilteredView fv(*cpv);
+  DDPassAllFilter filter;
+  DDFilteredView fv(*cpv, filter);
 
   // conversion to DetGeomDesc structure
   // create the root node and recursively propagates through the tree
@@ -48,8 +50,6 @@ const DetGeomDesc* DDDTotemRPContruction::construct(const DDCompactView* cpv)
 
 void DDDTotemRPContruction::buildDetGeomDesc(DDFilteredView *fv, DetGeomDesc *gd)
 {
-
-//  std::cout << " in buildDetGeomDesc " << std::endl;
   // try to dive into next level
   if (! fv->firstChild())
     return;
@@ -125,6 +125,18 @@ void DDDTotemRPContruction::buildDetGeomDesc(DDFilteredView *fv, DetGeomDesc *gd
       const uint32_t rpIdx = decRPId % 10;
       
       newGD->setGeographicalID(TotemRPDetId(armIdx, stIdx, rpIdx));
+    }
+
+    if (fv->logicalPart().name().name().compare(DDD_CTPPS_DIAMONDS_DETECTOR_NAME) == 0)
+    {
+      const vector<int>& copy_num = fv->copyNumbers();
+      const unsigned int id = copy_num[copy_num.size()-1],
+                         arm = copy_num[1]-1,
+                         station = 1,
+                         rp = 6,
+                         plane = ( id / 100 ),
+                         channel = id % 100;
+      newGD->setGeographicalID( CTPPSDiamondDetId( arm, station, rp, plane, channel ) );
     }
 
     gd->addComponent(newGD);

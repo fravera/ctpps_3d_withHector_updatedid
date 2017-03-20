@@ -1,15 +1,723 @@
-09-Mar-2017 14:32:04 CET  Initiating request to open file file:./PixelAlive_1294_153_RAW_v3.root
-09-Mar-2017 14:32:04 CET  Successfully opened file file:./PixelAlive_1294_153_RAW_v3.root
-%MSG-w FastCloningDisabled:  AfterModBeginStream 09-Mar-2017 14:32:05 CET  BeforeEvents
+20-Mar-2017 15:05:57 CET  Initiating request to open file file:./PixelAlive_1294_153_RAW_v3.root
+20-Mar-2017 15:05:59 CET  Successfully opened file file:./PixelAlive_1294_153_RAW_v3.root
+%MSG-i path:  AfterModConstruction 20-Mar-2017 15:05:59 CET pre-events
+The following module labels are not assigned to any path:
+'randomEngineStateProducer'
+
+%MSG
+%MSG-i FastCloningDisabled:  AfterModBeginStream 20-Mar-2017 15:05:59 CET  BeforeEvents
 Fast copying of file file:./PixelAlive_1294_153_RAW_v3.root to file file:digis.root is disabled because:
 some events were skipped because of duplicate checking.
+some events were not copied because of maxEvents limit.
 
 %MSG
-%MSG-w DuplicateEvent:  PostProcessPath 09-Mar-2017 14:32:07 CET  PostProcessEvent
-Duplicate Events found in entire set of input files.
-Both events were from run 153 and luminosity block 1 with event number 274.
-The duplicate was from file file:./PixelAlive_1294_153_RAW_v3.root.
-The duplicate will be skipped.
-
+>> CTPPSPixelDAQMappingESSourceXML::setIntervalFor(CTPPSPixelDAQMappingRcd)
+    run=1, event=0
+    block found: index=0, interval=(run: 1 lumi: 0 event: 0 - run: 999999999 lumi: 0 event: 18446744073709551615)
+>> CTPPSPixelDAQMappingESSourceXML::setIntervalFor(CTPPSPixelAnalysisMaskRcd)
+    run=1, event=0
+    block found: index=0, interval=(run: 1 lumi: 0 event: 0 - run: 999999999 lumi: 0 event: 18446744073709551615)
+Begin processing the 1st record. Run 153, Event 1, LumiSection 1 at 20-Mar-2017 15:05:59.634 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 1
+ PRODUCE DIGI FOR FED: 1294
 %MSG
-09-Mar-2017 14:32:07 CET  Closed file file:./PixelAlive_1294_153_RAW_v3.root
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 1
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 2nd record. Run 153, Event 2, LumiSection 1 at 20-Mar-2017 15:05:59.698 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 2
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 2
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 3rd record. Run 153, Event 3, LumiSection 1 at 20-Mar-2017 15:05:59.700 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 3
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 3
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 4th record. Run 153, Event 4, LumiSection 1 at 20-Mar-2017 15:05:59.702 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 4
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 4
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 5th record. Run 153, Event 5, LumiSection 1 at 20-Mar-2017 15:05:59.704 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 5
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 5
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 6th record. Run 153, Event 6, LumiSection 1 at 20-Mar-2017 15:05:59.705 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 6
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 6
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 7th record. Run 153, Event 7, LumiSection 1 at 20-Mar-2017 15:05:59.707 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 7
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 7
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 8th record. Run 153, Event 8, LumiSection 1 at 20-Mar-2017 15:05:59.708 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 8
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 8
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 9th record. Run 153, Event 9, LumiSection 1 at 20-Mar-2017 15:05:59.710 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 9
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 9
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 10th record. Run 153, Event 10, LumiSection 1 at 20-Mar-2017 15:05:59.711 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 10
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 10
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 11th record. Run 153, Event 11, LumiSection 1 at 20-Mar-2017 15:05:59.713 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 11
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 11
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 12th record. Run 153, Event 12, LumiSection 1 at 20-Mar-2017 15:05:59.715 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 12
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 12
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 13th record. Run 153, Event 13, LumiSection 1 at 20-Mar-2017 15:05:59.716 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 13
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 13
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 14th record. Run 153, Event 14, LumiSection 1 at 20-Mar-2017 15:05:59.718 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 14
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 14
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 15th record. Run 153, Event 15, LumiSection 1 at 20-Mar-2017 15:05:59.720 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 15
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 15
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 16th record. Run 153, Event 16, LumiSection 1 at 20-Mar-2017 15:05:59.722 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 16
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 16
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 17th record. Run 153, Event 17, LumiSection 1 at 20-Mar-2017 15:05:59.724 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 17
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 17
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 18th record. Run 153, Event 18, LumiSection 1 at 20-Mar-2017 15:05:59.725 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 18
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 18
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 19th record. Run 153, Event 19, LumiSection 1 at 20-Mar-2017 15:05:59.727 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 19
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 19
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 20th record. Run 153, Event 20, LumiSection 1 at 20-Mar-2017 15:05:59.729 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 20
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 20
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 21st record. Run 153, Event 21, LumiSection 1 at 20-Mar-2017 15:05:59.730 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 21
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 21
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 22nd record. Run 153, Event 22, LumiSection 1 at 20-Mar-2017 15:05:59.734 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 22
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 22
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 23rd record. Run 153, Event 23, LumiSection 1 at 20-Mar-2017 15:05:59.736 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 23
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 23
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 24th record. Run 153, Event 24, LumiSection 1 at 20-Mar-2017 15:05:59.738 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 24
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 24
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 25th record. Run 153, Event 25, LumiSection 1 at 20-Mar-2017 15:05:59.741 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 25
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 25
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 26th record. Run 153, Event 26, LumiSection 1 at 20-Mar-2017 15:05:59.743 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 26
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 26
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 27th record. Run 153, Event 27, LumiSection 1 at 20-Mar-2017 15:05:59.745 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 27
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 27
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 28th record. Run 153, Event 28, LumiSection 1 at 20-Mar-2017 15:05:59.747 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 28
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 28
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 29th record. Run 153, Event 29, LumiSection 1 at 20-Mar-2017 15:05:59.749 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 29
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 29
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 30th record. Run 153, Event 30, LumiSection 1 at 20-Mar-2017 15:05:59.751 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 30
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 30
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 31st record. Run 153, Event 31, LumiSection 1 at 20-Mar-2017 15:05:59.752 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 31
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 31
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 32nd record. Run 153, Event 32, LumiSection 1 at 20-Mar-2017 15:05:59.754 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 32
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 32
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 33rd record. Run 153, Event 33, LumiSection 1 at 20-Mar-2017 15:05:59.755 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 33
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 33
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 34th record. Run 153, Event 34, LumiSection 1 at 20-Mar-2017 15:05:59.757 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 34
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 34
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 35th record. Run 153, Event 35, LumiSection 1 at 20-Mar-2017 15:05:59.758 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 35
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 35
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 36th record. Run 153, Event 36, LumiSection 1 at 20-Mar-2017 15:05:59.759 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 36
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 36
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 37th record. Run 153, Event 37, LumiSection 1 at 20-Mar-2017 15:05:59.761 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 37
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 37
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 38th record. Run 153, Event 38, LumiSection 1 at 20-Mar-2017 15:05:59.762 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 38
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 38
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 39th record. Run 153, Event 39, LumiSection 1 at 20-Mar-2017 15:05:59.764 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 39
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 39
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 40th record. Run 153, Event 40, LumiSection 1 at 20-Mar-2017 15:05:59.765 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 40
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 40
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 41st record. Run 153, Event 41, LumiSection 1 at 20-Mar-2017 15:05:59.767 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 41
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 41
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 42nd record. Run 153, Event 42, LumiSection 1 at 20-Mar-2017 15:05:59.768 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 42
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 42
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 43rd record. Run 153, Event 43, LumiSection 1 at 20-Mar-2017 15:05:59.769 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 43
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 43
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 44th record. Run 153, Event 44, LumiSection 1 at 20-Mar-2017 15:05:59.771 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 44
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 44
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 45th record. Run 153, Event 45, LumiSection 1 at 20-Mar-2017 15:05:59.772 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 45
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 45
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 46th record. Run 153, Event 46, LumiSection 1 at 20-Mar-2017 15:05:59.774 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 46
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 46
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 47th record. Run 153, Event 47, LumiSection 1 at 20-Mar-2017 15:05:59.775 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 47
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 47
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 48th record. Run 153, Event 48, LumiSection 1 at 20-Mar-2017 15:05:59.776 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 48
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 48
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 49th record. Run 153, Event 49, LumiSection 1 at 20-Mar-2017 15:05:59.778 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 49
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 49
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 50th record. Run 153, Event 50, LumiSection 1 at 20-Mar-2017 15:05:59.779 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 50
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 50
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 51st record. Run 153, Event 51, LumiSection 1 at 20-Mar-2017 15:05:59.781 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 51
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 51
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 52nd record. Run 153, Event 52, LumiSection 1 at 20-Mar-2017 15:05:59.782 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 52
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 52
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 53rd record. Run 153, Event 53, LumiSection 1 at 20-Mar-2017 15:05:59.783 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 53
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 53
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 54th record. Run 153, Event 54, LumiSection 1 at 20-Mar-2017 15:05:59.785 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 54
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 54
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 55th record. Run 153, Event 55, LumiSection 1 at 20-Mar-2017 15:05:59.786 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 55
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 55
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 56th record. Run 153, Event 56, LumiSection 1 at 20-Mar-2017 15:05:59.787 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 56
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 56
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 57th record. Run 153, Event 57, LumiSection 1 at 20-Mar-2017 15:05:59.789 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 57
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 57
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 58th record. Run 153, Event 58, LumiSection 1 at 20-Mar-2017 15:05:59.790 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 58
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 58
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 59th record. Run 153, Event 59, LumiSection 1 at 20-Mar-2017 15:05:59.792 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 59
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 59
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 60th record. Run 153, Event 60, LumiSection 1 at 20-Mar-2017 15:05:59.793 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 60
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 60
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 61st record. Run 153, Event 61, LumiSection 1 at 20-Mar-2017 15:05:59.795 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 61
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 61
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 62nd record. Run 153, Event 62, LumiSection 1 at 20-Mar-2017 15:05:59.796 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 62
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 62
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 63rd record. Run 153, Event 63, LumiSection 1 at 20-Mar-2017 15:05:59.798 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 63
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 63
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 64th record. Run 153, Event 64, LumiSection 1 at 20-Mar-2017 15:05:59.799 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 64
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 64
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 65th record. Run 153, Event 65, LumiSection 1 at 20-Mar-2017 15:05:59.801 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 65
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 65
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 66th record. Run 153, Event 66, LumiSection 1 at 20-Mar-2017 15:05:59.802 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 66
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 66
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 67th record. Run 153, Event 67, LumiSection 1 at 20-Mar-2017 15:05:59.804 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 67
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 67
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 68th record. Run 153, Event 68, LumiSection 1 at 20-Mar-2017 15:05:59.805 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 68
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 68
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 69th record. Run 153, Event 69, LumiSection 1 at 20-Mar-2017 15:05:59.806 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 69
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 69
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 70th record. Run 153, Event 70, LumiSection 1 at 20-Mar-2017 15:05:59.808 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 70
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 70
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 71st record. Run 153, Event 71, LumiSection 1 at 20-Mar-2017 15:05:59.809 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 71
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 71
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 72nd record. Run 153, Event 72, LumiSection 1 at 20-Mar-2017 15:05:59.811 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 72
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 72
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 73rd record. Run 153, Event 73, LumiSection 1 at 20-Mar-2017 15:05:59.812 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 73
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 73
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 74th record. Run 153, Event 74, LumiSection 1 at 20-Mar-2017 15:05:59.814 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 74
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 74
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 75th record. Run 153, Event 75, LumiSection 1 at 20-Mar-2017 15:05:59.815 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 75
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 75
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 76th record. Run 153, Event 76, LumiSection 1 at 20-Mar-2017 15:05:59.816 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 76
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 76
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 77th record. Run 153, Event 77, LumiSection 1 at 20-Mar-2017 15:05:59.818 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 77
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 77
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 78th record. Run 153, Event 78, LumiSection 1 at 20-Mar-2017 15:05:59.819 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 78
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 78
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 79th record. Run 153, Event 79, LumiSection 1 at 20-Mar-2017 15:05:59.821 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 79
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 79
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 80th record. Run 153, Event 80, LumiSection 1 at 20-Mar-2017 15:05:59.822 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 80
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 80
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 81st record. Run 153, Event 81, LumiSection 1 at 20-Mar-2017 15:05:59.824 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 81
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 81
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 82nd record. Run 153, Event 82, LumiSection 1 at 20-Mar-2017 15:05:59.825 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 82
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 82
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 83rd record. Run 153, Event 83, LumiSection 1 at 20-Mar-2017 15:05:59.826 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 83
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 83
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 84th record. Run 153, Event 84, LumiSection 1 at 20-Mar-2017 15:05:59.828 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 84
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 84
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 85th record. Run 153, Event 85, LumiSection 1 at 20-Mar-2017 15:05:59.829 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 85
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 85
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 86th record. Run 153, Event 86, LumiSection 1 at 20-Mar-2017 15:05:59.831 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 86
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 86
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 87th record. Run 153, Event 87, LumiSection 1 at 20-Mar-2017 15:05:59.832 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 87
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 87
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 88th record. Run 153, Event 88, LumiSection 1 at 20-Mar-2017 15:05:59.833 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 88
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 88
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 89th record. Run 153, Event 89, LumiSection 1 at 20-Mar-2017 15:05:59.835 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 89
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 89
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 90th record. Run 153, Event 90, LumiSection 1 at 20-Mar-2017 15:05:59.836 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 90
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 90
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 91st record. Run 153, Event 91, LumiSection 1 at 20-Mar-2017 15:05:59.838 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 91
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 91
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 92nd record. Run 153, Event 92, LumiSection 1 at 20-Mar-2017 15:05:59.839 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 92
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 92
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 93rd record. Run 153, Event 93, LumiSection 1 at 20-Mar-2017 15:05:59.840 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 93
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 93
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 94th record. Run 153, Event 94, LumiSection 1 at 20-Mar-2017 15:05:59.842 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 94
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 94
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 95th record. Run 153, Event 95, LumiSection 1 at 20-Mar-2017 15:05:59.843 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 95
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 95
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 96th record. Run 153, Event 96, LumiSection 1 at 20-Mar-2017 15:05:59.845 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 96
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 96
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 97th record. Run 153, Event 97, LumiSection 1 at 20-Mar-2017 15:05:59.847 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 97
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 97
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 98th record. Run 153, Event 98, LumiSection 1 at 20-Mar-2017 15:05:59.848 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 98
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 98
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 99th record. Run 153, Event 99, LumiSection 1 at 20-Mar-2017 15:05:59.850 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 99
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 99
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+Begin processing the 100th record. Run 153, Event 100, LumiSection 1 at 20-Mar-2017 15:05:59.851 CET
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 100
+ PRODUCE DIGI FOR FED: 1294
+%MSG
+%MSG-i CTPPSPixelRawToDigi:  CTPPSPixelRawToDigi:ctppsPixelDigis  20-Mar-2017 15:05:59 CET Run: 153 Event: 100
+ PRODUCE DIGI FOR FED: 1295
+%MSG
+20-Mar-2017 15:05:59 CET  Closed file file:./PixelAlive_1294_153_RAW_v3.root
+%MSG-i CTPPSPixelRawToDigi:  20-Mar-2017 15:05:59 CET PostGlobalEndRun
+ CTPPSPixelRawToDigi destructor!
+%MSG

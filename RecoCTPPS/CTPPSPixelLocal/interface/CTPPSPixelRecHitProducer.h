@@ -34,6 +34,7 @@
 #include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
 #include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
+#include "Geometry/Records/interface/VeryForwardMisalignedGeometryRecord.h"
 
 
 #include <vector>
@@ -57,7 +58,7 @@ private:
  edm::InputTag src_;
  edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelCluster>> tokenCTPPSPixelCluster_;
   
- edm::ESWatcher<VeryForwardRealGeometryRecord> geometryWatcher;
+ edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher;
 
  RPixCluster2Hit cluster2hit_;
   

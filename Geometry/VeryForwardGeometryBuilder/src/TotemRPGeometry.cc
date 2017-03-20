@@ -28,7 +28,11 @@ char TotemRPGeometry::Build(const DetGeomDesc *gD)
       buffer.pop_front();
 
     // check if it is RP detector
-      if ((! d->name().name().compare(DDD_TOTEM_RP_DETECTOR_NAME)) || (! d->name().name().compare("RPixWafer"))){
+//      if ((! d->name().name().compare(DDD_TOTEM_RP_DETECTOR_NAME)) || (! d->name().name().compare("RPixWafer"))){
+    if (! d->name().name().compare(DDD_TOTEM_RP_DETECTOR_NAME)
+       or d->name().name().compare(DDD_CTPPS_DIAMONDS_DETECTOR_NAME)==0
+	or d->name().name().compare("RPixWafer")==0){
+
 	cout << " added RPixWafer ++++++++++++++++++++++" << endl;
 	AddDetector(d->geographicalID(), d);
       }

@@ -15,7 +15,7 @@
 
 //#include "CondFormats/DataRecord/interface/SiPixelFedCablingMapRcd.h"
 //#include "CondFormats/DataRecord/interface/SiPixelQualityRcd.h"
-#include "CondFormats/DataRecord/interface/CTPPSPixelReadoutRcd.h"
+#include "CondFormats/DataRecord/interface/CTPPSPixelDAQMappingRcd.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelDAQMapping.h"
 
 #include "DataFormats/FEDRawData/interface/FEDRawDataCollection.h"

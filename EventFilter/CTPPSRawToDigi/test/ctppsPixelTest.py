@@ -21,6 +21,7 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100))
 
 process.source = cms.Source("PoolSource",
 # fileNames =  cms.untracked.vstring('file:rawdata.root')
+labelRawDataLikeMC = cms.untracked.bool(False),
 fileNames =  cms.untracked.vstring(
 "file:./PixelAlive_1294_153_RAW_v3.root"
 #  "rfio:/castor/cern.ch/cms/store/data/Run2012D/MinimumBias/RAW/v1/000/205/217/2EF61B7D-F216-E211-98C3-001D09F28D54.root",
