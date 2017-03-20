@@ -190,7 +190,7 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
     // cabling map, which maps online address (fed->link->ROC->local pixel) to offline (DetId->global pixel)
 
   edm::ESHandle<CTPPSPixelDAQMapping> mapping;
-  es.get<CTPPSPixelReadoutRcd>().get(mappingLabel, mapping);
+  es.get<CTPPSPixelDAQMappingRcd>().get(mappingLabel, mapping);
 
 //    edm::ESTransientHandle<SiPixelFedCablingMap> cablingMap;
 //    es.get<SiPixelFedCablingMapRcd>().get( cablingMapLabel, cablingMap ); //Tav
