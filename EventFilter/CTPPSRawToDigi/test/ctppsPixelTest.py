@@ -16,14 +16,16 @@ process.ctppsPixelDAQMappingESSourceXML.mappingFileNames = cms.vstring("CondForm
 ##process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.load("Configuration.StandardSequences.Services_cff")
 
-#process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100))
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100))
+#process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1))
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1))
 
 process.source = cms.Source("PoolSource",
 # fileNames =  cms.untracked.vstring('file:rawdata.root')
 labelRawDataLikeMC = cms.untracked.bool(False),
 fileNames =  cms.untracked.vstring(
-"file:./PixelAlive_1294_153_RAW_v3.root"
+#"file:./PixelAlive_1294_153_RAW_v3.root"
+"file:/afs/cern.ch/work/k/kas/public/PXtrees/PixelAlive_1294_151_RAW_v2.root"
+
 #  "rfio:/castor/cern.ch/cms/store/data/Run2012D/MinimumBias/RAW/v1/000/205/217/2EF61B7D-F216-E211-98C3-001D09F28D54.root",
 #  "rfio:/castor/cern.ch/cms/store/data/Run2012D/MinimumBias/RAW/v1/000/208/686/A88F66A0-393F-E211-9287-002481E0D524.root",
 #    "file:/afs/cern.ch/work/d/dkotlins/public/MC/mu/pt100_71_pre7/raw/raw2.root"
@@ -63,12 +65,12 @@ process.ctppsPixelDigis.IncludeErrors = False
 
 process.MessageLogger = cms.Service("MessageLogger",
     debugModules = cms.untracked.vstring('ctppsPixelDigis'),
-    destinations = cms.untracked.vstring('r2d'),
-    r2d = cms.untracked.PSet( threshold = cms.untracked.string('DEBUG'))
+    destinations = cms.untracked.vstring('r2d10'),
+    r2d10 = cms.untracked.PSet( threshold = cms.untracked.string('DEBUG'))
 )
 
 process.out = cms.OutputModule("PoolOutputModule",
-    fileName =  cms.untracked.string('file:digis.root'),
+    fileName =  cms.untracked.string('file:digis_PixelAlive_1294_151_RAW_v2.root'),
 #    fileName =  cms.untracked.string('file:/afs/cern.ch/work/d/dkotlins/public/data/digis/digis_1k.root'),
     outputCommands = cms.untracked.vstring("keep *")
 )

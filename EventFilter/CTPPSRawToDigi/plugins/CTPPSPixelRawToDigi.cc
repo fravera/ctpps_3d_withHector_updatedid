@@ -29,8 +29,8 @@
 #include "DataFormats/FEDRawData/interface/FEDNumbering.h"
 #include "DataFormats/DetId/interface/DetIdCollection.h"
 
-
-#include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelROC.h"
+//KS
+#include "EventFilter/CTPPSRawToDigi/interface/CTPPSPixelDataFormatter.h"
 
 //--not needed?
 /*
@@ -229,23 +229,20 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
 
 
 
+//    HERE PUT OUR OWN FORMATTER
 
 
-
-
-//--     HERE PUT OUR OWN FORMATTER
-//  PixelDataFormatter formatter(cabling_.get(), usePhase1); // for phase 1 & 0
-//--
-
-
-
-
-
-
+  CTPPSPixelDataFormatter formatter(mapping->ROCMapping);
 
 
 
 /*
+
+
+
+
+
+
   formatter.setErrorStatus(includeErrors);
 
   if (useQuality) formatter.setQualityStatus(useQuality, badPixelInfo_);
@@ -262,12 +259,15 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
   }
 */
 
-  std::map<CTPPSPixelFramePosition,CTPPSPixelROCInfo> theMap = mapping->ROCMapping;
 
+
+
+     bool errorsInEvent = false; 
   for (auto aFed = fedIds.begin(); aFed != fedIds.end(); ++aFed) {
     int fedId = *aFed;
     int FMC = 0;
 
+cout << "FEDID:   " << fedId << endl;
     edm::LogInfo("CTPPSPixelRawToDigi")<< " PRODUCE DIGI FOR FED: " <<  dec <<fedId << endl;
 
 //    PixelDataFormatter::Errors errors;
@@ -276,36 +276,16 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
     const FEDRawData& fedRawData = buffers->FEDData( fedId );
 
 
-    int link = 2; int roc = 1;
-    int dcol = 5;
-    int pxl = 7;
-    
-    CTPPSPixelFramePosition fPos(fedId, FMC, link, roc);
-    std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo>::iterator mit;
-    mit = theMap.find(fPos);
-    CTPPSPixelROCInfo rocInfo = (*mit).second;
+//Errors related stuff
 
-//    std::cout << rocInfo << std::endl;
- 
-    CTPPSPixelROC rocp(rocInfo.iD, rocInfo.roc, roc);
- 
-//    CTPPSPixelROC  rocp(5,2,1);
-  std::pair<int,int> rocPixel;
-   std::pair<int,int> modPixel;
-   std::cout << rocp.idInDetUnit() << std::endl;
+ //  CTPPSPixelDataFormatter::Errors errors; 
 
-    rocPixel = std::make_pair(dcol,pxl);
-    modPixel = rocp.toGlobalfromDcol(rocPixel);
-
-    std::cout << modPixel.first << " " << modPixel.second << std::endl;
 
 // HERE DOING OUR OWN UNPACKING
     //convert data to digi and strip off errors
-  //   formatter.interpretRawData( errorsInEvent, fedId, fedRawData, *collection, errors);
 
-
-
-
+ //   formatter.interpretRawData(mapping, errorsInEvent, fedId, fedRawData, *collection, errors);
+   formatter.interpretRawData( errorsInEvent, fedId, fedRawData, *collection);
 
 
 
@@ -313,6 +293,8 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
 
 
     //pack errors into collection
+
+// qui inizio commento
 /*
     if(includeErrors) {
       typedef PixelDataFormatter::Errors::iterator IE;
@@ -350,8 +332,14 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
 	}
       }
     }
+// qui fine commento
 */
   }
+
+
+
+
+
 /*
   if(includeErrors) {
     edm::DetSet<SiPixelRawDataError>& errorDetSet = errorcollection->find_or_insert(dummydetid);

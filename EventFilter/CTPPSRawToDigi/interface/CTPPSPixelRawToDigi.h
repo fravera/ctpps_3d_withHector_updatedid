@@ -20,7 +20,7 @@
 
 #include "DataFormats/FEDRawData/interface/FEDRawDataCollection.h"
 #include "FWCore/Framework/interface/ConsumesCollector.h"
-#include "FWCore/Utilities/interface/CPUTimer.h"
+//#include "FWCore/Utilities/interface/CPUTimer.h"
 
 
 //-- not needed??
