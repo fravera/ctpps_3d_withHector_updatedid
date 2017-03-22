@@ -64,11 +64,11 @@ private:
 
 //  TH1D *hCPU, *hDigi;
 //  std::unique_ptr<edm::CPUTimer> theTimer;
-  bool includeErrors;
-  bool useQuality;
+//  bool includeErrors;
+//  bool useQuality;
 //  bool debug;
-  std::vector<int> tkerrorlist;
-  std::vector<int> usererrorlist;
+//  std::vector<int> tkerrorlist;
+//  std::vector<int> usererrorlist;
   std::set<unsigned int> fedIds;
 
 /*
@@ -76,8 +76,8 @@ private:
   edm::ESWatcher<SiPixelQualityRcd> qualityWatcher;
 */
   edm::InputTag label;
-  int ndigis;
-  int nwords;
+  // int ndigis;
+  // int nwords;
 //  bool usePilotBlade;
 //  bool usePhase1;
   std::string mappingLabel;

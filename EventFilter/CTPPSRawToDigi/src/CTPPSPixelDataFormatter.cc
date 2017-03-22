@@ -57,7 +57,8 @@ namespace {
 }
 
 CTPPSPixelDataFormatter::CTPPSPixelDataFormatter(std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo> const &mapping)
-  : theDigiCounter(0), theWordCounter(0), /*theCablingTree(map), badPixelInfo(0), modulesToUnpack(0),*/mapping_(mapping)
+												      :
+  /*  theDigiCounter(0),*/ theWordCounter(0),/* theCablingTree(map), badPixelInfo(0), modulesToUnpack(0),*/mapping_(mapping)
 {
   int s32 = sizeof(Word32);
   int s64 = sizeof(Word64);
@@ -70,10 +71,10 @@ CTPPSPixelDataFormatter::CTPPSPixelDataFormatter(std::map<CTPPSPixelFramePositio
           <<", size of Word64 is: " << s64
           <<", send exception" ;
   }
-  includeErrors = false;
+//  includeErrors = false;
 // useQualityInfo = false;
-  allDetDigis = 0;
-  hasDetDigis = 0;
+//  allDetDigis = 0;
+//  hasDetDigis = 0;
 
   ADC_shift  = 0;
   PXID_shift = ADC_shift + ADC_bits;

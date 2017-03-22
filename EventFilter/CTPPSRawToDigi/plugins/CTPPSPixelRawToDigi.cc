@@ -64,19 +64,20 @@ CTPPSPixelRawToDigi::CTPPSPixelRawToDigi( const edm::ParameterSet& conf )
 */
 {
 
-  includeErrors = config_.getParameter<bool>("IncludeErrors");
-  useQuality = config_.getParameter<bool>("UseQualityInfo");
-  if (config_.exists("ErrorList")) {
+//  includeErrors = config_.getParameter<bool>("IncludeErrors");
+// useQuality = config_.getParameter<bool>("UseQualityInfo");
+/*  if (config_.exists("ErrorList")) {
     tkerrorlist = config_.getParameter<std::vector<int> > ("ErrorList");
   }
   if (config_.exists("UserErrorList")) {
     usererrorlist = config_.getParameter<std::vector<int> > ("UserErrorList");
   }
+*/
   tFEDRawDataCollection = consumes <FEDRawDataCollection> (config_.getParameter<edm::InputTag>("InputLabel"));
 
   //start counters
-  ndigis = 0;
-  nwords = 0;
+//  ndigis = 0;
+// nwords = 0;
 
   // Products
   produces< edm::DetSetVector<CTPPSPixelDigi> >();

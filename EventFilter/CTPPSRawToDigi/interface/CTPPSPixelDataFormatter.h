@@ -63,8 +63,8 @@ public:
 
   typedef std::map<int, FEDRawData> RawData;
   typedef std::vector<CTPPSPixelDigi> DetDigis;
-  typedef std::map<cms_uint32_t, DetDigis> Digis;
-  typedef std::pair<DetDigis::const_iterator, DetDigis::const_iterator> Range; 
+//  typedef std::map<cms_uint32_t, DetDigis> Digis;
+//  typedef std::pair<DetDigis::const_iterator, DetDigis::const_iterator> Range; 
 //  typedef std::vector<SiPixelRawDataError> DetErrors;
 //  typedef std::map<cms_uint32_t, DetErrors> Errors;
 
@@ -73,12 +73,12 @@ public:
 
   CTPPSPixelDataFormatter(std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo> const &mapping);
 
-  void setErrorStatus(bool ErrorStatus);
+  // void setErrorStatus(bool ErrorStatus);
   // void setQualityStatus(bool QualityStatus, const SiPixelQuality* QualityInfo);
-  void setModulesToUnpack(const std::set<unsigned int> * moduleIds);
+  // void setModulesToUnpack(const std::set<unsigned int> * moduleIds);
 //  void passFrameReverter(const SiPixelFrameReverter* reverter);
 
-  int nDigis() const { return theDigiCounter; }
+//  int nDigis() const { return theDigiCounter; }
   int nWords() const { return theWordCounter; }
 
   void interpretRawData( bool& errorsInEvent, int fedId,  const FEDRawData & data, Collection & digis);//, Errors & errors);
@@ -86,7 +86,7 @@ public:
  //KS void formatRawData( unsigned int lvl1_ID, RawData & fedRawData, const Digis & digis);
 
 private:
-  mutable int theDigiCounter;
+//  mutable int theDigiCounter;
   mutable int theWordCounter;
 
  // SiPixelFedCabling const * theCablingTree;
@@ -94,11 +94,11 @@ private:
   // const SiPixelQuality* badPixelInfo;
 //  const std::set<unsigned int> * modulesToUnpack;
 
-  bool includeErrors;
+//  bool includeErrors;
 //  bool useQualityInfo;
-  bool debug;
-  int allDetDigis;
-  int hasDetDigis;
+//  bool debug;
+  // int allDetDigis;
+  // int hasDetDigis;
   RPixErrorChecker errorcheck;
 
   // For the 32bit data format (moved from *.cc namespace, keep uppercase for compatibility)

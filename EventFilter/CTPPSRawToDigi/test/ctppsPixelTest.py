@@ -59,7 +59,7 @@ process.load("EventFilter.CTPPSRawToDigi.CTPPSPixelRawToDigi_cfi")
 # for data
 process.ctppsPixelDigis.InputLabel = 'source'
 #process.ctppsPixelDigis.InputLabel = 'rawDataCollector'
-process.ctppsPixelDigis.IncludeErrors = False
+#process.ctppsPixelDigis.IncludeErrors = False
 #process.ctppsPixelDigis.Timing = False 
 #process.siPixelDigis.UseCablingTree = True 
 
