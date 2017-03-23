@@ -83,7 +83,7 @@ private:
   std::string print(const Word64    & word) const;
 
 
-const std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo> &mapping_;
+  const std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo> &mapping_;
 
 };
 

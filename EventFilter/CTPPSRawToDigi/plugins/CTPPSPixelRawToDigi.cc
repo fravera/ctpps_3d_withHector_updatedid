@@ -7,7 +7,6 @@
 
 #include "DataFormats/Common/interface/Handle.h"
 #include "FWCore/Framework/interface/ESHandle.h"
-#include "FWCore/Framework/interface/ESTransientHandle.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 
 #include "DataFormats/CTPPSDigi/interface/CTPPSPixelDigi.h"
@@ -32,10 +31,10 @@ CTPPSPixelRawToDigi::CTPPSPixelRawToDigi( const edm::ParameterSet& conf )
 
   tFEDRawDataCollection = consumes <FEDRawDataCollection> (config_.getParameter<edm::InputTag>("InputLabel"));
 
-  // Products
+// Products
   produces< edm::DetSetVector<CTPPSPixelDigi> >();
 
- //CablingMap could have a label //Tav
+//CablingMap could have a label //Tav
   mappingLabel = config_.getParameter<std::string> ("mappingLabel"); //RPix
 
 }
@@ -47,7 +46,7 @@ CTPPSPixelRawToDigi::~CTPPSPixelRawToDigi() {
 }
 
 void CTPPSPixelRawToDigi::produce( edm::Event& ev,
-                              const edm::EventSetup& es) 
+				   const edm::EventSetup& es) 
 {
 
   edm::ESHandle<CTPPSPixelDAQMapping> mapping;
@@ -67,25 +66,23 @@ void CTPPSPixelRawToDigi::produce( edm::Event& ev,
 
   CTPPSPixelDataFormatter formatter(mapping->ROCMapping);
 
-
-
-     bool errorsInEvent = false; 
+  bool errorsInEvent = false; 
   for (auto aFed = fedIds.begin(); aFed != fedIds.end(); ++aFed) {
     int fedId = *aFed;
 //    int FMC = 0;
 //cout << "FEDID:   " << fedId << endl;
  
-   edm::LogInfo("CTPPSPixelRawToDigi")<< " PRODUCE DIGI FOR FED: " <<  dec <<fedId << endl;
+    edm::LogInfo("CTPPSPixelRawToDigi")<< " PRODUCE DIGI FOR FED: " <<  dec <<fedId << endl;
 
-    //get event data for this fed
+  //get event data for this fed
     const FEDRawData& fedRawData = buffers->FEDData( fedId );
 
 
-   formatter.interpretRawData( errorsInEvent, fedId, fedRawData, *collection);
+    formatter.interpretRawData( errorsInEvent, fedId, fedRawData, *collection);
 
   }
 
-  //send digis and errors back to framework 
+//send digis and errors back to framework 
   ev.put(std::move(collection));
 
 }
