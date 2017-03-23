@@ -9,7 +9,6 @@
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelFramePosition.h"
 
 #include <iomanip>
-#include <cstdlib>
 
 using namespace std;
 
@@ -38,7 +37,7 @@ void CTPPSPixelFramePosition::printXML()
 //----------------------------------------------------------------------------------------------------
 
 unsigned char CTPPSPixelFramePosition::setXMLAttribute(const std::string &attribute, const std::string &value,
-						  unsigned char &flag)
+						       unsigned char &flag)
 {
   unsigned int v = atoi(value.c_str());
 

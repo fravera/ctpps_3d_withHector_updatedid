@@ -1,11 +1,11 @@
 /****************************************************************************
-*
-*
-* Authors:
-* F.Ferro ferro@ge.infn.it
-* H. Malbouisson malbouis@cern.ch
-*
-****************************************************************************/
+ *
+ *
+ * Authors:
+ * F.Ferro ferro@ge.infn.it
+ * H. Malbouisson malbouis@cern.ch
+ *
+ ****************************************************************************/
 
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/Framework/interface/SourceFactory.h"
@@ -53,10 +53,10 @@ public:
   static const std::string tagRPixPlane;
   static const std::string tagROC;
   static const std::string tagPixel;
-  /// Common position tags
+/// Common position tags
   static const std::string tagArm;
 
-  /// RP XML tags
+/// RP XML tags
   static const std::string tagRPStation;
   static const std::string tagRPPot;
 
@@ -73,70 +73,70 @@ private:
 /// label of the CTPPS sub-system
   string subSystemName;
 
-  /// the mapping files
+/// the mapping files
   std::vector<std::string> mappingFileNames;
 
   struct ConfigBlock
   {
-    /// validity interval
+  /// validity interval
     edm::EventRange validityRange;
 
-    /// the mapping files
+  /// the mapping files
     std::vector<std::string> mappingFileNames;
 
-    /// the mask files
+  /// the mask files
     std::vector<std::string> maskFileNames;
   };
 
   vector<ConfigBlock> configuration;
 
-  /// index of the current block in 'configuration' array
+/// index of the current block in 'configuration' array
   unsigned int currentBlock;
 
-  /// flag whether the 'currentBlock' index is valid
+/// flag whether the 'currentBlock' index is valid
   bool currentBlockValid;
 
-  /// enumeration of XML node types
+/// enumeration of XML node types
   enum NodeType { nUnknown, nSkip, nTop, nArm, nRPStation, nRPPot, nRPixPlane, nROC, nPixel };
 
-  /// whether to parse a mapping of a mask XML
+/// whether to parse a mapping of a mask XML
   enum ParseType { pMapping, pMask };
 
-  /// parses XML file
+/// parses XML file
   void ParseXML(ParseType, const string &file, const std::unique_ptr<CTPPSPixelDAQMapping>&, const std::unique_ptr<CTPPSPixelAnalysisMask>&);
 
 
 
-  /// recursive method to extract Pixel-related information from the DOM tree
+/// recursive method to extract Pixel-related information from the DOM tree
   void ParseTreePixel(ParseType, xercesc::DOMNode *, NodeType, unsigned int parentID,
-    const std::unique_ptr<CTPPSPixelDAQMapping>&, const std::unique_ptr<CTPPSPixelAnalysisMask>&);
+		      const std::unique_ptr<CTPPSPixelDAQMapping>&, const std::unique_ptr<CTPPSPixelAnalysisMask>&);
 
 private:
-  /// adds the path prefix, if needed
+/// adds the path prefix, if needed
   string CompleteFileName(const string &fn);
 
-  /// returns true iff the node is of the given name
+/// returns true iff the node is of the given name
   bool Test(xercesc::DOMNode *node, const std::string &name)
   {
     return !(name.compare(xercesc::XMLString::transcode(node->getNodeName())));
   }
 
-  /// determines node type
+/// determines node type
   NodeType GetNodeType(xercesc::DOMNode *);
 
-  /// returns the content of the node
+/// returns the content of the node
   string GetNodeContent(xercesc::DOMNode *parent)
   {
     return string(xercesc::XMLString::transcode(parent->getTextContent()));
   }
 
-  /// returns the value of the node
+/// returns the value of the node
   string GetNodeValue(xercesc::DOMNode *node)
   {
     return string(xercesc::XMLString::transcode(node->getNodeValue()));
   }
 
-  /// extracts VFAT's DAQ channel from XML attributes
+/// extracts VFAT's DAQ channel from XML attributes
   CTPPSPixelFramePosition ChipFramePosition(xercesc::DOMNode *chipnode);
 
   void GetPixels(xercesc::DOMNode *n, std::set<std::pair<unsigned char, unsigned char> > &pixels);
@@ -148,7 +148,7 @@ private:
 
 
 protected:
-  /// sets infinite validity of this data
+/// sets infinite validity of this data
   virtual void setIntervalFor(const edm::eventsetup::EventSetupRecordKey&, const edm::IOVSyncValue&, edm::ValidityInterval&);
 };
 
@@ -173,8 +173,6 @@ const string CTPPSPixelDAQMappingESSourceXML::tagRPixPlane = "rpix_plane";
 
 static const unsigned int offsetROCinDetId = 13, maskROCinDetId = 0x3;
 
-//----------------------------------------------------------------------------------------------------
-
 CTPPSPixelDAQMappingESSourceXML::CTPPSPixelDAQMappingESSourceXML(const edm::ParameterSet& conf) :
   verbosity(conf.getUntrackedParameter<unsigned int>("verbosity", 0)),
   subSystemName(conf.getUntrackedParameter<string>("subSystem")),
@@ -182,13 +180,13 @@ CTPPSPixelDAQMappingESSourceXML::CTPPSPixelDAQMappingESSourceXML(const edm::Para
   currentBlockValid(false)
 {
   for (const auto it : conf.getParameter<vector<ParameterSet>>("configuration"))
-  {
-    ConfigBlock b;
-    b.validityRange = it.getParameter<EventRange>("validityRange");
-    b.mappingFileNames = it.getParameter< vector<string> >("mappingFileNames");
-    b.maskFileNames = it.getParameter< vector<string> >("maskFileNames");
-    configuration.push_back(b);
-  }
+    {
+      ConfigBlock b;
+      b.validityRange = it.getParameter<EventRange>("validityRange");
+      b.mappingFileNames = it.getParameter< vector<string> >("mappingFileNames");
+      b.maskFileNames = it.getParameter< vector<string> >("maskFileNames");
+      configuration.push_back(b);
+    }
 
   setWhatProduced(this, &CTPPSPixelDAQMappingESSourceXML::produceCTPPSPixelAnalysisMask, es::Label(subSystemName));
   findingRecord<CTPPSPixelAnalysisMaskRcd>();
@@ -197,15 +195,13 @@ CTPPSPixelDAQMappingESSourceXML::CTPPSPixelDAQMappingESSourceXML(const edm::Para
   findingRecord<CTPPSPixelDAQMappingRcd>();
 
 
-  std::cout << " Inside  CTPPSPixelDAQMappingESSourceXML" << std::endl;
+  LogVerbatim("CTPPSPixelDAQMappingESSourceXML") << " Inside  CTPPSPixelDAQMappingESSourceXML";
 
 
 }
 
-//----------------------------------------------------------------------------------------------------
-
 void CTPPSPixelDAQMappingESSourceXML::setIntervalFor(const edm::eventsetup::EventSetupRecordKey &key,
-  const edm::IOVSyncValue& iosv, edm::ValidityInterval& oValidity)
+						     const edm::IOVSyncValue& iosv, edm::ValidityInterval& oValidity)
 {
   LogVerbatim("CTPPSPixelDAQMappingESSourceXML")
     << ">> CTPPSPixelDAQMappingESSourceXML::setIntervalFor(" << key.name() << ")";
@@ -215,45 +211,44 @@ void CTPPSPixelDAQMappingESSourceXML::setIntervalFor(const edm::eventsetup::Even
 
   currentBlockValid = false;
   for (unsigned int idx = 0; idx < configuration.size(); ++idx)
-  {
-    const auto &bl = configuration[idx];
-
-    // event id "1:min" has a special meaning and is translated to a truly minimal event id (1:0:0)
-    EventID startEventID = bl.validityRange.startEventID();
-    if (startEventID == EventID(1, 0, 1))
-      startEventID = EventID(1, 0, 0);
-
-    if (startEventID <= iosv.eventID() && iosv.eventID() <= bl.validityRange.endEventID())
     {
-      currentBlockValid = true;
-      currentBlock = idx;
+      const auto &bl = configuration[idx];
 
-      const IOVSyncValue begin(startEventID);
-      const IOVSyncValue end(bl.validityRange.endEventID());
-      oValidity = ValidityInterval(begin, end);
+      EventID startEventID = bl.validityRange.startEventID();
+      if (startEventID == EventID(1, 0, 1))
+	startEventID = EventID(1, 0, 0);
 
-      LogVerbatim("CTPPSPixelDAQMappingESSourceXML")
-        << "    block found: index=" << currentBlock
-        << ", interval=(" << startEventID << " - " << bl.validityRange.endEventID() << ")";
+      if (startEventID <= iosv.eventID() && iosv.eventID() <= bl.validityRange.endEventID())
+	{
+	  currentBlockValid = true;
+	  currentBlock = idx;
 
-      return;
+	  const IOVSyncValue begin(startEventID);
+	  const IOVSyncValue end(bl.validityRange.endEventID());
+	  oValidity = ValidityInterval(begin, end);
+
+	  LogVerbatim("CTPPSPixelDAQMappingESSourceXML")
+	    << "    block found: index=" << currentBlock
+	    << ", interval=(" << startEventID << " - " << bl.validityRange.endEventID() << ")";
+
+	  return;
+	}
     }
-  }
 
   if (!currentBlockValid)
-  {
-    throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::setIntervalFor") <<
-      "No configuration for event " << iosv.eventID();
-  }
+    {
+      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::setIntervalFor") <<
+	"No configuration for event " << iosv.eventID();
+    }
 }
 
-//----------------------------------------------------------------------------------------------------
+
 
 CTPPSPixelDAQMappingESSourceXML::~CTPPSPixelDAQMappingESSourceXML()
 {
 }
 
-//----------------------------------------------------------------------------------------------------
+
 
 string CTPPSPixelDAQMappingESSourceXML::CompleteFileName(const string &fn)
 {
@@ -261,39 +256,39 @@ string CTPPSPixelDAQMappingESSourceXML::CompleteFileName(const string &fn)
   return fip.fullPath();
 }
 
-//----------------------------------------------------------------------------------------------------
 
- std::unique_ptr<CTPPSPixelDAQMapping> CTPPSPixelDAQMappingESSourceXML::produceCTPPSPixelDAQMapping( const CTPPSPixelDAQMappingRcd & )
+
+std::unique_ptr<CTPPSPixelDAQMapping> CTPPSPixelDAQMappingESSourceXML::produceCTPPSPixelDAQMapping( const CTPPSPixelDAQMappingRcd & )
 {
   assert(currentBlockValid);
 
   auto mapping = std::make_unique<CTPPSPixelDAQMapping>();
   auto mask = std::make_unique<CTPPSPixelAnalysisMask>();
 
-  // initialize Xerces
+// initialize Xerces
   try
-  {
-    XMLPlatformUtils::Initialize();
-  }
+    {
+      XMLPlatformUtils::Initialize();
+    }
   catch (const XMLException& toCatch)
-  {
-    char* message = XMLString::transcode(toCatch.getMessage());
-    throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") << "An XMLException caught with message: " << message << ".\n";
-    XMLString::release(&message);
-  }
+    {
+      char* message = XMLString::transcode(toCatch.getMessage());
+      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") << "An XMLException caught with message: " << message << ".\n";
+      XMLString::release(&message);
+    }
 
-  // load mapping files
+// load mapping files
   for (const auto &fn : configuration[currentBlock].mappingFileNames)
     ParseXML(pMapping, CompleteFileName(fn), mapping, mask);
 
-  // load mask files
+// load mask files
   for (const auto &fn : configuration[currentBlock].maskFileNames)
     ParseXML(pMask, CompleteFileName(fn), mapping, mask);
 
-  // release Xerces
+// release Xerces
   XMLPlatformUtils::Terminate();
 
-  // commit the product
+// commit the product
   return mapping;
 }
 
@@ -304,38 +299,38 @@ std::unique_ptr<CTPPSPixelAnalysisMask> CTPPSPixelDAQMappingESSourceXML::produce
   auto mapping = std::make_unique<CTPPSPixelDAQMapping>();
   auto mask = std::make_unique<CTPPSPixelAnalysisMask>();
 
-  // initialize Xerces
+// initialize Xerces
   try
-  {
-    XMLPlatformUtils::Initialize();
-  }
+    {
+      XMLPlatformUtils::Initialize();
+    }
   catch (const XMLException& toCatch)
-  {
-    char* message = XMLString::transcode(toCatch.getMessage());
-    throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") << "An XMLException caught with message: " << message << ".\n";
-    XMLString::release(&message);
-  }
+    {
+      char* message = XMLString::transcode(toCatch.getMessage());
+      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") << "An XMLException caught with message: " << message << ".\n";
+      XMLString::release(&message);
+    }
 
-  // load mapping files
+// load mapping files
   for (const auto &fn : configuration[currentBlock].mappingFileNames)
     ParseXML(pMapping, CompleteFileName(fn), mapping, mask);
 
-  // load mask files
+// load mask files
   for (const auto &fn : configuration[currentBlock].maskFileNames)
     ParseXML(pMask, CompleteFileName(fn), mapping, mask);
 
-  // release Xerces
+// release Xerces
   XMLPlatformUtils::Terminate();
 
-  // commit the products
-  //return edm::es::products(mapping, mask);
+// commit the products
+//return edm::es::products(mapping, mask);
   return mask;
 }
 
 //----------------------------------------------------------------------------------------------------
 
 void CTPPSPixelDAQMappingESSourceXML::ParseXML(ParseType pType, const string &file,
-  const std::unique_ptr<CTPPSPixelDAQMapping> &mapping, const std::unique_ptr<CTPPSPixelAnalysisMask> &mask)
+					       const std::unique_ptr<CTPPSPixelDAQMapping> &mapping, const std::unique_ptr<CTPPSPixelAnalysisMask> &mask)
 {
   unique_ptr<XercesDOMParser> parser(new XercesDOMParser());
   parser->parse(file.c_str());
@@ -344,7 +339,7 @@ void CTPPSPixelDAQMappingESSourceXML::ParseXML(ParseType pType, const string &fi
 
   if (!domDoc)
     throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::ParseXML") << "Cannot parse file `" << file
-      << "' (domDoc = NULL)." << endl;
+								      << "' (domDoc = NULL)." << endl;
 
   DOMElement* elementRoot = domDoc->getDocumentElement();
 
@@ -360,128 +355,128 @@ void CTPPSPixelDAQMappingESSourceXML::ParseXML(ParseType pType, const string &fi
 //-----------------------------------------------------------------------------------------------------------
 
 void CTPPSPixelDAQMappingESSourceXML::ParseTreePixel(ParseType pType, xercesc::DOMNode * parent, NodeType parentType,
-  unsigned int parentID, const std::unique_ptr<CTPPSPixelDAQMapping>& mapping,
-  const std::unique_ptr<CTPPSPixelAnalysisMask>& mask)
+						     unsigned int parentID, const std::unique_ptr<CTPPSPixelDAQMapping>& mapping,
+						     const std::unique_ptr<CTPPSPixelAnalysisMask>& mask)
 {
 #ifdef DEBUG
   printf(">> CTPPSPixelDAQMappingESSourceXML::ParseTreeRP(%s, %u, %u)\n", XMLString::transcode(parent->getNodeName()),
-    parentType, parentID);
+	 parentType, parentID);
 #endif
 
   DOMNodeList *children = parent->getChildNodes();
 
   for (unsigned int i = 0; i < children->getLength(); i++)
-  {
-    DOMNode *n = children->item(i);
-    if (n->getNodeType() != DOMNode::ELEMENT_NODE)
-      continue;
+    {
+      DOMNode *n = children->item(i);
+      if (n->getNodeType() != DOMNode::ELEMENT_NODE)
+	continue;
 
-    NodeType type = GetNodeType(n);
+      NodeType type = GetNodeType(n);
 
 #ifdef DEBUG
-    printf("\tname = %s, type = %u\n", XMLString::transcode(n->getNodeName()), type);
+      printf("\tname = %s, type = %u\n", XMLString::transcode(n->getNodeName()), type);
 #endif
 
     // structure control
-    if (!PixelNode(type))
-      continue;
+      if (!PixelNode(type))
+	continue;
 
-    NodeType expectedParentType;
-    switch (type)
-    {
-      case nArm: expectedParentType = nTop; break;
-      case nRPStation: expectedParentType = nArm; break;
-      case nRPPot: expectedParentType = nRPStation; break;
-      case nRPixPlane: expectedParentType = nRPPot; break;
-      case nROC: expectedParentType = nRPixPlane; break;
-      case nPixel: expectedParentType = nROC; break;
-      default: expectedParentType = nUnknown; break;
-    }
+      NodeType expectedParentType;
+      switch (type)
+	{
+	case nArm: expectedParentType = nTop; break;
+	case nRPStation: expectedParentType = nArm; break;
+	case nRPPot: expectedParentType = nRPStation; break;
+	case nRPixPlane: expectedParentType = nRPPot; break;
+	case nROC: expectedParentType = nRPixPlane; break;
+	case nPixel: expectedParentType = nROC; break;
+	default: expectedParentType = nUnknown; break;
+	}
 
-    if (expectedParentType != parentType)
-    {
-      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") << "Node " << XMLString::transcode(n->getNodeName())
-        << " not allowed within " << XMLString::transcode(parent->getNodeName()) << " block.\n";
-    }
+      if (expectedParentType != parentType)
+	{
+	  throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") << "Node " << XMLString::transcode(n->getNodeName())
+								  << " not allowed within " << XMLString::transcode(parent->getNodeName()) << " block.\n";
+	}
 
     // parse tag attributes
-    unsigned int id = 0;
-    bool id_set = false;
-    bool fullMask = false;
-    DOMNamedNodeMap* attr = n->getAttributes();
+      unsigned int id = 0;
+      bool id_set = false;
+      bool fullMask = false;
+      DOMNamedNodeMap* attr = n->getAttributes();
 
-    for (unsigned int j = 0; j < attr->getLength(); j++)
-    {
-      DOMNode *a = attr->item(j);
+      for (unsigned int j = 0; j < attr->getLength(); j++)
+	{
+	  DOMNode *a = attr->item(j);
 
-      if (!strcmp(XMLString::transcode(a->getNodeName()), "id"))
-      {
-        sscanf(XMLString::transcode(a->getNodeValue()), "%u", &id);
-        id_set = true;
-      }
+	  if (!strcmp(XMLString::transcode(a->getNodeName()), "id"))
+	    {
+	      sscanf(XMLString::transcode(a->getNodeValue()), "%u", &id);
+	      id_set = true;
+	    }
 
-      if (!strcmp(XMLString::transcode(a->getNodeName()), "full_mask"))
-        fullMask = (strcmp(XMLString::transcode(a->getNodeValue()), "no") != 0);
-    }
+	  if (!strcmp(XMLString::transcode(a->getNodeName()), "full_mask"))
+	    fullMask = (strcmp(XMLString::transcode(a->getNodeValue()), "no") != 0);
+	}
 
     // content control
-    if (!id_set)
-      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::ParseTreePixel") << "id not given for element `"
-       << XMLString::transcode(n->getNodeName()) << "'" << endl;
+      if (!id_set)
+	throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::ParseTreePixel") << "id not given for element `"
+										<< XMLString::transcode(n->getNodeName()) << "'" << endl;
 
-    if (type == nRPixPlane && id > 5)
-      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::ParseTreePixel") <<
-        "Plane IDs range from 0 to 5. id = " << id << " is invalid." << endl;
+      if (type == nRPixPlane && id > 5)
+	throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::ParseTreePixel") <<
+	  "Plane IDs range from 0 to 5. id = " << id << " is invalid." << endl;
 
 #ifdef DEBUG
-    printf("\tID found: %u\n", id);
+      printf("\tID found: %u\n", id);
 #endif
 
     // store mapping data
-    if (pType == pMapping && type == nROC)
-    {
-      const CTPPSPixelFramePosition &framepos = ChipFramePosition(n);
-      CTPPSPixelROCInfo rocInfo;
-      rocInfo.roc = id;
+      if (pType == pMapping && type == nROC)
+	{
+	  const CTPPSPixelFramePosition &framepos = ChipFramePosition(n);
+	  CTPPSPixelROCInfo rocInfo;
+	  rocInfo.roc = id;
 
-      const unsigned int armIdx = (parentID / 1000) % 10;
-      const unsigned int stIdx = (parentID / 100) % 10;
-      const unsigned int rpIdx = (parentID / 10) % 10;
-      const unsigned int plIdx = parentID % 10;
+	  const unsigned int armIdx = (parentID / 1000) % 10;
+	  const unsigned int stIdx = (parentID / 100) % 10;
+	  const unsigned int rpIdx = (parentID / 10) % 10;
+	  const unsigned int plIdx = parentID % 10;
 
-      rocInfo.iD = CTPPSPixelDetId(armIdx, stIdx, rpIdx, plIdx);
+	  rocInfo.iD = CTPPSPixelDetId(armIdx, stIdx, rpIdx, plIdx);
 
-      mapping->insert(framepos, rocInfo);
+	  mapping->insert(framepos, rocInfo);
 
-      continue;
-    }
+	  continue;
+	}
 
     // store mask data
-    if (pType == pMask && type == nROC)
-    {
-      const unsigned int armIdx = (parentID / 1000) % 10;
-      const unsigned int stIdx = (parentID / 100) % 10;
-      const unsigned int rpIdx = (parentID / 10) % 10;
-      const unsigned int plIdx = parentID % 10;
+      if (pType == pMask && type == nROC)
+	{
+	  const unsigned int armIdx = (parentID / 1000) % 10;
+	  const unsigned int stIdx = (parentID / 100) % 10;
+	  const unsigned int rpIdx = (parentID / 10) % 10;
+	  const unsigned int plIdx = parentID % 10;
 
 
-      uint32_t symbId = (id << offsetROCinDetId);
+	  uint32_t symbId = (id << offsetROCinDetId);
 
-      symbId |= CTPPSPixelDetId(armIdx, stIdx, rpIdx, plIdx);
+	  symbId |= CTPPSPixelDetId(armIdx, stIdx, rpIdx, plIdx);
 
 
-      CTPPSPixelROCAnalysisMask am;
-      am.fullMask = fullMask;
-      GetPixels(n, am.maskedPixels);
+	  CTPPSPixelROCAnalysisMask am;
+	  am.fullMask = fullMask;
+	  GetPixels(n, am.maskedPixels);
 
-      mask->insert(symbId, am);
+	  mask->insert(symbId, am);
 
-      continue;
-    }
+	  continue;
+	}
 
     // recursion (deeper in the tree)
-    ParseTreePixel(pType, n, type,  parentID * 10 + id, mapping, mask);
-  }
+      ParseTreePixel(pType, n, type,  parentID * 10 + id, mapping, mask);
+    }
 }
 
 
@@ -494,23 +489,23 @@ CTPPSPixelFramePosition CTPPSPixelDAQMappingESSourceXML::ChipFramePosition(xerce
 
   DOMNamedNodeMap* attr = chipnode->getAttributes();
   for (unsigned int j = 0; j < attr->getLength(); j++)
-  {
-    DOMNode *a = attr->item(j);
-
-    if (fp.setXMLAttribute(XMLString::transcode(a->getNodeName()), XMLString::transcode(a->getNodeValue()), attributeFlag) > 1)
     {
-      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") <<
-        "Unrecognized tag `" << XMLString::transcode(a->getNodeName()) <<
-        "' or incompatible value `" << XMLString::transcode(a->getNodeValue()) <<
-        "'." << endl;
+      DOMNode *a = attr->item(j);
+
+      if (fp.setXMLAttribute(XMLString::transcode(a->getNodeName()), XMLString::transcode(a->getNodeValue()), attributeFlag) > 1)
+	{
+	  throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") <<
+	    "Unrecognized tag `" << XMLString::transcode(a->getNodeName()) <<
+	    "' or incompatible value `" << XMLString::transcode(a->getNodeValue()) <<
+	    "'." << endl;
+	}
     }
-  }
 
   if (!fp.checkXMLAttributeFlag(attributeFlag))
-  {
-    throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") <<
-      "Wrong/incomplete DAQ channel specification (attributeFlag = " << attributeFlag << ")." << endl;
-  }
+    {
+      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML") <<
+	"Wrong/incomplete DAQ channel specification (attributeFlag = " << attributeFlag << ")." << endl;
+    }
 
   return fp;
 }
@@ -519,17 +514,17 @@ CTPPSPixelFramePosition CTPPSPixelDAQMappingESSourceXML::ChipFramePosition(xerce
 
 CTPPSPixelDAQMappingESSourceXML::NodeType CTPPSPixelDAQMappingESSourceXML::GetNodeType(xercesc::DOMNode *n)
 {
-  // common node types
+// common node types
   if (Test(n, tagArm)) return nArm;
   if (Test(n, tagROC)) return nROC;
 
-  // RP node types
+// RP node types
   if (Test(n, tagRPStation)) return nRPStation;
   if (Test(n, tagRPPot)) return nRPPot;
   if (Test(n, tagRPixPlane)) return nRPixPlane;
 
   throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::GetNodeType") << "Unknown tag `"
-    << XMLString::transcode(n->getNodeName()) << "'.\n";
+								       << XMLString::transcode(n->getNodeName()) << "'.\n";
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -538,50 +533,50 @@ void CTPPSPixelDAQMappingESSourceXML::GetPixels(xercesc::DOMNode *n, set<std::pa
 {
   DOMNodeList *children = n->getChildNodes();
   for (unsigned int i = 0; i < children->getLength(); i++)
-  {
-    DOMNode *n = children->item(i);
-    if (n->getNodeType() != DOMNode::ELEMENT_NODE || !Test(n, "pixel"))
-      continue;
-
-    DOMNamedNodeMap* attr = n->getAttributes();
-    bool pixelSet = false;
-    bool rowSet = false;
-    bool colSet = false;
-    std::pair<unsigned int, unsigned int> currentPixel;
-    for (unsigned int j = 0; j < attr->getLength(); j++)
     {
-      DOMNode *a = attr->item(j);
+      DOMNode *n = children->item(i);
+      if (n->getNodeType() != DOMNode::ELEMENT_NODE || !Test(n, "pixel"))
+	continue;
 
-      if (!strcmp(XMLString::transcode(a->getNodeName()), "row"))
-      {
-        unsigned int row = 0;
-        sscanf(XMLString::transcode(a->getNodeValue()), "%u", &row);
-        currentPixel.first = row;
-        rowSet = true;
-      }
-       if (!strcmp(XMLString::transcode(a->getNodeName()), "col"))
-      {
-        unsigned int col = 0;
-        sscanf(XMLString::transcode(a->getNodeValue()), "%u", &col);
-        currentPixel.second = col;
-        colSet = true;
-      }
+      DOMNamedNodeMap* attr = n->getAttributes();
+      bool pixelSet = false;
+      bool rowSet = false;
+      bool colSet = false;
+      std::pair<unsigned int, unsigned int> currentPixel;
+      for (unsigned int j = 0; j < attr->getLength(); j++)
+	{
+	  DOMNode *a = attr->item(j);
 
-      pixelSet = rowSet & colSet;
-      if(pixelSet){
-	pixels.insert(currentPixel);
-	break;
-      }
+	  if (!strcmp(XMLString::transcode(a->getNodeName()), "row"))
+	    {
+	      unsigned int row = 0;
+	      sscanf(XMLString::transcode(a->getNodeValue()), "%u", &row);
+	      currentPixel.first = row;
+	      rowSet = true;
+	    }
+	  if (!strcmp(XMLString::transcode(a->getNodeName()), "col"))
+	    {
+	      unsigned int col = 0;
+	      sscanf(XMLString::transcode(a->getNodeValue()), "%u", &col);
+	      currentPixel.second = col;
+	      colSet = true;
+	    }
+
+	  pixelSet = rowSet & colSet;
+	  if(pixelSet){
+	    pixels.insert(currentPixel);
+	    break;
+	  }
+	}
+
+
+
+      if (!pixelSet)
+	{
+	  throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::GetChannels") <<
+	    "Channel tags must have a row or col attribute.";
+	}
     }
-
-
-
-    if (!pixelSet)
-    {
-      throw cms::Exception("CTPPSPixelDAQMappingESSourceXML::GetChannels") <<
-        "Channel tags must have a row or col attribute.";
-    }
-  }
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -16,8 +16,7 @@ process.ctppsPixelDAQMappingESSourceXML.mappingFileNames = cms.vstring("CondForm
 ##process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.load("Configuration.StandardSequences.Services_cff")
 
-#process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1))
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1))
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10))
 
 process.source = cms.Source("PoolSource",
 # fileNames =  cms.untracked.vstring('file:rawdata.root')
@@ -65,12 +64,12 @@ process.ctppsPixelDigis.InputLabel = 'source'
 
 process.MessageLogger = cms.Service("MessageLogger",
     debugModules = cms.untracked.vstring('ctppsPixelDigis'),
-    destinations = cms.untracked.vstring('r2d'),
-    r2d = cms.untracked.PSet( threshold = cms.untracked.string('DEBUG'))
+    destinations = cms.untracked.vstring('r2d10'),
+    r2d10 = cms.untracked.PSet( threshold = cms.untracked.string('DEBUG'))
 )
 
 process.out = cms.OutputModule("PoolOutputModule",
-    fileName =  cms.untracked.string('file:digis_PixelAlive_1294_151_RAW_v2.root'),
+    fileName =  cms.untracked.string('file:digis_PixelAlive_1294_151_RAW_v2_10.root'),
 #    fileName =  cms.untracked.string('file:/afs/cern.ch/work/d/dkotlins/public/data/digis/digis_1k.root'),
     outputCommands = cms.untracked.vstring("keep *")
 )

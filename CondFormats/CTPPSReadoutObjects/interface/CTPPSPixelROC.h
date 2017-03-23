@@ -4,11 +4,7 @@
 #include "CondFormats/Serialization/interface/Serializable.h"
 
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelIndices.h"
-/*
-#include "CondFormats/SiPixelObjects/interface/FrameConversion.h"
-#include "CondFormats/SiPixelObjects/interface/LocalPixel.h"
-#include "CondFormats/SiPixelObjects/interface/GlobalPixel.h"
-*/
+
 #include <boost/cstdint.hpp>
 #include <string>
 
@@ -23,7 +19,6 @@
 class CTPPSPixelROC {
 public:
 
-  /// dummy
 CTPPSPixelROC() : theDetUnit(0), theIdDU(0), theIdLk(0) {
     theIndices = new CTPPSPixelIndices();
   } 
@@ -43,9 +38,6 @@ CTPPSPixelROC() : theDetUnit(0), theIdDU(0), theIdLk(0) {
   /// id of this ROC in parent Link.
   unsigned int idInLink() const { return theIdLk; }
 
-  /// converts DU position to local. 
-  /// If GlobalPixel is outside ROC the resulting LocalPixel is not inside ROC.
-  /// (call to inside(..) recommended)
   std::pair<int,int>  toLocal(const std::pair<int,int> &modulePixel ) const {
  
     int rocPixelRow, rocPixelColumn, idDU;
@@ -76,7 +68,6 @@ CTPPSPixelROC() : theDetUnit(0), theIdDU(0), theIdLk(0) {
     return modulePixel;
 
   }
-
 
   std::pair<int,int>  toGlobalfromDcol(const std::pair<int,int> &rocPixel ) const {
  

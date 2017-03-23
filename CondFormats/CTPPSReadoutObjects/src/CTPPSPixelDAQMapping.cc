@@ -1,10 +1,10 @@
 /****************************************************************************
-*
-* 
-* Authors: 
-* F.Ferro ferro@ge.infn.it
-*
-****************************************************************************/
+ *
+ * 
+ * Authors: 
+ * F.Ferro ferro@ge.infn.it
+ *
+ ****************************************************************************/
 
 #include "FWCore/Utilities/interface/typelookup.h"
 
@@ -16,10 +16,10 @@ using namespace std;
 
 std::set<unsigned int> CTPPSPixelDAQMapping::fedIds() const {
   std::set<unsigned int> fedSet;
-   for (const auto &p : ROCMapping){
-     fedSet.insert(p.first.getFEDId() );
-   }
-   return fedSet;
+  for (const auto &p : ROCMapping){
+    fedSet.insert(p.first.getFEDId() );
+  }
+  return fedSet;
 }
 
 std::ostream& operator << (std::ostream& s, const CTPPSPixelROCInfo &vi)
@@ -35,14 +35,10 @@ void CTPPSPixelDAQMapping::insert(const CTPPSPixelFramePosition &fp, const CTPPS
 {
   auto it = ROCMapping.find(fp);  
   if (it != ROCMapping.end())
-  {
-    cerr << "WARNING in DAQMapping::insert > Overwriting entry at " << fp << ". Previous: " << endl 
-      << "    " << ROCMapping[fp] << "," << endl << "  new: " << endl << "    " << vi << ". " << endl;
-  }
+    {
+      cerr << "WARNING in DAQMapping::insert > Overwriting entry at " << fp << ". Previous: " << endl 
+	   << "    " << ROCMapping[fp] << "," << endl << "  new: " << endl << "    " << vi << ". " << endl;
+    }
 
   ROCMapping[fp] = vi;
 }
-
-//----------------------------------------------------------------------------------------------------
-
-//TYPELOOKUP_DATA_REG(CTPPSPixelDAQMapping);

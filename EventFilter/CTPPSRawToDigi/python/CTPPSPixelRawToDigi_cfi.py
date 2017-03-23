@@ -4,9 +4,9 @@ import FWCore.ParameterSet.Config as cms
 ctppsPixelDigis = cms.EDProducer(
     "CTPPSPixelRawToDigi",
     #Timing = cms.untracked.bool(False)
-    IncludeErrors = cms.bool(False),
+#    IncludeErrors = cms.bool(False),
     InputLabel = cms.InputTag("ctppsPixelRawData"),
-    UseQualityInfo = cms.bool(False),
+#    UseQualityInfo = cms.bool(False),
     ## ErrorList: list of error codes used by tracking to invalidate modules
     #ErrorList = cms.vint32(29)
     ## UserErrorList: list of error codes used by Pixel experts for investigation
