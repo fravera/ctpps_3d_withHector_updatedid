@@ -7,8 +7,14 @@ process.load("FWCore.MessageLogger.MessageLogger_cfi")
 ############### using only CTPPS geometry
 #process.load("Configuration.Geometry.geometry_CTPPS_cfi")
 process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
-process.ctppsPixelDAQMappingESSourceXML.mappingFileNames = cms.vstring("CondFormats/CTPPSReadoutObjects/xml/rpix_mapping_220_far_TEST1.xml")
-#
+process.ctppsPixelDAQMappingESSourceXML.configuration = cms.VPSet(
+    # example configuration block:
+    cms.PSet(
+        validityRange = cms.EventRange("1:min - 999999999:max"),
+        mappingFileNames = cms.vstring("CondFormats/CTPPSReadoutObjects/xml/rpix_mapping_220_far_TEST.xml"),
+        maskFileNames = cms.vstring("CondFormats/CTPPSReadoutObjects/xml/rpix_channel_mask_TEST.xml")
+        )
+    )
 
 #process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 #process.load("Configuration.StandardSequences.MagneticField_38T_cff")
