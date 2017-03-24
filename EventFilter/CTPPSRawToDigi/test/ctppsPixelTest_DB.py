@@ -1,13 +1,37 @@
 import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("myCTPPSRawToDigi")
-
+process.load("Configuration.StandardSequences.Services_cff")
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 
-process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
-process.ctppsPixelDAQMappingESSourceXML.mappingFileNames = cms.vstring("CondFormats/CTPPSReadoutObjects/xml/rpix_mapping_220_far_TEST1.xml")
+process.source = cms.Source("EmptyIOVSource",
+    timetype = cms.string('runnumber'),
+    firstValue = cms.uint64(1),
+    lastValue = cms.uint64(1),
+    interval = cms.uint64(1)
+)
+#Database output service
 
-process.load("Configuration.StandardSequences.Services_cff")
+process.load("CondCore.CondDB.CondDB_cfi")
+# input database (in this case local sqlite file)
+process.CondDB.connect = 'sqlite_file:../../../CalibForward/CTPPSPixelCalibration/test/CTPPSPixel_DAQMapping_AnalysisMask_TEST.db'
+
+process.PoolDBESSource = cms.ESSource("PoolDBESSource",
+    process.CondDB,
+    DumpStat=cms.untracked.bool(True),
+    toGet = cms.VPSet(
+      cms.PSet(
+        record = cms.string('CTPPSPixelDAQMappingRcd'),
+        tag = cms.string("PixelDAQMapping"),
+        label = cms.untracked.string("RPix")
+      ),
+      cms.PSet(
+        record = cms.string('CTPPSPixelAnalysisMaskRcd'),
+        tag = cms.string("PixelAnalysisMask"),
+        label = cms.untracked.string("RPix")
+      )
+    )
+)
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1))
 
@@ -32,7 +56,7 @@ process.MessageLogger = cms.Service("MessageLogger",
 )
 
 process.out = cms.OutputModule("PoolOutputModule",
-    fileName =  cms.untracked.string('file:digis_PixelAlive_1294_151_RAW_v2.root'),
+    fileName =  cms.untracked.string('file:digis_PixelAlive_1294_151_RAW_v2_DB.root'),
     outputCommands = cms.untracked.vstring("keep *")
 )
 
