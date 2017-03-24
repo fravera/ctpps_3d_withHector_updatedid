@@ -58,7 +58,7 @@ fileNames =  cms.untracked.vstring(
 # for MC 
 ##process.GlobalTag.globaltag = "MC_71_V1::All"
 
-process.load("EventFilter.CTPPSRawToDigi.CTPPSPixelRawToDigi_cfi")
+process.load("EventFilter.CTPPSRawToDigi.ctppsPixelRawToDigi_cfi")
 # for simultaions 
 #process.ctppsPixelDigis.InputLabel = 'ctppsPixelRawData'
 # for data
