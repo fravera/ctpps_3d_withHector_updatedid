@@ -20,7 +20,16 @@ process.dqmSaver.tag = "CTPPS"
 
 # raw data source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:/afs/cern.ch/user/j/jkaspar/public/run273062_ls0001-2_stream.root')
+#fileNames=cms.untracked.vstring('file:/afs/cern.ch/user/j/jkaspar/public/run273062_ls0001-2_stream.root')
+labelRawDataLikeMC = cms.untracked.bool(False),
+fileNames = 
+#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/run273062_ls0001-2_stream.root')
+#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/simevent_CTPPS_DIG_CLU_100.root')
+#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/simevent_CTPPS_DIG_CLU_2_TEST_5000.root')
+#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/digis_PixelAlive_1294_153_RAW_v3.root')
+cms.untracked.vstring('file:../../../EventFilter/CTPPSRawToDigi/test/digis_PixelAlive_1294_151_RAW_v2.root')
+#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/digis_PixelAlive_1294_151_RAW_v2_900p1.root')
+
 )
 
 process.maxEvents = cms.untracked.PSet(
@@ -28,21 +37,30 @@ process.maxEvents = cms.untracked.PSet(
 )
 
 # raw-to-digi conversion
-process.load("EventFilter.CTPPSRawToDigi.totemRawToDigi_cff")
+#process.load("EventFilter.TotemRawToDigi.totemRawToDigi_cff")
 
 # local RP reconstruction chain with standard settings
-process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
+#process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 
 # CTPPS DQM modules
-process.load("DQM.CTPPS.totemDQM_cff")
+#process.load("DQM.CTPPS.totemDQM_cff")
+process.load("DQM.CTPPS.rPixDQM_cff")
+
+process.options = cms.untracked.PSet(
+#    Rethrow = cms.untracked.vstring('ProductNotFound',
+    SkipEvent = cms.untracked.vstring('ProductNotFound',
+        'TooManyProducts',
+        'TooFewProducts')
+)
 
 process.path = cms.Path(
-  process.totemTriggerRawToDigi *
-  process.totemRPRawToDigi *
+#  process.totemTriggerRawToDigi *
+#  process.totemRPRawToDigi *
 
-  process.recoCTPPS *
+#  process.recoCTPPS *
 
-  process.totemDQM
+#  process.totemDQM +
+  process.rPixDQM
 )
 
 process.end_path = cms.EndPath(
