@@ -20,18 +20,6 @@
 #include "DQMServices/Core/interface/MonitorElement.h"
 
 #include "DataFormats/Common/interface/DetSetVector.h"
-//#include "DataFormats/TotemRPDetId/interface/TotemRPDetId.h"
-//#include "DataFormats/TotemDigi/interface/TotemRPDigi.h"
-//#include "DataFormats/TotemDigi/interface/TotemVFATStatus.h"
-//#include "DataFormats/CTPPSReco/interface/TotemRPCluster.h"
-//#include "DataFormats/CTPPSReco/interface/TotemRPRecHit.h"
-//#include "DataFormats/CTPPSReco/interface/TotemRPUVPattern.h"
-//#include "DataFormats/CTPPSReco/interface/TotemRPLocalTrack.h"
-//#include "RecoTotemRP/RPRecoDataFormats/interface/RPMulFittedTrackCollection.h"
-
-//#include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
-//#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
-//#include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
 
 #include "DataFormats/CTPPSDetId/interface/CTPPSDetId.h"
 #include "DataFormats/CTPPSDigi/interface/CTPPSPixelDigi.h"
@@ -157,7 +145,7 @@ RPixDQMSource::~RPixDQMSource()
 
 void RPixDQMSource::dqmBeginRun(edm::Run const &run, edm::EventSetup const &)
 {
-// printf("RPixDQMSource::dqmBeginRun()\n");
+ if(verbosity) printf("RPixDQMSource::dqmBeginRun(): RunID=%d\n",run.run());
  nEvents = 0;
  for(int i=0; i<2; i++) pixColRow[i] = -1;
  multHits = multClus = cluSizeMaxData = ADCmax = -1;
@@ -183,7 +171,7 @@ void RPixDQMSource::bookHistograms(DQMStore::IBooker &ibooker, edm::Run const &,
 
   ROCSizeInX = pixRowMAX/2;  // ROC row size in pixels = 80
   ROCSizeInY = pixColMAX/3;
-  printf("bookHistograms: sizeX/Y=%d/%d ROCSizeInX/Y=%d/%d\n",
+  if(verbosity) printf("bookHistograms: sizeX/Y=%d/%d ROCSizeInX/Y=%d/%d\n",
 	pixColMAX,pixRowMAX,ROCSizeInX,ROCSizeInY);
 
   ibooker.cd();
@@ -204,12 +192,12 @@ void RPixDQMSource::bookHistograms(DQMStore::IBooker &ibooker, edm::Run const &,
    CTPPSDetId stId(CTPPSDetId::sdTrackingPixel,arm, stn);
    string title;
    CTPPSDetId(stId).stationName(title, CTPPSDetId::nShort);
-   printf("arm/stn = %d/%d stId=0x%x ",arm,stn,int(stId));
-   cout<<"title: "<<title<<endl;
+   if(verbosity) { printf("arm/stn = %d/%d stId=0x%x ",arm,stn,int(stId));
+	cout<<"title: "<<title<<endl;}
 
    sprintf(s,"CTPPS/RPix/Arm_%1d/Station_",arm);
    string s2 = string(s) + string(title);
-   cout<<"s+title: "<<s2<<endl;
+   if(verbosity) cout<<"s+title: "<<s2<<endl;
    ibooker.setCurrentFolder(s2);
 
    sprintf(s,"(arm=%d Station_",arm);
@@ -324,7 +312,7 @@ hp2xyADC[indexP][p]=ibooker.bookProfile2D(st,st,nbins,0,pixRowMAX,nbins,0,pixRow
   } // end of for(int stn=0; stn<2; stn++
   } //end of for(int arm=0; arm<2;...
 
-   printf("bookHistograms: end\n");
+  if(verbosity) printf("bookHistograms: end\n");
  return;
 }
 
@@ -361,7 +349,7 @@ void RPixDQMSource::analyze(edm::Event const& event, edm::EventSetup const& even
   valid &= Clus.isValid();
 //  valid &= hits.isValid();
 
- if(!valid && verbosity>1) 
+ if(!valid && verbosity>2) 
 printf("pixDigi/cluster.isValid()=%d/%d\n",pixDigi.isValid(),Clus.isValid());
 
   int ind = 0;
@@ -369,7 +357,7 @@ printf("pixDigi/cluster.isValid()=%d/%d\n",pixDigi.isValid(),Clus.isValid());
   {
    int idet = getDet(ds_digi.id);
    if(idet != DetId::VeryForward) {
-     if(verbosity) printf("not CTPPS: ds_digi.id=0x%x\n",ds_digi.id);
+     if(verbosity>1) printf("not CTPPS: ds_digi.id=0x%x\n",ds_digi.id);
      continue;
    }
    int subdet = getSubdet(ds_digi.id);
@@ -383,7 +371,7 @@ printf("pixDigi/cluster.isValid()=%d/%d\n",pixDigi.isValid(),Clus.isValid());
   CTPPSDetId(ds_digi.id).stationName(title, CTPPSDetId::nShort);
 //  cout<<"title: "<<title<<endl;
 
-  if(verbosity) printf(
+  if(verbosity>1) printf(
  "[%d]RpixAnalyser::digi : 0x%x(idet/subdet: 0x%x / 0x%x) arm/station=%d/%d rp/plane=%d/%d\n",
         ind++,ds_digi.id,idet,subdet,arm,station,rpot,plane);
 
@@ -396,7 +384,7 @@ printf("pixDigi/cluster.isValid()=%d/%d\n",pixDigi.isValid(),Clus.isValid());
    h2RPotActive[arm]->Fill(rpot,station);
    h2PlaneActive[arm]->Fill(plane,rpot);
 
- if(verbosity)
+ if(verbosity>1)
    printf("ds_digi.data.size()=%d\n",(int)ds_digi.data.size());
      int rocHistIndex = getPlaneIndex(arm,station,rpot,plane);
 
@@ -420,7 +408,7 @@ for(DetSet<CTPPSPixelDigi>::const_iterator dit = ds_digi.begin();
      h2xyROCHits[rocHistIndex][trocId]->Fill(rowROC,colROC);
    }
 
-     if(verbosity>1)
+     if(verbosity>2)
      printf("packedData = 0x%x row/column=%d/%d adc=%d rocId=%d RocHistIndex=%d\n",
 	pkdata,row,col,adc,trocId,rocHistIndex);
    }
@@ -437,13 +425,13 @@ for(DetSet<CTPPSPixelDigi>::const_iterator dit = ds_digi.begin();
    int plane = getPixPlane(ds.id);
    int arm = CTPPSDetId(ds.id).arm()&0x1;
    int rpot = CTPPSDetId(ds.id).rp();
-  if(verbosity>1) printf(
+  if(verbosity>2) printf(
  "[%d]RpixAnalyser::Cluster : 0x%x(0x%x / 0x%x) arm/station=%d/%d rp/plane=%d/%d \n",
         ind++,ds.id,idet,subdet,arm,station,rpot,plane);
 
    h2ClusMultipl[arm]->Fill(prIndex(rpot,plane),ds.data.size());
    if(multClus < (int)ds.data.size()) multClus = ds.data.size();
- if(verbosity)
+ if(verbosity>1)
    printf("ds.data.size()=%d:-----\n",(int)ds.data.size());
    for (const auto &p : ds) {
 //     int isize = p.size();
@@ -453,7 +441,7 @@ for(DetSet<CTPPSPixelDigi>::const_iterator dit = ds_digi.begin();
   } // end 'for(const auto &ds : *Clus)'
 
   if((nEvents % 50)) return;
-  printf("TotemAnalyser::analyze event= %d\n",(int)nEvents);
+  if(verbosity) printf("RPixAnalyser::analyze event= %d\n",(int)nEvents);
 }
 
 //--------------------------------------------------------------
@@ -464,7 +452,8 @@ void RPixDQMSource::endLuminosityBlock(edm::LuminosityBlock const& lumiSeg, edm:
 //----------------------------------------------------------------------------------------------------
 void RPixDQMSource::endRun(edm::Run const& run, edm::EventSetup const& eSetup)
 {
-  printf("end of Run: %d events\n",(int)nEvents);
+ if(!verbosity) return; 
+  printf("end of Run %d: %d events\n",run.run(),(int)nEvents);
   printf("column/row max: %d / %d\n",pixColRow[0],pixColRow[1]);
   printf("mult Hits/Clus: %d / %d\n",multHits,multClus);
   printf("cluSizeMaxData=%d adcMax= %d\n",cluSizeMaxData,ADCmax);
