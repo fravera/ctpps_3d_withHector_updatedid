@@ -64,6 +64,9 @@ void RPixDummyROCSimulator::ConvertChargeToHits(const std::map<unsigned short, d
       int row = pixel_no % 160;
       int adc = int(i->second / electron_per_adc_);
 
+/// set maximum for 8 bits adc
+      if (adc >=255) adc=255;
+
       output_digi.push_back(CTPPSPixelDigi(row,col,adc) );//(det_id_, pixel_no)); /// ?????????????????????????????????????? devo metterci row, col e conteggi adc
       if(links_persistence_)
       {
