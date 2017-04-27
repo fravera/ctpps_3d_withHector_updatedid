@@ -59,8 +59,8 @@
 
 <!-- pixel objects -->
 
-  <class name="CTPPSPixelCluster" ClassVersion="4">
-    <version ClassVersion="4" checksum="2185583283"/>
+  <class name="CTPPSPixelCluster" ClassVersion="5">
+    <version ClassVersion="5" checksum="2858478211"/>
   </class>
   <class name="edm::DetSet<CTPPSPixelCluster>"/>
   <class name="std::vector<CTPPSPixelCluster>"/>
