@@ -22,7 +22,7 @@ class RPixCalibDigi : public CTPPSPixelDigi {
 
 public:
 
-RPixCalibDigi(int row, int col, int adc, int ele) : CTPPSPixelDigi(row,col,adc){
+RPixCalibDigi(unsigned char row, unsigned char col, unsigned short adc, unsigned short ele) : CTPPSPixelDigi(row,col,adc){
     electrons_ = ele;
   }
 
@@ -76,26 +76,26 @@ public:
 {
   isize=0; 
   curr=0; 
-  rowmin=16000; 
-  colmin=16000;
+  rowmin=255; 
+  colmin=255;
 }
   ~tempCluster(){}
 
     static constexpr unsigned short MAXSIZE = 256;
-    unsigned short adc[256];
-    unsigned short row[256];
-    unsigned short col[256];
-    unsigned short rowmin;
-    unsigned short colmin;
-    unsigned int isize;
-    unsigned int curr;
+    unsigned short adc[MAXSIZE];
+    unsigned char row[MAXSIZE];
+    unsigned char col[MAXSIZE];
+    unsigned char rowmin;
+    unsigned char colmin;
+    unsigned short isize;
+    unsigned short curr;
 
     // stack interface (unsafe ok for use below)
     unsigned short top() const { return curr;}
     void pop() { ++curr;}   
     bool empty() { return curr==isize;}
 
-    bool addPixel(unsigned short myrow, unsigned short mycol, unsigned short const iadc) {
+    bool addPixel(unsigned char myrow, unsigned char mycol, unsigned short const iadc) {
       if (isize==MAXSIZE) return false;
       rowmin=std::min(rowmin,myrow);
       colmin=std::min(colmin,mycol);
@@ -111,7 +111,7 @@ public:
 	std::cout << "tempCluster size: " << isize << std::endl;
 	std::cout << "row, col, adc " <<  std::endl;
 	for(unsigned int i = 0; i < isize; i++){
-	  std::cout << row[i]<<", " << col[i] << ", "<< adc[i] << std::endl;
+	  std::cout << int(row[i])<<", " << int(col[i]) << ", "<< adc[i] << std::endl;
 	}
       }
     }
