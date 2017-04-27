@@ -8,28 +8,18 @@ void CTPPSPixelDigiCollection::put(Range input, unsigned int detID) {
 /// store size of vector before put
   IndexRange inputRange;
 
-/// put in CTPPSPixelDigis from input
-  bool first = true;
-
 /// fill input in temporary vector for sorting
   std::vector<CTPPSPixelDigi> temporary;
+
   auto sort_begin = input.first;
   auto sort_end = input.second;
-  for ( ;sort_begin != sort_end; ++sort_begin ) {
-    temporary.push_back(*sort_begin);
-  }
+
+  temporary.insert(std::end(temporary), sort_begin, sort_end);
+
   std::sort(temporary.begin(),temporary.end());
 
-/// iterators over input
-  auto begin = temporary.begin();
-  auto end = temporary.end();
-  for ( ;begin != end; ++begin ) {
-    container_.push_back(*begin);
-    if ( first ) {
-      inputRange.first = container_.size()-1;
-      first = false;
-    }
-  }
+  inputRange.first=container_.size();
+  container_.insert(std::end(container_), std::begin(temporary), std::end(temporary));
   inputRange.second = container_.size()-1;
   
 /// fill map
@@ -60,6 +50,7 @@ const std::vector<unsigned int> CTPPSPixelDigiCollection::detIDs() const {
   auto end   = map_.end();
 
   std::vector<unsigned int> output;
+  output.reserve(12);
 
   for (; begin != end; ++begin) {
     output.push_back(begin->first);
