@@ -102,6 +102,11 @@ void RPixDetClusterizer::make_cluster(RPixCalibDigi aSeed,  std::vector<CTPPSPix
 //  int max_rows_in_sensor=160;
 //  int max_cols_in_sensor=156;
 
+/// check if seed already used
+  if(calib_rpix_digi_set_.size()==0 || calib_rpix_digi_set_.find(aSeed)==calib_rpix_digi_set_.end() ){
+    return;
+  }
+
 
 // creating a temporary cluster
 

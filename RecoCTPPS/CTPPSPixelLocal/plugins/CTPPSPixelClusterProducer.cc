@@ -1,27 +1,6 @@
 
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "RecoCTPPS/CTPPSPixelLocal/interface/CTPPSPixelClusterProducer.h"
-
-// user include files
-#include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/EDProducer.h"
-
-#include "FWCore/Framework/interface/Event.h"
-#include "FWCore/Framework/interface/MakerMacros.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-
-
-//needed for the geometry:
-#include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/ESHandle.h"
-
-
-#include <vector>
-#include <memory>
-#include <string>
-#include <iostream>
-//#include <cstdlib> // I need it for random numbers
 
 CTPPSPixelClusterProducer::CTPPSPixelClusterProducer(const edm::ParameterSet& conf) :
   param_(conf) ,
@@ -33,71 +12,45 @@ CTPPSPixelClusterProducer::CTPPSPixelClusterProducer(const edm::ParameterSet& co
   tokenCTPPSPixelDigi_ = consumes<edm::DetSetVector<CTPPSPixelDigi> >(edm::InputTag(src_));
  
   produces<edm::DetSetVector<CTPPSPixelCluster> > ();
-}
+  }
 
 CTPPSPixelClusterProducer::~CTPPSPixelClusterProducer() {
 
 }
 
-
-// ------------ method called to produce the data  ------------
 void CTPPSPixelClusterProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
-   
- 
-// Step A: get inputs
+  
+/// get inputs
+  edm::Handle<edm::DetSetVector<CTPPSPixelDigi> > rpd;
+  iEvent.getByToken(tokenCTPPSPixelDigi_, rpd);
+  
+/// get DAQ mapping
+  edm::ESHandle<CTPPSPixelDAQMapping> mapping;
+  iSetup.get<CTPPSPixelDAQMappingRcd>().get("RPix",mapping);
 
-	edm::Handle<edm::DetSetVector<CTPPSPixelDigi> > rpd;
-	iEvent.getByToken(tokenCTPPSPixelDigi_, rpd);
-
- // get mappings
- //----------------------------------
-/*
-	edm::ESHandle<TotemRPGeometry> geometry;
-	iSetup.get<VeryForwardMeasuredGeometryRecord>().get(geometry);
-
-	geometryWatcher.check(iSetup);
-*/
-  // get DAQ mapping
-	edm::ESHandle<CTPPSPixelDAQMapping> mapping;
-	iSetup.get<CTPPSPixelDAQMappingRcd>().get("RPix",mapping);
-
-  // get analysis mask to mask channels
-	edm::ESHandle<CTPPSPixelAnalysisMask> analysisMask;
-	iSetup.get<CTPPSPixelAnalysisMaskRcd>().get("RPix",analysisMask);
-
-// dry checks to be removed
-
- // print mapping
-  printf("* DAQ mapping\n");
+// get analysis mask to mask channels
+  edm::ESHandle<CTPPSPixelAnalysisMask> analysisMask;
+  iSetup.get<CTPPSPixelAnalysisMaskRcd>().get("RPix",analysisMask);
+  
+// print mapping
   for (const auto &p : mapping->ROCMapping)
-    std::cout << "    " << p.first << " -> " << p.second << std::endl;
-
-  // print mapping
-  printf("* mask\n");
+    LogDebug ("DAQ mapping") << "    " << p.first << " -> " << p.second;
+  
+// print channel mask
   for (const auto &p : analysisMask->analysisMask){
-    std::cout << "    " << p.first
-      << ": fullMask=" << p.second.fullMask
-	      << ", number of masked pixels " << p.second.maskedPixels.size() << std::endl;
-    
-
-
+    LogDebug ("Channel Mask ") << "    " << p.first
+			       << ": fullMask=" << p.second.fullMask
+			       << ", number of masked pixels " << p.second.maskedPixels.size();
   }
-//---------------------------------------------
 
-
-      //     theClusterVector.reserve(400);
-      //    theClusterVector.clear();
-
-	edm::DetSetVector<CTPPSPixelCluster>  output;
+  edm::DetSetVector<CTPPSPixelCluster>  output;
 
 // run clusterisation
-	if (rpd->size())
-	  run(*rpd, output);
+  if (rpd->size())
+    run(*rpd, output);
 
-
-        // Step D: write output to file
-       
-	iEvent.put(std::make_unique<edm::DetSetVector<CTPPSPixelCluster> >(output));
+// write output
+  iEvent.put(std::make_unique<edm::DetSetVector<CTPPSPixelCluster> >(output));
 
 }
 
@@ -109,19 +62,15 @@ void CTPPSPixelClusterProducer::run(const edm::DetSetVector<CTPPSPixelDigi> &inp
  
       clusterizer_.buildClusters(ds_digi.id, ds_digi.data, ds_cluster.data);
 
-//-----------------------------------
+
+// --- to be removed before PR
       unsigned int cluN=0;
       for(std::vector<CTPPSPixelCluster>::iterator iit = ds_cluster.data.begin(); iit != ds_cluster.data.end(); iit++){
-	
-	if(verbosity_)	std::cout << "Cluster " << ++cluN <<" avg row " << (*iit).avg_row()<< " avg col " << (*iit).avg_col()<<" ADC.size " << (*iit).size()<<std::endl;
-
-
-
-
-
+		if(verbosity_)	std::cout << "Cluster " << ++cluN <<" avg row " << (*iit).avg_row()<< " avg col " << (*iit).avg_col()<<" ADC.size " << (*iit).size()<<std::endl;
       }
+// ---
 
-//-----------------------------------
+
     }
 }
 
