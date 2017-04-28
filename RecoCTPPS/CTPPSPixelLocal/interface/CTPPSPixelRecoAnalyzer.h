@@ -40,11 +40,27 @@ class CTPPSPixelRecoAnalyzer : public edm::EDAnalyzer{
   
  private:
 
+/*
  TH2D *hAllHits;
  TH2D *hOneHitperEvent;
  TH2D *hOneHitperEvent2;
  TH2D *hOneHitperEventCenter;
  TH2D *hOneHitperEvent2Center;
+*/
+
+  TH1D *hDeltaRecoSim;
+  TH1D *hDeltaXRecoSim;
+  TH1D *hDeltaYRecoSim;
+
+  TH1D *hDeltaRecoSimS1;
+  TH1D *hDeltaXRecoSimS1;
+  TH1D *hDeltaYRecoSimS1;
+
+  TH1D *hDeltaRecoSimS2;
+  TH1D *hDeltaXRecoSimS2;
+  TH1D *hDeltaYRecoSimS2;
+
+
   TFile *file;
   std::string label;
 

@@ -116,7 +116,7 @@ void RPixCluster2Hit::make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPix
 //temporary +++++
   LocalPoint lp(avgLocalX,avgLocalY,0);
   LocalError le(0,0,0);
-  CTPPSPixelRecHit rh(lp,le,anEdgePixel,aBadPixel,twoRocs);
+  CTPPSPixelRecHit rh(lp,le,anEdgePixel,aBadPixel,twoRocs,thisClusterMinRow,thisClusterMinCol,thisClusterSize,thisClusterRowSize,thisClusterColSize);
   std::cout << lp << std::endl;
 
   hits.push_back(rh);

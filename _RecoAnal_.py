@@ -4,7 +4,7 @@ process = cms.Process("FF")
 
 # Specify the maximum events to simulate
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
+    input = cms.untracked.int32(-1)
 )
 
 
@@ -20,7 +20,7 @@ duplicateCheckMode = cms.untracked.string("noDuplicateCheck"),
 
 process.recoAnal = cms.EDAnalyzer("CTPPSPixelRecoAnalyzer",
       label=cms.untracked.string("rechitProd"),
-     Verbosity = cms.int32(3),
+     Verbosity = cms.int32(0),
                                   RPixVerbosity = cms.int32(0),
    RPixActiveEdgeSmearing = cms.double(0.020),
     RPixActiveEdgePosition = cms.double(0.150)
