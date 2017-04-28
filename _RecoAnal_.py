@@ -18,7 +18,6 @@ duplicateCheckMode = cms.untracked.string("noDuplicateCheck"),
 )
 
 
-
 process.recoAnal = cms.EDAnalyzer("CTPPSPixelRecoAnalyzer",
       label=cms.untracked.string("rechitProd"),
      Verbosity = cms.int32(3),
