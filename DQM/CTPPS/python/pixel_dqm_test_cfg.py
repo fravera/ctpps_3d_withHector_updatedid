@@ -1,12 +1,13 @@
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process('RECODQM')
+#process = cms.Process('RECODQM')
+process = cms.Process('CTPPSDQM')
 
 # minimum of logs
 process.MessageLogger = cms.Service("MessageLogger",
     statistics = cms.untracked.vstring(),
-    destinations = cms.untracked.vstring('cout'),
-    cout = cms.untracked.PSet(
+    destinations = cms.untracked.vstring('cerr'),
+    cerr = cms.untracked.PSet(
         threshold = cms.untracked.string('WARNING')
     )
 )
@@ -23,12 +24,10 @@ process.source = cms.Source("PoolSource",
 #fileNames=cms.untracked.vstring('file:/afs/cern.ch/user/j/jkaspar/public/run273062_ls0001-2_stream.root')
 labelRawDataLikeMC = cms.untracked.bool(False),
 fileNames = 
-#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/run273062_ls0001-2_stream.root')
-#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/simevent_CTPPS_DIG_CLU_100.root')
 #cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/simevent_CTPPS_DIG_CLU_2_TEST_5000.root')
-#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/digis_PixelAlive_1294_153_RAW_v3.root')
-cms.untracked.vstring('file:/afs/cern.ch/user/f/fabferro/WORKSPACE/private/CMSSW_9_1_0_pre1/src/EventFilter/CTPPSRawToDigi/test/digis_run292779_RAW.root')
-#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/scratch_bk/data/digis_PixelAlive_1294_151_RAW_v2_900p1.root')
+#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/public/CTPPS/data/digis_PixelAlive_1294_151_RAW_v2_900p1.root')
+#cms.untracked.vstring('file:/afs/cern.ch/user/p/popov/public/CTPPS/data/digis_PixelAlive_P5_2_RAW.root')
+cms.untracked.vstring('root://eoscms//eos/cms/store/group/dpg_ctpps/comm_ctpps/digis_PixelAlive_P5_2_RAW.root')
 
 )
 
@@ -37,14 +36,16 @@ process.maxEvents = cms.untracked.PSet(
 )
 
 # raw-to-digi conversion
+process.load("EventFilter.CTPPSRawToDigi.ctppsRawToDigi_cff")
 #process.load("EventFilter.TotemRawToDigi.totemRawToDigi_cff")
 
 # local RP reconstruction chain with standard settings
-#process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
+process.load('Geometry.VeryForwardGeometry.geometryRP_cfi')
+process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 
 # CTPPS DQM modules
-#process.load("DQM.CTPPS.totemDQM_cff")
-process.load("DQM.CTPPS.rPixDQM_cff")
+process.load("DQM.CTPPS.totemDQM_cff")
+process.load("DQM.CTPPS.ctppsDQM_cff")
 
 process.options = cms.untracked.PSet(
 #    Rethrow = cms.untracked.vstring('ProductNotFound',
@@ -54,13 +55,9 @@ process.options = cms.untracked.PSet(
 )
 
 process.path = cms.Path(
-#  process.totemTriggerRawToDigi *
-#  process.totemRPRawToDigi *
-
-#  process.recoCTPPS *
-
-#  process.totemDQM +
-  process.rPixDQM
+  process.ctppsRawToDigi *
+  process.recoCTPPS +
+  process.ctppsDQM
 )
 
 process.end_path = cms.EndPath(
