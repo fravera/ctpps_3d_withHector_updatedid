@@ -20,7 +20,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 ############### using only CTPPS geometry 
 process.load("Configuration.Geometry.geometry_CTPPS_cfi")
 ##########SimTransport###########
-process.load('SimTransport.HectorProducerForCTPPS.HectorTransport_cfi')
+process.load('SimTransport.HectorProducer.HectorTransportCTPPS_cfi')
 
 process.load("SimG4Core.Application.g4SimHits_cfi")
 process.g4SimHits.Generator.ApplyPCuts          = False

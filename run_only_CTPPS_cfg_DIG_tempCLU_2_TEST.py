@@ -21,7 +21,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load("Configuration.Geometry.geometry_CTPPS_cfi")
 process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 ##########SimTransport###########
-process.load('SimTransport.HectorProducerForCTPPS.HectorTransport_cfi')
+process.load('SimTransport.HectorProducer.HectorTransportCTPPS_cfi')
 
 process.load("SimG4Core.Application.g4SimHits_cfi")
 process.g4SimHits.Generator.ApplyPCuts          = False

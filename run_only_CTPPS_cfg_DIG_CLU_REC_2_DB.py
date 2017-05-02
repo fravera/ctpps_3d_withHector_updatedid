@@ -58,7 +58,7 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
 ##########################################################
 
 ##########SimTransport###########
-process.load('SimTransport.HectorProducerForCTPPS.HectorTransport_cfi')
+process.load('SimTransport.HectorProducer.HectorTransportCTPPS_cfi')
 
 process.load("SimG4Core.Application.g4SimHits_cfi")
 process.g4SimHits.Generator.ApplyPCuts          = False

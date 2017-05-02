@@ -20,7 +20,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 ############### using only CTPPS geometry 
 process.load("Configuration.Geometry.geometry_CTPPS_cfi")
 ##########SimTransport###########
-process.load('SimTransport.HectorProducerForCTPPS.HectorTransport_cfi')
+process.load('SimTransport.HectorProducer.HectorTransportCTPPS_cfi')
 
 process.load("SimG4Core.Application.g4SimHits_cfi")
 process.g4SimHits.Generator.ApplyPCuts          = False
@@ -43,7 +43,7 @@ process.RandomNumberGeneratorService.RPixDetDigitizer = cms.PSet(initialSeed =cm
 
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(10)
+        input = cms.untracked.int32(1000)
         )
 
 from Configuration.AlCa.GlobalTag import GlobalTag

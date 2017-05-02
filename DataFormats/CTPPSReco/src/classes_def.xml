@@ -46,7 +46,6 @@
 <!-- diamonds objects -->
 
   <class name="CTPPSDiamondRecHit" ClassVersion="4">
-    <version ClassVersion="3" checksum="2377257106"/>
     <version ClassVersion="4" checksum="2150979176"/>
   </class>
   <class name="edm::Ptr<CTPPSDiamondRecHit>"/>
@@ -56,19 +55,29 @@
   <class name="edm::DetSet<CTPPSDiamondRecHit>"/>
   <class name="edm::DetSetVector<CTPPSDiamondRecHit>"/>
   <class name="edm::Wrapper< edm::DetSetVector<CTPPSDiamondRecHit> >"/>
-  <class name="edm::Wrapper< std::vector<CTPPSDiamondRecHit> >"/>
 
-  <class name="CTPPSDiamondLocalTrack" ClassVersion="3">
-    <version ClassVersion="3" checksum="2739193553"/>
+
+<!-- pixel objects -->
+
+  <class name="CTPPSPixelCluster" ClassVersion="5">
+    <version ClassVersion="5" checksum="2858478211"/>
   </class>
-  <class name="edm::Ptr<CTPPSDiamondLocalTrack>"/>
-  <class name="edm::Wrapper<CTPPSDiamondLocalTrack>"/>
-  <class name="std::vector<CTPPSDiamondLocalTrack>"/>
-  <class name="edm::DetSet<CTPPSDiamondLocalTrack>"/>
-  <class name="std::vector< edm::DetSet<CTPPSDiamondLocalTrack> >"/>
-  <class name="edm::Wrapper< std::vector<CTPPSDiamondLocalTrack> >"/>
-  <class name="edm::DetSetVector<CTPPSDiamondLocalTrack>"/>
-  <class name="edm::Wrapper< edm::DetSetVector<CTPPSDiamondLocalTrack> >"/>
+  <class name="edm::DetSet<CTPPSPixelCluster>"/>
+  <class name="std::vector<CTPPSPixelCluster>"/>
+  <class name="std::vector<edm::DetSet<CTPPSPixelCluster> >"/>
+  <class name="edm::DetSetVector<CTPPSPixelCluster>"/>
+  <class name="edm::Wrapper<edm::DetSetVector<CTPPSPixelCluster> >"/>
+
+
+  <class name="CTPPSPixelRecHit" ClassVersion="5">
+    <version ClassVersion="5" checksum="3743879650"/>
+  </class>
+  <class name="edm::DetSet<CTPPSPixelRecHit>"/>
+  <class name="std::vector<CTPPSPixelRecHit>"/>
+  <class name="std::vector<edm::DetSet<CTPPSPixelRecHit> >"/>
+  <class name="edm::DetSetVector<CTPPSPixelRecHit>"/>
+  <class name="edm::Wrapper<edm::DetSetVector<CTPPSPixelRecHit> >"/>
+
 
 <!-- common objects -->
 
