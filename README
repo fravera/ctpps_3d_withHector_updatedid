@@ -1,0 +1,10 @@
+To run the data unpacking (after modifying the input file name):
+cmsRun ctppsPixelTest2.py
+
+or
+
+cmsRun ctppsPixelTest2_noDEBUG.py
+(to have less messages).
+
+To rn the DQM (after modifying the input file name):
+cmsRun pixel_dqm_test_cfg.py
