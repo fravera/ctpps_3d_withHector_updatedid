@@ -135,7 +135,7 @@ void TotemRPDQMHarvester::MakePlaneEfficiencyHistograms(unsigned int id, DQMStor
   }
 
   // book new RP histogram, if not yet done
-  TotemRPDetId rpId = detId.getRPId();
+  CTPPSDetId rpId = detId.getRPId();
   rpId.rpName(path, TotemRPDetId::nPath);
   const string rp_efficiency_name = "plane efficiency";
   MonitorElement *rp_efficiency = igetter.get(path + "/" + rp_efficiency_name);
@@ -190,6 +190,17 @@ void TotemRPDQMHarvester::dqmEndLuminosityBlock(DQMStore::IBooker &ibooker, DQMS
       // loop over RPs
       for (unsigned int rp = 0; rp < 6; ++rp)
       {
+        if (st == 2)
+        {
+          // unit 220-nr is not equipped
+          if (rp <= 2)
+            continue;
+
+          // RP 220-fr-hr contains pixels
+          if (rp == 3)
+            continue;
+        }
+
         TotemRPDetId rpId(arm, st, rp);
 
         MakeHitNumberRatios(rpId, ibooker, igetter);

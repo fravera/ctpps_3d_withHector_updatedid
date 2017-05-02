@@ -11,6 +11,7 @@
 <use   name="CondFormats/Alignment"/>
 <use   name="CondFormats/BeamSpotObjects"/>
 <use   name="CondFormats/CastorObjects"/>
+<use   name="CondFormats/CTPPSReadoutObjects"/>
 <use   name="CondFormats/HIObjects"/>
 <use   name="CondFormats/CSCObjects"/>
 <use   name="CondFormats/DTObjects"/>
@@ -31,7 +32,7 @@
 <use   name="CondFormats/Common"/>
 <use   name="CondFormats/BTauObjects"/>
 <use   name="CondFormats/MFObjects"/>
-<use   name="CondFormats/CTPPSReadoutObjects"/>
+<use   name="CondFormats/PCLConfig"/>
 <export>
   <lib   name="1"/>
 </export>
