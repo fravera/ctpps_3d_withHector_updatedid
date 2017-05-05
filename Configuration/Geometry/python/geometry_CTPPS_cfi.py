@@ -104,6 +104,7 @@ XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
         'Geometry/VeryForwardData/data/CTPPS_Cuts_Per_Region.xml',#totem, from RP -> CTPPS
         'Geometry/CTPPSCommonData/data/ppstrackerMaterials.xml',
         'Geometry/CTPPSCommonData/data/CTPPSPixelModule.xml',
+        'Geometry/CTPPSCommonData/data/CTPPSPixelModule2x2.xml',
         'Geometry/CTPPSSimData/data/CTPPSPixelsens.xml',
         'Geometry/VeryForwardData/data/RP_Position/RP_Dist_Beam_Cent.xml'
 ),
