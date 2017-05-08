@@ -33,26 +33,24 @@
       <PartSelector path="//RP_Device_Hor_Corp_3"/>
       <PartSelector path="//RP_220_Right_Station_Tube_5"/>
       <PartSelector path="//RP_220_Right_Station_Tube_4"/>
-      <PartSelector path="//RP_220_Right_Station_Tube_3a"/>
-      <PartSelector path="//RP_220_Right_Station_Tube_3b"/>
+      <PartSelector path="//RP_220_Right_Station_Tube_3"/>
       <PartSelector path="//RP_220_Right_Station_Tube_2"/>
       <PartSelector path="//RP_220_Right_Station_Tube_1"/>
       <PartSelector path="//RP_220_Left_Station_Tube_5"/>
       <PartSelector path="//RP_220_Left_Station_Tube_4"/>
-      <PartSelector path="//RP_220_Left_Station_Tube_3a"/>
-      <PartSelector path="//RP_220_Left_Station_Tube_3b"/>
+      <PartSelector path="//RP_220_Left_Station_Tube_3"/>
       <PartSelector path="//RP_220_Left_Station_Tube_2"/>
       <PartSelector path="//RP_220_Left_Station_Tube_1"/>
-      <PartSelector path="//RP_210_Right_Station_Tube_5"/>
-      <PartSelector path="//RP_210_Right_Station_Tube_4"/>
-      <PartSelector path="//RP_210_Right_Station_Tube_3"/>
-      <PartSelector path="//RP_210_Right_Station_Tube_2"/>
-      <PartSelector path="//RP_210_Right_Station_Tube_1"/>
-      <PartSelector path="//RP_210_Left_Station_Tube_5"/>
-      <PartSelector path="//RP_210_Left_Station_Tube_4"/>
-      <PartSelector path="//RP_210_Left_Station_Tube_3"/>
-      <PartSelector path="//RP_210_Left_Station_Tube_2"/>
-      <PartSelector path="//RP_210_Left_Station_Tube_1"/>
+      <PartSelector path="//RP_147_Right_Station_Tube_5"/>
+      <PartSelector path="//RP_147_Right_Station_Tube_4"/>
+      <PartSelector path="//RP_147_Right_Station_Tube_3"/>
+      <PartSelector path="//RP_147_Right_Station_Tube_2"/>
+      <PartSelector path="//RP_147_Right_Station_Tube_1"/>
+      <PartSelector path="//RP_147_Left_Station_Tube_5"/>
+      <PartSelector path="//RP_147_Left_Station_Tube_4"/>
+      <PartSelector path="//RP_147_Left_Station_Tube_3"/>
+      <PartSelector path="//RP_147_Left_Station_Tube_2"/>
+      <PartSelector path="//RP_147_Left_Station_Tube_1"/>
       <Parameter name="CMSCutsRegion" value="RPOtherDetPartsCuts" eval="false"/>
       <Parameter name="ProdCutsForElectrons" value="10*mm"/>
       <Parameter name="ProdCutsForPositrons" value="10*mm"/>
@@ -63,8 +61,8 @@
       <PartSelector path="//.*:RP_box_secondary_vacuum"/>
       <PartSelector path="//RP_220_Right_Station_Vacuum_5"/>
       <PartSelector path="//RP_220_Left_Station_Vacuum_5"/>
-      <PartSelector path="//RP_210_Right_Station_Vacuum_5"/>
-      <PartSelector path="//RP_210_Left_Station_Vacuum_5"/>
+      <PartSelector path="//RP_147_Right_Station_Vacuum_5"/>
+      <PartSelector path="//RP_147_Left_Station_Vacuum_5"/>
       <Parameter name="CMSCutsRegion" value="RP_NonDenseMaterialsCuts" eval="false"/>
       <Parameter name="ProdCutsForElectrons" value="50*m"/>
       <Parameter name="ProdCutsForPositrons" value="50*m"/>
