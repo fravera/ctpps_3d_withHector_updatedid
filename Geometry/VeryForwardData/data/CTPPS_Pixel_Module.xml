@@ -8,7 +8,7 @@ Author: F.Ferro - INFN Genova
 
 -->
 
-<ConstantsSection label="CTPPSPixelModule.xml" eval="true">
+<ConstantsSection label="CTPPS_Pixel_Module.xml" eval="true">
 
 
 
@@ -79,7 +79,7 @@ thickness 0.5mm
 
 </ConstantsSection>
 
-<SolidSection label="CTPPSPixelModule.xml">
+<SolidSection label="CTPPS_Pixel_Module.xml">
 
 <!--
 
@@ -133,15 +133,15 @@ FOR THE TPG I TAKE AN OBJECT AS ENVELOP1+ENVELOP2 BUT 500uM THICK. FOR THE TWO F
 
 
 <UnionSolid name="TPGGlue3">
-  <rSolid name="CTPPSPixelModule:TPGGlue1"/>
-  <rSolid name="CTPPSPixelModule:TPGGlue2"/>
+  <rSolid name="CTPPS_Pixel_Module:TPGGlue1"/>
+  <rSolid name="CTPPS_Pixel_Module:TPGGlue2"/>
   <rRotation name="rotations:RM1902" />
   <Translation x="0." y="-[TPGL]/2.-[TPGappL]/2." z="0."/>
 </UnionSolid>
 
 <SubtractionSolid name="TPGGlue">
-  <rSolid name="CTPPSPixelModule:TPGGlue3"/>
-  <rSolid name="CTPPSPixelModule:ScassoColla"/>
+  <rSolid name="CTPPS_Pixel_Module:TPGGlue3"/>
+  <rSolid name="CTPPS_Pixel_Module:ScassoColla"/>
   <rRotation name="rotations:000D" />
   <Translation x="0" y=" -([TPGL]/2.-[HybridL2]+[HybridL2]/2.+[HybridappL]/2.)" z="0."/> 
 </SubtractionSolid>
@@ -183,7 +183,7 @@ FOR THE TPG I TAKE AN OBJECT AS ENVELOP1+ENVELOP2 BUT 500uM THICK. FOR THE TWO F
 
 
 
-<LogicalPartSection label="CTPPSPixelModule.xml">
+<LogicalPartSection label="CTPPS_Pixel_Module.xml">
 
  <LogicalPart name="Envelop" category="unspecified">
   <rSolid name="Envelop"/>
@@ -198,7 +198,7 @@ FOR THE TPG I TAKE AN OBJECT AS ENVELOP1+ENVELOP2 BUT 500uM THICK. FOR THE TWO F
  </LogicalPart>
 
  <LogicalPart name="TPGGlue" category="unspecified">
-  <rSolid name="CTPPSPixelModule:TPGGlue"/>
+  <rSolid name="CTPPS_Pixel_Module:TPGGlue"/>
   <rMaterial name="materials:FPix_Thermflow"/>
  </LogicalPart>
 
@@ -236,47 +236,47 @@ FOR THE TPG I TAKE AN OBJECT AS ENVELOP1+ENVELOP2 BUT 500uM THICK. FOR THE TWO F
 
 
  
-<PosPartSection label="CTPPSPixelModule.xml">
+<PosPartSection label="CTPPS_Pixel_Module.xml">
 
 
  <PosPart copyNumber="1">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:TPG"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:TPG"/>
   <Translation x="0"  y="[EnvelopL]/2.-[TPGL]/2."  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]/2." /> 
  </PosPart>
 
  <PosPart copyNumber="1">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:TPGGlue"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:TPGGlue"/>
   <Translation x="0"  y="[EnvelopL]/2.-[TPGL]/2."  z="-[EnvelopT]/2.+[HybridT]+[GlueT]/2." />
  </PosPart>
 <PosPart copyNumber="2">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:TPGGlue"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:TPGGlue"/>
   <Translation x="0"  y="[EnvelopL]/2.-[TPGL]/2."  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]/2." />
  </PosPart>
 
  <PosPart copyNumber="1">
-  <rParent name="CTPPSPixelModule:TPG"/>
-  <rChild name="CTPPSPixelModule:HoleTPG"/>
+  <rParent name="CTPPS_Pixel_Module:TPG"/>
+  <rChild name="CTPPS_Pixel_Module:HoleTPG"/>
   <Translation x="[TPGW]/2.-4*mm"  y="[TPGL]/2.-15*mm"  z="0*mm" />
  </PosPart>
 
  <PosPart copyNumber="2">
-  <rParent name="CTPPSPixelModule:TPG"/>
-  <rChild name="CTPPSPixelModule:HoleTPG"/>
+  <rParent name="CTPPS_Pixel_Module:TPG"/>
+  <rChild name="CTPPS_Pixel_Module:HoleTPG"/>
   <Translation x="-[TPGW]/2.+4*mm"  y="[TPGL]/2.-15*mm"  z="0*mm" />
  </PosPart>
 
  <PosPart copyNumber="3">
-  <rParent name="CTPPSPixelModule:TPG"/>
-  <rChild name="CTPPSPixelModule:HoleTPG"/>
+  <rParent name="CTPPS_Pixel_Module:TPG"/>
+  <rChild name="CTPPS_Pixel_Module:HoleTPG"/>
   <Translation x="[TPGW]/2.-4*mm"  y="[TPGL]/2.-52*mm"  z="0*mm" />
  </PosPart>
 
  <PosPart copyNumber="4">
-  <rParent name="CTPPSPixelModule:TPG"/>
-  <rChild name="CTPPSPixelModule:HoleTPG"/>
+  <rParent name="CTPPS_Pixel_Module:TPG"/>
+  <rChild name="CTPPS_Pixel_Module:HoleTPG"/>
   <Translation x="-[TPGW]/2.+4*mm"  y="[TPGL]/2.-52*mm"  z="0*mm" />
  </PosPart>
 
@@ -284,14 +284,14 @@ FOR THE TPG I TAKE AN OBJECT AS ENVELOP1+ENVELOP2 BUT 500uM THICK. FOR THE TWO F
 
 
  <PosPart copyNumber="1">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:Hybrid"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:Hybrid"/>
   <Translation x="0"  y="[EnvelopL]/2.-[TPGL]/2."  z="-[EnvelopT]/2.+[HybridT]/2." />
  </PosPart>
 
  <PosPart copyNumber="2">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:Hybrid"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:Hybrid"/>
   <Translation x="0"  y="[EnvelopL]/2.-[TPGL]/2."  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[HybridT]/2." />
  </PosPart>
 
@@ -301,83 +301,83 @@ FOR THE TPG I TAKE AN OBJECT AS ENVELOP1+ENVELOP2 BUT 500uM THICK. FOR THE TWO F
 
 
 <PosPart copyNumber="1">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:ROChip"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:ROChip"/>
   <Translation x="-[ROChipW]/2.-[ROChipSpaceW]/2."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+[ROChipL]/2.-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]/2." />
  </PosPart>
 
 <PosPart copyNumber="2">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:ROChip"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:ROChip"/>
   <Translation x="[ROChipW]/2.+[ROChipSpaceW]/2."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+[ROChipL]/2.-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]/2." />
  </PosPart>
 
 <PosPart copyNumber="3">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:ROChip"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:ROChip"/>
   <Translation x="-[ROChipW]/2.-[ROChipSpaceW]/2."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+3*[ROChipL]/2.+[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]/2." />
  </PosPart>
 
 <PosPart copyNumber="4">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:ROChip"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:ROChip"/>
   <Translation x="[ROChipW]/2.+[ROChipSpaceW]/2."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+3*[ROChipL]/2.+[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]/2." />
  </PosPart>
 
 <PosPart copyNumber="5">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:ROChip"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:ROChip"/>
   <Translation x="-[ROChipW]/2.-[ROChipSpaceW]/2."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+5*[ROChipL]/2.+2*[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]/2." />
  </PosPart>
 
 <PosPart copyNumber="6">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:ROChip"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:ROChip"/>
   <Translation x="[ROChipW]/2.+[ROChipSpaceW]/2."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+5*[ROChipL]/2.+2*[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]/2." />
  </PosPart>
 
 
 <PosPart copyNumber="1">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:BumpBond"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:BumpBond"/>
   <Translation x="-[WaferW]/4.+5*[ROChipSpaceW]/4."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+[ROChipL]/2.-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]+[BumpBondT]/2." />
  </PosPart>
 
 <PosPart copyNumber="2">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:BumpBond"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:BumpBond"/>
   <Translation x="+[WaferW]/4.-5*[ROChipSpaceW]/4."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+[ROChipL]/2.-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]+[BumpBondT]/2." />
  </PosPart>
 
 <PosPart copyNumber="3">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:BumpBond"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:BumpBond"/>
   <Translation x="-[WaferW]/4.+5*[ROChipSpaceW]/4."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+3*[ROChipL]/2.+[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]+[BumpBondT]/2." />
  </PosPart>
 
 <PosPart copyNumber="4">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:BumpBond"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:BumpBond"/>
   <Translation x="+[WaferW]/4.-5*[ROChipSpaceW]/4."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+3*[ROChipL]/2.+[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]+[BumpBondT]/2." />
  </PosPart>
 
 <PosPart copyNumber="5">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:BumpBond"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:BumpBond"/>
   <Translation x="-[WaferW]/4.+5*[ROChipSpaceW]/4."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+5*[ROChipL]/2.+2*[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]+[BumpBondT]/2." />
  </PosPart>
 
 <PosPart copyNumber="6">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:BumpBond"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:BumpBond"/>
   <Translation x="+[WaferW]/4.-5*[ROChipSpaceW]/4."  y="[EnvelopL]/2.-[TPGL]-[TPGappL]+5*[ROChipL]/2.+2*[ROChipSpaceL]-[TPGvsROCoffset]"  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]+[BumpBondT]/2." />
  </PosPart>
 
 
 
 <PosPart copyNumber="1">
-  <rParent name="CTPPSPixelModule:Envelop"/>
-  <rChild name="CTPPSPixelModule:RPixWafer"/>
+  <rParent name="CTPPS_Pixel_Module:Envelop"/>
+  <rChild name="CTPPS_Pixel_Module:RPixWafer"/>
   <Translation x="0"  y="[EnvelopL]/2.-[TPGL]-[TPGappL]-[TPGvsROCoffset]-[ROCvsWaferoffset]+[WaferL]/2."  z="-[EnvelopT]/2.+[HybridT]+[GlueT]+[TPGT]+[GlueT]+[ROChipT]+[BumpBondT]+[WaferT]/2." />
 
  </PosPart>

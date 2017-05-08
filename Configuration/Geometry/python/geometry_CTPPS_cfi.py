@@ -77,7 +77,7 @@ XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_020.xml',#totem
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_021.xml',#totem
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_022.xml',#totem
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_023.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Pixel_Assembly_Box_Real_023.xml',
 #        'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_023.xml',#totem
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_024.xml',#totem
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_025.xml',#totem
@@ -90,7 +90,7 @@ XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_120.xml',#totem
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_121.xml',#totem
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_122.xml',#totem
-        'Geometry/CTPPSCommonData/data/CTPPS_Pixel_Assembly_Box_Real_123.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Pixel_Assembly_Box_Real_123.xml',
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_124.xml',#totem
         'Geometry/VeryForwardData/data/RP_Detectors_Assembly/RP_Detectors_Assembly_125.xml',#totem
         'Geometry/VeryForwardData/data/RP_Device.xml',
@@ -102,9 +102,9 @@ XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
         'Geometry/VeryForwardData/data/CTPPS_210_Left_Station.xml',#totem, from RP -> CTPPS
         'Geometry/VeryForwardData/data/CTPPS_Stations_Assembly.xml',#totem, from RP -> CTPPS
         'Geometry/VeryForwardData/data/CTPPS_Cuts_Per_Region.xml',#totem, from RP -> CTPPS
-        'Geometry/CTPPSCommonData/data/ppstrackerMaterials.xml',
-        'Geometry/CTPPSCommonData/data/CTPPSPixelModule.xml',
-        'Geometry/CTPPSSimData/data/CTPPSPixelsens.xml',
+        'Geometry/VeryForwardData/data/ppstrackerMaterials.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Pixel_Module.xml',
+        'Geometry/VeryForwardData/data/CTPPS_Pixel_Sens.xml',
         'Geometry/VeryForwardData/data/RP_Position/RP_Dist_Beam_Cent.xml'
 ),
     rootNodeName = cms.string('cms:CMSE')
