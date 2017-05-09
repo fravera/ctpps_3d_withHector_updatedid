@@ -1,10 +1,11 @@
 /****************************************************************************
 *
-* This is a part of TOTEM offline software.
-* Authors:
-*  Jan Kašpar (jan.kaspar@gmail.com)
+* Offline analyzer for writing CTPPS DAQ Mapping sqlite file 
+* H. Malbouisson
+* based on TOTEM code from  Jan Kašpar (jan.kaspar@gmail.com)
 *
 ****************************************************************************/
+
 
 #include "FWCore/Framework/interface/one/EDAnalyzer.h"
 #include "FWCore/Framework/interface/Event.h"
@@ -12,6 +13,7 @@
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/Framework/interface/ESHandle.h"
+#include "CondCore/CondDB/interface/Time.h"
 
 #include "FWCore/Framework/interface/Frameworkfwd.h"
 #include "FWCore/Framework/interface/EDProducer.h"
@@ -24,6 +26,8 @@
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelDAQMapping.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelAnalysisMask.h"
 
+#include <stdint.h>
+
 //----------------------------------------------------------------------------------------------------
 
 /**
@@ -32,11 +36,14 @@
 class WriteCTPPSPixelDAQMapping : public edm::one::EDAnalyzer<>
 {
   public:
-    WriteCTPPSPixelDAQMapping(const edm::ParameterSet &ps) {}
+    WriteCTPPSPixelDAQMapping(const edm::ParameterSet &ps);
     ~WriteCTPPSPixelDAQMapping() {}
 
   private:
     virtual void analyze(const edm::Event &e, const edm::EventSetup &es) override;
+    cond::Time_t daqmappingiov_;
+    std::string record_;
+    std::string label_;
 };
 
 using namespace std;
@@ -44,40 +51,31 @@ using namespace edm;
 
 //----------------------------------------------------------------------------------------------------
 
+WriteCTPPSPixelDAQMapping::WriteCTPPSPixelDAQMapping(const edm::ParameterSet &ps) :
+daqmappingiov_(ps.getParameter<unsigned long long>("daqmappingiov")),
+record_(ps.getParameter<string>("record")),
+label_(ps.getParameter<string>("label"))
+{}
+
+
 void WriteCTPPSPixelDAQMapping::analyze(const edm::Event&, edm::EventSetup const& es)
 {
-  // get mapping
-  ////ESHandle<TotemDAQMapping> mapping;
-  ////es.get<TotemReadoutRcd>().get(mapping);
 
   // get DAQ mapping
   edm::ESHandle<CTPPSPixelDAQMapping> mapping;
-  es.get<CTPPSPixelDAQMappingRcd>().get("RPix", mapping);
-
-  // get analysis mask to mask channels
-  ESHandle<CTPPSPixelAnalysisMask> analysisMask;
-  es.get<CTPPSPixelAnalysisMaskRcd>().get("RPix", analysisMask);
+  es.get<CTPPSPixelDAQMappingRcd>().get(label_, mapping);
 
   // print mapping
-  printf("* DAQ mapping\n");
+  /*printf("* DAQ mapping\n");
   for (const auto &p : mapping->ROCMapping)
     cout << "    " << p.first << " -> " << p.second << endl;
+  */
 
-
-  // print mapping
-  printf("* mask\n");
-  for (const auto &p : analysisMask->analysisMask)
-    cout << "    " << p.first
-      << ": fullMask=" << p.second.fullMask
-      << ", number of masked channels " << p.second.maskedPixels.size() << endl;
-
-  // Write DAQ Mapping and Analysis Mask to sqlite file:
+  // Write DAQ Mapping to sqlite file:
   const CTPPSPixelDAQMapping* pCTPPSPixelDAQMapping = mapping.product(); // DAQ Mapping
-  const CTPPSPixelAnalysisMask* pCTPPSPixelAnalysisMask = analysisMask.product(); // Analysis Mask
   edm::Service<cond::service::PoolDBOutputService> poolDbService;
   if( poolDbService.isAvailable() ){
-    poolDbService->writeOne( pCTPPSPixelDAQMapping, poolDbService->currentTime(), /*m_record*/ "CTPPSPixelDAQMappingRcd"  );
-    poolDbService->writeOne( pCTPPSPixelAnalysisMask, poolDbService->currentTime(), /*m_record*/ "CTPPSPixelAnalysisMaskRcd"  );
+    poolDbService->writeOne( pCTPPSPixelDAQMapping, daqmappingiov_, /*m_record*/ record_  );
   }
 
 

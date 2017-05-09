@@ -10,9 +10,9 @@ process.source = cms.Source("EmptyIOVSource",
     interval = cms.uint64(1)
 )
 
-process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1)
-)
+#process.maxEvents = cms.untracked.PSet(
+    #input = cms.untracked.int32(1)
+#)
 
 # load a mapping
 process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
@@ -28,21 +28,23 @@ process.PoolDBOutputService = cms.Service("PoolDBOutputService",
     timetype = cms.untracked.string('runnumber'),
     toPut = cms.VPSet(
     cms.PSet(
-        record = cms.string('CTPPSPixelDAQMappingRcd'),
-        tag = cms.string('PixelDAQMapping')
-    ),
-    cms.PSet(
         record = cms.string('CTPPSPixelAnalysisMaskRcd'),
-        tag = cms.string('PixelAnalysisMask')
+        tag = cms.string('PixelAnalysisMask'),
+        label = cms.string("RPix")
     )
   )
 )
 
 
-# print the mapping
-process.writeCTPPSPixelDAQMapping = cms.EDAnalyzer("WriteCTPPSPixelDAQMapping"
+# print the mapping and analysis mask
+process.writeCTPPSPixelAnalysisMask = cms.EDAnalyzer("WriteCTPPSPixelAnalysisMask",
+    cms.PSet(
+        analysismaskiov = cms.uint64(1),
+        record = cms.string("CTPPSPixelAnalysisMaskRcd"),
+        label = cms.string("RPix")
+    )
 )
 
 process.path = cms.Path(
-  process.writeCTPPSPixelDAQMapping
+  process.writeCTPPSPixelAnalysisMask
 )
