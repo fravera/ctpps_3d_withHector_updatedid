@@ -1,18 +1,10 @@
-#ifndef CondFormats_CTPPSReadoutObjects_CTPPSPixelDAQCalibration_h
-#define CondFormats_CTPPSReadoutObjects_CTPPSPixelDAQCalibration_h
+#ifndef CondTools_CTPPS_CTPPSPixelDAQCalibration_h
+#define CondTools_CTPPS_CTPPSPixelDAQCalibration_h
 // -*- C++ -*-
 //
-// Package:     CalibForward/CTPPSPixelCalibration
+// Package:     CondTools/CTPPS
 // Class  :     CTPPSPixelDAQCalibration
 // 
-/**\class CTPPSPixelDAQCalibration CTPPSPixelDAQCalibration.h "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelDAQCalibration.h"
-
- Description: [one line class summary]
-
- Usage:
-    <usage>
-
-*/
 //
 // Original Author:  Helio Nogima
 //         Created:  Wed, 15 Mar 2017 02:15:33 GMT
@@ -39,7 +31,7 @@ class CTPPSPixelDAQCalibration
       TFile * fp;
       TH2F * gainshisto;
       TH2F * pedestalshisto;
-};
 
+};
 
 #endif
