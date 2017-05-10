@@ -29,8 +29,9 @@
 #include "CondFormats/DataRecord/interface/CTPPSPixelAnalysisMaskRcd.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelDAQMapping.h"
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelAnalysisMask.h"
+#include "RecoCTPPS/CTPPSPixelLocal/interface/CTPPSPixelGainCalibrationDBService.h"
+#include "RecoCTPPS/CTPPSPixelLocal/interface/RPixDetClusterizer.h"
 
-#include "RecoCTPPS/CTPPSPixelLocal/interface/RPixDetClusterizer.h" 
 
 #include <vector>
 #include <set>
@@ -44,6 +45,8 @@ public:
   ~CTPPSPixelClusterProducer();
 
  virtual void produce(edm::Event&, const edm::EventSetup&) override;
+
+  CTPPSPixelGainCalibrationDBService theGainCalibrationDB;
 
 private:
  edm::ParameterSet param_;

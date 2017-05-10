@@ -4,7 +4,6 @@
 #include "RecoCTPPS/CTPPSPixelLocal/interface/RPixDetClusterizer.h"
 #include "Geometry/VeryForwardGeometry/interface/CTPPSPixelTopology.h"
 
-
 namespace {
   constexpr int max16bits = 65535;
   constexpr int maxCol = 155;
@@ -15,15 +14,21 @@ namespace {
 RPixDetClusterizer::RPixDetClusterizer(edm::ParameterSet const& conf):
   params_(conf), SeedVector_(0)
 {
-  verbosity_ = conf.getParameter<int>("RPixVerbosity");
-  SeedADCThreshold_ = conf.getParameter<int>("SeedADCThreshold");
-  ADCThreshold_ = conf.getParameter<int>("ADCThreshold");
-  ElectronADCGain_ = conf.getParameter<double>("ElectronADCGain");
+verbosity_ = conf.getParameter<int>("RPixVerbosity");
+SeedADCThreshold_ = conf.getParameter<int>("SeedADCThreshold");
+ADCThreshold_ = conf.getParameter<int>("ADCThreshold");
+ElectronADCGain_ = conf.getParameter<double>("ElectronADCGain");
+VcaltoElectronGain_ = conf.getParameter<int>("VCaltoElectronGain");
+VcaltoElectronOffset_ = conf.getParameter<int>("VCaltoElectronOffset");
+DAQCalibration_ = conf.getParameter<bool>("DAQCalibration");
+CalibrationFile_ = conf.getParameter<string>("CalibrationFile");
+theDAQcalibration =  new CTPPSPixelDAQCalibration(conf);
+theDAQcalibration->setDAQCalibrationFile(CalibrationFile_);
 }
 
 RPixDetClusterizer::~RPixDetClusterizer(){}
 
-void RPixDetClusterizer::buildClusters(unsigned int detId, const std::vector<CTPPSPixelDigi> &digi, std::vector<CTPPSPixelCluster> &clusters)
+void RPixDetClusterizer::buildClusters(unsigned int detId, const std::vector<CTPPSPixelDigi> &digi, std::vector<CTPPSPixelCluster> &clusters, const CTPPSPixelGainCalibrations * pcalibrations)
 {
 
   if(verbosity_) std::cout<<" RPixDetClusterizer "<<detId<<" received digi.size()="<<digi.size()<<std::endl;
@@ -47,7 +52,7 @@ void RPixDetClusterizer::buildClusters(unsigned int detId, const std::vector<CTP
     unsigned char row = (*RPdit).row();
     unsigned char column = (*RPdit).column();
     unsigned short adc = (*RPdit).adc();
-    unsigned short electrons = calibrate(adc,row,column);
+    unsigned short electrons = calibrate(detId,adc,row,column,pcalibrations);
 //calibrate digi and store the new ones
     RPixCalibDigi calibDigi(row,column,adc,electrons);
     calib_rpix_digi_set_.insert(calibDigi);
@@ -155,19 +160,29 @@ void RPixDetClusterizer::make_cluster(RPixCalibDigi aSeed,  std::vector<CTPPSPix
 
 }
 
+int RPixDetClusterizer::calibrate(unsigned int detId, int adc, int row, int col, const CTPPSPixelGainCalibrations *pcalibrations){
 
-int RPixDetClusterizer::calibrate(int adc, int row, int col){
+  bool isnoisy_g=false;  
+  bool isdead_g=false;
+  bool isnoisy_p=false;
+  bool isdead_p=false;
+  float gain=0;
+  float pedestal=0;
+// double -> float
 
-  const double gain = ElectronADCGain_;
-  const double pedestal = 0;
-//here DB values could be used instead
+  if(DAQCalibration_){
+    theDAQcalibration->getDAQCalibration(detId,row,col,gain,pedestal);
+  }else{
 
-  int electrons = int(adc*gain + pedestal);
-  if(electrons > max16bits){
-  //   std::cout <<row << " " <<col << " " <<  adc << std::endl;  
-  throw cms::Exception("CTPPSPixelElectronsOutofRange") 
-    << " calibrated electrons = " << electrons;
+    detId = 2014314496; //just one plane on test DB file 
+
+    CTPPSPixelGainCalibration DetCalibs = pcalibrations->getGainCalibration(detId);
+    gain = DetCalibs.getGain(col,row,isdead_g,isnoisy_g);
+    pedestal = DetCalibs.getPed(col,row,isdead_p,isnoisy_p)*gain;
   }
+  float vcal = adc*gain - pedestal;
+  int electrons = int(vcal*VcaltoElectronGain_ + VcaltoElectronOffset_);
+
   return electrons;
 
 }

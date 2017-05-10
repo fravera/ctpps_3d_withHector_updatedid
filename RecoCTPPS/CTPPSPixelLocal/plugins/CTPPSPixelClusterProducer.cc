@@ -43,6 +43,10 @@ void CTPPSPixelClusterProducer::produce(edm::Event& iEvent, const edm::EventSetu
 			       << ", number of masked pixels " << p.second.maskedPixels.size();
   }
 
+
+// get calibration DB
+ theGainCalibrationDB.getDB(iEvent,iSetup);
+
   edm::DetSetVector<CTPPSPixelCluster>  output;
 
 // run clusterisation
@@ -60,8 +64,7 @@ void CTPPSPixelClusterProducer::run(const edm::DetSetVector<CTPPSPixelDigi> &inp
     {
       edm::DetSet<CTPPSPixelCluster> &ds_cluster = output.find_or_insert(ds_digi.id);
  
-      clusterizer_.buildClusters(ds_digi.id, ds_digi.data, ds_cluster.data);
-
+      clusterizer_.buildClusters(ds_digi.id, ds_digi.data, ds_cluster.data, theGainCalibrationDB.getCalibs());
 
 // --- to be removed before PR
       unsigned int cluN=0;
