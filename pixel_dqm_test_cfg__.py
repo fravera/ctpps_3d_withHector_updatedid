@@ -6,9 +6,9 @@ process = cms.Process('CTPPSDQM')
 # minimum of logs
 process.MessageLogger = cms.Service("MessageLogger",
     statistics = cms.untracked.vstring(),
-    destinations = cms.untracked.vstring('cerr'),
-    cerr = cms.untracked.PSet(
-        threshold = cms.untracked.string('WARNING')
+    destinations = cms.untracked.vstring('aaa'),
+    aaa = cms.untracked.PSet(
+        threshold = cms.untracked.string('ERROR')
     )
 )
 

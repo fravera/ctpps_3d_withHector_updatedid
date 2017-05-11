@@ -50,7 +50,7 @@ process.ctppsPixelDigis.InputLabel = 'rawDataCollector'
 process.MessageLogger = cms.Service("MessageLogger",
     debugModules = cms.untracked.vstring('ctppsPixelDigis'),
     destinations = cms.untracked.vstring('r2dFF'),
-    r2dFF = cms.untracked.PSet( threshold = cms.untracked.string('DEBUG'))
+    r2dFF = cms.untracked.PSet( threshold = cms.untracked.string('ERROR'))
 )
 
 process.out = cms.OutputModule("PoolOutputModule",
