@@ -20,10 +20,14 @@ ADCThreshold_ = conf.getParameter<int>("ADCThreshold");
 ElectronADCGain_ = conf.getParameter<double>("ElectronADCGain");
 VcaltoElectronGain_ = conf.getParameter<int>("VCaltoElectronGain");
 VcaltoElectronOffset_ = conf.getParameter<int>("VCaltoElectronOffset");
+<<<<<<< HEAD
 DAQCalibration_ = conf.getParameter<bool>("DAQCalibration");
 CalibrationFile_ = conf.getParameter<string>("CalibrationFile");
 theDAQcalibration =  new CTPPSPixelDAQCalibration(conf);
 theDAQcalibration->setDAQCalibrationFile(CalibrationFile_);
+=======
+doSingleCalibration_ = conf.getParameter<bool>("doSingleCalibration");
+>>>>>>> helio/DB910pre3
 }
 
 RPixDetClusterizer::~RPixDetClusterizer(){}
@@ -168,6 +172,7 @@ int RPixDetClusterizer::calibrate(unsigned int detId, int adc, int row, int col,
   bool isdead_p=false;
   float gain=0;
   float pedestal=0;
+<<<<<<< HEAD
 // double -> float
 
   if(DAQCalibration_){
@@ -183,6 +188,30 @@ int RPixDetClusterizer::calibrate(unsigned int detId, int adc, int row, int col,
   float vcal = adc*gain - pedestal;
   int electrons = int(vcal*VcaltoElectronGain_ + VcaltoElectronOffset_);
 
+=======
+  float electrons=0;
+// double -> float
+
+  detId = 2014314496; //just one plane in test DB file 
+
+  if(!doSingleCalibration_){
+    CTPPSPixelGainCalibration DetCalibs = pcalibrations->getGainCalibration(detId);
+    gain = DetCalibs.getGain(col,row,isdead_g,isnoisy_g);
+    pedestal = DetCalibs.getPed(col,row,isdead_p,isnoisy_p);
+    float vcal = (adc - pedestal)*gain;
+    electrons = int(vcal*VcaltoElectronGain_ + VcaltoElectronOffset_);
+    if(verbosity_) std::cout << "calibrate:  adc = " << adc << " electrons = " << electrons << " gain = " << gain << " pedestal = " << pedestal << endl;
+  }else{
+    gain = ElectronADCGain_;
+    pedestal = 0;
+    electrons = int(adc*gain-pedestal);
+    if(verbosity_) std::cout << "calibrate:  adc = " << adc << " electrons = " << electrons << " ElectronADCGain = " << gain << " pedestal = " << pedestal << endl;
+  }
+  if (electrons<0) {
+    std::cout << "RPixDetClusterizer::calibrate: *** electrons < 0 *** --> " << electrons << "  --> electrons = 0" << endl;
+    electrons = 0;
+  }
+>>>>>>> helio/DB910pre3
   return electrons;
 
 }

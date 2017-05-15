@@ -14,7 +14,10 @@
 #include "DataFormats/CTPPSDigi/interface/CTPPSPixelDigi.h"
 #include "DataFormats/CTPPSDigi/interface/CTPPSPixelDigiCollection.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelCluster.h"
+<<<<<<< HEAD
 #include "CondTools/CTPPS/interface/CTPPSPixelDAQCalibration.h"
+=======
+>>>>>>> helio/DB910pre3
 #include "CondFormats/CTPPSReadoutObjects/interface/CTPPSPixelGainCalibrations.h"
 #include "RecoCTPPS/CTPPSPixelLocal/interface/CTPPSPixelGainCalibrationDBService.h"
 
@@ -50,8 +53,11 @@ public:
 
   RPixDetClusterizer(edm::ParameterSet const& conf);
 
+<<<<<<< HEAD
   CTPPSPixelDAQCalibration * theDAQcalibration;
 
+=======
+>>>>>>> helio/DB910pre3
   void buildClusters(unsigned int detId, const std::vector<CTPPSPixelDigi> &digi, std::vector<CTPPSPixelCluster> &clusters, const CTPPSPixelGainCalibrations * pcalibration);
   void make_cluster( RPixCalibDigi aSeed,  std::vector<CTPPSPixelCluster> &clusters );
   ~RPixDetClusterizer();
@@ -68,7 +74,11 @@ private:
   double ElectronADCGain_;
   int VcaltoElectronGain_;
   int VcaltoElectronOffset_;
+<<<<<<< HEAD
   bool DAQCalibration_;
+=======
+  bool doSingleCalibration_;
+>>>>>>> helio/DB910pre3
   string CalibrationFile_;
   std::vector<RPixCalibDigi> SeedVector_;
   
