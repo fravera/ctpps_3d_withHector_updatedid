@@ -138,17 +138,6 @@ process.PoolDBESSource = cms.ESSource("PoolDBESSource",
 #process.clusterProd.RPixVerbosity = cms.int32(0)
 process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
                                      label=cms.untracked.string("RPixDetDigitizer"),
-<<<<<<< HEAD
-                                     RPixVerbosity = cms.int32(0),
-                                     SeedADCThreshold = cms.int32(50),
-                                     ADCThreshold = cms.int32(10),
-				     ElectronADCGain = cms.double(135.0),
-                                     VCaltoElectronOffset = cms.int32(-414),
-                                     VCaltoElectronGain = cms.int32(65),
-#                                     CalibrationFile = cms.string("Gain_Fed_1294_Run_99.root"),
-                                     CalibrationFile = cms.string("Gain_Fed_1462-1463_Run_107.root"),
-                                     DAQCalibration = cms.bool(True)
-=======
                                      RPixVerbosity = cms.int32(1),
                                      SeedADCThreshold = cms.int32(50),
                                      ADCThreshold = cms.int32(10),
@@ -157,7 +146,7 @@ process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
                                      VCaltoElectronOffset = cms.int32(-414),
                                      VCaltoElectronGain = cms.int32(65),
                                      doSingleCalibration = cms.bool(True),
->>>>>>> helio/DB910pre3
+
 )
 
 process.g4Simhits_step = cms.Path(process.g4SimHits)

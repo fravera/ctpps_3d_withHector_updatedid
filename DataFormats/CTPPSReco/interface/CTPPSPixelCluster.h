@@ -4,7 +4,7 @@
 /*
   \class CTPPSPixelCluster 
   \brief CTPPSPixelCluster stores the information of CTPPS Tracker clusters of 3D pixels
-// Author: F.Ferro - INFN Genova - 2016
+ Author: F.Ferro - INFN Genova - 2016
 */
 
 
