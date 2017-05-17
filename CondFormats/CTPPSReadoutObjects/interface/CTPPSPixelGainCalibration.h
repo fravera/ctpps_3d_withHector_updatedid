@@ -72,18 +72,14 @@ class CTPPSPixelGainCalibration {
   double getPedHigh() const { return maxPed_; }
 
   // Set and get public methods
-  //  void  setData(float ped, float gain, std::vector<float>& vped, std::vector<float>& vgain, bool thisPixelIsDead = false, bool thisPixelIsNoisy = false);
-
-  void  setDeadPixel(int ipix)  { putData(ipix, -999., 0. ); } // dead flag is pedestal = -999.
-  void  setNoisyPixel(int ipix) { putData(ipix, 0., -9999. ); } // noisy flat is gain= -9999.
 
 
   void putData(uint32_t ipix, float ped, float gain);
 
-  float getPed   (const int& col, const int& row /*, const Range& range, const int& nCols */, bool& isDead, bool& isNoisy) const;
-  float getGain  (const int& col, const int& row /*, const Range& range, const int& nCols */, bool& isDead, bool& isNoisy) const;
-  float getPed   (const uint32_t ipix, bool& isDead, bool& isNoisy)const;
-  float getGain  (const uint32_t ipix, bool& isDead, bool& isNoisy)const;
+  float getPed   (const int& col, const int& row) const;
+  float getGain  (const int& col, const int& row) const;
+  float getPed   (const uint32_t ipix)const;
+  float getGain  (const uint32_t ipix)const;
   int   getNCols () const {return indexes.ncols;}
   int   getIEnd  () const {return indexes.iend;}
   private:
@@ -99,11 +95,6 @@ class CTPPSPixelGainCalibration {
   DetRegistry indexes;
   //I'd make it a single detRegistry w/ detID and collection of indices 
   float  minPed_, maxPed_, minGain_, maxGain_;
-
-  //  unsigned int numberOfRowsToAverageOver_;   // 
-  //  unsigned int nBinsToUseForEncoding_;
-  // unsigned int deadFlag_;
-  // unsigned int noisyFlag_;
 
 
  COND_SERIALIZABLE;

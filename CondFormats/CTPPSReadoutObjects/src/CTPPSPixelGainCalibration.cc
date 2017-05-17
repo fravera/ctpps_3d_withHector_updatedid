@@ -193,7 +193,7 @@ void CTPPSPixelGainCalibration::resetPixData(uint32_t ipix, float ped, float gai
 //   ::memcpy((void*)(&vped[vped.size()-2]),(void*)(&data),2);
 // }
 
-float CTPPSPixelGainCalibration::getPed(const int& col, const int& row /*, const Range& range, const int& nCols*/, bool& isDead, bool& isNoisy) const {
+float CTPPSPixelGainCalibration::getPed(const int& col, const int& row /*, const Range& range, const int& nCols*/) const {
 
   //  int nRows = (range.second-range.first)/2 / nCols;
   //const DecodingStructure & s = (const DecodingStructure & ) *(range.first+(col*nRows + row)*2);
@@ -204,16 +204,12 @@ float CTPPSPixelGainCalibration::getPed(const int& col, const int& row /*, const
       << "[CTPPSPixelGainCalibration::getPed] Pixel out of range: col " << col << " row " << row;
   }  
   int ipix = col + row * nCols;
-  return   getPed(ipix,isDead,isNoisy);
+  return   getPed(ipix);
 }
 
 
-float CTPPSPixelGainCalibration::getPed(const uint32_t ipix,bool& isDead, bool&isNoisy) const {
+float CTPPSPixelGainCalibration::getPed(const uint32_t ipix) const {
 
-  if (v_pedestals[ipix] == -999.0)
-    isDead = true;  
-  if (v_gains[ipix] == -9999.0)
-    isNoisy = true;
   return v_pedestals[ipix];  
 
 }
@@ -221,7 +217,7 @@ float CTPPSPixelGainCalibration::getPed(const uint32_t ipix,bool& isDead, bool&i
 
 
 
-float CTPPSPixelGainCalibration::getGain(const int& col, const int& row /*, const Range& range, const int& nCols*/, bool& isDead, bool& isNoisy) const {
+float CTPPSPixelGainCalibration::getGain(const int& col, const int& row) const {
 
   //  int nRows = (range.second-range.first)/2 / nCols;
   //  const DecodingStructure & s = (const DecodingStructure & ) *(range.first+(col*nRows + row)*2);
@@ -232,15 +228,11 @@ float CTPPSPixelGainCalibration::getGain(const int& col, const int& row /*, cons
       << "[CTPPSPixelGainCalibration::getPed] Pixel out of range: col " << col << " row " << row;
   }  
   int ipix = col + row * nCols;
-  return getGain(ipix,isDead,isNoisy);
+  return getGain(ipix);
 }
 
-float CTPPSPixelGainCalibration::getGain(const uint32_t ipix,bool& isDead, bool&isNoisy) const {
+float CTPPSPixelGainCalibration::getGain(const uint32_t ipix) const {
 
-  if (v_pedestals[ipix] == -999. )
-     isDead = true;  
-  if (v_gains[ipix] == -9999.)
-     isNoisy = true;
   return v_gains[ipix];
 
 }

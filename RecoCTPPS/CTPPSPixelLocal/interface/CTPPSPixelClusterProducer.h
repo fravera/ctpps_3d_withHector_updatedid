@@ -32,7 +32,6 @@
 #include "RecoCTPPS/CTPPSPixelLocal/interface/CTPPSPixelGainCalibrationDBService.h"
 #include "RecoCTPPS/CTPPSPixelLocal/interface/RPixDetClusterizer.h"
 
-
 #include <vector>
 #include <set>
 
@@ -57,7 +56,7 @@ private:
 
  RPixDetClusterizer clusterizer_;
   
- void run(const edm::DetSetVector<CTPPSPixelDigi> &input, edm::DetSetVector<CTPPSPixelCluster> &output);
+  void run(const edm::DetSetVector<CTPPSPixelDigi> &input, edm::DetSetVector<CTPPSPixelCluster> &output, const CTPPSPixelAnalysisMask *mask);
  
 };
 

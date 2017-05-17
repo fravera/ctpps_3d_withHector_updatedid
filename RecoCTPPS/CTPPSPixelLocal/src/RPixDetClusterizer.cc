@@ -2,7 +2,6 @@
 #include "FWCore/Utilities/interface/Exception.h"
 
 #include "RecoCTPPS/CTPPSPixelLocal/interface/RPixDetClusterizer.h"
-#include "Geometry/VeryForwardGeometry/interface/CTPPSPixelTopology.h"
 
 namespace {
   constexpr int max16bits = 65535;
@@ -25,84 +24,67 @@ doSingleCalibration_ = conf.getParameter<bool>("doSingleCalibration");
 
 RPixDetClusterizer::~RPixDetClusterizer(){}
 
-void RPixDetClusterizer::buildClusters(unsigned int detId, const std::vector<CTPPSPixelDigi> &digi, std::vector<CTPPSPixelCluster> &clusters, const CTPPSPixelGainCalibrations * pcalibrations)
+
+void RPixDetClusterizer::buildClusters(unsigned int detId, const std::vector<CTPPSPixelDigi> &digi, std::vector<CTPPSPixelCluster> &clusters, const CTPPSPixelGainCalibrations * pcalibrations,const CTPPSPixelAnalysisMask* maskera)
+
 {
 
-  if(verbosity_) std::cout<<" RPixDetClusterizer "<<detId<<" received digi.size()="<<digi.size()<<std::endl;
-  if(verbosity_)  for(unsigned int i=0; i<digi.size();i++)std::cout<< digi[i].adc() << std::endl;
+  std::map<uint32_t, CTPPSPixelROCAnalysisMask> mask = maskera->analysisMask;
+  std::map<uint32_t, CTPPSPixelROCAnalysisMask>::iterator mask_it = mask.find(detId); 
 
+  std::set<std::pair<unsigned char, unsigned char> > maskedPixels;
+  if( mask_it != mask.end()) maskedPixels = mask_it->second.maskedPixels;
+
+
+  if(verbosity_) edm::LogInfo("RPixDetClusterizer")<<detId<<" received digi.size()="<<digi.size();
 
 // creating a set of CTPPSPixelDigi's and fill it
-// NOTE: this should be also the place where SiPixels do the Calibration, i.e. when they create the buffer via make_buffer method!!
+
   rpix_digi_set_.clear();
   rpix_digi_set_.insert(digi.begin(),digi.end());
 
-
-// try to modify/calibrate digis here
+// calibrate digis here
   calib_rpix_digi_set_.clear();
   for( std::set<CTPPSPixelDigi>::iterator RPdit = rpix_digi_set_.begin(); RPdit != rpix_digi_set_.end();++RPdit){
 
     if((*RPdit).row() > maxRow || (*RPdit).column() > maxCol)
        throw cms::Exception("CTPPSDigiOutofRange") 
 	 << " row = " << (*RPdit).row() << "  column = "<< (*RPdit).column();
-    std::cout << " row = " << (*RPdit).row() << "  column = "<< (*RPdit).column() << "  adc = " << (*RPdit).adc() << std::endl;
+
     unsigned char row = (*RPdit).row();
     unsigned char column = (*RPdit).column();
     unsigned short adc = (*RPdit).adc();
-    unsigned short electrons = calibrate(detId,adc,row,column,pcalibrations);
+    unsigned short electrons = 0;
+    std::pair<unsigned char, unsigned char> pixel = std::make_pair(row,column);
+
+// check if pixel is noisy or dead (i.e. in the mask)
+    const bool is_in = maskedPixels.find(pixel) != maskedPixels.end();
+    if(!is_in){
 //calibrate digi and store the new ones
+    electrons = calibrate(detId,adc,row,column,pcalibrations);
     RPixCalibDigi calibDigi(row,column,adc,electrons);
     calib_rpix_digi_set_.insert(calibDigi);
-
-
+    }
   }
-  if(verbosity_) std::cout<<" RPix set size = "<<calib_rpix_digi_set_.size()<<std::endl;
+  if(verbosity_) edm::LogInfo("RPixDetClusterizer")<<" RPix set size = "<<calib_rpix_digi_set_.size();
+
 // storing the seeds
   SeedVector_.clear();
-  std::set<RPixCalibDigi>::iterator RPDit;
-  for(RPDit = calib_rpix_digi_set_.begin(); RPDit!=calib_rpix_digi_set_.end();++RPDit){
-    if(verbosity_) std::cout<<"adc    " << (*RPDit).adc()<< std::endl;
-    if(verbosity_) std::cout<<"ele    " << (*RPDit).electrons()<< std::endl;
-
-    if((*RPDit).electrons() > SeedADCThreshold_*ElectronADCGain_){
-     
-    // storing the seed if above threshold
-      SeedVector_.push_back(*RPDit);
-
-    } 
+  for (const auto &rpcd : calib_rpix_digi_set_){
+    if(rpcd.electrons() > SeedADCThreshold_*ElectronADCGain_){
+      SeedVector_.push_back(rpcd);
+    }
   }
-  if(verbosity_) std::cout<<" SeedVector size = "<<SeedVector_.size()<<std::endl;
+  if(verbosity_) edm::LogInfo("RPixDetClusterizer")<<" SeedVector size = "<<SeedVector_.size();
 
-
-
-//----
 // Looping on the seeds to make a cluster around the seed
-
   for(std::vector<RPixCalibDigi>::iterator SeedIt = SeedVector_.begin(); SeedIt!=SeedVector_.end();++SeedIt){
-   
-// testing find method ... to be removed
-//   std::set<RPixCalibDigi>::iterator RPDit3 = calib_rpix_digi_set_.find( *SeedIt );
-//   if(verbosity_) std::cout<<"    " <<  (*RPDit3).adc()<< std::endl;
-
-// make cluster around the seed
-
     make_cluster( *SeedIt, clusters);
-
-// to be finished ........
-
-
   }
 
 }
 
 void RPixDetClusterizer::make_cluster(RPixCalibDigi aSeed,  std::vector<CTPPSPixelCluster> &clusters ){
-
-// THIS DEPENDS ON SENSOR TOPOLOGY!!!
-
-// CHECK ALSO FOR CALIBRATION
-
-//  int max_rows_in_sensor=160;
-//  int max_cols_in_sensor=156;
 
 /// check if seed already used
   if(calib_rpix_digi_set_.size()==0 || calib_rpix_digi_set_.find(aSeed)==calib_rpix_digi_set_.end() ){
@@ -121,18 +103,19 @@ void RPixDetClusterizer::make_cluster(RPixCalibDigi aSeed,  std::vector<CTPPSPix
 
   while ( ! atempCluster.empty()) {
   //This is the standard algorithm to find and add a pixel
-    auto curInd = atempCluster.top(); atempCluster.pop();
+    auto curInd = atempCluster.top(); 
+    atempCluster.pop();
     for ( auto c = std::max(0,int(atempCluster.col[curInd])-1); c < std::min(int(atempCluster.col[curInd])+2,maxCol) ; ++c) {
       for ( auto r = std::max(0,int(atempCluster.row[curInd])-1); r < std::min(int(atempCluster.row[curInd])+2,maxRow); ++r)  {
-
-	for(std::set<RPixCalibDigi>::iterator RPDit4 = calib_rpix_digi_set_.begin(); RPDit4 != calib_rpix_digi_set_.end(); ){
-	  if( (*RPDit4).column() == c && (*RPDit4).row() == r && (*RPDit4).electrons() > ADCThreshold_*ElectronADCGain_ ){
-	     
-	    if(!atempCluster.addPixel( r,c,(*RPDit4).electrons() )) {goto endClus;}
-	    RPDit4 =  calib_rpix_digi_set_.erase(RPDit4);
-
+	
+	for(std::set<RPixCalibDigi>::iterator RPCDit2 = calib_rpix_digi_set_.begin(); RPCDit2 != calib_rpix_digi_set_.end(); ){
+	  if( (*RPCDit2).column() == c && (*RPCDit2).row() == r && (*RPCDit2).electrons() > ADCThreshold_*ElectronADCGain_ ){
+	    
+	    if(!atempCluster.addPixel( r,c,(*RPCDit2).electrons() )) {goto endClus;}
+	    RPCDit2 =  calib_rpix_digi_set_.erase(RPCDit2);
+	    
 	  }else{
-	    ++RPDit4;
+	    ++RPCDit2;
 	  }
 
 	}
@@ -144,46 +127,36 @@ void RPixDetClusterizer::make_cluster(RPixCalibDigi aSeed,  std::vector<CTPPSPix
 
 
  endClus:
-//  SiPixelCluster cluster(atempCluster.isize,atempCluster.adc, atempCluster.x,atempCluster.y, atempCluster.xmin,atempCluster.ymin);
 
-
-  if(verbosity_) atempCluster.printCluster();
   CTPPSPixelCluster cluster(atempCluster.isize,atempCluster.adc, atempCluster.row,atempCluster.col, atempCluster.rowmin,atempCluster.colmin);
   clusters.push_back(cluster);
-
-//  if(cluster.minPixelRow()>130)std::cout << "cluster.minPixelRow >130 "<< uint8_t(atempCluster.rowmin) << " " <<uint8_t(cluster.minPixelRow() )<<std::endl;;
-
-// SPLITTING LARGE CLUSTERS TO BE DONE
 
 }
 
 int RPixDetClusterizer::calibrate(unsigned int detId, int adc, int row, int col, const CTPPSPixelGainCalibrations *pcalibrations){
 
-  bool isnoisy_g=false;  
-  bool isdead_g=false;
-  bool isnoisy_p=false;
-  bool isdead_p=false;
   float gain=0;
   float pedestal=0;
   float electrons=0;
+
 
   detId = 2014314496; //just one plane in test DB file 
 
   if(!doSingleCalibration_){
     CTPPSPixelGainCalibration DetCalibs = pcalibrations->getGainCalibration(detId);
-    gain = DetCalibs.getGain(col,row,isdead_g,isnoisy_g);
-    pedestal = DetCalibs.getPed(col,row,isdead_p,isnoisy_p);
+    gain = DetCalibs.getGain(col,row);
+    pedestal = DetCalibs.getPed(col,row);
     float vcal = (adc - pedestal)*gain;
     electrons = int(vcal*VcaltoElectronGain_ + VcaltoElectronOffset_);
-    if(verbosity_) std::cout << "calibrate:  adc = " << adc << " electrons = " << electrons << " gain = " << gain << " pedestal = " << pedestal << endl;
+    if(verbosity_) edm::LogInfo("RPixCalibration") << "calibrate:  adc = " << adc << " electrons = " << electrons << " gain = " << gain << " pedestal = " << pedestal ;
   }else{
     gain = ElectronADCGain_;
     pedestal = 0;
     electrons = int(adc*gain-pedestal);
-    if(verbosity_) std::cout << "calibrate:  adc = " << adc << " electrons = " << electrons << " ElectronADCGain = " << gain << " pedestal = " << pedestal << endl;
+    if(verbosity_) edm::LogInfo("RPixCalibration") << "calibrate:  adc = " << adc << " electrons = " << electrons << " ElectronADCGain = " << gain << " pedestal = " << pedestal ;
   }
   if (electrons<0) {
-    std::cout << "RPixDetClusterizer::calibrate: *** electrons < 0 *** --> " << electrons << "  --> electrons = 0" << endl;
+    edm::LogInfo("RPixCalibration") << "RPixDetClusterizer::calibrate: *** electrons < 0 *** --> " << electrons << "  --> electrons = 0";
     electrons = 0;
   }
 
