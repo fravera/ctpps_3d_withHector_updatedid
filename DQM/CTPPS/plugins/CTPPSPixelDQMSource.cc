@@ -78,6 +78,7 @@ class CTPPSPixelDQMSource: public DQMEDAnalyzer
   int	          RPindexValid[RPotsTotalNumber];
   MonitorElement *hRPotActivPlanes[RPotsTotalNumber];
   MonitorElement *hRPotActivBX[RPotsTotalNumber];
+  MonitorElement *hRPotActivBXall[RPotsTotalNumber];
   MonitorElement *hRPotActivBXroc[RPotsTotalNumber];
   MonitorElement *h2HitsMultROC[RPotsTotalNumber];
   MonitorElement *hRPotActivROCs[RPotsTotalNumber];
@@ -260,6 +261,8 @@ edm::EventSetup const &)
 	 NplaneMAX, -0.5, NplaneMAX+0.5);
        hRPotActivBX[indexP] = 
         ibooker.book1D("5 fired planes per BX", rpTitle+";Event.BX", 4002, -1.5, 4000.+0.5);
+       hRPotActivBXall[indexP] = 
+        ibooker.book1D("hits per BX", rpTitle+";Event.BX", 4002, -1.5, 4000.+0.5);
        hRPotActivBXroc[indexP] = 
         ibooker.book1D("4 fired ROCs per BX", rpTitle+";Event.BX", 4002, -1.5, 4000.+0.5);
 
@@ -335,8 +338,11 @@ void CTPPSPixelDQMSource::analyze(edm::Event const& event, edm::EventSetup const
 {
   ++nEvents;
  int RPactivity[2][NRPotsMAX];
- for(int arm = 0; arm <2; arm++) for(int rp=0; rp<NRPotsMAX; rp++)
+ int digiSize[2][NRPotsMAX];
+ for(int arm = 0; arm <2; arm++) for(int rp=0; rp<NRPotsMAX; rp++){
    RPactivity[arm][rp] = 0;
+   digiSize[arm][rp] = 0;
+   }
  for(int ind=0; ind<2*3*NRPotsMAX; ind++) 
    for(int p=0; p<NplaneMAX; p++) HitsMultPlane[ind][p] = 0;
 
@@ -355,6 +361,7 @@ void CTPPSPixelDQMSource::analyze(edm::Event const& event, edm::EventSetup const
 
  if(!valid && verbosity) LogPrint("CTPPSPixelDQMSource") <<"No valid data in Event "<<nEvents;
 
+
 if(pixDigi.isValid())
   for(const auto &ds_digi : *pixDigi)
   {
@@ -372,6 +379,7 @@ if(pixDigi.isValid())
    int station = theId.station()&0x3;
    int rpot = theId.rp()&0x7;
    RPactivity[arm][rpot] = 1;
+   ++digiSize[arm][rpot];
 
  if(StationStatus[station] && RPstatus[station][rpot]) {
 
@@ -420,7 +428,8 @@ if(pixDigi.isValid())
     for(int p=0; p<NplaneMAX; p++) if(HitsMultPlane[index][p]>0) np++;
     hRPotActivPlanes[index]->Fill(np);
     if(np>5) hRPotActivBX[index]->Fill(event.bunchCrossing());
-
+    hRPotActivBXall[index]->Fill(event.bunchCrossing(),float(digiSize[arm][rp]));
+    
     int rocf[NplaneMAX];
     for(int r=0; r<NROCsMAX; r++) rocf[r]=0;
     for(int p=0; p<NplaneMAX; p++) {
