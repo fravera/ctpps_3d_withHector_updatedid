@@ -76,6 +76,7 @@ namespace cond {
       IMPORT_PAYLOAD_CASE( CentralityTable )
       IMPORT_PAYLOAD_CASE( CTPPSPixelDAQMapping )
       IMPORT_PAYLOAD_CASE( CTPPSPixelAnalysisMask )
+      IMPORT_PAYLOAD_CASE( CTPPSPixelGainCalibrations  )
       IMPORT_PAYLOAD_CASE( DTCCBConfig )
       IMPORT_PAYLOAD_CASE( DTDeadFlag )
       IMPORT_PAYLOAD_CASE( DTHVStatus )
