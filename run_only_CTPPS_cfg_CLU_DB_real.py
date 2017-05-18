@@ -68,19 +68,20 @@ process.o1 = cms.OutputModule("PoolOutputModule",
         fileName = cms.untracked.string('simevent_CTPPS_CLU_real.root')
         )
 
-#process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelClusterizer_cfi")
-process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
-                                     label=cms.untracked.string("ctppsPixelDigis"),
-                                     RPixVerbosity = cms.int32(2),
-                                     SeedADCThreshold = cms.int32(10),
-                                     ADCThreshold = cms.int32(10),
-                                     ElectronADCGain = cms.double(135.0),
-                                     VCaltoElectronOffset = cms.int32(0),
-                                     VCaltoElectronGain = cms.int32(50),
+process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelClusterizer_cfi")
+
+#process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
+#                                     label=cms.untracked.string("ctppsPixelDigis"),
+#                                     RPixVerbosity = cms.int32(2),
+#                                     SeedADCThreshold = cms.int32(10),
+#                                     ADCThreshold = cms.int32(10),
+#                                     ElectronADCGain = cms.double(135.0),
+#                                     VCaltoElectronOffset = cms.int32(0),
+#                                     VCaltoElectronGain = cms.int32(50),
 #                                     CalibrationFile = cms.string("Gain_Fed_1462-1463_Run_107.root"),
 #                                     DAQCalibration = cms.bool(True),
-                                     doSingleCalibration = cms.bool(False)
-)
+#                                     doSingleCalibration = cms.bool(False)
+#)
 
 
 process.mixedigi_step = cms.Path(process.clusterProd
