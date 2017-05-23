@@ -83,7 +83,26 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
 	  run(*rpCl, output);
 
         // Step D: write output to file
-       
+//==============
+	unsigned int idSS = 0;
+	for(const auto & ds_rh : output){
+	  idSS++;
+	  if(verbosity_)std::cout << "ID :  " << ds_rh.id << std::endl;
+	}
+	if(idSS >=5 ){
+
+	  for(const auto & ds_rh2 : output){
+	    for (const auto & _rh : ds_rh2.data){
+
+	      CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
+	      CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(ds_rh2.id,localV);
+	      if(verbosity_)std::cout << "ID : " << ds_rh2.id << " hit  " << _rh.getPoint().x()<<" "<<_rh.getPoint().y()<<" " <<_rh.getPoint().z()<< "   "<< globalV.x() << " " << globalV.y() <<" " <<std::setprecision(20) << globalV.z() <<std::endl;
+
+	    }
+	  }
+	}
+	
+//==============       
 	iEvent.put(std::make_unique<edm::DetSetVector<CTPPSPixelRecHit> >(output));
 
 }
@@ -104,8 +123,8 @@ void CTPPSPixelRecHitProducer::run(const edm::DetSetVector<CTPPSPixelCluster> &i
 //-----------------------------------
       unsigned int rechitN=0;
       for(std::vector<CTPPSPixelRecHit>::iterator iit = ds_rechit.data.begin(); iit != ds_rechit.data.end(); iit++){
-	
-	if(verbosity_)	std::cout << "Rechit " << ++rechitN <<" x " << (*iit).getPoint().x()<< " y " << (*iit).getPoint().y()<< " z " <<  (*iit).getPoint().z() << std::endl;
+	++rechitN;
+	if(verbosity_)	std::cout << "Rechit " << rechitN <<" x " << (*iit).getPoint().x()<< " y " << (*iit).getPoint().y()<< " z " <<  (*iit).getPoint().z() << std::endl;
 
 
 
@@ -114,6 +133,9 @@ void CTPPSPixelRecHitProducer::run(const edm::DetSetVector<CTPPSPixelCluster> &i
       }
 
       if(verbosity_)	std::cout << "Rechit Number = " << rechitN << std::endl; 
+
+
+
 
 //-----------------------------------
     }
