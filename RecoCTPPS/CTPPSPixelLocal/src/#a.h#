@@ -1,0 +1,33 @@
+int RPixDetClusterizer::calibrate(unsigned int detId, int adc, int row, int col, const CTPPSPixelGainCalibrations *pcalibrations){
+
+  float gain=0;
+  float pedestal=0;
+  float electrons=0;
+
+
+  detId = 2014314496; //just one plane in test DB file 
+
+  if(!doSingleCalibration_){
+
+    CTPPSPixelGainCalibration DetCalibs = pcalibrations->getGainCalibration(detId);
+    gain = DetCalibs.getGain(col,row);
+    pedestal = DetCalibs.getPed(col,row);
+
+
+    float vcal = (adc - pedestal)*gain;
+    electrons = int(vcal*VcaltoElectronGain_ + VcaltoElectronOffset_);
+    if(verbosity_) edm::LogInfo("RPixCalibration") << "calibrate:  adc = " << adc << " electrons = " << electrons << " gain = " << gain << " pedestal = " << pedestal ;
+  }else{
+    gain = ElectronADCGain_;
+    pedestal = 0;
+    electrons = int(adc*gain-pedestal);
+    if(verbosity_) edm::LogInfo("RPixCalibration") << "calibrate:  adc = " << adc << " electrons = " << electrons << " ElectronADCGain = " << gain << " pedestal = " << pedestal ;
+  }
+  if (electrons<0) {
+    edm::LogInfo("RPixCalibration") << "RPixDetClusterizer::calibrate: *** electrons < 0 *** --> " << electrons << "  --> electrons = 0";
+    electrons = 0;
+  }
+
+  return electrons;
+
+}

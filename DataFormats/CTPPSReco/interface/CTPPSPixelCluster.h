@@ -4,7 +4,7 @@
 /*
   \class CTPPSPixelCluster 
   \brief CTPPSPixelCluster stores the information of CTPPS Tracker clusters of 3D pixels
-// Author: F.Ferro - INFN Genova - 2016
+ Author: F.Ferro - INFN Genova - 2016
 */
 
 
@@ -18,9 +18,9 @@ class CTPPSPixelCluster {
 public:
 
   CTPPSPixelCluster() {}
-  static const uint8_t MAXSPAN=255;
-  static const uint8_t MAXCOL=155; 
-  static const uint8_t MAXROW=159; 
+  static constexpr uint8_t MAXSPAN=255;
+  static constexpr uint8_t MAXCOL=155; 
+  static constexpr uint8_t MAXROW=159; 
 
   
 CTPPSPixelCluster(uint16_t isize, uint16_t * adcs,         
@@ -93,7 +93,6 @@ CTPPSPixelCluster(uint16_t isize, uint16_t * adcs,
   inline int colSpan() const {return thePixelColSpan; }
   inline int rowSpan() const { return thePixelRowSpan; }
 
-
   const std::vector<uint8_t> & pixelOffset() const { return thePixelOffset;}
   const std::vector<uint16_t> & pixelADC() const { return thePixelADC;}
 
@@ -113,14 +112,11 @@ private:
   std::vector<uint16_t> thePixelADC;
 
   
-  
-  uint8_t theMinPixelRow=MAXROW; // Minimum pixel index in the row direction (low edge).
-  uint8_t theMinPixelCol=MAXCOL; // Minimum pixel index in the col direction (left edge).
-  uint8_t thePixelRowSpan=0; // Span pixel index in the row direction (low edge).
-  uint8_t thePixelColSpan=0; // Span pixel index in the col direction (left edge).
+  uint8_t theMinPixelRow=MAXROW;
+  uint8_t theMinPixelCol=MAXCOL; 
+  uint8_t thePixelRowSpan=0; 
+  uint8_t thePixelColSpan=0; 
    
- 
-
 };
 
 inline bool operator<( const CTPPSPixelCluster& one, const CTPPSPixelCluster& two) {
