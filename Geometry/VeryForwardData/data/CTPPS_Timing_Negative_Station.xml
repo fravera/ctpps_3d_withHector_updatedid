@@ -38,13 +38,14 @@
     <PosPart copyNumber="1">
       <rParent name="CTPPS_Timing_Negative_Station:CTPPS_Timing_Negative_Station"/>
       <rChild name="CTPPS_Timing_Negative_Station_Vacuum_4"/>
+      <Translation x="[CTPPS_Diamond_X_Distance:CTPPS_Diamond_Detector_X_distance]" y="0*mm" z="0*mm"/>
       <rRotation name="rotations:180R"/>
     </PosPart>
     <PosPart copyNumber="1">
       <rParent name="CTPPS_Timing_Negative_Station:CTPPS_Timing_Negative_Station_Vacuum_4"/>
-      <rChild name="CTPPS_Timing_Horizontal_Pot:CTPPS_Timing_Cylinder_Primary_Vacuum"/>
+      <rChild name="CTPPS_Timing_Horizontal_Pot:Primary_Vacuum"/>
       <rRotation name="rotations:90YX"/>
-      <Translation x="[CTPPS_Timing_Horizontal_Pot:height]/2+[CTPPS_Timing_Horizontal_Pot:Cylinder_beam_distance]" y="0*m " z="0*m " />
+      <Translation x="([CTPPS_Timing_Horizontal_Pot:plane_length]+[CTPPS_Timing_Horizontal_Pot:cut_depth]+[CTPPS_Timing_Horizontal_Pot:thin_window_thickness])/2" y="0*cm" z="0*cm"/>
     </PosPart>
     <PosPart copyNumber="1">
       <rParent name="CTPPS_Timing_Negative_Station:CTPPS_Timing_Negative_Station"/>
