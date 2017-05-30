@@ -66,7 +66,7 @@ duplicateCheckMode = cms.untracked.string("checkEachFile")
 process.load("EventFilter.CTPPSRawToDigi.ctppsRawToDigi_cff")
 
 # local RP reconstruction chain with standard settings
-process.load('Configuration.Geometry.geometry_CTPPS_FF_cfi')
+process.load('Configuration.Geometry.geometry_CTPPS_alaTotem_cfi')
 process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 
 ############
