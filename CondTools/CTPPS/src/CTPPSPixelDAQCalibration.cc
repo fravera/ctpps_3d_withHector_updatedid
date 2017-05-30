@@ -54,8 +54,6 @@ void CTPPSPixelDAQCalibration::getDAQCalibration(unsigned int detid, int row, in
   if (arm==0) sector=45;
   if (arm==1) sector=56;
 
-//  std::cout << "arm = " << arm << "  rp = " << pot  << "  station = "  << station << "  plane = " << plane << std::endl;
-
 
   if (modulepixels.transformToROC(col,row,roc,colROC,rowROC)==0){
 
@@ -64,22 +62,19 @@ void CTPPSPixelDAQCalibration::getDAQCalibration(unsigned int detid, int row, in
    sprintf(pathgains,"CTPPS/CTPPS_SEC%d/CTPPS_SEC%d_RP%d%d%d/CTPPS_SEC%d_RP%d%d%d_PLN%d/CTPPS_SEC%d_RP%d%d%d_PLN%d_ROC%d_Slope2D",sector,sector,arm,station,pot,sector,arm,station,pot,plane,sector,arm,station,pot,plane,roc);
    sprintf(pathpedestals,"CTPPS/CTPPS_SEC%d/CTPPS_SEC%d_RP%d%d%d/CTPPS_SEC%d_RP%d%d%d_PLN%d/CTPPS_SEC%d_RP%d%d%d_PLN%d_ROC%d_Intercept2D",sector,sector,arm,station,pot,sector,arm,station,pot,plane,sector,arm,station,pot,plane,roc);
    gain = 0; pedestal = 0;
-   TH2F* gainshisto ;//= new TH2F();
-   TH2F *pedestalshisto;// = new TH2F();
+   TH2F* gainshisto ;
+   TH2F *pedestalshisto;
 
 
    if(!(gainshisto = (TH2F*)fp->Get(pathgains))) {
-    std::cout << pathgains << " not found." << std::endl;
+  
     gain=0;
-   
    }
 
    if(!(pedestalshisto = (TH2F*)fp->Get(pathpedestals))) {
-    std::cout << pathpedestals << " not found." << std::endl;
+  
     pedestal=0;
-
-   
-  }
+   }
 
    float slope = 0; 
    if(!gainshisto){
@@ -99,7 +94,7 @@ void CTPPSPixelDAQCalibration::getDAQCalibration(unsigned int detid, int row, in
    }
   delete gainshisto; delete pedestalshisto;
   }else{
-    std::cout << "** Module to ROC pixel transformation failed!! **" << std::endl;
+  //  std::cout << "** Module to ROC pixel transformation failed!! **" << std::endl;
   }
 
   

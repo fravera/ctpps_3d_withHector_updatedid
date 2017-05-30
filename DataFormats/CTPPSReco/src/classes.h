@@ -12,6 +12,7 @@
 #include "DataFormats/CTPPSReco/interface/CTPPSDiamondRecHit.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSDiamondLocalTrack.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelCluster.h"
+#include "DataFormats/CTPPSReco/interface/CTPPSPixelRecHit.h"
 
 #include "DataFormats/CTPPSReco/interface/CTPPSLocalTrackLite.h"
 
@@ -54,12 +55,11 @@ namespace DataFormats_CTPPSReco {
     CTPPSDiamondRecHit ctd_rh;
     edm::Ptr<CTPPSDiamondRecHit> ptr_ctd_rh;
     edm::Wrapper<CTPPSDiamondRecHit> wrp_ctd_rh;
-    std::vector<CTPPSDiamondRecHit> vec_ctd_rh;
-    std::vector< edm::DetSet<CTPPSDiamondRecHit> > vec_ds_ctd_rh;
-    edm::DetSet<CTPPSDiamondRecHit> ds_ctd_rh;
+    std::vector<CTPPSDiamondRecHit> vec_rh;
+    std::vector< edm::DetSet<CTPPSDiamondRecHit> > vec_ds_rh;
+    edm::DetSet<CTPPSDiamondRecHit> ds_rh;
     edm::DetSetVector<CTPPSDiamondRecHit> dsv_ctd_rh;
     edm::Wrapper< edm::DetSetVector<CTPPSDiamondRecHit> > wrp_dsv_ctd_rh;
-    edm::Wrapper< std::vector<CTPPSDiamondRecHit> > wrp_vec_ctd_rh;
 
     CTPPSDiamondLocalTrack ctd_lt;
     edm::Ptr<CTPPSDiamondLocalTrack> ptr_ctd_lt;
@@ -79,6 +79,13 @@ namespace DataFormats_CTPPSReco {
     std::vector<edm::DetSet<CTPPSPixelCluster> > svdsrpcl;
     edm::DetSetVector<CTPPSPixelCluster> dsvrpcl;
     edm::Wrapper<edm::DetSetVector<CTPPSPixelCluster> > wdsvrpcl;
+
+    CTPPSPixelRecHit rprh;
+    edm::DetSet<CTPPSPixelRecHit> dsrprh;
+    std::vector<CTPPSPixelRecHit> svrprh;
+    std::vector<edm::DetSet<CTPPSPixelRecHit> > svdsrprh;
+    edm::DetSetVector<CTPPSPixelRecHit> dsvrprh;
+    edm::Wrapper<edm::DetSetVector<CTPPSPixelRecHit> > wdsvrprh;
 
 
     //--- common objects
