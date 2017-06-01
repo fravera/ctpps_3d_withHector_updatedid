@@ -56,7 +56,8 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
  //----------------------------------
 
 	edm::ESHandle<TotemRPGeometry> geometry;
-	iSetup.get<VeryForwardMisalignedGeometryRecord>().get(geometry);
+//	iSetup.get<VeryForwardMisalignedGeometryRecord>().get(geometry);
+	iSetup.get<VeryForwardRealGeometryRecord>().get(geometry);
 
 	geometryWatcher.check(iSetup);
 

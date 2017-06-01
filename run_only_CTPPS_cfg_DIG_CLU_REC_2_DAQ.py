@@ -18,7 +18,7 @@ process.load('Configuration.StandardSequences.SimIdeal_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 ############### using only CTPPS geometry 
-process.load("Configuration.Geometry.geometry_CTPPS_cfi")
+process.load("Configuration.Geometry.geometry_CTPPS_SIM_RECO_cfi")
 process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 
 #process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
@@ -57,7 +57,7 @@ process.RandomNumberGeneratorService.RPixDetDigitizer = cms.PSet(initialSeed =cm
 
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(100)
+        input = cms.untracked.int32(1000)
         )
 
 from Configuration.AlCa.GlobalTag import GlobalTag

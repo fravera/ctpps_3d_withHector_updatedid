@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 # geometry
-from Geometry.VeryForwardGeometry.geometryRP_cfi import *
+from Geometry.VeryForwardGeometry.geometry_CTPPS_alaTotem_RECO_cfi import *
 
 # clusterization
 from RecoCTPPS.TotemRPLocal.totemRPClusterProducer_cfi import *

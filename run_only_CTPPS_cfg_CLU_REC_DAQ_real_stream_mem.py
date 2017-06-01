@@ -17,8 +17,8 @@ process.maxEvents = cms.untracked.PSet(
         )
 
 process.MessageLogger = cms.Service("MessageLogger",
-    destinations = cms.untracked.vstring('clu_info'),
-    clu_info = cms.untracked.PSet( threshold = cms.untracked.string('INFO'))
+    destinations = cms.untracked.vstring('cout'),
+    cout = cms.untracked.PSet( threshold = cms.untracked.string('INFO'))
 )
 process.source = cms.Source("EmptyIOVSource",
     timetype = cms.string('runnumber'),
@@ -63,11 +63,13 @@ duplicateCheckMode = cms.untracked.string("checkEachFile")
 #)
 
 # raw-to-digi conversion
-process.load("EventFilter.CTPPSRawToDigi.ctppsRawToDigi_cff")
+#process.load("EventFilter.CTPPSRawToDigi.ctppsRawToDigi_cff")
 
 # local RP reconstruction chain with standard settings
-#process.load('Configuration.Geometry.geometry_CTPPS_alaTotem_cfi')
-process.load('Configuration.Geometry.geometry_CTPPS_cfi')
+#process.load('Configuration.Geometry.geometry_CTPPS_alaTotem_RECO_cfi')
+#process.load('Configuration.Geometry.geometry_CTPPS_RECO_cfi')
+#process.load('Geometry.VeryForwardGeometry.geometryRP_cfi')
+#from Geometry.VeryForwardGeometry.geometryRP_cfi import *
 process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 
 ############
@@ -82,22 +84,23 @@ process.o1 = cms.OutputModule("PoolOutputModule",
 
 #process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelClusterizer_cfi")
 
-process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
-                                     label=cms.untracked.string("ctppsPixelDigis"),
-                                     RPixVerbosity = cms.int32(0),
-                                     SeedADCThreshold = cms.int32(10),
-                                     ADCThreshold = cms.int32(10),
-                                     ElectronADCGain = cms.double(135.0),
-                                     VCaltoElectronOffset = cms.int32(-411),
-                                     VCaltoElectronGain = cms.int32(50),
-                                     CalibrationFile = cms.string("Gain_Fed_1462-1463_Run_107.root"),
-                                     DAQCalibration = cms.bool(True),
-                                     doSingleCalibration = cms.bool(False)
-)
-process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelRecHit_cfi")
+#process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
+#                                     label=cms.untracked.string("ctppsPixelDigis"),
+#                                     RPixVerbosity = cms.int32(0),
+#                                     SeedADCThreshold = cms.int32(10),
+#                                     ADCThreshold = cms.int32(10),
+#                                     ElectronADCGain = cms.double(135.0),
+#                                     VCaltoElectronOffset = cms.int32(-411),
+#                                     VCaltoElectronGain = cms.int32(50),
+#                                     CalibrationFile = cms.string("Gain_Fed_1462-1463_Run_107.root"),
+#                                     DAQCalibration = cms.bool(True),
+#                                     doSingleCalibration = cms.bool(False)
+#)
+#process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelRecHit_cfi")
 
-process.mixedigi_step = cms.Path(process.clusterProd
-*process.rechitProd
+process.mixedigi_step = cms.Path(
+#process.clusterProd*process.rechitProd
+process.recoCTPPS
 )
 
 process.outpath = cms.EndPath(process.o1)
