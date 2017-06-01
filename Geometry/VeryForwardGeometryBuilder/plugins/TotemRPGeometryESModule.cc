@@ -165,8 +165,9 @@ std::unique_ptr<DetGeomDesc> TotemRPGeometryESModule::produceIdealGD(const Ideal
 {
   // get the DDCompactView from EventSetup
   edm::ESHandle<DDCompactView> cpv;
-  iRecord.get(cpv);
-  
+//  iRecord.get("XMLIdealGeometryESSource_CTPPS", cpv);
+  iRecord.get( cpv);
+  cout << " ______________________----------------------------------------- 1 " << endl;
   // construct the tree of DetGeomDesc
   DDDTotemRPContruction worker;
   return std::unique_ptr<DetGeomDesc>( const_cast<DetGeomDesc*>( worker.construct(&(*cpv)) ) );
@@ -179,6 +180,7 @@ std::unique_ptr<DetGeomDesc> TotemRPGeometryESModule::produceRealGD(const VeryFo
   // get the input GeometricalDet
   edm::ESHandle<DetGeomDesc> idealGD;
   iRecord.getRecord<IdealGeometryRecord>().get(idealGD);
+  cout << " ______________________----------------------------------------- 2 " << endl;
 
   // load alignments
   edm::ESHandle<RPAlignmentCorrectionsData> alignments;
@@ -210,6 +212,7 @@ std::unique_ptr<DetGeomDesc> TotemRPGeometryESModule::produceMisalignedGD(const 
   // get the input GeometricalDet
   edm::ESHandle<DetGeomDesc> idealGD;
   iRecord.getRecord<IdealGeometryRecord>().get(idealGD);
+  cout << " ______________________----------------------------------------- 3 " << endl;
 
   // load alignments
   edm::ESHandle<RPAlignmentCorrectionsData> alignments;

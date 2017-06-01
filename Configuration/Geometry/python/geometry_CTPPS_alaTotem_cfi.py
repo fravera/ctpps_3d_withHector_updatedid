@@ -124,7 +124,9 @@ ctppsPixelGeomXMLFiles = cms.vstring(
 
 
 XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
-                                              geomXMLFiles = totemGeomXMLFiles+ctppsDiamondGeomXMLFiles+ctppsPixelGeomXMLFiles,
+                                              geomXMLFiles = totemGeomXMLFiles+ctppsDiamondGeomXMLFiles
++ctppsPixelGeomXMLFiles
+,
                                               rootNodeName = cms.string('cms:CMSE')
                                               )
 
