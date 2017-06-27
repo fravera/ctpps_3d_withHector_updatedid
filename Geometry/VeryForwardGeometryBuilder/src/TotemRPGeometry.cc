@@ -58,14 +58,14 @@ char TotemRPGeometry::AddDetector(unsigned int id, const DetGeomDesc* &gD)
   if (theMap.find(id) != theMap.end())
     return 1;
 
-// add gD
-  theMap[id] = (DetGeomDesc*) gD;
+  // add gD
+  theMap[id] = gD;
   return 0;
 }
 
 //----------------------------------------------------------------------------------------------------
 
-DetGeomDesc* TotemRPGeometry::GetDetector(unsigned int id) const
+const DetGeomDesc* TotemRPGeometry::GetDetector(unsigned int id) const
 {
 // check if id is RP id?
 
@@ -74,7 +74,7 @@ DetGeomDesc* TotemRPGeometry::GetDetector(unsigned int id) const
   mapType::const_iterator it = theMap.find(id);
   if (it == theMap.end())
     throw cms::Exception("TotemRPGeometry") << "Not found detector with ID " << id << ", i.e. "
-					    << TotemRPDetId(id);
+      << CTPPSDetId(id);
 
 // the [] operator cannot be used as this method is const
 // and it must be const and one gets TotemRPGeometry const
@@ -126,13 +126,13 @@ char TotemRPGeometry::AddRPDevice(unsigned int id, const DetGeomDesc* &gD)
 
 //----------------------------------------------------------------------------------------------------
 
-DetGeomDesc* TotemRPGeometry::GetRPDevice(unsigned int id) const
+const DetGeomDesc* TotemRPGeometry::GetRPDevice(unsigned int id) const
 {
 // check if there is a corresponding key
   RPDeviceMapType::const_iterator it = theRomanPotMap.find(id);
   if (it == theRomanPotMap.end())
     throw cms::Exception("TotemRPGeometry") << "Not found RP device with ID " << id << ", i.e. "
-					    << TotemRPDetId(id);
+      << TotemRPDetId(id);
 
   return (*it).second;
 }
@@ -165,21 +165,20 @@ void TotemRPGeometry::BuildSets()
 
 // build
   for (mapType::const_iterator it = theMap.begin(); it != theMap.end(); ++it)
-    {
-      const CTPPSDetId detId(it->first);
-      const CTPPSDetId rpId = detId.getRPId();
-      const CTPPSDetId stId = detId.getStationId();
-      const CTPPSDetId armId = detId.getArmId();
-      stationsInArm[armId].insert(armId);
-      rpsInStation[stId].insert(rpId);
-      detsInRP[rpId].insert(detId);
-    }
+  {
+    const CTPPSDetId detId(it->first);
+    const CTPPSDetId rpId = detId.getRPId();
+    const CTPPSDetId stId = detId.getStationId();
+    const CTPPSDetId armId = detId.getArmId();
 
-
+    stationsInArm[armId].insert(armId);
+    rpsInStation[stId].insert(rpId);
+    detsInRP[rpId].insert(detId);
+  }
 }
 
 //----------------------------------------------------------------------------------------------------
-std::set<unsigned int> TotemRPGeometry::StationsInArm(unsigned int id) const
+std::set<unsigned int> const& TotemRPGeometry::StationsInArm(unsigned int id) const
 {
   mapSetType::const_iterator it = stationsInArm.find(id);
   if (it == stationsInArm.end())
@@ -189,7 +188,7 @@ std::set<unsigned int> TotemRPGeometry::StationsInArm(unsigned int id) const
 
 //----------------------------------------------------------------------------------------------------
 
-std::set<unsigned int> TotemRPGeometry::RPsInStation(unsigned int id) const
+std::set<unsigned int> const& TotemRPGeometry::RPsInStation(unsigned int id) const
 {
   mapSetType::const_iterator it = rpsInStation.find(id);
   if (it == rpsInStation.end())
@@ -199,7 +198,7 @@ std::set<unsigned int> TotemRPGeometry::RPsInStation(unsigned int id) const
 
 //----------------------------------------------------------------------------------------------------
 
-std::set<unsigned int> TotemRPGeometry::DetsInRP(unsigned int id) const
+std::set<unsigned int> const& TotemRPGeometry::DetsInRP(unsigned int id) const
 {
   mapSetType::const_iterator it = detsInRP.find(id);
   if (it == detsInRP.end())
@@ -209,7 +208,7 @@ std::set<unsigned int> TotemRPGeometry::DetsInRP(unsigned int id) const
 
 //----------------------------------------------------------------------------------------------------
 
-CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobal(DetGeomDesc *gd, const CLHEP::Hep3Vector r) const
+CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobal(const DetGeomDesc *gd, const CLHEP::Hep3Vector& r) const
 {
   CLHEP::Hep3Vector tmp = gd->rotation() * r;
   tmp.setX(tmp.x() + (gd->translation()).x());
@@ -220,9 +219,9 @@ CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobal(DetGeomDesc *gd, const CLHEP::H
 
 //----------------------------------------------------------------------------------------------------
 
-CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobal(unsigned int id, const CLHEP::Hep3Vector r) const
+CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobal(unsigned int id, const CLHEP::Hep3Vector& r) const
 {
-  DetGeomDesc *gd = GetDetector(id);
+  auto gd = GetDetector(id);
   CLHEP::Hep3Vector tmp = gd->rotation() * r;
   tmp.setX(tmp.x() + (gd->translation()).x());
   tmp.setY(tmp.y() + (gd->translation()).y());
@@ -232,7 +231,7 @@ CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobal(unsigned int id, const CLHEP::H
 
 //----------------------------------------------------------------------------------------------------
 
-CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocal(DetGeomDesc *gd, const CLHEP::Hep3Vector r) const
+CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocal(const DetGeomDesc *gd, const CLHEP::Hep3Vector& r) const
 {
   CLHEP::Hep3Vector tmp = r;
   tmp.setX(tmp.x() - (gd->translation()).x());
@@ -243,9 +242,9 @@ CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocal(DetGeomDesc *gd, const CLHEP::H
 
 //----------------------------------------------------------------------------------------------------
 
-CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocal(unsigned int id, const CLHEP::Hep3Vector r) const
+CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocal(unsigned int id, const CLHEP::Hep3Vector& r) const
 {
-  DetGeomDesc *gd = GetDetector(id);
+  auto gd = GetDetector(id);
   CLHEP::Hep3Vector tmp = r;
   tmp.setX(tmp.x() - (gd->translation()).x());
   tmp.setY(tmp.y() - (gd->translation()).y());
@@ -255,14 +254,14 @@ CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocal(unsigned int id, const CLHEP::H
 
 //----------------------------------------------------------------------------------------------------
 
-CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobalDirection(unsigned int id, const CLHEP::Hep3Vector dir) const
+CLHEP::Hep3Vector TotemRPGeometry::LocalToGlobalDirection(unsigned int id, const CLHEP::Hep3Vector& dir) const
 {
   return GetDetector(id)->rotation() * dir;
 }
 
 //----------------------------------------------------------------------------------------------------
 
-CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocalDirection(unsigned int id, const CLHEP::Hep3Vector dir) const
+CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocalDirection(unsigned int id, const CLHEP::Hep3Vector& dir) const
 {
   return (GetDetector(id)->rotation()).Inverse() * dir;
 }
@@ -271,7 +270,7 @@ CLHEP::Hep3Vector TotemRPGeometry::GlobalToLocalDirection(unsigned int id, const
 
 CLHEP::Hep3Vector TotemRPGeometry::GetDetTranslation(unsigned int id) const
 {
-  DetGeomDesc *gd = GetDetector(id);
+  auto gd = GetDetector(id);
   CLHEP::Hep3Vector tmp;
   tmp.setX((gd->translation()).x());
   tmp.setY((gd->translation()).y());
@@ -293,7 +292,7 @@ void TotemRPGeometry::GetReadoutDirection(unsigned int id, double &dx, double &d
 CLHEP::Hep3Vector TotemRPGeometry::GetRPGlobalTranslation(int copy_no) const
 {
   CLHEP::Hep3Vector tmp;
-  DetGeomDesc * gd = GetRPDevice(copy_no);
+  auto gd = GetRPDevice(copy_no);
   tmp.setX((gd->translation()).x());
   tmp.setY((gd->translation()).y());
   tmp.setZ((gd->translation()).z());
