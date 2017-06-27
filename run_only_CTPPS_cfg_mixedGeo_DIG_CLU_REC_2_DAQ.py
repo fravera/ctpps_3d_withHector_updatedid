@@ -57,7 +57,7 @@ process.RandomNumberGeneratorService.RPixDetDigitizer = cms.PSet(initialSeed =cm
 
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(1000)
+        input = cms.untracked.int32(10)
         )
 
 from Configuration.AlCa.GlobalTag import GlobalTag
@@ -112,14 +112,15 @@ process.common_maximum_timex = cms.PSet( # need to be localy redefined
 
 process.load("SimGeneral.MixingModule.MYmixNoPU_cfi")
 process.load("SimCTPPS.CTPPSPixelDigiProducer.RPixDetConf_cfi")
-process.RPixDetDigitizer.RPixVerbosity = cms.int32(2)
+process.RPixDetDigitizer.RPixVerbosity = cms.int32(0)
 
 process.generation_step = cms.Path(process.pgen)
 process.simulation_step = cms.Path(process.psim)
 
 
 process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelClusterizer_cfi")
-process.clusterProd.RPixVerbosity = cms.int32(2)
+process.clusterProd.RPixVerbosity = cms.int32(0)
+process.clusterProd.doSingleCalibration = cms.bool(True)
 process.clusterProd.label=cms.untracked.string("RPixDetDigitizer")
 process.clusterProd.doSingleCalibration = cms.bool(True)
 process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelRecHit_cfi")

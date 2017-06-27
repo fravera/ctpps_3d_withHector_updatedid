@@ -62,17 +62,17 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
 	geometryWatcher.check(iSetup);
 
 // dry checks to be removed
-	CTPPSPixelDetId iid(0,2,3,1);
+/*	CTPPSPixelDetId iid(0,2,3,1);
 	std::cout << iid << std::endl;
 	std::cout << iid.rawId() << std::endl;
-	unsigned int rpId = 2023292928;//2031091712;//  1997537280;
-//	double z0 = geometry->GetRPDevice(rpId)->translation().z();
+	unsigned int rpId = 2023292928;
+
 	CLHEP::Hep3Vector localV(-4.43825,2.05224,0.115);
 	CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(rpId,localV);
 
-//	std::cout << " z0 = " << z0 <<std::endl;
-	std::cout << "id: "<< rpId <<"   local " << localV <<"   to global "<<globalV<< std::endl;
 
+	std::cout << "id: "<< rpId <<"   local " << localV <<"   to global "<<globalV<< std::endl;
+*/
 //---------------------------------------------
 
 
@@ -97,7 +97,7 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
 
 	      CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
 	      CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(ds_rh2.id,localV);
-	      if(verbosity_)std::cout << "ID : " << ds_rh2.id << " hit  " << _rh.getPoint().x()<<" "<<_rh.getPoint().y()<<" " <<_rh.getPoint().z()<< "   "<< globalV.x() << " " << globalV.y() <<" " <<std::setprecision(20) << globalV.z() <<std::endl;
+	      if(verbosity_)std::cout << "ID : " << ds_rh2.id << " hit  " << _rh.getPoint().x()<<" "<<_rh.getPoint().y()<<" " <<_rh.getPoint().z()<< "   "<< globalV.x() << " " << globalV.y() <<" " <<std::setprecision(6) << globalV.z() <<std::endl;
 
 	    }
 	  }
