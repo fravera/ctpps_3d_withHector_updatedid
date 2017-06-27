@@ -43,9 +43,9 @@ CTPPSPixelRecHitProducer::~CTPPSPixelRecHitProducer() {
 // ------------ method called to produce the data  ------------
 void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup) {
    
-  std::cout << "  ****************************************************** " << std::endl;
-  std::cout << "  ****        Inside CTPPSPixelRecHitProducer        ***** " << std::endl;
-  std::cout << "  ****************************************************** " << std::endl;
+  if(verbosity_)std::cout << "  ****************************************************** " << std::endl;
+  if(verbosity_)std::cout << "  ****        Inside CTPPSPixelRecHitProducer        ***** " << std::endl;
+  if(verbosity_)std::cout << "  ****************************************************** " << std::endl;
 
 // Step A: get inputs
 
