@@ -83,41 +83,52 @@ void RPixCluster2Hit::make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPix
 
 // tentative +++++
 
-  double avgLocalX = 0;
-  double avgLocalY = 0;
+
   double avgWLocalX = 0;
   double avgWLocalY = 0;
-  double Weights = 0;
+  double weights = 0;
+  double weightedVarianceX = 0.;
+  double weightedVarianceY = 0.;
 
-  double minPxlX = 0;
-  double minPxlY = 0;
-  double maxPxlX = 0;
-  double maxPxlY = 0;
-  double avgPxlX = 0;
-  double avgPxlY = 0;
-  if(verbosity_)std::cout << " INSIDE RPIXCluster2Hit::make_hit " << std::endl;
-  if(verbosity_)std::cout << " hit pixels: " << std::endl;
+  if(verbosity_)
+    std::cout << " INSIDE RPIXCluster2Hit::make_hit " << std::endl;
+  if(verbosity_)
+    std::cout << " hit pixels: " << std::endl;
+
   for(int i = 0; i < thisClusterSize; i++){
 
     if(verbosity_)std::cout <<aCluster.pixelRow(i)<< " "<< aCluster.pixelCol(i)<<" " << aCluster.pixelADC(i)<<" " << std::endl;
+
+    double minPxlX = 0;
+    double minPxlY = 0;
+    double maxPxlX = 0;
+    double maxPxlY = 0;
     theTopology->PixelRange(aCluster.pixelRow(i),aCluster.pixelCol(i),minPxlX,maxPxlX,minPxlY, maxPxlY);
-    avgPxlX = minPxlX+(maxPxlX-minPxlX)/2.;
-    avgPxlY = minPxlY+(maxPxlY-minPxlY)/2.;
+    double halfSizeX = (maxPxlX-minPxlX)/2.;
+    double halfSizeY = (maxPxlY-minPxlY)/2.;
+    double avgPxlX = minPxlX + halfSizeX;
+    double avgPxlY = minPxlY + halfSizeY;
+//error propagation
+    weightedVarianceX += aCluster.pixelADC(i)*aCluster.pixelADC(i)*halfSizeX*halfSizeX/3.;
+    weightedVarianceY += aCluster.pixelADC(i)*aCluster.pixelADC(i)*halfSizeY*halfSizeY/3.;
     
     avgWLocalX += avgPxlX*aCluster.pixelADC(i);
     avgWLocalY += avgPxlY*aCluster.pixelADC(i);
-    Weights += aCluster.pixelADC(i);
+    weights += aCluster.pixelADC(i);
 
   } 
 
-  avgLocalX = avgWLocalX / Weights;
-  avgLocalY = avgWLocalY / Weights;
+  double avgLocalX = avgWLocalX / weights;
+  double avgLocalY = avgWLocalY / weights;
   
+  double varianceX = weightedVarianceX/weights/weights;
+  double varianceY = weightedVarianceY/weights/weights;
+
 //temporary +++++
   LocalPoint lp(avgLocalX,avgLocalY,0);
-  LocalError le(0,0,0);
+  LocalError le(varianceX,0,varianceY);
   CTPPSPixelRecHit rh(lp,le,anEdgePixel,aBadPixel,twoRocs,thisClusterMinRow,thisClusterMinCol,thisClusterSize,thisClusterRowSize,thisClusterColSize);
-  if(verbosity_)std::cout << lp << std::endl;
+  if(verbosity_)std::cout << lp << " with error " << le << std::endl;
 
   hits.push_back(rh);
 //+++++++++
