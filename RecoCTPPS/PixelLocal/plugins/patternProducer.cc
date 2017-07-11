@@ -143,8 +143,8 @@ void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, cons
     while( _gh2 != temp_global_hits.end()){
       
       CLHEP::Hep3Vector subtraction = currPoint - *_gh2;
-      std::cout << " Subtraction " << *_gh1 << " - " << *_gh2 << " " << subtraction.mag() << std::endl;
-      if(subtraction.mag() < 1) {  /// 1mm
+      std::cout << " Subtraction " << *_gh1 << " - " << *_gh2 << " " << subtraction.perp() << std::endl;
+      if(subtraction.perp() < 1) {  /// 1mm
 	temp_pseudo_track.push_back(*_gh2);
 	temp_global_hits.erase(_gh2);
       }else{
