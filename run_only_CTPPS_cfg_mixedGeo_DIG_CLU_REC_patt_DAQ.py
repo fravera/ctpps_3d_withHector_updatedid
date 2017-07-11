@@ -19,7 +19,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 ############### using only CTPPS geometry 
 process.load("Configuration.Geometry.geometry_CTPPS_mixed_SIM_RECO_cfi")
-process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
+#process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 
 #process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 #process.ctppsPixelDAQMappingESSourceXML.mappingFileNames = cms.vstring("CondFormats/CTPPSReadoutObjects/xml/rpix_mapping_220_far.xml")
@@ -134,7 +134,7 @@ process.patternProd = cms.EDProducer("patternProducer",
 
 process.g4Simhits_step = cms.Path(process.g4SimHits)
 
-process.mixedigi_step = cms.Path(process.mix*process.RPixDetDigitizer*process.clusterProd*process.rechitProd * process.patternProd)
+process.mixedigi_step = cms.Path(process.mix*process.RPixDetDigitizer*process.ctppsPixelClusters*process.ctppsPixelRecHits * process.patternProd)
 
 # Transport
 process.transport_step = cms.Path(process.LHCTransport)

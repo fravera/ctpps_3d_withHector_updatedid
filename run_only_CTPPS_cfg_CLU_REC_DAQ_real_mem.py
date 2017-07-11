@@ -48,8 +48,8 @@ process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 ############
 process.o1 = cms.OutputModule("PoolOutputModule",
         outputCommands = cms.untracked.vstring('drop *',
-                                               'keep CTPPSPixelClusteredmDetSetVector_clusterProd_*_*',
-                                               'keep CTPPSPixelRecHitedmDetSetVector_rechitProd_*_*',
+                                               'keep CTPPSPixelClusteredmDetSetVector_ctppsPixelClusters_*_*',
+                                               'keep CTPPSPixelRecHitedmDetSetVector_ctppsPixelRecHits_*_*',
 ),
         fileName = cms.untracked.string('simevent_CTPPS_CLU_REC_DAQ_real_mem.root')
         )

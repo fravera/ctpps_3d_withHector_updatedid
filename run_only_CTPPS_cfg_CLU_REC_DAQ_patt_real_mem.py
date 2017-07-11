@@ -10,7 +10,7 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('Configuration.EventContent.EventContent_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
-process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
+#process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 
 process.maxEvents = cms.untracked.PSet(
         input = cms.untracked.int32(100)
@@ -43,19 +43,22 @@ duplicateCheckMode = cms.untracked.string("checkEachFile")
 )
 
 
+from Configuration.AlCa.GlobalTag import GlobalTag
+process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run2_hlt_relval', '')
+
 process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 
 process.patternProd = cms.EDProducer("patternProducer",
-                                     label=cms.untracked.string("rechitProd"),
-                                     RPixVerbosity = cms.int32(2)
+                                     label=cms.untracked.string("ctppsPixelRecHits"),
+                                     RPixVerbosity = cms.untracked.int32(2)
 
 )
 
 ############
 process.o1 = cms.OutputModule("PoolOutputModule",
         outputCommands = cms.untracked.vstring('drop *',
-                                               'keep CTPPSPixelClusteredmDetSetVector_clusterProd_*_*',
-                                               'keep CTPPSPixelRecHitedmDetSetVector_rechitProd_*_*',
+                                               'keep CTPPSPixelClusteredmDetSetVector_ctppsPixelClusters_*_*',
+                                               'keep CTPPSPixelRecHitedmDetSetVector_ctppsPixelRechits_*_*',
 ),
         fileName = cms.untracked.string('simevent_CTPPS_CLU_REC_DAQ_patt_real_mem.root')
         )

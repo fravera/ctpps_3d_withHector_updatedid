@@ -82,7 +82,7 @@ process.o1 = cms.OutputModule("PoolOutputModule",
 
 process.clusterProd = cms.EDProducer("CTPPSPixelClusterProducer",
                                      label=cms.untracked.string("ctppsPixelDigis"),
-                                     RPixVerbosity = cms.int32(2),
+                                     RPixVerbosity = cms.untracked.int32(2),
                                      SeedADCThreshold = cms.int32(10),
                                      ADCThreshold = cms.int32(10),
                                      ElectronADCGain = cms.double(135.0),
