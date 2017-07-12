@@ -13,7 +13,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(100)
+        input = cms.untracked.int32(1000)
         )
 
 process.MessageLogger = cms.Service("MessageLogger",
@@ -48,11 +48,13 @@ process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run2_hlt_relval', '')
 
 process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 
-process.patternProd = cms.EDProducer("patternProducer",
-                                     label=cms.untracked.string("ctppsPixelRecHits"),
-                                     RPixVerbosity = cms.untracked.int32(2)
+#process.patternProd = cms.EDProducer("patternProducer",
+ #                                    label=cms.untracked.string("ctppsPixelRecHits"),
+  #                                   RPixVerbosity = cms.untracked.int32(2)
 
-)
+#)
+process.load("RecoCTPPS.PixelLocal.patternProd_cfi")
+process.patternProd.RPixVerbosity = cms.untracked.int32(1)
 
 ############
 process.o1 = cms.OutputModule("PoolOutputModule",

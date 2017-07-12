@@ -18,7 +18,9 @@
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "DataFormats/Common/interface/Handle.h"
 #include "FWCore/Framework/interface/ESHandle.h"
- 
+#include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
+#include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
+
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/Utilities/interface/InputTag.h"
 
@@ -49,17 +51,23 @@ public:
  
   ~patternProducer();
 
- virtual void produce(edm::Event&, const edm::EventSetup&) override;
+  typedef std::pair<CLHEP::Hep3Vector,uint32_t> PointInPlane;
+  typedef std::vector<PointInPlane> Road;
+  static void fillDescriptions(edm::ConfigurationDescriptions & descriptions);
+  virtual void produce(edm::Event&, const edm::EventSetup&) override;
 
 private:
- edm::ParameterSet param_;
- int verbosity_;
- 
- edm::InputTag src_;
- edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelRecHit>> tokenCTPPSPixelRecHit_;
+  edm::ParameterSet param_;
+  int verbosity_;
+  double roadRadius_;
+  unsigned int minRoadSize_;
+  unsigned int maxRoadSize_;
+
+  edm::InputTag src_;
+  edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelRecHit>> tokenCTPPSPixelRecHit_;
   
- edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher;
- void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const TotemRPGeometry & geometry);
+  edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher;
+  void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const TotemRPGeometry & geometry, std::vector<Road> &roads);
   
 // void run(const edm::DetSetVector<CTPPSPixelCluster> &input, edm::DetSetVector<CTPPSPixelRecHit> &output);
  
