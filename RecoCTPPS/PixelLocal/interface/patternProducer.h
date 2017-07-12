@@ -51,7 +51,7 @@ public:
  
   ~patternProducer();
 
-  typedef std::pair<CLHEP::Hep3Vector,uint32_t> PointInPlane;
+  typedef std::pair<CLHEP::Hep3Vector,CTPPSPixelDetId> PointInPlane;
   typedef std::vector<PointInPlane> Road;
   static void fillDescriptions(edm::ConfigurationDescriptions & descriptions);
   virtual void produce(edm::Event&, const edm::EventSetup&) override;

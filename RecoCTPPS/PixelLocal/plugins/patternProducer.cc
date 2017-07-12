@@ -137,11 +137,11 @@ void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, cons
 // convert local hit sto global and push them to a vector
   for(const auto & ds_rh2 : input){
     CTPPSPixelDetId myid(ds_rh2.id);
-    uint32_t plane = myid.plane();
+//    uint32_t plane = myid.plane();
     for (const auto & _rh : ds_rh2.data){
       CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
       CLHEP::Hep3Vector globalV = geometry.LocalToGlobal(ds_rh2.id,localV);
-      PointInPlane pip = std::make_pair(globalV,plane);
+      PointInPlane pip = std::make_pair(globalV,myid);
       temp_all_hits.push_back(pip);
     }
 
@@ -153,21 +153,22 @@ void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, cons
   roads.clear();
 
 //look for points near wrt each other
-// staring algorithm
+// starting algorithm
   while( _gh1 != temp_all_hits.end() && temp_all_hits.size() > minRoadSize_){
     Road temp_road;
   
     _gh2 = _gh1;
 
     CLHEP::Hep3Vector currPoint = _gh1->first;
+    CTPPSPixelDetId currDet = _gh1->second;
     if(verbosity_>1)  std::cout << " current point " << currPoint << std::endl;
     while( _gh2 != temp_all_hits.end()){
-      bool same_arm = false;
-      if((currPoint.z() > 0 && _gh2->first.z() > 0) || (currPoint.z() < 0 && _gh2->first.z() < 0)) same_arm = true;
-      
+      bool same_pot = false;
+//      if((currPoint.z() > 0 && _gh2->first.z() > 0) || (currPoint.z() < 0 && _gh2->first.z() < 0)) same_arm = true;
+      if(    currDet.arm() == _gh2->second.arm() && currDet.station() == _gh2->second.station() && currDet.rp() == _gh2->second.rp() )same_pot = true;
       CLHEP::Hep3Vector subtraction = currPoint - _gh2->first;
       if(verbosity_>1) std::cout << "             Subtraction " << currPoint << " - " << _gh2->first << " " << subtraction.perp() << std::endl;
-      if(subtraction.perp() < roadRadius_ && same_arm) {  /// 1mm
+      if(subtraction.perp() < roadRadius_ && same_pot) {  /// 1mm
 	temp_road.push_back(*_gh2);
 	temp_all_hits.erase(_gh2);
       }else{
