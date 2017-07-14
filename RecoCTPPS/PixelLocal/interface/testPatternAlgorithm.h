@@ -7,8 +7,8 @@
 *   Fabio Ravera   (fabio.ravera@cern.ch)
 *
 */
-#ifndef RecoCTPPS_PixelLocal_testPatternAlgorithm
-#define RecoCTPPS_PixelLocal_testPatternAlgorithm
+#ifndef RecoCTPPS_PixelLocal_testPatternAlgorithm_H
+#define RecoCTPPS_PixelLocal_testPatternAlgorithm_H
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "DataFormats/Common/interface/DetSetVector.h"
@@ -25,16 +25,16 @@
 #include <vector>
 
 class testPatternAlgorithm : public RPixDetPatternFinder{
-
-	public:
-		testPatternAlgorithm(edm::ParameterSet const& parameterSet) : RPixDetPatternFinder(parameterSet) {}
-		~testPatternAlgorithm() {}
-
-		void findPattern(){
-			return;
-		}
-
-		
+  
+public:
+  testPatternAlgorithm(edm::ParameterSet const& parameterSet) : RPixDetPatternFinder(parameterSet) {}
+  ~testPatternAlgorithm() {}
+  
+  void findPattern() {
+    return;
+  }
+  
+  
 };
 
 #endif

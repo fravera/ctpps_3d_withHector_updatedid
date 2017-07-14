@@ -7,18 +7,20 @@
 *   Fabio Ravera   (fabio.ravera@cern.ch)
 *
 */
-#ifndef RecoCTPPS_PixelLocal_CTPPSPixelLocalTrackProducer
-#define RecoCTPPS_PixelLocal_CTPPSPixelLocalTrackProducer
+#ifndef RecoCTPPS_PixelLocal_CTPPSPixelLocalTrackProducer_H
+#define RecoCTPPS_PixelLocal_CTPPSPixelLocalTrackProducer_H
+
+#include "FWCore/Framework/interface/MakerMacros.h"
 
 #include "DataFormats/Common/interface/DetSetVector.h"
 #include "DataFormats/Common/interface/DetSet.h"
-#include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
-#include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
 #include "FWCore/Framework/interface/stream/EDProducer.h"
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "DataFormats/Common/interface/Handle.h"
 #include "FWCore/Framework/interface/ESHandle.h"
+#include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
+#include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
  
 #include "FWCore/Framework/interface/ESWatcher.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"

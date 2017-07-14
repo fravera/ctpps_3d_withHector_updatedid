@@ -1,6 +1,9 @@
 
 #include "RecoCTPPS/PixelLocal/interface/CTPPSPixelLocalTrackProducer.h"
 
+#include "FWCore/Framework/interface/Frameworkfwd.h"
+#include "FWCore/Framework/interface/EDProducer.h"
+
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 
 #include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"

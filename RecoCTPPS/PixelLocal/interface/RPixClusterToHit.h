@@ -17,7 +17,6 @@
 #include <set>
 
 
-
 class RPixClusterToHit{
 
 public:
