@@ -13,6 +13,8 @@
 
 #include "DataFormats/Common/interface/DetSetVector.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelRecHit.h"
+#include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
+
 
 #include "TVector3.h"
 #include "TMatrixD.h"
@@ -161,6 +163,7 @@ class CTPPSPixelLocalTrack
 
     /// fit valid?
     bool valid_;
+
 };
 
 #endif
