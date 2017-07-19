@@ -131,5 +131,5 @@ XMLIdealGeometryESSource = cms.ESSource("XMLIdealGeometryESSource",
 
 # real geometry
 TotemRPGeometryESModule = cms.ESProducer("TotemRPGeometryESModule",
-    verbosity = cms.untracked.uint32(1)
+    verbosity = cms.untracked.uint32(0)
 )

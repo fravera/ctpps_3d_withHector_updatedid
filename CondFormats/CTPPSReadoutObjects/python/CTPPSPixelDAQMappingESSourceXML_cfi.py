@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 ctppsPixelDAQMappingESSourceXML = cms.ESSource("CTPPSPixelDAQMappingESSourceXML",
-                                               verbosity = cms.untracked.uint32(2),
+                                               verbosity = cms.untracked.uint32(0),
                                                subSystem= cms.untracked.string("RPix"),
                                                configuration = cms.VPSet(
         # example configuration block:

@@ -136,6 +136,6 @@ XMLIdealGeometryESSource.geomXMLFiles.append("Geometry/VeryForwardData/data/RP_P
 
 # real geometry
 TotemRPGeometryESModule = cms.ESProducer("TotemRPGeometryESModule",
-                                         verbosity = cms.untracked.uint32(3)
+                                         verbosity = cms.untracked.uint32(0)
                                          )
 

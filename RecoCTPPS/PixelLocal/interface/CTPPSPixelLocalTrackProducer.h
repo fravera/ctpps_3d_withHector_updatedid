@@ -26,14 +26,14 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/Utilities/interface/InputTag.h"
 
+#include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
+
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelRecHit.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelLocalTrack.h"
 #include "DataFormats/DetId/interface/DetId.h"
 
 #include "RecoCTPPS/PixelLocal/interface/RPixDetPatternFinder.h"
 #include "RecoCTPPS/PixelLocal/interface/RPixDetTrackFinder.h"
-#include "Geometry/Records/interface/VeryForwardMisalignedGeometryRecord.h"
-
 
 #include <string>
 #include <vector>
@@ -51,10 +51,14 @@ public:
 private:
   edm::ParameterSet parameterSet_;
   int verbosity_;
+  int maxHitPerPlane_;
+  int maxHitPerRomanPot_;
+  int maxTrackPerRomanPot_;
+  int maxTrackPerPattern_;
  
   edm::InputTag inputTag_;
   edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelRecHit>> tokenCTPPSPixelRecHit_;
-  edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher_;
+  edm::ESWatcher<VeryForwardRealGeometryRecord> geometryWatcher_;
 
   RPixDetPatternFinder *patternFinder_;
   RPixDetTrackFinder   *trackFinder_;
