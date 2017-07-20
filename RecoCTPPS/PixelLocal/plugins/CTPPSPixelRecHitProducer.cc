@@ -43,8 +43,6 @@ void CTPPSPixelRecHitProducer::fillDescriptions(edm::ConfigurationDescriptions &
   edm::ParameterSetDescription desc;
   desc.addUntracked<int>("RPixVerbosity",0);
   desc.add<std::string>("label", "ctppsPixelClusters");
-  desc.add<double>("RPixActiveEdgeSmearing",0.020);
-  desc.add<double>("RPixActiveEdgePosition",0.150);
   descriptions.add("ctppsPixelRecHits", desc);
 }
 
@@ -63,7 +61,7 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
  // get geometry
  //----------------------------------
 
-	edm::ESHandle<TotemRPGeometry> geometry;
+	edm::ESHandle<CTPPSGeometry> geometry;
 //	iSetup.get<VeryForwardMisalignedGeometryRecord>().get(geometry);
 	iSetup.get<VeryForwardRealGeometryRecord>().get(geometry);
 
@@ -76,7 +74,7 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
 	unsigned int rpId = 2023292928;
 
 	CLHEP::Hep3Vector localV(-4.43825,2.05224,0.115);
-	CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(rpId,localV);
+	CLHEP::Hep3Vector globalV = geometry->localToGlobal(rpId,localV);
 
 
 	std::cout << "id: "<< rpId <<"   local " << localV <<"   to global "<<globalV<< std::endl;
@@ -104,7 +102,7 @@ void CTPPSPixelRecHitProducer::produce(edm::Event& iEvent, const edm::EventSetup
 	    for (const auto & _rh : ds_rh2.data){
 
 	      CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
-	      CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(ds_rh2.id,localV);
+	      CLHEP::Hep3Vector globalV = geometry->localToGlobal(ds_rh2.id,localV);
 	      if(verbosity_)std::cout << "ID : " << ds_rh2.id << " hit  " << _rh.getPoint().x()<<" "<<_rh.getPoint().y()<<" " <<_rh.getPoint().z()<< "   "<< globalV.x() << " " << globalV.y() <<" " <<std::setprecision(6) << globalV.z() <<std::endl;
 
 	    }

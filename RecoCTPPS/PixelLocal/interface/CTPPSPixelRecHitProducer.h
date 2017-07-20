@@ -31,7 +31,7 @@
 #include "RecoCTPPS/PixelLocal/interface/RPixClusterToHit.h" 
 
 #include "FWCore/Framework/interface/ESWatcher.h"
-#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
+#include "Geometry/VeryForwardGeometryBuilder/interface/CTPPSGeometry.h"
 #include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
 #include "Geometry/Records/interface/VeryForwardMisalignedGeometryRecord.h"

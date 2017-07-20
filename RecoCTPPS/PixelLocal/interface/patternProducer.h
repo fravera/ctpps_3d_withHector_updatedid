@@ -33,7 +33,7 @@
 #include "RecoCTPPS/PixelLocal/interface/RPixClusterToHit.h" 
 
 #include "FWCore/Framework/interface/ESWatcher.h"
-#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
+#include "Geometry/VeryForwardGeometryBuilder/interface/CTPPSGeometry.h"
 #include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
 #include "Geometry/Records/interface/VeryForwardMisalignedGeometryRecord.h"
@@ -77,7 +77,7 @@ private:
   edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelRecHit>> tokenCTPPSPixelRecHit_;
   
   edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher;
-  void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const TotemRPGeometry & geometry, std::vector<Road> &roads);
+  void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const CTPPSGeometry & geometry, std::vector<Road> &roads);
   
 // void run(const edm::DetSetVector<CTPPSPixelCluster> &input, edm::DetSetVector<CTPPSPixelRecHit> &output);
  

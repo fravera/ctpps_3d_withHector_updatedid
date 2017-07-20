@@ -1,3 +1,4 @@
+
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.StandardSequences.Eras import eras
@@ -13,7 +14,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(1000)
+        input = cms.untracked.int32(10000)
         )
 
 process.MessageLogger = cms.Service("MessageLogger",
@@ -50,11 +51,11 @@ process.load("RecoCTPPS.Configuration.recoCTPPS_cff")
 
 #process.patternProd = cms.EDProducer("patternProducer",
  #                                    label=cms.untracked.string("ctppsPixelRecHits"),
-  #                                   RPixVerbosity = cms.untracked.int32(2)
+  #                                   RPixVerbosity = cms.untracked.int32(0)
 
 #)
 process.load("RecoCTPPS.PixelLocal.patternProd_cfi")
-process.patternProd.RPixVerbosity = cms.untracked.int32(1)
+process.patternProd.RPixVerbosity = cms.untracked.int32(0)
 
 ############
 process.o1 = cms.OutputModule("PoolOutputModule",
@@ -77,6 +78,7 @@ process.schedule = cms.Schedule(process.mixedigi_step,process.outpath)
 
 # filter all path with the production filter sequence
 for path in process.paths:
-# getattr(process,path)._seq = process.ProductionFilterSequence * getattr(process,path)._seq
-    getattr(process,path)._seq = getattr(process,path)._seq
+  #  getattr(process,path)._seq = process.ProductionFilterSequence * getattr(process,path)._seq
+    getattr(process,path)._seq =  getattr(process,path)._seq
+
 

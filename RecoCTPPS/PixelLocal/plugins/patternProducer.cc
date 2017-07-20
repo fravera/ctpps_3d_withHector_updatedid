@@ -66,7 +66,7 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 // get geometry
 //----------------------------------
 
-  edm::ESHandle<TotemRPGeometry> geometry;
+  edm::ESHandle<CTPPSGeometry> geometry;
 //	iSetup.get<VeryForwardMisalignedGeometryRecord>().get(geometry);
   iSetup.get<VeryForwardRealGeometryRecord>().get(geometry);
 
@@ -80,7 +80,7 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
   unsigned int rpId = 2023292928;
 
   CLHEP::Hep3Vector localV(-4.43825,2.05224,0.115);
-  CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(rpId,localV);
+  CLHEP::Hep3Vector globalV = geometry->localToGlobal(rpId,localV);
 
 
   std::cout << "id: "<< rpId <<"   local " << localV <<"   to global "<<globalV<< std::endl;
@@ -117,7 +117,7 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
       for (const auto & _rh : ds_rh2.data){
 
 	CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
-	CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(ds_rh2.id,localV);
+	CLHEP::Hep3Vector globalV = geometry->localToGlobal(ds_rh2.id,localV);
 	if(verbosity_>1)std::cout << "ID : " << ds_rh2.id << " hit  " << _rh.getPoint().x()<<" "<<_rh.getPoint().y()<<" " <<_rh.getPoint().z()<< "   "<< globalV.x() << " " << globalV.y() <<" " <<std::setprecision(6) << globalV.z() <<std::endl;
 
 
@@ -162,7 +162,7 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
 }
 
-void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const TotemRPGeometry &geometry,   std::vector<Road> &roads){
+void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const CTPPSGeometry &geometry,   std::vector<Road> &roads){
 
   Road temp_all_hits;
   temp_all_hits.clear();
@@ -173,7 +173,7 @@ void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, cons
 //    uint32_t plane = myid.plane();
     for (const auto & _rh : ds_rh2.data){
       CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
-      CLHEP::Hep3Vector globalV = geometry.LocalToGlobal(ds_rh2.id,localV);
+      CLHEP::Hep3Vector globalV = geometry.localToGlobal(ds_rh2.id,localV);
       PointInPlane pip = std::make_pair(globalV,myid);
       temp_all_hits.push_back(pip);
     }
