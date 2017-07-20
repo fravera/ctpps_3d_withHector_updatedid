@@ -43,6 +43,13 @@
 #include <set>
 
 
+#include "TROOT.h"
+#include "TFile.h"
+#include "TTree.h"
+#include "TBranch.h"
+#include "TH1F.h"
+#include "TH2F.h"
+
 
 class patternProducer : public edm::stream::EDProducer<>
 {
@@ -56,6 +63,9 @@ public:
   static void fillDescriptions(edm::ConfigurationDescriptions & descriptions);
   virtual void produce(edm::Event&, const edm::EventSetup&) override;
 
+  virtual void beginStream(const edm::StreamID) override;
+  virtual void endStream() override;
+  
 private:
   edm::ParameterSet param_;
   int verbosity_;
@@ -71,7 +81,21 @@ private:
   
 // void run(const edm::DetSetVector<CTPPSPixelCluster> &input, edm::DetSetVector<CTPPSPixelRecHit> &output);
  
- 
+   TFile* fFile;
+   TH2F * plane_plus_0;
+   TH2F * plane_plus_1;
+   TH2F * plane_plus_2;
+   TH2F * plane_plus_3;
+   TH2F * plane_plus_4;
+   TH2F * plane_plus_5;
+
+   TH2F * plane_minus_0;
+   TH2F * plane_minus_1;
+   TH2F * plane_minus_2;
+   TH2F * plane_minus_3;
+   TH2F * plane_minus_4;
+   TH2F * plane_minus_5;
+
 };
 
 
