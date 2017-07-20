@@ -6,7 +6,7 @@
 
 
 RPixClusterToHit::RPixClusterToHit(edm::ParameterSet const& conf):
-  params_(conf), theTopology(new CTPPSPixelSimTopology(conf))
+  params_(conf), theTopology(new CTPPSPixelSimTopology())
 {
 verbosity_ = conf.getUntrackedParameter<int>("RPixVerbosity");
 
@@ -100,7 +100,7 @@ void RPixClusterToHit::make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPi
     double minPxlY = 0;
     double maxPxlX = 0;
     double maxPxlY = 0;
-    theTopology->PixelRange(aCluster.pixelRow(i),aCluster.pixelCol(i),minPxlX,maxPxlX,minPxlY, maxPxlY);
+    theTopology->pixelRange(aCluster.pixelRow(i),aCluster.pixelCol(i),minPxlX,maxPxlX,minPxlY, maxPxlY);
     double halfSizeX = (maxPxlX-minPxlX)/2.;
     double halfSizeY = (maxPxlY-minPxlY)/2.;
     double avgPxlX = minPxlX + halfSizeX;

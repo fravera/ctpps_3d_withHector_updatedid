@@ -10,7 +10,7 @@ RPixLinearChargeCollectionDrifter::RPixLinearChargeCollectionDrifter
   //charge_cloud_sigma_ = params.getParameter<double>("RPixInterStripSmearing");
   GeV_per_electron_ = params.getParameter<double>("RPixGeVPerElectron");
   charge_cloud_sigmas_vect_ = params.getParameter< std::vector<double> >("RPixInterSmearing");
-  det_thickness_ = CTPPSPixelTopology().DetThickness();
+  det_thickness_ = CTPPSPixelTopology().detThickness();
   _det_id=det_id;
 }
 

@@ -10,7 +10,7 @@ RPixDetDigitizer::RPixDetDigitizer(const edm::ParameterSet &params, CLHEP::HepRa
   : params_(params), det_id_(det_id)
 {
   verbosity_ = params.getParameter<int>("RPixVerbosity");
-  numPixels = CTPPSPixelTopology().DetPixelNo();
+  numPixels = CTPPSPixelTopology().detPixelNo();
   theNoiseInElectrons = params.getParameter<double>("RPixEquivalentNoiseCharge");
   thePixelThresholdInE = params.getParameter<double>("RPixDummyROCThreshold");
   noNoise = params.getParameter<bool>("RPixNoNoise");
