@@ -13,11 +13,6 @@
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelRecHit.h"
 #include "Geometry/VeryForwardGeometry/interface/CTPPSPixelSimTopology.h"
 
-#include <vector>
-#include <set>
-
-
-
 class RPixClusterToHit{
 
 public:
@@ -28,15 +23,11 @@ public:
   void make_hit(CTPPSPixelCluster aCluster,  std::vector<CTPPSPixelRecHit> &hits );
   ~RPixClusterToHit();
 
-
 private:
 
   const edm::ParameterSet &params_;
   int verbosity_;
-  CTPPSPixelSimTopology *theTopology;
 
 };
-
-
 
 #endif

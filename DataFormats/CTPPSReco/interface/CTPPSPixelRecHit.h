@@ -20,9 +20,9 @@ class CTPPSPixelRecHit{
 public:
 
   CTPPSPixelRecHit(){}
-CTPPSPixelRecHit(LocalPoint lp, LocalError le) : thePoint(lp), theError(le), isOnEdge_(false),hasBadPixels_(false), spanTwoRocs_(false), minPixelRow_(-1), minPixelCol_(-1), clusterSize_(0), clusterSizeRow_(0), clusterSizeCol_(0){;}
-CTPPSPixelRecHit(LocalPoint lp, LocalError le, bool edge, bool bad, bool rocs) : thePoint(lp), theError(le), isOnEdge_(edge),hasBadPixels_(bad), spanTwoRocs_(rocs),  minPixelRow_(-1), minPixelCol_(-1), clusterSize_(0), clusterSizeRow_(0), clusterSizeCol_(0){;}
-CTPPSPixelRecHit(LocalPoint lp, LocalError le, bool edge, bool bad, bool rocs, int minrow, int mincol, int size, int rowsize, int colsize) : thePoint(lp), theError(le), isOnEdge_(edge),hasBadPixels_(bad), spanTwoRocs_(rocs),  minPixelRow_(minrow), minPixelCol_(mincol), clusterSize_(size), clusterSizeRow_(rowsize), clusterSizeCol_(colsize){;}
+CTPPSPixelRecHit(LocalPoint lp, LocalError le) : thePoint(lp), theError(le), isOnEdge_(false),hasBadPixels_(false), spanTwoRocs_(false), minPixelRow_(-1), minPixelCol_(-1), clusterSize_(0), clusterSizeRow_(0), clusterSizeCol_(0){}
+CTPPSPixelRecHit(LocalPoint lp, LocalError le, bool edge, bool bad, bool rocs) : thePoint(lp), theError(le), isOnEdge_(edge),hasBadPixels_(bad), spanTwoRocs_(rocs),  minPixelRow_(-1), minPixelCol_(-1), clusterSize_(0), clusterSizeRow_(0), clusterSizeCol_(0){}
+CTPPSPixelRecHit(LocalPoint lp, LocalError le, bool edge, bool bad, bool rocs, int minrow, int mincol, int size, int rowsize, int colsize) : thePoint(lp), theError(le), isOnEdge_(edge),hasBadPixels_(bad), spanTwoRocs_(rocs),  minPixelRow_(minrow), minPixelCol_(mincol), clusterSize_(size), clusterSizeRow_(rowsize), clusterSizeCol_(colsize){}
 
   
   inline LocalPoint getPoint() const { return thePoint;}
@@ -39,8 +39,6 @@ CTPPSPixelRecHit(LocalPoint lp, LocalError le, bool edge, bool bad, bool rocs, i
   inline int clusterSize() const { return clusterSize_;}
   inline int clusterSizeRow() const { return clusterSizeRow_;}
   inline int clusterSizeCol() const { return clusterSizeCol_;}
-
-
 
 private:
 

@@ -88,17 +88,13 @@ public:
   {
     isize=0; 
     curr=0; 
-    rowmin=255; 
-    colmin=255;
   }
   ~RPixTempCluster(){}
 
   static constexpr unsigned short MAXSIZE = 256;
   unsigned short adc[MAXSIZE];
-  unsigned char row[MAXSIZE];
-  unsigned char col[MAXSIZE];
-  unsigned char rowmin;
-  unsigned char colmin;
+  uint8_t row[MAXSIZE];
+  uint8_t col[MAXSIZE];
   unsigned short isize;
   unsigned short curr;
 
@@ -109,8 +105,6 @@ public:
 
   bool addPixel(unsigned char myrow, unsigned char mycol, unsigned short const iadc) {
     if (isize==MAXSIZE) return false;
-    rowmin=std::min(rowmin,myrow);
-    colmin=std::min(colmin,mycol);
     adc[isize]=iadc;
     row[isize]=myrow;
     col[isize++]=mycol;

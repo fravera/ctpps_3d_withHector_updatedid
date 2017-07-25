@@ -30,8 +30,8 @@ RPixDetClusterizer::~RPixDetClusterizer(){}
 void RPixDetClusterizer::buildClusters(unsigned int detId, const std::vector<CTPPSPixelDigi> &digi, std::vector<CTPPSPixelCluster> &clusters, const CTPPSPixelGainCalibrations * pcalibrations,const CTPPSPixelAnalysisMask* maskera)
 {
 
-  std::map<uint32_t, CTPPSPixelROCAnalysisMask> mask = maskera->analysisMask;
-  std::map<uint32_t, CTPPSPixelROCAnalysisMask>::iterator mask_it = mask.find(detId); 
+  std::map<uint32_t, CTPPSPixelROCAnalysisMask> const & mask = maskera->analysisMask;
+  std::map<uint32_t, CTPPSPixelROCAnalysisMask>::const_iterator mask_it = mask.find(detId); 
 
   std::set<std::pair<unsigned char, unsigned char> > maskedPixels;
   if( mask_it != mask.end()) maskedPixels = mask_it->second.maskedPixels;
@@ -49,8 +49,8 @@ void RPixDetClusterizer::buildClusters(unsigned int detId, const std::vector<CTP
 
   for( auto const &RPdit : rpix_digi_set_){
 
-    unsigned char row = RPdit.row();
-    unsigned char column = RPdit.column();
+    uint8_t row = RPdit.row();
+    uint8_t column = RPdit.column();
     if( row > maxRow || column > maxCol)
       throw cms::Exception("CTPPSDigiOutofRange") 
 	<< " row = " << row << "  column = "<<column;
@@ -100,7 +100,7 @@ void RPixDetClusterizer::make_cluster(RPixCalibDigi const &aSeed,  std::vector<C
 	  if( (*RPCDit2).column() == c && (*RPCDit2).row() == r && (*RPCDit2).electrons() > ADCThreshold_*ElectronADCGain_ ){
 
 	    if(!atempCluster.addPixel( r,c,(*RPCDit2).electrons() )) {
-	      CTPPSPixelCluster acluster(atempCluster.isize,atempCluster.adc, atempCluster.row,atempCluster.col, atempCluster.rowmin,atempCluster.colmin);
+	      CTPPSPixelCluster acluster(atempCluster.isize,atempCluster.adc, atempCluster.row,atempCluster.col);
 	      clusters.push_back(acluster);
 	      return;
 	    }
@@ -115,7 +115,7 @@ void RPixDetClusterizer::make_cluster(RPixCalibDigi const &aSeed,  std::vector<C
 	     
   }  // while accretion
 
-  CTPPSPixelCluster cluster(atempCluster.isize,atempCluster.adc, atempCluster.row,atempCluster.col, atempCluster.rowmin,atempCluster.colmin);
+  CTPPSPixelCluster cluster(atempCluster.isize,atempCluster.adc, atempCluster.row,atempCluster.col);
   clusters.push_back(cluster);
 }
 
