@@ -15,6 +15,7 @@
 //needed for the geometry:
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/Framework/interface/ESHandle.h"
+#include "TMatrixD.h"
 
 #include <vector>
 #include <memory>
@@ -54,9 +55,47 @@ void RPixRoadFinder::findPattern(){
     CTPPSPixelDetId myid(ds_rh2.id);
 //    uint32_t plane = myid.plane();
     for (const auto & _rh : ds_rh2.data){
+      PointAndRecHit thePointAndRecHit;
+      thePointAndRecHit.recHit=_rh; 
       CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
       CLHEP::Hep3Vector globalV = geometry_.LocalToGlobal(ds_rh2.id,localV);
-      PointInPlane pip = std::make_pair(globalV,myid);
+      thePointAndRecHit.globalPoint=globalV;
+      TMatrixD localError(3,3);
+      localError[0][0] = _rh.getError().xx();
+      localError[0][1] = _rh.getError().xy();
+      localError[0][2] =                  0.;
+      localError[1][0] = _rh.getError().xy();
+      localError[1][1] = _rh.getError().yy();
+      localError[1][2] =                  0.;
+      localError[2][0] =                  0.;
+      localError[2][1] =                  0.;
+      localError[2][2] =                  0.;
+      DDRotationMatrix theRotationMatrix = geometry_.GetDetector(ds_rh2.id)->rotation();
+      TMatrixD theRotationTMatrix(3,3);
+      theRotationTMatrix[0][0] = theRotationMatrix.kXX;
+      theRotationTMatrix[0][1] = theRotationMatrix.kXY;
+      theRotationTMatrix[0][2] = theRotationMatrix.kXZ;
+      theRotationTMatrix[1][0] = theRotationMatrix.kYX;
+      theRotationTMatrix[1][1] = theRotationMatrix.kYY;
+      theRotationTMatrix[1][2] = theRotationMatrix.kYZ;
+      theRotationTMatrix[2][0] = theRotationMatrix.kZX;
+      theRotationTMatrix[2][1] = theRotationMatrix.kZY;
+      theRotationTMatrix[2][2] = theRotationMatrix.kZZ;
+      theRotationMatrix.Invert();
+      TMatrixD theInvertedRotationTMatrix(3,3);
+      theInvertedRotationTMatrix[0][0] = theRotationMatrix.kXX;
+      theInvertedRotationTMatrix[0][1] = theRotationMatrix.kXY;
+      theInvertedRotationTMatrix[0][2] = theRotationMatrix.kXZ;
+      theInvertedRotationTMatrix[1][0] = theRotationMatrix.kYX;
+      theInvertedRotationTMatrix[1][1] = theRotationMatrix.kYY;
+      theInvertedRotationTMatrix[1][2] = theRotationMatrix.kYZ;
+      theInvertedRotationTMatrix[2][0] = theRotationMatrix.kZX;
+      theInvertedRotationTMatrix[2][1] = theRotationMatrix.kZY;
+      theInvertedRotationTMatrix[2][2] = theRotationMatrix.kZZ;
+      TMatrixD globalError = (theInvertedRotationTMatrix * localError) * theRotationTMatrix;
+      thePointAndRecHit.globalError.ResizeTo(3,3);
+      thePointAndRecHit.globalError=globalError;
+      PointInPlane pip = std::make_pair(thePointAndRecHit,myid);
       temp_all_hits.push_back(pip);
     }
 
@@ -74,20 +113,20 @@ void RPixRoadFinder::findPattern(){
   
     _gh2 = _gh1;
 
-    CLHEP::Hep3Vector currPoint = _gh1->first;
+    CLHEP::Hep3Vector currPoint = _gh1->first.globalPoint;
     CTPPSPixelDetId currDet = _gh1->second;
     if(verbosity_>1)  std::cout << " current point " << currPoint << std::endl;
     while( _gh2 != temp_all_hits.end()){
       bool same_pot = false;
 //      if((currPoint.z() > 0 && _gh2->first.z() > 0) || (currPoint.z() < 0 && _gh2->first.z() < 0)) same_arm = true;
       if(    currDet.arm() == _gh2->second.arm() && currDet.station() == _gh2->second.station() && currDet.rp() == _gh2->second.rp() )same_pot = true;
-      CLHEP::Hep3Vector subtraction = currPoint - _gh2->first;
-      if(verbosity_>1) std::cout << "             Subtraction " << currPoint << " - " << _gh2->first << " " << subtraction.perp() << std::endl;
+      CLHEP::Hep3Vector subtraction = currPoint - _gh2->first.globalPoint;
+      if(verbosity_>1) std::cout << "             Subtraction " << currPoint << " - " << _gh2->first.globalPoint << " " << subtraction.perp() << std::endl;
       if(subtraction.perp() < roadRadius_ && same_pot) {  /// 1mm
-	temp_road.push_back(*_gh2);
-	temp_all_hits.erase(_gh2);
+        temp_road.push_back(*_gh2);
+        temp_all_hits.erase(_gh2);
       }else{
-	++_gh2;
+        ++_gh2;
       }
       if(verbosity_>1)std::cout << " SIZE " << temp_all_hits.size() <<std::endl;
     }

@@ -12,7 +12,11 @@
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
+#include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelLocalTrack.h"
+#include "RecoCTPPS/PixelLocal/interface/RPixDetPatternFinder.h"
+
+
 #include "CLHEP/Vector/ThreeVector.h"
 
 #include <vector>
@@ -21,22 +25,26 @@
 class RPixDetTrackFinder{
 
 	public:
-		RPixDetTrackFinder(edm::ParameterSet const& parameterSet) : 
-			parameterSet_(parameterSet) {}
-			virtual ~RPixDetTrackFinder();
+		RPixDetTrackFinder(edm::ParameterSet const& parameterSet): parameterSet_(parameterSet), romanPotId_(CTPPSPixelDetId(0, 2, 3, 0)) {}
+		//romanPotId_ is needed to be defined in order to 
 
-		void setHits(const std::map<CTPPSPixelDetId, std::vector<CLHEP::Hep3Vector> > hitMap) {hitMap_ = hitMap; }
+		virtual ~RPixDetTrackFinder();
+
+		void setHits(const std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> > hitMap) {hitMap_ = hitMap; }
   		virtual void findTracks()=0;
 		void clear(){
 			hitMap_.clear();
 			localTrackVector_.clear();
 		}
 		std::vector<CTPPSPixelLocalTrack> getLocalTracks() {return localTrackVector_; }
+  		void setRomanPotId(CTPPSPixelDetId rpId) {romanPotId_ = rpId;};
+
 
 	protected:
 		edm::ParameterSet parameterSet_;
-		std::map<CTPPSPixelDetId, std::vector<CLHEP::Hep3Vector> > hitMap_;
+		std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> > hitMap_;
 		std::vector<CTPPSPixelLocalTrack>  localTrackVector_;
+		CTPPSPixelDetId  romanPotId_;
 
 };
 

@@ -46,9 +46,6 @@ class RPixRoadFinder : public RPixDetPatternFinder{
     ~RPixRoadFinder();
     void findPattern();
 
-    typedef std::pair<CLHEP::Hep3Vector,CTPPSPixelDetId> PointInPlane;
-    typedef std::vector<PointInPlane> Road;
-
   private:
     edm::ParameterSet param_;
     int verbosity_;

@@ -21,6 +21,8 @@
 
 #include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
 #include "CLHEP/Vector/ThreeVector.h"
+#include "CLHEP/Vector/RotationInterfaces.h"
+#include "TMatrixD.h"
 
 #include <vector>
 
@@ -30,19 +32,29 @@ public:
   RPixDetPatternFinder(edm::ParameterSet const& parameterSet): parameterSet_(parameterSet) {}
   
   virtual ~RPixDetPatternFinder();
+
+  typedef struct{
+    CLHEP::Hep3Vector globalPoint;
+    TMatrixD          globalError;
+    CTPPSPixelRecHit  recHit     ;
+  } PointAndRecHit;
+  typedef std::pair<PointAndRecHit, CTPPSPixelDetId> PointInPlane;
+  typedef std::vector<PointInPlane> Road;
   
   void setHits(const edm::DetSetVector<CTPPSPixelRecHit> hitVector) {hitVector_ = hitVector; }
   virtual void findPattern()=0;
   void clear(){
     patternVector_.clear();
   }
-  std::vector<std::vector<std::pair<CLHEP::Hep3Vector, CTPPSPixelDetId> > > getPatterns() {return patternVector_; }
+  std::vector<Road> getPatterns() {return patternVector_; }
   void setGeometry(TotemRPGeometry geometry) {geometry_ = geometry; }
+
+
   
 protected:
   edm::ParameterSet parameterSet_;
   edm::DetSetVector<CTPPSPixelRecHit> hitVector_;
-  std::vector<std::vector<std::pair<CLHEP::Hep3Vector, CTPPSPixelDetId> > > patternVector_;
+  std::vector<Road> patternVector_;
   TotemRPGeometry geometry_;
   
 };

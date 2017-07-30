@@ -9,8 +9,9 @@
 #include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
 
 #include "RecoCTPPS/PixelLocal/interface/testPatternAlgorithm.h"
-#include "RecoCTPPS/PixelLocal/interface/testTrackingAlgorithm.h"
 #include "RecoCTPPS/PixelLocal/interface/RPixRoadFinder.h"
+#include "RecoCTPPS/PixelLocal/interface/testTrackingAlgorithm.h"
+#include "RecoCTPPS/PixelLocal/interface/RPixPlaneCombinatoryTracking.h"
 
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
 
@@ -48,6 +49,9 @@ CTPPSPixelLocalTrackProducer::CTPPSPixelLocalTrackProducer(const edm::ParameterS
   if(trackFitterAlgorithm == "testTrackingAlgorithm"){
     trackFinder_ = new testTrackingAlgorithm(parameterSet_);
   }
+  if(trackFitterAlgorithm == "RPixPlaneCombinatoryTracking"){
+    trackFinder_ = new RPixPlaneCombinatoryTracking(parameterSet_);
+  }
   else{
     throw cms::Exception("CTPPSPixelLocalTrackProducer") << "Tracking fitter algorithm" << trackFitterAlgorithm << " does not exist";
   }
@@ -70,17 +74,21 @@ CTPPSPixelLocalTrackProducer::~CTPPSPixelLocalTrackProducer(){
 void CTPPSPixelLocalTrackProducer::fillDescriptions(edm::ConfigurationDescriptions & descriptions){
   edm::ParameterSetDescription desc;
 
-  desc.add<std::string> ("label"                    , "ctppsPixelRecHits"    );
-  desc.add<std::string> ("RPixPatterFinderAlgorithm", "RPixRoadFinder"       );
-  desc.add<std::string> ("RPixTrackFinderAlgorithm" , "testTrackingAlgorithm");
-  desc.addUntracked<int>("RPixVerbosity"            , 0                      );
-  desc.addUntracked<int>("RPixMaxHitPerPlane"       , 20                     );
-  desc.addUntracked<int>("RPixMaxHitPerRomanPot"    , 60                     );
-  desc.addUntracked<int>("RPixMaxTrackPerRomanPot"  , 10                     );
-  desc.addUntracked<int>("RPixMaxTrackPerPattern"   , 5                      );
-  desc.add<double>      ("RPixRoadRadius"           , 1.0                    );
-  desc.add<int>         ("RPixMinRoadSize"          , 3                      );
-  desc.add<int>         ("RPixMaxRoadSize"          , 20                     );
+  desc.add<std::string>    ("label"                            , "ctppsPixelRecHits"           );
+  desc.add<std::string>    ("RPixPatterFinderAlgorithm"        , "RPixRoadFinder"              );
+  //desc.add<std::string> ("RPixTrackFinderAlgorithm"            , "testTrackingAlgorithm"       );
+  desc.add<std::string>    ("RPixTrackFinderAlgorithm"         , "RPixPlaneCombinatoryTracking");
+  desc.addUntracked<uint>  ("RPixTrackMinNumberOfPoints"       , 4                             );
+  desc.addUntracked<int>   ("RPixVerbosity"                    , 0                             );
+  desc.add<double>         ("MaximumChi2OverNDF"               , 10.                           );
+  desc.add<double>         ("MaximumChi2RelativeIncreasePerNDF", 0.1                           );
+  desc.addUntracked<int>   ("RPixMaxHitPerPlane"               , 20                            );
+  desc.addUntracked<int>   ("RPixMaxHitPerRomanPot"            , 60                            );
+  desc.addUntracked<int>   ("RPixMaxTrackPerRomanPot"          , 10                            );
+  desc.addUntracked<int>   ("RPixMaxTrackPerPattern"           , 5                             );
+  desc.add<double>         ("RPixRoadRadius"                   , 1.0                           );
+  desc.add<int>            ("RPixMinRoadSize"                  , 3                             );
+  desc.add<int>            ("RPixMaxRoadSize"                  , 20                            );
 
   descriptions.add("ctppsPixelTracks", desc);
 }
@@ -150,7 +158,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
   patternFinder_->setHits(recHitVector);
   patternFinder_->setGeometry(geometry);
   patternFinder_->findPattern();
-  std::vector<std::vector<std::pair<CLHEP::Hep3Vector, CTPPSPixelDetId> > > patternVector = patternFinder_->getPatterns();
+  std::vector<RPixDetPatternFinder::Road> patternVector = patternFinder_->getPatterns();
 
   // std::cout<<"Number of patterns = "<< patternVector.size()<<std::endl;
   // if(patternVector.size()>10){
@@ -165,7 +173,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
     CTPPSPixelDetId firstHitDetId = pattern.at(0).second;
     CTPPSDetId romanPotId = firstHitDetId.getRPId();
     
-    std::map<CTPPSPixelDetId, std::vector<CLHEP::Hep3Vector> > hitOnPlaneMap; //hit of the pattern organized by plane
+    std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> > hitOnPlaneMap; //hit of the pattern organized by plane
 
     //loop on all the hits of the pattern
     for(const auto & hit : pattern){
@@ -177,7 +185,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
       }
 
       if(hitOnPlaneMap.find(hitDetId)==hitOnPlaneMap.end()){ //add the plane key in case it is the first hit of the plane
-        std::vector<CLHEP::Hep3Vector> hitOnPlane;
+        std::vector<RPixDetPatternFinder::PointAndRecHit> hitOnPlane;
         hitOnPlane.push_back(hit.first);
         hitOnPlaneMap[hitDetId] = hitOnPlane;
       }
@@ -186,6 +194,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
     }
 
     trackFinder_->clear();
+    trackFinder_->setRomanPotId(romanPotId);
     trackFinder_->setHits(hitOnPlaneMap);
     trackFinder_->findTracks();
     std::vector<CTPPSPixelLocalTrack> tmpTracksVector = trackFinder_->getLocalTracks();
