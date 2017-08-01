@@ -37,8 +37,8 @@ public:
     CLHEP::Hep3Vector globalPoint;
     TMatrixD          globalError;
     CTPPSPixelRecHit  recHit     ;
-  } PointAndRecHit;
-  typedef std::pair<PointAndRecHit, CTPPSPixelDetId> PointInPlane;
+    uint32_t          detId      ; //I cannot use directy the CTPPSPixelDetId because it needs to be declared
+  } PointInPlane;
   typedef std::vector<PointInPlane> Road;
   
   void setHits(const edm::DetSetVector<CTPPSPixelRecHit> hitVector) {hitVector_ = hitVector; }

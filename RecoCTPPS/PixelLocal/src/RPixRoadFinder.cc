@@ -52,10 +52,10 @@ void RPixRoadFinder::findPattern(){
 
 // convert local hit sto global and push them to a vector
   for(const auto & ds_rh2 : hitVector_){
-    CTPPSPixelDetId myid(ds_rh2.id);
+    uint32_t myid = ds_rh2.id;
 //    uint32_t plane = myid.plane();
     for (const auto & _rh : ds_rh2.data){
-      PointAndRecHit thePointAndRecHit;
+      PointInPlane thePointAndRecHit;
       thePointAndRecHit.recHit=_rh; 
       CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
       CLHEP::Hep3Vector globalV = geometry_.LocalToGlobal(ds_rh2.id,localV);
@@ -95,8 +95,8 @@ void RPixRoadFinder::findPattern(){
       TMatrixD globalError = (theInvertedRotationTMatrix * localError) * theRotationTMatrix;
       thePointAndRecHit.globalError.ResizeTo(3,3);
       thePointAndRecHit.globalError=globalError;
-      PointInPlane pip = std::make_pair(thePointAndRecHit,myid);
-      temp_all_hits.push_back(pip);
+      thePointAndRecHit.detId = myid;
+      temp_all_hits.push_back(thePointAndRecHit);
     }
 
   }
@@ -113,15 +113,16 @@ void RPixRoadFinder::findPattern(){
   
     _gh2 = _gh1;
 
-    CLHEP::Hep3Vector currPoint = _gh1->first.globalPoint;
-    CTPPSPixelDetId currDet = _gh1->second;
+    CLHEP::Hep3Vector currPoint = _gh1->globalPoint;
+    CTPPSPixelDetId currDet = CTPPSPixelDetId(_gh1->detId);
     if(verbosity_>1)  std::cout << " current point " << currPoint << std::endl;
     while( _gh2 != temp_all_hits.end()){
       bool same_pot = false;
 //      if((currPoint.z() > 0 && _gh2->first.z() > 0) || (currPoint.z() < 0 && _gh2->first.z() < 0)) same_arm = true;
-      if(    currDet.arm() == _gh2->second.arm() && currDet.station() == _gh2->second.station() && currDet.rp() == _gh2->second.rp() )same_pot = true;
-      CLHEP::Hep3Vector subtraction = currPoint - _gh2->first.globalPoint;
-      if(verbosity_>1) std::cout << "             Subtraction " << currPoint << " - " << _gh2->first.globalPoint << " " << subtraction.perp() << std::endl;
+      CTPPSPixelDetId tmpGh2Id = CTPPSPixelDetId(_gh2->detId);
+      if(    currDet.arm() == tmpGh2Id.arm() && currDet.station() == tmpGh2Id.station() && currDet.rp() == tmpGh2Id.rp() )same_pot = true;
+      CLHEP::Hep3Vector subtraction = currPoint - _gh2->globalPoint;
+      if(verbosity_>1) std::cout << "             Subtraction " << currPoint << " - " << _gh2->globalPoint << " " << subtraction.perp() << std::endl;
       if(subtraction.perp() < roadRadius_ && same_pot) {  /// 1mm
         temp_road.push_back(*_gh2);
         temp_all_hits.erase(_gh2);

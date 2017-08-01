@@ -30,7 +30,7 @@ class RPixDetTrackFinder{
 
 		virtual ~RPixDetTrackFinder();
 
-		void setHits(const std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> > hitMap) {hitMap_ = hitMap; }
+		void setHits(const std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> > hitMap) {hitMap_ = hitMap; }
   		virtual void findTracks()=0;
 		void clear(){
 			hitMap_.clear();
@@ -42,7 +42,7 @@ class RPixDetTrackFinder{
 
 	protected:
 		edm::ParameterSet parameterSet_;
-		std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> > hitMap_;
+		std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> > hitMap_;
 		std::vector<CTPPSPixelLocalTrack>  localTrackVector_;
 		CTPPSPixelDetId  romanPotId_;
 

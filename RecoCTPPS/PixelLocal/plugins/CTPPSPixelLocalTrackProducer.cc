@@ -170,14 +170,14 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
 
   for(const auto & pattern : patternVector){
     //std::cout<<"pattern found"<<std::endl;
-    CTPPSPixelDetId firstHitDetId = pattern.at(0).second;
+    CTPPSPixelDetId firstHitDetId = CTPPSPixelDetId(pattern.at(0).detId);
     CTPPSDetId romanPotId = firstHitDetId.getRPId();
     
-    std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> > hitOnPlaneMap; //hit of the pattern organized by plane
+    std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> > hitOnPlaneMap; //hit of the pattern organized by plane
 
     //loop on all the hits of the pattern
     for(const auto & hit : pattern){
-      CTPPSPixelDetId hitDetId = hit.second;
+      CTPPSPixelDetId hitDetId = CTPPSPixelDetId(hit.detId);
       CTPPSDetId tmpRomanPotId = hitDetId.getRPId();
 
       if(tmpRomanPotId!=romanPotId){ //check that the hits belongs to the same tracking station
@@ -185,11 +185,11 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
       }
 
       if(hitOnPlaneMap.find(hitDetId)==hitOnPlaneMap.end()){ //add the plane key in case it is the first hit of the plane
-        std::vector<RPixDetPatternFinder::PointAndRecHit> hitOnPlane;
-        hitOnPlane.push_back(hit.first);
+        std::vector<RPixDetPatternFinder::PointInPlane> hitOnPlane;
+        hitOnPlane.push_back(hit);
         hitOnPlaneMap[hitDetId] = hitOnPlane;
       }
-      else hitOnPlaneMap[hitDetId].push_back(hit.first); //add the hit on a plane the key
+      else hitOnPlaneMap[hitDetId].push_back(hit); //add the hit on a plane the key
     
     }
 

@@ -21,15 +21,15 @@ testTrackingAlgorithm::~testTrackingAlgorithm() {
 
 		
 void testTrackingAlgorithm::findTracks(){
-	std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> >::iterator mapIt = hitMap_.begin();
+	std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> >::iterator mapIt = hitMap_.begin();
 	CTPPSPixelDetId tmpDetId = mapIt->first;
 	tmpDetId.setPlane(0);
 	CTPPSPixelDetId firstPlane = tmpDetId;
 	tmpDetId.setPlane(5);
 	CTPPSPixelDetId lastPlane  = tmpDetId;
 
-	std::vector<RPixDetPatternFinder::PointAndRecHit> firstPlaneHits = hitMap_[firstPlane];
-	std::vector<RPixDetPatternFinder::PointAndRecHit> lastPlaneHits  = hitMap_[lastPlane ];
+	std::vector<RPixDetPatternFinder::PointInPlane> firstPlaneHits = hitMap_[firstPlane];
+	std::vector<RPixDetPatternFinder::PointInPlane> lastPlaneHits  = hitMap_[lastPlane ];
 
 	for(const auto & hitFirstPlane : firstPlaneHits){
 		double x0 = hitFirstPlane.globalPoint.x();

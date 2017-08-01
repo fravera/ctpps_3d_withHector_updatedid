@@ -36,17 +36,17 @@ class RPixPlaneCombinatoryTracking : public RPixDetTrackFinder{
     uint32_t trackMinNumberOfPoints_;
     double maximumChi2OverNDF_;
     double maximumChi2RelativeIncreasePerNDF_;
-    std::vector<std::vector<CTPPSPixelDetId> > possiblePlaneCombinations_;
-    std::vector<CTPPSPixelDetId>  listOfAllPlanes_;
-    std::vector<std::vector<CTPPSPixelDetId> > getPlaneCombinations(std::vector<CTPPSPixelDetId> inputPlaneList, uint32_t numberToExtract);
-    CTPPSPixelLocalTrack fitTrack(std::vector<RPixDetPatternFinder::PointAndRecHit> pointList);
+    std::vector<std::vector<uint32_t> > possiblePlaneCombinations_;
+    std::vector<uint32_t>  listOfAllPlanes_;
+    std::vector<std::vector<uint32_t> > getPlaneCombinations(std::vector<uint32_t> inputPlaneList, uint32_t numberToExtract);
+    CTPPSPixelLocalTrack fitTrack(std::vector<RPixDetPatternFinder::PointInPlane> pointList);
     void getHitCombinations(
-        const std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> > &mapOfAllHits, 
-        std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointAndRecHit> >::iterator mapIterator,
+        const std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> > &mapOfAllHits, 
+        std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> >::iterator mapIterator,
         std::map<CTPPSPixelDetId, size_t> tmpHitPlaneMap,
-        std::vector<RPixDetPatternFinder::PointAndRecHit> tmpHitVector,
-        std::map< std::map<CTPPSPixelDetId, size_t>, std::vector<RPixDetPatternFinder::PointAndRecHit> > &outputMap);
-    std::map< std::map<CTPPSPixelDetId, size_t>, std::vector<RPixDetPatternFinder::PointAndRecHit> > produceAllHitCombination(std::vector<std::vector<CTPPSPixelDetId> > inputPlaneCombination);
+        std::vector<RPixDetPatternFinder::PointInPlane> tmpHitVector,
+        std::map< std::map<CTPPSPixelDetId, size_t>, std::vector<RPixDetPatternFinder::PointInPlane> > &outputMap);
+    std::map< std::map<CTPPSPixelDetId, size_t>, std::vector<RPixDetPatternFinder::PointInPlane> > produceAllHitCombination(std::vector<std::vector<uint32_t> > inputPlaneCombination);
 
 
     inline uint32_t Factorial(uint32_t x) {

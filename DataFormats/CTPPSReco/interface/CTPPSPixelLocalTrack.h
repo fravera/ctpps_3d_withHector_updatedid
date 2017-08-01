@@ -112,7 +112,7 @@ class CTPPSPixelLocalTrack
     inline double getChiSquared() const { return chiSquared_; }
     inline void setChiSquared(double & chiSquared) { chiSquared_ = chiSquared; }
 
-    inline double getChiSquaredOverNDF() const { return chiSquared_ / (track_hits_vector_.size() - 4); }
+    inline double getChiSquaredOverNDF() const { return chiSquared_ / (2*track_hits_vector_.size() - 4); }
 
     /// returns (x, y) vector
     inline TVector2 getTrackPoint(double z) const 
