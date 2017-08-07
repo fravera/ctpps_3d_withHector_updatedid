@@ -48,14 +48,14 @@ public:
   }
   std::vector<Road> getPatterns() {return patternVector_; }
   void setGeometry(TotemRPGeometry geometry) {geometry_ = geometry; }
-
-
+  void setPlaneRotationMatrices(std::map<CTPPSPixelDetId, TMatrixD> planeRotationMatrixMap) { planeRotationMatrixMap_ = planeRotationMatrixMap; }
   
 protected:
   edm::ParameterSet parameterSet_;
   edm::DetSetVector<CTPPSPixelRecHit> hitVector_;
   std::vector<Road> patternVector_;
   TotemRPGeometry geometry_;
+  std::map<CTPPSPixelDetId, TMatrixD> planeRotationMatrixMap_;
   
 };
 

@@ -32,12 +32,16 @@ class RPixDetTrackFinder{
 
 		void setHits(const std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> > hitMap) {hitMap_ = hitMap; }
   		virtual void findTracks()=0;
+  		virtual void initialize()=0;
 		void clear(){
 			hitMap_.clear();
 			localTrackVector_.clear();
 		}
 		std::vector<CTPPSPixelLocalTrack> getLocalTracks() {return localTrackVector_; }
   		void setRomanPotId(CTPPSPixelDetId rpId) {romanPotId_ = rpId;};
+		void setPlaneRotationMatrices(std::map<CTPPSPixelDetId, TMatrixD> planeRotationMatrixMap) { planeRotationMatrixMap_ = planeRotationMatrixMap; }
+		void setPointOnPlanes(std::map<CTPPSPixelDetId, CLHEP::Hep3Vector> planePointMap) { planePointMap_ = planePointMap; }
+  		void setListOfPlanes(std::vector<uint32_t> listOfAllPlanes) {listOfAllPlanes_ = listOfAllPlanes; } 
 
 
 	protected:
@@ -45,6 +49,10 @@ class RPixDetTrackFinder{
 		std::map<CTPPSPixelDetId, std::vector<RPixDetPatternFinder::PointInPlane> > hitMap_;
 		std::vector<CTPPSPixelLocalTrack>  localTrackVector_;
 		CTPPSPixelDetId  romanPotId_;
+		std::map<CTPPSPixelDetId, TMatrixD> planeRotationMatrixMap_;
+  		std::map<CTPPSPixelDetId, CLHEP::Hep3Vector> planePointMap_;
+ 		uint32_t numberOfPlanesPerPot_;
+  		std::vector<uint32_t> listOfAllPlanes_;
 
 };
 

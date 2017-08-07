@@ -29,6 +29,7 @@ class testTrackingAlgorithm : public RPixDetTrackFinder{
 		~testTrackingAlgorithm();
 		
 		void findTracks() override;
+		void initialize() override {return;}
 };
 
 #endif

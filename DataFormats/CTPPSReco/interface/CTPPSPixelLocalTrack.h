@@ -29,9 +29,9 @@ class CTPPSPixelLocalTrack
     {
       public:
         CTPPSPixelFittedRecHit(const CTPPSPixelRecHit &hit, const TVector3 &space_point_on_det, std::pair<double,double> residual, std::pair<double,double> pull) :
-            CTPPSPixelRecHit(hit), space_point_on_det_(space_point_on_det), residual_(residual), pull_(pull) {}
+            CTPPSPixelRecHit(hit), space_point_on_det_(space_point_on_det), residual_(residual), pull_(pull), isUsedForFit_(false), isRealHit_(false) {}
     
-        CTPPSPixelFittedRecHit() : CTPPSPixelRecHit(), residual_(std::pair<double,double>(0,0)), pull_(std::pair<double,double>(0,0)) {}
+        CTPPSPixelFittedRecHit() : CTPPSPixelRecHit(), residual_(std::pair<double,double>(0,0)), pull_(std::pair<double,double>(0,0)), isUsedForFit_(false), isRealHit_(false) {}
     
         virtual ~CTPPSPixelFittedRecHit() {}
     
@@ -50,11 +50,25 @@ class CTPPSPixelLocalTrack
     
         inline double getXPullNormalization() const { return residual_.first / pull_.first; }
         inline double getYPullNormalization() const { return residual_.second / pull_.second; }
+
+        inline void setIsUsedForFit(bool usedForFit) {
+            if(usedForFit) isRealHit_ = true; 
+            isUsedForFit_ = usedForFit; 
+        }
+        inline bool getIsUsedForFit() const { return isUsedForFit_; }
+
+        inline void setIsRealHit(bool realHit) { 
+            if(!realHit) isUsedForFit_ = false;
+            isRealHit_ = realHit; 
+        }
+        inline bool getIsRealHit() const { return isRealHit_; }
     
       private:
         TVector3 space_point_on_det_ ;  ///< mm
         std::pair<double,double> residual_;  ///< mm
         std::pair<double,double> pull_    ;  ///< normalised residual
+        bool isUsedForFit_;
+        bool isRealHit_;
     };
 
   public:

@@ -60,6 +60,8 @@ private:
   edm::InputTag inputTag_;
   edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelRecHit>> tokenCTPPSPixelRecHit_;
   edm::ESWatcher<VeryForwardRealGeometryRecord> geometryWatcher_;
+  uint32_t numberOfPlanesPerPot_;
+  std::vector<uint32_t> listOfAllPlanes_;
 
   RPixDetPatternFinder *patternFinder_;
   RPixDetTrackFinder   *trackFinder_;

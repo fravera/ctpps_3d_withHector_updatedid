@@ -1,8 +1,31 @@
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.StandardSequences.Eras import eras
+import FWCore.ParameterSet.VarParsing as VarParsing
 
 process = cms.Process('CTPPS2',eras.Run2_25ns)
+
+process.options = cms.untracked.PSet(
+    wantSummary = cms.untracked.bool(True),
+    FailPath = cms.untracked.vstring('ProductNotFound','Type Mismatch')
+    )
+options = VarParsing.VarParsing ()
+options.register('maxEvents',
+                '',
+                VarParsing.VarParsing.multiplicity.singleton,
+                VarParsing.VarParsing.varType.int,
+                "maximum number of events to process")
+options.register('skipEvents',
+                '',
+                VarParsing.VarParsing.multiplicity.singleton,
+                VarParsing.VarParsing.varType.int,
+                "number of events to skip")
+options.register('rootFileName',
+                '',
+                VarParsing.VarParsing.multiplicity.singleton,
+                VarParsing.VarParsing.varType.string,
+                "output ROOT file name")
+options.parseArguments()
 
 # import of standard configurations
 process.load('Configuration.StandardSequences.Services_cff')
@@ -13,7 +36,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 #process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(-1)
+        input = cms.untracked.int32(options.maxEvents)
         )
 
 process.MessageLogger = cms.Service("MessageLogger",
@@ -28,6 +51,7 @@ process.source = cms.Source("EmptyIOVSource",
 )
 process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",ignoreTotal = cms.untracked.int32(1) )
 process.source = cms.Source("PoolSource",
+    skipEvents = cms.untracked.uint32(options.skipEvents),
     fileNames = cms.untracked.vstring(
 'root://cms-xrd-global.cern.ch//store/data/Run2017A/ZeroBias2/AOD/PromptReco-v1/000/294/736/00000/44589413-F73F-E711-9E8D-02163E014337.root',
 'root://cms-xrd-global.cern.ch//store/data/Run2017A/ZeroBias2/AOD/PromptReco-v1/000/294/736/00000/4493383A-F63F-E711-A67F-02163E011870.root',
@@ -60,11 +84,11 @@ process.patternProd.RPixVerbosity = cms.untracked.int32(0)
 process.o1 = cms.OutputModule("PoolOutputModule",
         outputCommands = cms.untracked.vstring('drop *',
                                                'keep CTPPSPixelClusteredmDetSetVector_ctppsPixelClusters_*_*',
-                                               'keep CTPPSPixelRecHitedmDetSetVector_ctppsPixelRechits_*_*',
+                                               'keep CTPPSPixelRecHitedmDetSetVector_ctppsPixelRecHits_*_*',
                                                'keep CTPPSPixelLocalTrackedmDetSetVector_ctppsPixelTracks_*_*',
                                                #'keep CTPPS*_*_*_*'
         ),
-        fileName = cms.untracked.string('simevent_CTPPS_CLU_REC_DAQ_patt_real_mem_Fabio.root')
+        fileName = cms.untracked.string(options.rootFileName)
        )
 
 
