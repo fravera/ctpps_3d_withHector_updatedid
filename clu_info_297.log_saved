@@ -1,0 +1,1487 @@
+%MSG-i SiPixelQualityESProducer::SiPixelQualityESProducer:  (NoModuleName)  05-Jul-2017 18:38:27 CEST pre-events
+
+%MSG
+%MSG-i SiStripBackPlaneCorrectionDepESProducer:  (NoModuleName)  05-Jul-2017 18:38:28 CEST pre-events
+ctor
+%MSG
+%MSG-i SiStripLorentzAngleDepESProducer:  (NoModuleName)  05-Jul-2017 18:38:28 CEST pre-events
+ctor
+%MSG
+%MSG-i SiStripQualityESProducer:  (NoModuleName) 05-Jul-2017 18:38:28 CEST  pre-events
+ctor
+%MSG
+%MSG-i SiStripDetInfoFileReader:  (NoModuleName) 05-Jul-2017 18:38:28 CEST  pre-events
+filePath /cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/cmssw/CMSSW_9_3_0_pre1/src/CalibTracker/SiStripCommon/data/SiStripDetInfo.dat
+%MSG
+%MSG-i SiStripDetInfoFileReader::SiStripDetInfoFileReader - END of file reached:  (NoModuleName) 05-Jul-2017 18:38:28 CEST pre-events
+
+%MSG
+%MSG-i HCAL:  (NoModuleName) 05-Jul-2017 18:38:28 CEST pre-events
+HcalHardcodeCalibrations::HcalHardcodeCalibrations->...
+%MSG
+05-Jul-2017 18:38:29 CEST  Initiating request to open file root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root
+Changing exclude list for URL root://131.225.205.148:21259//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?org.dcache.uuid=21fcf5c5-f3c0-4351-803e-f09f0ea8f750 to cmsxrootd-site1.fnal.gov
+%MSG-i XrdAdaptorInternal:  file_open 05-Jul-2017 18:38:34 CEST pre-events
+Xrootd server at 131.225.205.148:21259 did not provide a sitename.  Monitoring may be incomplete.
+%MSG
+%MSG-i XrdAdaptorInternal:  file_open 05-Jul-2017 18:38:34 CEST pre-events
+Reading from new server 131.225.205.148:21259 at site fnal.gov
+%MSG
+%MSG-w XrdAdaptor:  file_open 05-Jul-2017 18:38:34 CEST pre-events
+Data is served from fnal.gov instead of original site CERN-PROD
+%MSG
+%MSG-i XrdFileInfo:  file_open 05-Jul-2017 18:38:34 CEST pre-events
+Opened root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root
+%MSG
+%MSG-i XrdFileInfo:  file_open 05-Jul-2017 18:38:34 CEST pre-events
+Active sources: 131.225.205.148:21259, 
+%MSG
+Time since last check 0; last check 477539; now 477539; next check 477544
+Reading from 131.225.205.148:21259, quality 260
+Finished timer after 110
+Time since last check 111; last check 477539; now 477540; next check 477544
+Reading from 131.225.205.148:21259, quality 110
+Finished timer after 109
+Time since last check 221; last check 477539; now 477540; next check 477544
+Reading from 131.225.205.148:21259, quality 109
+Finished timer after 451
+05-Jul-2017 18:38:43 CEST  Successfully opened file root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root
+Time since last check 9328; last check 477539; now 477549; next check 477544
+Trying to open URL: root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?tried=cmsxrootd-site1.fnal.gov
+Reading from 131.225.205.148:21259, quality 223
+Got failure when trying to open a new source
+Finished timer after 2878
+Time since last check 4048; last check 477549; now 477553; next check 477669
+Reading from 131.225.205.148:21259, quality 886
+Finished timer after 108
+Time since last check 4157; last check 477549; now 477553; next check 477669
+Reading from 131.225.205.148:21259, quality 730
+Finished timer after 112
+Time since last check 4270; last check 477549; now 477553; next check 477669
+Reading from 131.225.205.148:21259, quality 627
+Finished timer after 108
+Time since last check 4379; last check 477549; now 477553; next check 477669
+Reading from 131.225.205.148:21259, quality 552
+Finished timer after 111
+Time since last check 4492; last check 477549; now 477553; next check 477669
+Reading from 131.225.205.148:21259, quality 496
+Finished timer after 109
+Time since last check 4602; last check 477549; now 477553; next check 477669
+Reading from 131.225.205.148:21259, quality 453
+Finished timer after 780
+Time since last check 5448; last check 477549; now 477554; next check 477669
+Reading from 131.225.205.148:21259, quality 485
+Finished timer after 448
+Time since last check 5936; last check 477549; now 477555; next check 477669
+Reading from 131.225.205.148:21259, quality 481
+Finished timer after 111
+[0] Time for readv: 115 (sub-readv requests: 1)
+Time since last check 6060; last check 477549; now 477555; next check 477669
+Reading from 131.225.205.148:21259, quality 450
+Finished timer after 116
+Time since last check 6180; last check 477549; now 477555; next check 477669
+Reading from 131.225.205.148:21259, quality 424
+Finished timer after 113
+Time since last check 6299; last check 477549; now 477555; next check 477669
+Reading from 131.225.205.148:21259, quality 401
+Finished timer after 109
+Time since last check 6410; last check 477549; now 477555; next check 477669
+Reading from 131.225.205.148:21259, quality 381
+Finished timer after 110
+Time since last check 6545; last check 477549; now 477555; next check 477669
+Reading from 131.225.205.148:21259, quality 364
+Finished timer after 109
+Time since last check 6658; last check 477549; now 477555; next check 477669
+Reading from 131.225.205.148:21259, quality 349
+Finished timer after 109
+Time since last check 6768; last check 477549; now 477556; next check 477669
+Reading from 131.225.205.148:21259, quality 335
+Finished timer after 115
+Time since last check 7519; last check 477549; now 477556; next check 477669
+Reading from 131.225.205.148:21259, quality 323
+Finished timer after 615
+[1] Time for readv: 615 (sub-readv requests: 1)
+Time since last check 8222; last check 477549; now 477557; next check 477669
+Reading from 131.225.205.148:21259, quality 337
+Finished timer after 113
+Time since last check 8338; last check 477549; now 477557; next check 477669
+Reading from 131.225.205.148:21259, quality 326
+Finished timer after 110
+Time since last check 8457; last check 477549; now 477557; next check 477669
+Reading from 131.225.205.148:21259, quality 316
+Finished timer after 118
+%MSG-i FastCloningDisabled:  AfterModBeginStream 05-Jul-2017 18:39:03 CEST  BeforeEvents
+Fast copying of file root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root to file simevent_CTPPS_CLU_DB_real_297.root is disabled because:
+some events were not copied because of maxEvents limit.
+
+%MSG
+Time since last check 19617; last check 477549; now 477568; next check 477669
+Reading from 131.225.205.148:21259, quality 307
+Finished timer after 109
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record HcalDbRecord depends on at least one Record 
+ (HcalGainsRcd, HcalPFCorrsRcd, HcalQIEDataRcd, HcalLUTCorrsRcd, HcalMCParamsRcd, HcalQIETypesRcd, HcalPedestalsRcd, HcalRespCorrsRcd, HcalTimeCorrsRcd, HcalFrontEndMapRcd, HcalLutMetadataRcd, HcalTPParametersRcd, HcalZSThresholdsRcd, IdealGeometryRecord, HcalElectronicsMapRcd, HcalPedestalWidthsRcd, HcalSiPMParametersRcd, HcalRecNumberingRecord, HcalL1TriggerObjectsRcd, HcalSiPMCharacteristicsRcd, HcalTPChannelParametersRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record CastorDbRecord depends on at least one Record 
+ (CastorGainsRcd, CastorQIEDataRcd, CastorPedestalsRcd, CastorGainWidthsRcd, CastorChannelQualityRcd, CastorElectronicsMapRcd, CastorPedestalWidthsRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record SiStripGainRcd depends on at least one Record 
+ (SiStripApvGainRcd, SiStripApvGain2Rcd, SiStripApvGain3Rcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record TkStripCPERecord depends on at least one Record 
+ (SiStripNoisesRcd, SiStripApvGainRcd, SiStripLatencyRcd, SiStripBadChannelRcd, SiStripConfObjectRcd, IdealMagneticFieldRecord, TrackerDigiGeometryRecord) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record EcalLaserDbRecord depends on at least one Record 
+ (EcalLaserAlphasRcd, EcalLaserAPDPNRatiosRcd, EcalLinearCorrectionsRcd, EcalLaserAPDPNRatiosRefRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record HcalGainWidthsRcd depends on at least one Record 
+ (IdealGeometryRecord, HcalRecNumberingRecord) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record SiPixelQualityRcd depends on at least one Record 
+ (SiPixelDetVOffRcd, SiPixelQualityFromDbRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record SiStripQualityRcd depends on at least one Record 
+ (RunInfoRcd, SiStripDetVOffRcd, SiStripBadFiberRcd, SiStripBadStripRcd, SiStripBadModuleRcd, SiStripDCSStatusRcd, SiStripBadChannelRcd, SiStripBadModuleFedErrRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record SiStripDetCablingRcd depends on at least one Record 
+ (TrackerTopologyRcd, IdealGeometryRecord, SiStripFedCablingRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record SiStripFecCablingRcd depends on at least one Record 
+ (SiStripFedCablingRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record HcalChannelQualityRcd depends on at least one Record 
+ (IdealGeometryRecord, HcalRecNumberingRecord) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record SiStripLorentzAngleDepRcd depends on at least one Record 
+ (SiStripLatencyRcd, SiStripLorentzAngleRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i EventSetupDependency:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+The EventSetup record SiStripBackPlaneCorrectionDepRcd depends on at least one Record 
+ (SiStripLatencyRcd, SiStripBackPlaneCorrectionRcd) which is not present in the job.
+ This may lead to an exception begin thrown during event processing.
+ If no exception occurs during the job than it is usually safe to ignore this message.
+%MSG
+%MSG-i HCAL:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+HcalHardcodeCalibrations::setIntervalFor-> key: HcalGainWidthsRcd time: run: 297425 lumi: 0 event: 0/6435014676279248640
+%MSG
+>> TotemDAQMappingESSourceXML::setIntervalFor(TotemReadoutRcd)
+    run=297425, event=0
+    block found: index=2, interval=(run: 292521 lumi: 0 event: 1 - run: 999999999 lumi: 0 event: 18446744073709551615)
+>> TotemDAQMappingESSourceXML::setIntervalFor(TotemReadoutRcd)
+    run=297425, event=0
+    block found: index=3, interval=(run: 290873 lumi: 0 event: 1 - run: 999999999 lumi: 0 event: 18446744073709551615)
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Getting data for record "CTPPSPixelDAQMappingRcd" to be consumed by run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Processing record "CTPPSPixelDAQMappingRcd" and label "RPix" for run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Validity coming from IOV sequence for record "CTPPSPixelDAQMappingRcd" and label "RPix": (1, 18446744073709551615) for time (type: runnumber) 297425; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Setting validity for record "CTPPSPixelDAQMappingRcd" and corresponding label(s): starting at run: 1 lumi: 0 event: 0, timestamp: 0, ending at run: 4294967295 lumi: 4294967295 event: 18446744073709551615, timestamp: 0, for run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Getting data for record "CTPPSPixelAnalysisMaskRcd" to be consumed by run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Processing record "CTPPSPixelAnalysisMaskRcd" and label "RPix" for run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Validity coming from IOV sequence for record "CTPPSPixelAnalysisMaskRcd" and label "RPix": (1, 18446744073709551615) for time (type: runnumber) 297425; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Setting validity for record "CTPPSPixelAnalysisMaskRcd" and corresponding label(s): starting at run: 1 lumi: 0 event: 0, timestamp: 0, ending at run: 4294967295 lumi: 4294967295 event: 18446744073709551615, timestamp: 0, for run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Getting data for record "CTPPSPixelGainCalibrationsRcd" to be consumed by run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Processing record "CTPPSPixelGainCalibrationsRcd" and label "" for run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Validity coming from IOV sequence for record "CTPPSPixelGainCalibrationsRcd" and label "": (1, 18446744073709551615) for time (type: runnumber) 297425; from CondDBESSource::setIntervalFor
+%MSG
+%MSG-i CondDBESSource:  AfterSource 05-Jul-2017 18:39:03 CEST BeforeEvents
+Setting validity for record "CTPPSPixelGainCalibrationsRcd" and corresponding label(s): starting at run: 1 lumi: 0 event: 0, timestamp: 0, ending at run: 4294967295 lumi: 4294967295 event: 18446744073709551615, timestamp: 0, for run: 297425 lumi: 0 event: 0, timestamp: 6435014676279248640; from CondDBESSource::setIntervalFor
+%MSG
+Time since last check 19952; last check 477549; now 477569; next check 477669
+Reading from 131.225.205.148:21259, quality 298
+Finished timer after 233
+[2] Time for readv: 233 (sub-readv requests: 1)
+Time since last check 20277; last check 477549; now 477569; next check 477669
+Reading from 131.225.205.148:21259, quality 295
+Finished timer after 2341
+[3] Time for readv: 2345 (sub-readv requests: 1)
+Time since last check 22624; last check 477549; now 477571; next check 477669
+Reading from 131.225.205.148:21259, quality 373
+Finished timer after 125
+[4] Time for readv: 125 (sub-readv requests: 1)
+Begin processing the 1st record. Run 297425, Event 57532000, LumiSection 36 at 05-Jul-2017 18:39:06.226 CEST
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+%MSG-i CTPPSPixelGainCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:06 CEST Run: 297425 Event: 57532000
+Default instance of CTPPSPixelGainCalibration
+%MSG
+Begin processing the 2nd record. Run 297425, Event 57426293, LumiSection 36 at 05-Jul-2017 18:39:07.521 CEST
+Begin processing the 3rd record. Run 297425, Event 57549520, LumiSection 36 at 05-Jul-2017 18:39:07.622 CEST
+Begin processing the 4th record. Run 297425, Event 57674496, LumiSection 36 at 05-Jul-2017 18:39:07.766 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:07 CEST Run: 297425 Event: 57674496
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -209  --> electrons = 0
+%MSG
+Begin processing the 5th record. Run 297425, Event 57595650, LumiSection 36 at 05-Jul-2017 18:39:07.902 CEST
+Begin processing the 6th record. Run 297425, Event 56442252, LumiSection 36 at 05-Jul-2017 18:39:08.017 CEST
+Begin processing the 7th record. Run 297425, Event 57732891, LumiSection 36 at 05-Jul-2017 18:39:08.258 CEST
+Begin processing the 8th record. Run 297425, Event 56900694, LumiSection 36 at 05-Jul-2017 18:39:08.526 CEST
+Begin processing the 9th record. Run 297425, Event 57885314, LumiSection 36 at 05-Jul-2017 18:39:08.652 CEST
+Begin processing the 10th record. Run 297425, Event 57842687, LumiSection 36 at 05-Jul-2017 18:39:08.738 CEST
+Begin processing the 11th record. Run 297425, Event 57269782, LumiSection 36 at 05-Jul-2017 18:39:08.798 CEST
+Begin processing the 12th record. Run 297425, Event 57989267, LumiSection 36 at 05-Jul-2017 18:39:08.906 CEST
+Begin processing the 13th record. Run 297425, Event 56784474, LumiSection 36 at 05-Jul-2017 18:39:09.020 CEST
+Begin processing the 14th record. Run 297425, Event 57906925, LumiSection 36 at 05-Jul-2017 18:39:09.146 CEST
+Begin processing the 15th record. Run 297425, Event 57138963, LumiSection 36 at 05-Jul-2017 18:39:09.289 CEST
+Begin processing the 16th record. Run 297425, Event 56764035, LumiSection 36 at 05-Jul-2017 18:39:09.463 CEST
+Begin processing the 17th record. Run 297425, Event 56986537, LumiSection 36 at 05-Jul-2017 18:39:09.610 CEST
+Begin processing the 18th record. Run 297425, Event 57553023, LumiSection 36 at 05-Jul-2017 18:39:09.696 CEST
+Begin processing the 19th record. Run 297425, Event 56535690, LumiSection 36 at 05-Jul-2017 18:39:09.886 CEST
+Begin processing the 20th record. Run 297425, Event 57725885, LumiSection 36 at 05-Jul-2017 18:39:10.050 CEST
+Begin processing the 21st record. Run 297425, Event 57488777, LumiSection 36 at 05-Jul-2017 18:39:10.119 CEST
+Time since last check 26652; last check 477549; now 477575; next check 477669
+Reading from 131.225.205.148:21259, quality 363
+Finished timer after 3417
+[5] Time for readv: 3418 (sub-readv requests: 1)
+Time since last check 30076; last check 477549; now 477579; next check 477669
+Reading from 131.225.205.148:21259, quality 472
+Finished timer after 554
+[6] Time for readv: 554 (sub-readv requests: 1)
+Begin processing the 22nd record. Run 297425, Event 57338695, LumiSection 36 at 05-Jul-2017 18:39:14.130 CEST
+Begin processing the 23rd record. Run 297425, Event 57150061, LumiSection 36 at 05-Jul-2017 18:39:14.208 CEST
+Begin processing the 24th record. Run 297425, Event 56888430, LumiSection 36 at 05-Jul-2017 18:39:14.250 CEST
+Begin processing the 25th record. Run 297425, Event 56604942, LumiSection 36 at 05-Jul-2017 18:39:14.286 CEST
+Begin processing the 26th record. Run 297425, Event 57812317, LumiSection 36 at 05-Jul-2017 18:39:14.315 CEST
+Begin processing the 27th record. Run 297425, Event 57836264, LumiSection 36 at 05-Jul-2017 18:39:14.374 CEST
+Begin processing the 28th record. Run 297425, Event 56765786, LumiSection 36 at 05-Jul-2017 18:39:14.457 CEST
+Begin processing the 29th record. Run 297425, Event 57964737, LumiSection 36 at 05-Jul-2017 18:39:14.547 CEST
+Begin processing the 30th record. Run 297425, Event 57450237, LumiSection 36 at 05-Jul-2017 18:39:14.675 CEST
+Begin processing the 31st record. Run 297425, Event 57530577, LumiSection 36 at 05-Jul-2017 18:39:14.790 CEST
+Begin processing the 32nd record. Run 297425, Event 57654638, LumiSection 36 at 05-Jul-2017 18:39:14.869 CEST
+Begin processing the 33rd record. Run 297425, Event 57475683, LumiSection 36 at 05-Jul-2017 18:39:14.987 CEST
+Begin processing the 34th record. Run 297425, Event 57823745, LumiSection 36 at 05-Jul-2017 18:39:15.070 CEST
+Begin processing the 35th record. Run 297425, Event 56582163, LumiSection 36 at 05-Jul-2017 18:39:15.155 CEST
+Begin processing the 36th record. Run 297425, Event 57663394, LumiSection 36 at 05-Jul-2017 18:39:15.249 CEST
+Begin processing the 37th record. Run 297425, Event 56912128, LumiSection 36 at 05-Jul-2017 18:39:15.428 CEST
+Begin processing the 38th record. Run 297425, Event 57407942, LumiSection 36 at 05-Jul-2017 18:39:15.590 CEST
+Begin processing the 39th record. Run 297425, Event 57832512, LumiSection 36 at 05-Jul-2017 18:39:15.731 CEST
+Begin processing the 40th record. Run 297425, Event 56812846, LumiSection 36 at 05-Jul-2017 18:39:15.916 CEST
+Begin processing the 41st record. Run 297425, Event 57617598, LumiSection 36 at 05-Jul-2017 18:39:16.041 CEST
+Begin processing the 42nd record. Run 297425, Event 57725050, LumiSection 36 at 05-Jul-2017 18:39:16.116 CEST
+Begin processing the 43rd record. Run 297425, Event 57354214, LumiSection 36 at 05-Jul-2017 18:39:16.215 CEST
+Begin processing the 44th record. Run 297425, Event 57361218, LumiSection 36 at 05-Jul-2017 18:39:16.389 CEST
+Begin processing the 45th record. Run 297425, Event 56578075, LumiSection 36 at 05-Jul-2017 18:39:16.472 CEST
+Begin processing the 46th record. Run 297425, Event 56535445, LumiSection 36 at 05-Jul-2017 18:39:16.507 CEST
+Begin processing the 47th record. Run 297425, Event 57956316, LumiSection 36 at 05-Jul-2017 18:39:16.586 CEST
+Begin processing the 48th record. Run 297425, Event 56525514, LumiSection 36 at 05-Jul-2017 18:39:16.662 CEST
+Begin processing the 49th record. Run 297425, Event 57520650, LumiSection 36 at 05-Jul-2017 18:39:16.705 CEST
+Begin processing the 50th record. Run 297425, Event 56816348, LumiSection 36 at 05-Jul-2017 18:39:16.735 CEST
+Begin processing the 51st record. Run 297425, Event 57562698, LumiSection 36 at 05-Jul-2017 18:39:16.767 CEST
+Begin processing the 52nd record. Run 297425, Event 56438499, LumiSection 36 at 05-Jul-2017 18:39:16.794 CEST
+Begin processing the 53rd record. Run 297425, Event 56742412, LumiSection 36 at 05-Jul-2017 18:39:16.886 CEST
+Begin processing the 54th record. Run 297425, Event 56508225, LumiSection 36 at 05-Jul-2017 18:39:16.941 CEST
+Begin processing the 55th record. Run 297425, Event 56450768, LumiSection 36 at 05-Jul-2017 18:39:16.961 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:16 CEST Run: 297425 Event: 56450768
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -43  --> electrons = 0
+%MSG
+Begin processing the 56th record. Run 297425, Event 57067472, LumiSection 36 at 05-Jul-2017 18:39:17.029 CEST
+Begin processing the 57th record. Run 297425, Event 56601433, LumiSection 36 at 05-Jul-2017 18:39:17.103 CEST
+Begin processing the 58th record. Run 297425, Event 57814637, LumiSection 36 at 05-Jul-2017 18:39:17.162 CEST
+Begin processing the 59th record. Run 297425, Event 57531746, LumiSection 36 at 05-Jul-2017 18:39:17.220 CEST
+Begin processing the 60th record. Run 297425, Event 57616427, LumiSection 36 at 05-Jul-2017 18:39:17.312 CEST
+Begin processing the 61st record. Run 297425, Event 56542688, LumiSection 36 at 05-Jul-2017 18:39:17.374 CEST
+Begin processing the 62nd record. Run 297425, Event 57623088, LumiSection 36 at 05-Jul-2017 18:39:17.432 CEST
+Begin processing the 63rd record. Run 297425, Event 57907496, LumiSection 36 at 05-Jul-2017 18:39:17.507 CEST
+Begin processing the 64th record. Run 297425, Event 57204944, LumiSection 36 at 05-Jul-2017 18:39:17.594 CEST
+Begin processing the 65th record. Run 297425, Event 58043917, LumiSection 36 at 05-Jul-2017 18:39:17.679 CEST
+Begin processing the 66th record. Run 297425, Event 57579870, LumiSection 36 at 05-Jul-2017 18:39:17.763 CEST
+Begin processing the 67th record. Run 297425, Event 57777842, LumiSection 36 at 05-Jul-2017 18:39:17.811 CEST
+Begin processing the 68th record. Run 297425, Event 57347439, LumiSection 36 at 05-Jul-2017 18:39:17.827 CEST
+Begin processing the 69th record. Run 297425, Event 56501804, LumiSection 36 at 05-Jul-2017 18:39:17.892 CEST
+Begin processing the 70th record. Run 297425, Event 57085803, LumiSection 36 at 05-Jul-2017 18:39:17.971 CEST
+Begin processing the 71st record. Run 297425, Event 56879068, LumiSection 36 at 05-Jul-2017 18:39:18.010 CEST
+Begin processing the 72nd record. Run 297425, Event 57463066, LumiSection 36 at 05-Jul-2017 18:39:18.065 CEST
+Begin processing the 73rd record. Run 297425, Event 57896396, LumiSection 36 at 05-Jul-2017 18:39:18.116 CEST
+Begin processing the 74th record. Run 297425, Event 57273270, LumiSection 36 at 05-Jul-2017 18:39:18.194 CEST
+Begin processing the 75th record. Run 297425, Event 57215452, LumiSection 36 at 05-Jul-2017 18:39:18.292 CEST
+Begin processing the 76th record. Run 297425, Event 57586295, LumiSection 36 at 05-Jul-2017 18:39:18.333 CEST
+Begin processing the 77th record. Run 297425, Event 57666299, LumiSection 36 at 05-Jul-2017 18:39:18.376 CEST
+Begin processing the 78th record. Run 297425, Event 57022731, LumiSection 36 at 05-Jul-2017 18:39:18.494 CEST
+Begin processing the 79th record. Run 297425, Event 56492462, LumiSection 36 at 05-Jul-2017 18:39:18.616 CEST
+Begin processing the 80th record. Run 297425, Event 57588816, LumiSection 36 at 05-Jul-2017 18:39:18.684 CEST
+Begin processing the 81st record. Run 297425, Event 57975235, LumiSection 36 at 05-Jul-2017 18:39:18.724 CEST
+Time since last check 35264; last check 477549; now 477584; next check 477669
+Reading from 131.225.205.148:21259, quality 474
+Finished timer after 3133
+[7] Time for readv: 3133 (sub-readv requests: 1)
+Time since last check 38401; last check 477549; now 477587; next check 477669
+Reading from 131.225.205.148:21259, quality 562
+Finished timer after 118
+[8] Time for readv: 118 (sub-readv requests: 1)
+Begin processing the 82nd record. Run 297425, Event 57345871, LumiSection 36 at 05-Jul-2017 18:39:22.042 CEST
+Begin processing the 83rd record. Run 297425, Event 57570523, LumiSection 36 at 05-Jul-2017 18:39:22.104 CEST
+Begin processing the 84th record. Run 297425, Event 56894840, LumiSection 36 at 05-Jul-2017 18:39:22.183 CEST
+Begin processing the 85th record. Run 297425, Event 57912167, LumiSection 36 at 05-Jul-2017 18:39:22.359 CEST
+Begin processing the 86th record. Run 297425, Event 57621918, LumiSection 36 at 05-Jul-2017 18:39:22.451 CEST
+Begin processing the 87th record. Run 297425, Event 57470263, LumiSection 36 at 05-Jul-2017 18:39:22.536 CEST
+Begin processing the 88th record. Run 297425, Event 57509969, LumiSection 36 at 05-Jul-2017 18:39:24.046 CEST
+Begin processing the 89th record. Run 297425, Event 57877894, LumiSection 36 at 05-Jul-2017 18:39:24.106 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:24 CEST Run: 297425 Event: 57877894
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -670  --> electrons = 0
+%MSG
+Begin processing the 90th record. Run 297425, Event 56676606, LumiSection 36 at 05-Jul-2017 18:39:24.188 CEST
+Begin processing the 91st record. Run 297425, Event 57486615, LumiSection 36 at 05-Jul-2017 18:39:24.216 CEST
+Begin processing the 92nd record. Run 297425, Event 57624439, LumiSection 36 at 05-Jul-2017 18:39:24.265 CEST
+Begin processing the 93rd record. Run 297425, Event 57499459, LumiSection 36 at 05-Jul-2017 18:39:24.330 CEST
+Begin processing the 94th record. Run 297425, Event 56954008, LumiSection 36 at 05-Jul-2017 18:39:24.347 CEST
+Begin processing the 95th record. Run 297425, Event 57056787, LumiSection 36 at 05-Jul-2017 18:39:24.365 CEST
+Begin processing the 96th record. Run 297425, Event 57497128, LumiSection 36 at 05-Jul-2017 18:39:24.423 CEST
+Begin processing the 97th record. Run 297425, Event 57122779, LumiSection 36 at 05-Jul-2017 18:39:24.486 CEST
+Begin processing the 98th record. Run 297425, Event 56925971, LumiSection 36 at 05-Jul-2017 18:39:24.550 CEST
+Begin processing the 99th record. Run 297425, Event 57101760, LumiSection 36 at 05-Jul-2017 18:39:24.618 CEST
+Begin processing the 100th record. Run 297425, Event 57943304, LumiSection 36 at 05-Jul-2017 18:39:24.635 CEST
+Begin processing the 101st record. Run 297425, Event 56907286, LumiSection 36 at 05-Jul-2017 18:39:24.660 CEST
+Begin processing the 102nd record. Run 297425, Event 58067695, LumiSection 36 at 05-Jul-2017 18:39:24.736 CEST
+Begin processing the 103rd record. Run 297425, Event 57401932, LumiSection 36 at 05-Jul-2017 18:39:24.803 CEST
+Begin processing the 104th record. Run 297425, Event 57200451, LumiSection 36 at 05-Jul-2017 18:39:24.880 CEST
+Begin processing the 105th record. Run 297425, Event 57985350, LumiSection 36 at 05-Jul-2017 18:39:24.930 CEST
+Begin processing the 106th record. Run 297425, Event 56966270, LumiSection 36 at 05-Jul-2017 18:39:24.953 CEST
+Begin processing the 107th record. Run 297425, Event 57026417, LumiSection 36 at 05-Jul-2017 18:39:24.994 CEST
+Begin processing the 108th record. Run 297425, Event 57193448, LumiSection 36 at 05-Jul-2017 18:39:25.057 CEST
+Begin processing the 109th record. Run 297425, Event 57091244, LumiSection 36 at 05-Jul-2017 18:39:25.110 CEST
+Begin processing the 110th record. Run 297425, Event 56725664, LumiSection 36 at 05-Jul-2017 18:39:25.172 CEST
+Begin processing the 111th record. Run 297425, Event 57222647, LumiSection 36 at 05-Jul-2017 18:39:25.232 CEST
+Begin processing the 112th record. Run 297425, Event 56458191, LumiSection 36 at 05-Jul-2017 18:39:25.285 CEST
+Begin processing the 113th record. Run 297425, Event 58054258, LumiSection 36 at 05-Jul-2017 18:39:25.315 CEST
+Begin processing the 114th record. Run 297425, Event 56694706, LumiSection 36 at 05-Jul-2017 18:39:25.381 CEST
+Begin processing the 115th record. Run 297425, Event 57317256, LumiSection 36 at 05-Jul-2017 18:39:25.422 CEST
+Begin processing the 116th record. Run 297425, Event 57855016, LumiSection 36 at 05-Jul-2017 18:39:25.475 CEST
+Begin processing the 117th record. Run 297425, Event 56559699, LumiSection 36 at 05-Jul-2017 18:39:25.512 CEST
+Begin processing the 118th record. Run 297425, Event 58014552, LumiSection 36 at 05-Jul-2017 18:39:25.658 CEST
+Begin processing the 119th record. Run 297425, Event 56858705, LumiSection 36 at 05-Jul-2017 18:39:25.707 CEST
+Begin processing the 120th record. Run 297425, Event 56472682, LumiSection 36 at 05-Jul-2017 18:39:25.726 CEST
+Begin processing the 121st record. Run 297425, Event 56536447, LumiSection 36 at 05-Jul-2017 18:39:25.745 CEST
+Begin processing the 122nd record. Run 297425, Event 57352190, LumiSection 36 at 05-Jul-2017 18:39:25.820 CEST
+Begin processing the 123rd record. Run 297425, Event 57969474, LumiSection 36 at 05-Jul-2017 18:39:25.881 CEST
+Begin processing the 124th record. Run 297425, Event 57411757, LumiSection 36 at 05-Jul-2017 18:39:25.912 CEST
+Begin processing the 125th record. Run 297425, Event 56465675, LumiSection 36 at 05-Jul-2017 18:39:25.927 CEST
+Begin processing the 126th record. Run 297425, Event 56789794, LumiSection 36 at 05-Jul-2017 18:39:26.004 CEST
+Begin processing the 127th record. Run 297425, Event 57864938, LumiSection 36 at 05-Jul-2017 18:39:26.051 CEST
+Begin processing the 128th record. Run 297425, Event 57119756, LumiSection 36 at 05-Jul-2017 18:39:26.099 CEST
+Begin processing the 129th record. Run 297425, Event 57699666, LumiSection 36 at 05-Jul-2017 18:39:26.158 CEST
+Begin processing the 130th record. Run 297425, Event 57773837, LumiSection 36 at 05-Jul-2017 18:39:26.184 CEST
+Begin processing the 131st record. Run 297425, Event 56882067, LumiSection 36 at 05-Jul-2017 18:39:26.209 CEST
+Begin processing the 132nd record. Run 297425, Event 57155382, LumiSection 36 at 05-Jul-2017 18:39:26.254 CEST
+Begin processing the 133rd record. Run 297425, Event 56588897, LumiSection 36 at 05-Jul-2017 18:39:26.274 CEST
+Begin processing the 134th record. Run 297425, Event 57349849, LumiSection 36 at 05-Jul-2017 18:39:26.327 CEST
+Begin processing the 135th record. Run 297425, Event 56684090, LumiSection 36 at 05-Jul-2017 18:39:26.400 CEST
+Begin processing the 136th record. Run 297425, Event 56795055, LumiSection 36 at 05-Jul-2017 18:39:26.424 CEST
+Begin processing the 137th record. Run 297425, Event 57453223, LumiSection 36 at 05-Jul-2017 18:39:26.445 CEST
+Begin processing the 138th record. Run 297425, Event 56813848, LumiSection 36 at 05-Jul-2017 18:39:26.485 CEST
+Begin processing the 139th record. Run 297425, Event 56969669, LumiSection 36 at 05-Jul-2017 18:39:26.621 CEST
+Begin processing the 140th record. Run 297425, Event 56618684, LumiSection 36 at 05-Jul-2017 18:39:26.691 CEST
+Begin processing the 141st record. Run 297425, Event 56943972, LumiSection 36 at 05-Jul-2017 18:39:26.791 CEST
+Begin processing the 142nd record. Run 297425, Event 56694601, LumiSection 36 at 05-Jul-2017 18:39:26.890 CEST
+Begin processing the 143rd record. Run 297425, Event 57905824, LumiSection 36 at 05-Jul-2017 18:39:27.037 CEST
+Begin processing the 144th record. Run 297425, Event 57028069, LumiSection 36 at 05-Jul-2017 18:39:27.118 CEST
+Begin processing the 145th record. Run 297425, Event 56912010, LumiSection 36 at 05-Jul-2017 18:39:27.219 CEST
+Begin processing the 146th record. Run 297425, Event 57226201, LumiSection 36 at 05-Jul-2017 18:39:27.301 CEST
+Begin processing the 147th record. Run 297425, Event 57297290, LumiSection 36 at 05-Jul-2017 18:39:27.395 CEST
+Begin processing the 148th record. Run 297425, Event 57136852, LumiSection 36 at 05-Jul-2017 18:39:27.538 CEST
+Begin processing the 149th record. Run 297425, Event 57148535, LumiSection 36 at 05-Jul-2017 18:39:27.599 CEST
+Begin processing the 150th record. Run 297425, Event 56493867, LumiSection 36 at 05-Jul-2017 18:39:27.699 CEST
+Begin processing the 151st record. Run 297425, Event 57389723, LumiSection 36 at 05-Jul-2017 18:39:27.802 CEST
+Begin processing the 152nd record. Run 297425, Event 57979401, LumiSection 36 at 05-Jul-2017 18:39:27.896 CEST
+Begin processing the 153rd record. Run 297425, Event 56556360, LumiSection 36 at 05-Jul-2017 18:39:28.850 CEST
+Begin processing the 154th record. Run 297425, Event 56671401, LumiSection 36 at 05-Jul-2017 18:39:28.953 CEST
+Begin processing the 155th record. Run 297425, Event 56933622, LumiSection 36 at 05-Jul-2017 18:39:28.999 CEST
+Begin processing the 156th record. Run 297425, Event 56985595, LumiSection 36 at 05-Jul-2017 18:39:29.041 CEST
+Begin processing the 157th record. Run 297425, Event 57454548, LumiSection 36 at 05-Jul-2017 18:39:29.109 CEST
+Begin processing the 158th record. Run 297425, Event 56774770, LumiSection 36 at 05-Jul-2017 18:39:29.142 CEST
+Begin processing the 159th record. Run 297425, Event 57804951, LumiSection 36 at 05-Jul-2017 18:39:29.174 CEST
+Begin processing the 160th record. Run 297425, Event 57594127, LumiSection 36 at 05-Jul-2017 18:39:29.214 CEST
+Time since last check 45751; last check 477549; now 477595; next check 477669
+Reading from 131.225.205.148:21259, quality 547
+Finished timer after 3226
+[9] Time for readv: 3226 (sub-readv requests: 1)
+Begin processing the 161st record. Run 297425, Event 58054903, LumiSection 36 at 05-Jul-2017 18:39:32.471 CEST
+Begin processing the 162nd record. Run 297425, Event 58061328, LumiSection 36 at 05-Jul-2017 18:39:32.500 CEST
+Begin processing the 163rd record. Run 297425, Event 56829665, LumiSection 36 at 05-Jul-2017 18:39:32.518 CEST
+Begin processing the 164th record. Run 297425, Event 57715011, LumiSection 36 at 05-Jul-2017 18:39:32.549 CEST
+Begin processing the 165th record. Run 297425, Event 57357601, LumiSection 36 at 05-Jul-2017 18:39:32.604 CEST
+Begin processing the 166th record. Run 297425, Event 56853025, LumiSection 36 at 05-Jul-2017 18:39:32.662 CEST
+Begin processing the 167th record. Run 297425, Event 57300956, LumiSection 36 at 05-Jul-2017 18:39:32.691 CEST
+Begin processing the 168th record. Run 297425, Event 57303843, LumiSection 36 at 05-Jul-2017 18:39:32.733 CEST
+Begin processing the 169th record. Run 297425, Event 57442284, LumiSection 36 at 05-Jul-2017 18:39:32.754 CEST
+Begin processing the 170th record. Run 297425, Event 56702944, LumiSection 36 at 05-Jul-2017 18:39:32.783 CEST
+Begin processing the 171st record. Run 297425, Event 56802190, LumiSection 36 at 05-Jul-2017 18:39:32.811 CEST
+Begin processing the 172nd record. Run 297425, Event 57565509, LumiSection 36 at 05-Jul-2017 18:39:32.837 CEST
+Begin processing the 173rd record. Run 297425, Event 56707614, LumiSection 36 at 05-Jul-2017 18:39:32.879 CEST
+Begin processing the 174th record. Run 297425, Event 57300924, LumiSection 36 at 05-Jul-2017 18:39:34.028 CEST
+Begin processing the 175th record. Run 297425, Event 57702717, LumiSection 36 at 05-Jul-2017 18:39:34.063 CEST
+Begin processing the 176th record. Run 297425, Event 56514863, LumiSection 36 at 05-Jul-2017 18:39:34.102 CEST
+Begin processing the 177th record. Run 297425, Event 56599543, LumiSection 36 at 05-Jul-2017 18:39:34.160 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:34 CEST Run: 297425 Event: 56599543
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -45  --> electrons = 0
+%MSG
+Begin processing the 178th record. Run 297425, Event 56939427, LumiSection 36 at 05-Jul-2017 18:39:34.178 CEST
+Begin processing the 179th record. Run 297425, Event 57933400, LumiSection 36 at 05-Jul-2017 18:39:34.209 CEST
+Begin processing the 180th record. Run 297425, Event 58011065, LumiSection 36 at 05-Jul-2017 18:39:34.265 CEST
+Begin processing the 181st record. Run 297425, Event 58023914, LumiSection 36 at 05-Jul-2017 18:39:34.294 CEST
+Begin processing the 182nd record. Run 297425, Event 56512522, LumiSection 36 at 05-Jul-2017 18:39:34.331 CEST
+Begin processing the 183rd record. Run 297425, Event 56823794, LumiSection 36 at 05-Jul-2017 18:39:34.365 CEST
+Begin processing the 184th record. Run 297425, Event 57787982, LumiSection 36 at 05-Jul-2017 18:39:34.402 CEST
+Begin processing the 185th record. Run 297425, Event 56452372, LumiSection 36 at 05-Jul-2017 18:39:34.438 CEST
+Begin processing the 186th record. Run 297425, Event 57594089, LumiSection 36 at 05-Jul-2017 18:39:34.503 CEST
+Begin processing the 187th record. Run 297425, Event 57085426, LumiSection 36 at 05-Jul-2017 18:39:34.558 CEST
+Begin processing the 188th record. Run 297425, Event 56875191, LumiSection 36 at 05-Jul-2017 18:39:34.575 CEST
+Begin processing the 189th record. Run 297425, Event 56556912, LumiSection 36 at 05-Jul-2017 18:39:34.603 CEST
+Begin processing the 190th record. Run 297425, Event 57050972, LumiSection 36 at 05-Jul-2017 18:39:34.657 CEST
+Begin processing the 191st record. Run 297425, Event 57151421, LumiSection 36 at 05-Jul-2017 18:39:34.685 CEST
+Begin processing the 192nd record. Run 297425, Event 57022356, LumiSection 36 at 05-Jul-2017 18:39:34.714 CEST
+Begin processing the 193rd record. Run 297425, Event 56613554, LumiSection 36 at 05-Jul-2017 18:39:34.759 CEST
+Begin processing the 194th record. Run 297425, Event 58029175, LumiSection 36 at 05-Jul-2017 18:39:34.784 CEST
+Begin processing the 195th record. Run 297425, Event 57190545, LumiSection 36 at 05-Jul-2017 18:39:34.818 CEST
+Begin processing the 196th record. Run 297425, Event 57342976, LumiSection 36 at 05-Jul-2017 18:39:34.857 CEST
+Begin processing the 197th record. Run 297425, Event 57705070, LumiSection 36 at 05-Jul-2017 18:39:34.896 CEST
+Begin processing the 198th record. Run 297425, Event 57512935, LumiSection 36 at 05-Jul-2017 18:39:34.917 CEST
+Begin processing the 199th record. Run 297425, Event 57682857, LumiSection 36 at 05-Jul-2017 18:39:34.934 CEST
+Begin processing the 200th record. Run 297425, Event 57581258, LumiSection 36 at 05-Jul-2017 18:39:34.959 CEST
+Begin processing the 201st record. Run 297425, Event 57268233, LumiSection 36 at 05-Jul-2017 18:39:34.982 CEST
+Begin processing the 202nd record. Run 297425, Event 57995304, LumiSection 36 at 05-Jul-2017 18:39:35.062 CEST
+Begin processing the 203rd record. Run 297425, Event 57437015, LumiSection 36 at 05-Jul-2017 18:39:35.093 CEST
+Begin processing the 204th record. Run 297425, Event 57283421, LumiSection 36 at 05-Jul-2017 18:39:35.131 CEST
+Begin processing the 205th record. Run 297425, Event 57747114, LumiSection 36 at 05-Jul-2017 18:39:35.164 CEST
+Begin processing the 206th record. Run 297425, Event 57114061, LumiSection 36 at 05-Jul-2017 18:39:35.195 CEST
+Begin processing the 207th record. Run 297425, Event 57307932, LumiSection 36 at 05-Jul-2017 18:39:35.233 CEST
+Begin processing the 208th record. Run 297425, Event 56649194, LumiSection 36 at 05-Jul-2017 18:39:35.304 CEST
+Begin processing the 209th record. Run 297425, Event 57284590, LumiSection 36 at 05-Jul-2017 18:39:35.336 CEST
+Begin processing the 210th record. Run 297425, Event 56937112, LumiSection 36 at 05-Jul-2017 18:39:35.403 CEST
+Begin processing the 211th record. Run 297425, Event 57467963, LumiSection 36 at 05-Jul-2017 18:39:35.447 CEST
+Begin processing the 212th record. Run 297425, Event 57494246, LumiSection 36 at 05-Jul-2017 18:39:35.541 CEST
+Begin processing the 213th record. Run 297425, Event 57953853, LumiSection 36 at 05-Jul-2017 18:39:35.601 CEST
+Begin processing the 214th record. Run 297425, Event 57574250, LumiSection 36 at 05-Jul-2017 18:39:35.639 CEST
+Begin processing the 215th record. Run 297425, Event 57824208, LumiSection 36 at 05-Jul-2017 18:39:35.676 CEST
+Begin processing the 216th record. Run 297425, Event 56914913, LumiSection 36 at 05-Jul-2017 18:39:35.712 CEST
+Begin processing the 217th record. Run 297425, Event 57500670, LumiSection 36 at 05-Jul-2017 18:39:35.761 CEST
+Begin processing the 218th record. Run 297425, Event 58006416, LumiSection 36 at 05-Jul-2017 18:39:35.825 CEST
+Begin processing the 219th record. Run 297425, Event 57585930, LumiSection 36 at 05-Jul-2017 18:39:35.862 CEST
+Begin processing the 220th record. Run 297425, Event 58049042, LumiSection 36 at 05-Jul-2017 18:39:35.893 CEST
+Begin processing the 221st record. Run 297425, Event 57978380, LumiSection 36 at 05-Jul-2017 18:39:35.911 CEST
+Begin processing the 222nd record. Run 297425, Event 57940423, LumiSection 36 at 05-Jul-2017 18:39:35.944 CEST
+Begin processing the 223rd record. Run 297425, Event 56903823, LumiSection 36 at 05-Jul-2017 18:39:35.996 CEST
+Begin processing the 224th record. Run 297425, Event 57411315, LumiSection 36 at 05-Jul-2017 18:39:36.029 CEST
+Begin processing the 225th record. Run 297425, Event 56615907, LumiSection 36 at 05-Jul-2017 18:39:36.110 CEST
+Begin processing the 226th record. Run 297425, Event 56468099, LumiSection 36 at 05-Jul-2017 18:39:36.220 CEST
+Begin processing the 227th record. Run 297425, Event 58054303, LumiSection 36 at 05-Jul-2017 18:39:36.243 CEST
+Begin processing the 228th record. Run 297425, Event 58038532, LumiSection 36 at 05-Jul-2017 18:39:36.262 CEST
+Begin processing the 229th record. Run 297425, Event 56917193, LumiSection 36 at 05-Jul-2017 18:39:36.290 CEST
+Begin processing the 230th record. Run 297425, Event 57414819, LumiSection 36 at 05-Jul-2017 18:39:36.314 CEST
+Begin processing the 231st record. Run 297425, Event 56720974, LumiSection 36 at 05-Jul-2017 18:39:36.351 CEST
+Begin processing the 232nd record. Run 297425, Event 58024519, LumiSection 36 at 05-Jul-2017 18:39:36.369 CEST
+Begin processing the 233rd record. Run 297425, Event 56483286, LumiSection 36 at 05-Jul-2017 18:39:36.393 CEST
+Begin processing the 234th record. Run 297425, Event 57966698, LumiSection 36 at 05-Jul-2017 18:39:36.410 CEST
+Begin processing the 235th record. Run 297425, Event 57651868, LumiSection 36 at 05-Jul-2017 18:39:36.444 CEST
+Begin processing the 236th record. Run 297425, Event 56923040, LumiSection 36 at 05-Jul-2017 18:39:36.492 CEST
+Begin processing the 237th record. Run 297425, Event 56477446, LumiSection 36 at 05-Jul-2017 18:39:36.519 CEST
+Begin processing the 238th record. Run 297425, Event 57155468, LumiSection 36 at 05-Jul-2017 18:39:36.550 CEST
+Time since last check 53096; last check 477549; now 477602; next check 477669
+Reading from 131.225.205.148:21259, quality 630
+Finished timer after 4822
+[10] Time for readv: 4822 (sub-readv requests: 1)
+Begin processing the 239th record. Run 297425, Event 57948541, LumiSection 36 at 05-Jul-2017 18:39:41.446 CEST
+Begin processing the 240th record. Run 297425, Event 56475112, LumiSection 36 at 05-Jul-2017 18:39:41.469 CEST
+Begin processing the 241st record. Run 297425, Event 57469129, LumiSection 36 at 05-Jul-2017 18:39:41.506 CEST
+Begin processing the 242nd record. Run 297425, Event 56701697, LumiSection 36 at 05-Jul-2017 18:39:41.721 CEST
+Begin processing the 243rd record. Run 297425, Event 57497695, LumiSection 36 at 05-Jul-2017 18:39:41.787 CEST
+Begin processing the 244th record. Run 297425, Event 56689435, LumiSection 36 at 05-Jul-2017 18:39:41.813 CEST
+Begin processing the 245th record. Run 297425, Event 57303808, LumiSection 36 at 05-Jul-2017 18:39:41.849 CEST
+Begin processing the 246th record. Run 297425, Event 58043733, LumiSection 36 at 05-Jul-2017 18:39:41.891 CEST
+Begin processing the 247th record. Run 297425, Event 56864053, LumiSection 36 at 05-Jul-2017 18:39:41.943 CEST
+Begin processing the 248th record. Run 297425, Event 57655372, LumiSection 36 at 05-Jul-2017 18:39:41.961 CEST
+Begin processing the 249th record. Run 297425, Event 57956136, LumiSection 36 at 05-Jul-2017 18:39:41.992 CEST
+Begin processing the 250th record. Run 297425, Event 57046846, LumiSection 36 at 05-Jul-2017 18:39:42.020 CEST
+Begin processing the 251st record. Run 297425, Event 57536820, LumiSection 36 at 05-Jul-2017 18:39:42.047 CEST
+Begin processing the 252nd record. Run 297425, Event 57407758, LumiSection 36 at 05-Jul-2017 18:39:42.100 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:42 CEST Run: 297425 Event: 57407758
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -276  --> electrons = 0
+%MSG
+Begin processing the 253rd record. Run 297425, Event 57602231, LumiSection 36 at 05-Jul-2017 18:39:42.141 CEST
+Begin processing the 254th record. Run 297425, Event 57853350, LumiSection 36 at 05-Jul-2017 18:39:42.204 CEST
+Begin processing the 255th record. Run 297425, Event 57157807, LumiSection 36 at 05-Jul-2017 18:39:42.240 CEST
+Begin processing the 256th record. Run 297425, Event 57390819, LumiSection 36 at 05-Jul-2017 18:39:42.262 CEST
+Begin processing the 257th record. Run 297425, Event 57775680, LumiSection 36 at 05-Jul-2017 18:39:42.318 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:42 CEST Run: 297425 Event: 57775680
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -22  --> electrons = 0
+%MSG
+Begin processing the 258th record. Run 297425, Event 56663098, LumiSection 36 at 05-Jul-2017 18:39:42.357 CEST
+Begin processing the 259th record. Run 297425, Event 58066509, LumiSection 36 at 05-Jul-2017 18:39:42.376 CEST
+Begin processing the 260th record. Run 297425, Event 58056584, LumiSection 36 at 05-Jul-2017 18:39:43.627 CEST
+Begin processing the 261st record. Run 297425, Event 57339376, LumiSection 36 at 05-Jul-2017 18:39:43.659 CEST
+Begin processing the 262nd record. Run 297425, Event 57967228, LumiSection 36 at 05-Jul-2017 18:39:43.699 CEST
+Begin processing the 263rd record. Run 297425, Event 56544024, LumiSection 36 at 05-Jul-2017 18:39:43.768 CEST
+Begin processing the 264th record. Run 297425, Event 57669915, LumiSection 36 at 05-Jul-2017 18:39:43.802 CEST
+Begin processing the 265th record. Run 297425, Event 56841801, LumiSection 36 at 05-Jul-2017 18:39:43.900 CEST
+Begin processing the 266th record. Run 297425, Event 57820001, LumiSection 36 at 05-Jul-2017 18:39:43.931 CEST
+Begin processing the 267th record. Run 297425, Event 57937976, LumiSection 36 at 05-Jul-2017 18:39:44.046 CEST
+Begin processing the 268th record. Run 297425, Event 56558567, LumiSection 36 at 05-Jul-2017 18:39:44.069 CEST
+Begin processing the 269th record. Run 297425, Event 56958018, LumiSection 36 at 05-Jul-2017 18:39:44.105 CEST
+Begin processing the 270th record. Run 297425, Event 56606450, LumiSection 36 at 05-Jul-2017 18:39:44.134 CEST
+Begin processing the 271st record. Run 297425, Event 57980019, LumiSection 36 at 05-Jul-2017 18:39:44.170 CEST
+Begin processing the 272nd record. Run 297425, Event 57978266, LumiSection 36 at 05-Jul-2017 18:39:44.213 CEST
+Begin processing the 273rd record. Run 297425, Event 57504643, LumiSection 36 at 05-Jul-2017 18:39:44.247 CEST
+Begin processing the 274th record. Run 297425, Event 57290313, LumiSection 36 at 05-Jul-2017 18:39:44.317 CEST
+Begin processing the 275th record. Run 297425, Event 57625531, LumiSection 36 at 05-Jul-2017 18:39:44.369 CEST
+Begin processing the 276th record. Run 297425, Event 57760437, LumiSection 36 at 05-Jul-2017 18:39:44.391 CEST
+Begin processing the 277th record. Run 297425, Event 57400109, LumiSection 36 at 05-Jul-2017 18:39:44.406 CEST
+Begin processing the 278th record. Run 297425, Event 56692885, LumiSection 36 at 05-Jul-2017 18:39:44.482 CEST
+Begin processing the 279th record. Run 297425, Event 56911885, LumiSection 36 at 05-Jul-2017 18:39:44.522 CEST
+Begin processing the 280th record. Run 297425, Event 57854460, LumiSection 36 at 05-Jul-2017 18:39:44.565 CEST
+Begin processing the 281st record. Run 297425, Event 57056720, LumiSection 36 at 05-Jul-2017 18:39:44.596 CEST
+Begin processing the 282nd record. Run 297425, Event 57884830, LumiSection 36 at 05-Jul-2017 18:39:44.635 CEST
+Begin processing the 283rd record. Run 297425, Event 57549612, LumiSection 36 at 05-Jul-2017 18:39:44.661 CEST
+Begin processing the 284th record. Run 297425, Event 56532865, LumiSection 36 at 05-Jul-2017 18:39:44.694 CEST
+Begin processing the 285th record. Run 297425, Event 57017004, LumiSection 36 at 05-Jul-2017 18:39:44.728 CEST
+Begin processing the 286th record. Run 297425, Event 56822536, LumiSection 36 at 05-Jul-2017 18:39:44.838 CEST
+Begin processing the 287th record. Run 297425, Event 57457065, LumiSection 36 at 05-Jul-2017 18:39:44.898 CEST
+Begin processing the 288th record. Run 297425, Event 57224324, LumiSection 36 at 05-Jul-2017 18:39:44.940 CEST
+Begin processing the 289th record. Run 297425, Event 57936224, LumiSection 36 at 05-Jul-2017 18:39:45.059 CEST
+Begin processing the 290th record. Run 297425, Event 57221408, LumiSection 36 at 05-Jul-2017 18:39:45.133 CEST
+Begin processing the 291st record. Run 297425, Event 58057696, LumiSection 36 at 05-Jul-2017 18:39:45.205 CEST
+Begin processing the 292nd record. Run 297425, Event 56590686, LumiSection 36 at 05-Jul-2017 18:39:45.315 CEST
+Begin processing the 293rd record. Run 297425, Event 57573282, LumiSection 36 at 05-Jul-2017 18:39:45.396 CEST
+Begin processing the 294th record. Run 297425, Event 57490359, LumiSection 36 at 05-Jul-2017 18:39:45.483 CEST
+Begin processing the 295th record. Run 297425, Event 57604505, LumiSection 36 at 05-Jul-2017 18:39:45.532 CEST
+Begin processing the 296th record. Run 297425, Event 56577567, LumiSection 36 at 05-Jul-2017 18:39:45.634 CEST
+Begin processing the 297th record. Run 297425, Event 57759577, LumiSection 36 at 05-Jul-2017 18:39:45.696 CEST
+Begin processing the 298th record. Run 297425, Event 56780214, LumiSection 36 at 05-Jul-2017 18:39:45.767 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:45 CEST Run: 297425 Event: 56780214
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -511  --> electrons = 0
+%MSG
+Begin processing the 299th record. Run 297425, Event 57330921, LumiSection 36 at 05-Jul-2017 18:39:45.843 CEST
+Begin processing the 300th record. Run 297425, Event 56637132, LumiSection 36 at 05-Jul-2017 18:39:45.883 CEST
+Begin processing the 301st record. Run 297425, Event 57001550, LumiSection 36 at 05-Jul-2017 18:39:45.993 CEST
+Begin processing the 302nd record. Run 297425, Event 57721624, LumiSection 36 at 05-Jul-2017 18:39:46.029 CEST
+Begin processing the 303rd record. Run 297425, Event 56803573, LumiSection 36 at 05-Jul-2017 18:39:46.060 CEST
+Begin processing the 304th record. Run 297425, Event 56974683, LumiSection 36 at 05-Jul-2017 18:39:46.093 CEST
+Begin processing the 305th record. Run 297425, Event 57387570, LumiSection 36 at 05-Jul-2017 18:39:48.649 CEST
+Begin processing the 306th record. Run 297425, Event 57688331, LumiSection 36 at 05-Jul-2017 18:39:48.706 CEST
+Begin processing the 307th record. Run 297425, Event 57363630, LumiSection 36 at 05-Jul-2017 18:39:48.804 CEST
+Begin processing the 308th record. Run 297425, Event 56773788, LumiSection 36 at 05-Jul-2017 18:39:48.849 CEST
+Begin processing the 309th record. Run 297425, Event 57158646, LumiSection 36 at 05-Jul-2017 18:39:48.880 CEST
+Begin processing the 310th record. Run 297425, Event 57170324, LumiSection 36 at 05-Jul-2017 18:39:48.934 CEST
+Begin processing the 311th record. Run 297425, Event 57287711, LumiSection 36 at 05-Jul-2017 18:39:49.003 CEST
+Begin processing the 312th record. Run 297425, Event 56770867, LumiSection 36 at 05-Jul-2017 18:39:49.081 CEST
+Begin processing the 313th record. Run 297425, Event 56536099, LumiSection 36 at 05-Jul-2017 18:39:49.144 CEST
+Begin processing the 314th record. Run 297425, Event 57064036, LumiSection 36 at 05-Jul-2017 18:39:49.180 CEST
+Begin processing the 315th record. Run 297425, Event 56807660, LumiSection 36 at 05-Jul-2017 18:39:49.227 CEST
+Begin processing the 316th record. Run 297425, Event 57847183, LumiSection 36 at 05-Jul-2017 18:39:49.276 CEST
+Begin processing the 317th record. Run 297425, Event 57190184, LumiSection 36 at 05-Jul-2017 18:39:49.388 CEST
+Time since last check 65937; last check 477549; now 477615; next check 477669
+Reading from 131.225.205.148:21259, quality 3424
+Finished timer after 4886
+[11] Time for readv: 4887 (sub-readv requests: 1)
+Begin processing the 318th record. Run 297425, Event 56784496, LumiSection 36 at 05-Jul-2017 18:39:54.321 CEST
+Begin processing the 319th record. Run 297425, Event 56656401, LumiSection 36 at 05-Jul-2017 18:39:54.363 CEST
+Begin processing the 320th record. Run 297425, Event 56950156, LumiSection 36 at 05-Jul-2017 18:39:54.408 CEST
+Begin processing the 321st record. Run 297425, Event 57165650, LumiSection 36 at 05-Jul-2017 18:39:54.435 CEST
+Begin processing the 322nd record. Run 297425, Event 57633626, LumiSection 36 at 05-Jul-2017 18:39:54.473 CEST
+Begin processing the 323rd record. Run 297425, Event 57015567, LumiSection 36 at 05-Jul-2017 18:39:54.505 CEST
+Begin processing the 324th record. Run 297425, Event 57662829, LumiSection 36 at 05-Jul-2017 18:39:54.549 CEST
+Begin processing the 325th record. Run 297425, Event 57574060, LumiSection 36 at 05-Jul-2017 18:39:54.617 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:54 CEST Run: 297425 Event: 57574060
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -179  --> electrons = 0
+%MSG
+Begin processing the 326th record. Run 297425, Event 57435655, LumiSection 36 at 05-Jul-2017 18:39:54.652 CEST
+Begin processing the 327th record. Run 297425, Event 57525396, LumiSection 36 at 05-Jul-2017 18:39:54.716 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:54 CEST Run: 297425 Event: 57525396
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -271  --> electrons = 0
+%MSG
+Begin processing the 328th record. Run 297425, Event 57086417, LumiSection 36 at 05-Jul-2017 18:39:54.759 CEST
+Begin processing the 329th record. Run 297425, Event 56440518, LumiSection 36 at 05-Jul-2017 18:39:54.808 CEST
+Begin processing the 330th record. Run 297425, Event 57919206, LumiSection 36 at 05-Jul-2017 18:39:54.825 CEST
+Begin processing the 331st record. Run 297425, Event 57183170, LumiSection 36 at 05-Jul-2017 18:39:54.858 CEST
+Begin processing the 332nd record. Run 297425, Event 56607543, LumiSection 36 at 05-Jul-2017 18:39:54.902 CEST
+Begin processing the 333rd record. Run 297425, Event 57342793, LumiSection 36 at 05-Jul-2017 18:39:54.960 CEST
+Begin processing the 334th record. Run 297425, Event 57665161, LumiSection 36 at 05-Jul-2017 18:39:54.995 CEST
+Begin processing the 335th record. Run 297425, Event 56529283, LumiSection 36 at 05-Jul-2017 18:39:55.025 CEST
+Begin processing the 336th record. Run 297425, Event 57757438, LumiSection 36 at 05-Jul-2017 18:39:55.083 CEST
+Begin processing the 337th record. Run 297425, Event 57397690, LumiSection 36 at 05-Jul-2017 18:39:55.114 CEST
+Begin processing the 338th record. Run 297425, Event 57555370, LumiSection 36 at 05-Jul-2017 18:39:55.200 CEST
+Begin processing the 339th record. Run 297425, Event 57328965, LumiSection 36 at 05-Jul-2017 18:39:55.249 CEST
+Begin processing the 340th record. Run 297425, Event 56736207, LumiSection 36 at 05-Jul-2017 18:39:55.300 CEST
+Begin processing the 341st record. Run 297425, Event 57685601, LumiSection 36 at 05-Jul-2017 18:39:55.348 CEST
+Begin processing the 342nd record. Run 297425, Event 56487423, LumiSection 36 at 05-Jul-2017 18:39:55.400 CEST
+Begin processing the 343rd record. Run 297425, Event 57415979, LumiSection 36 at 05-Jul-2017 18:39:55.431 CEST
+Begin processing the 344th record. Run 297425, Event 57784488, LumiSection 36 at 05-Jul-2017 18:39:55.457 CEST
+Begin processing the 345th record. Run 297425, Event 56668462, LumiSection 36 at 05-Jul-2017 18:39:55.485 CEST
+Begin processing the 346th record. Run 297425, Event 56666711, LumiSection 36 at 05-Jul-2017 18:39:57.028 CEST
+Begin processing the 347th record. Run 297425, Event 56592539, LumiSection 36 at 05-Jul-2017 18:39:57.067 CEST
+Begin processing the 348th record. Run 297425, Event 57121057, LumiSection 36 at 05-Jul-2017 18:39:57.141 CEST
+Begin processing the 349th record. Run 297425, Event 56697080, LumiSection 36 at 05-Jul-2017 18:39:57.184 CEST
+Begin processing the 350th record. Run 297425, Event 57841713, LumiSection 36 at 05-Jul-2017 18:39:57.243 CEST
+Begin processing the 351st record. Run 297425, Event 56575022, LumiSection 36 at 05-Jul-2017 18:39:57.330 CEST
+Begin processing the 352nd record. Run 297425, Event 57164278, LumiSection 36 at 05-Jul-2017 18:39:57.434 CEST
+Begin processing the 353rd record. Run 297425, Event 56751973, LumiSection 36 at 05-Jul-2017 18:39:57.480 CEST
+Begin processing the 354th record. Run 297425, Event 57203407, LumiSection 36 at 05-Jul-2017 18:39:57.534 CEST
+Begin processing the 355th record. Run 297425, Event 56457633, LumiSection 36 at 05-Jul-2017 18:39:57.562 CEST
+Begin processing the 356th record. Run 297425, Event 57592934, LumiSection 36 at 05-Jul-2017 18:39:57.619 CEST
+Begin processing the 357th record. Run 297425, Event 57573663, LumiSection 36 at 05-Jul-2017 18:39:57.714 CEST
+Begin processing the 358th record. Run 297425, Event 58009911, LumiSection 36 at 05-Jul-2017 18:39:57.809 CEST
+Begin processing the 359th record. Run 297425, Event 56514871, LumiSection 36 at 05-Jul-2017 18:39:57.893 CEST
+Begin processing the 360th record. Run 297425, Event 56687734, LumiSection 36 at 05-Jul-2017 18:39:57.920 CEST
+Begin processing the 361st record. Run 297425, Event 57969028, LumiSection 36 at 05-Jul-2017 18:39:57.984 CEST
+Begin processing the 362nd record. Run 297425, Event 57967278, LumiSection 36 at 05-Jul-2017 18:39:58.041 CEST
+Begin processing the 363rd record. Run 297425, Event 56722190, LumiSection 36 at 05-Jul-2017 18:39:58.086 CEST
+Begin processing the 364th record. Run 297425, Event 57935153, LumiSection 36 at 05-Jul-2017 18:39:58.156 CEST
+Begin processing the 365th record. Run 297425, Event 58065975, LumiSection 36 at 05-Jul-2017 18:39:58.237 CEST
+Begin processing the 366th record. Run 297425, Event 57659506, LumiSection 36 at 05-Jul-2017 18:39:58.285 CEST
+Begin processing the 367th record. Run 297425, Event 58012242, LumiSection 36 at 05-Jul-2017 18:39:58.341 CEST
+Begin processing the 368th record. Run 297425, Event 57243114, LumiSection 36 at 05-Jul-2017 18:39:58.434 CEST
+Begin processing the 369th record. Run 297425, Event 57270098, LumiSection 36 at 05-Jul-2017 18:39:58.533 CEST
+Begin processing the 370th record. Run 297425, Event 56725225, LumiSection 36 at 05-Jul-2017 18:39:58.581 CEST
+Begin processing the 371st record. Run 297425, Event 56840274, LumiSection 36 at 05-Jul-2017 18:39:58.604 CEST
+Begin processing the 372nd record. Run 297425, Event 56855922, LumiSection 36 at 05-Jul-2017 18:39:58.785 CEST
+Begin processing the 373rd record. Run 297425, Event 57503114, LumiSection 36 at 05-Jul-2017 18:39:58.846 CEST
+Begin processing the 374th record. Run 297425, Event 56933129, LumiSection 36 at 05-Jul-2017 18:39:58.935 CEST
+Begin processing the 375th record. Run 297425, Event 57327918, LumiSection 36 at 05-Jul-2017 18:39:58.959 CEST
+Begin processing the 376th record. Run 297425, Event 56715883, LumiSection 36 at 05-Jul-2017 18:39:59.006 CEST
+Begin processing the 377th record. Run 297425, Event 56728145, LumiSection 36 at 05-Jul-2017 18:39:59.049 CEST
+Begin processing the 378th record. Run 297425, Event 57672477, LumiSection 36 at 05-Jul-2017 18:39:59.111 CEST
+Begin processing the 379th record. Run 297425, Event 57404419, LumiSection 36 at 05-Jul-2017 18:39:59.141 CEST
+Begin processing the 380th record. Run 297425, Event 57209945, LumiSection 36 at 05-Jul-2017 18:39:59.178 CEST
+Begin processing the 381st record. Run 297425, Event 57449392, LumiSection 36 at 05-Jul-2017 18:39:59.478 CEST
+Begin processing the 382nd record. Run 297425, Event 57649120, LumiSection 36 at 05-Jul-2017 18:39:59.584 CEST
+Begin processing the 383rd record. Run 297425, Event 56836186, LumiSection 36 at 05-Jul-2017 18:39:59.654 CEST
+Begin processing the 384th record. Run 297425, Event 57792193, LumiSection 36 at 05-Jul-2017 18:39:59.721 CEST
+Begin processing the 385th record. Run 297425, Event 57080886, LumiSection 36 at 05-Jul-2017 18:39:59.806 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:39:59 CEST Run: 297425 Event: 57080886
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -59  --> electrons = 0
+%MSG
+Begin processing the 386th record. Run 297425, Event 57451805, LumiSection 36 at 05-Jul-2017 18:39:59.847 CEST
+Begin processing the 387th record. Run 297425, Event 57056356, LumiSection 36 at 05-Jul-2017 18:39:59.874 CEST
+Begin processing the 388th record. Run 297425, Event 57136361, LumiSection 36 at 05-Jul-2017 18:39:59.915 CEST
+Begin processing the 389th record. Run 297425, Event 57483262, LumiSection 36 at 05-Jul-2017 18:39:59.986 CEST
+Begin processing the 390th record. Run 297425, Event 57667888, LumiSection 36 at 05-Jul-2017 18:40:00.123 CEST
+Begin processing the 391st record. Run 297425, Event 57552249, LumiSection 36 at 05-Jul-2017 18:40:00.216 CEST
+Begin processing the 392nd record. Run 297425, Event 57594221, LumiSection 36 at 05-Jul-2017 18:40:00.242 CEST
+Begin processing the 393rd record. Run 297425, Event 57078042, LumiSection 36 at 05-Jul-2017 18:40:00.290 CEST
+Begin processing the 394th record. Run 297425, Event 56604922, LumiSection 36 at 05-Jul-2017 18:40:00.334 CEST
+Begin processing the 395th record. Run 297425, Event 57709934, LumiSection 36 at 05-Jul-2017 18:40:00.395 CEST
+Begin processing the 396th record. Run 297425, Event 56698448, LumiSection 36 at 05-Jul-2017 18:40:00.416 CEST
+Begin processing the 397th record. Run 297425, Event 57531229, LumiSection 36 at 05-Jul-2017 18:40:00.447 CEST
+Time since last check 76990; last check 477549; now 477626; next check 477669
+Reading from 131.225.205.148:21259, quality 3446
+Finished timer after 3631
+[12] Time for readv: 3631 (sub-readv requests: 1)
+Begin processing the 398th record. Run 297425, Event 57356615, LumiSection 36 at 05-Jul-2017 18:40:04.139 CEST
+Begin processing the 399th record. Run 297425, Event 56665737, LumiSection 36 at 05-Jul-2017 18:40:04.195 CEST
+Begin processing the 400th record. Run 297425, Event 57028403, LumiSection 36 at 05-Jul-2017 18:40:04.258 CEST
+Begin processing the 401st record. Run 297425, Event 56565290, LumiSection 36 at 05-Jul-2017 18:40:04.343 CEST
+Begin processing the 402nd record. Run 297425, Event 56783705, LumiSection 36 at 05-Jul-2017 18:40:04.470 CEST
+Begin processing the 403rd record. Run 297425, Event 57933019, LumiSection 36 at 05-Jul-2017 18:40:04.501 CEST
+Begin processing the 404th record. Run 297425, Event 57875203, LumiSection 36 at 05-Jul-2017 18:40:04.518 CEST
+Begin processing the 405th record. Run 297425, Event 56488790, LumiSection 36 at 05-Jul-2017 18:40:04.543 CEST
+Begin processing the 406th record. Run 297425, Event 57509040, LumiSection 36 at 05-Jul-2017 18:40:04.600 CEST
+Begin processing the 407th record. Run 297425, Event 57775338, LumiSection 36 at 05-Jul-2017 18:40:04.677 CEST
+Begin processing the 408th record. Run 297425, Event 58035805, LumiSection 36 at 05-Jul-2017 18:40:04.713 CEST
+Begin processing the 409th record. Run 297425, Event 56433312, LumiSection 36 at 05-Jul-2017 18:40:04.734 CEST
+Begin processing the 410th record. Run 297425, Event 56920365, LumiSection 36 at 05-Jul-2017 18:40:04.762 CEST
+Begin processing the 411th record. Run 297425, Event 56925620, LumiSection 36 at 05-Jul-2017 18:40:04.815 CEST
+Begin processing the 412th record. Run 297425, Event 57066952, LumiSection 36 at 05-Jul-2017 18:40:04.899 CEST
+Begin processing the 413th record. Run 297425, Event 57408586, LumiSection 36 at 05-Jul-2017 18:40:04.962 CEST
+Begin processing the 414th record. Run 297425, Event 57388148, LumiSection 36 at 05-Jul-2017 18:40:04.990 CEST
+Begin processing the 415th record. Run 297425, Event 57467575, LumiSection 36 at 05-Jul-2017 18:40:05.063 CEST
+Begin processing the 416th record. Run 297425, Event 57501447, LumiSection 36 at 05-Jul-2017 18:40:05.088 CEST
+Begin processing the 417th record. Run 297425, Event 57174848, LumiSection 36 at 05-Jul-2017 18:40:05.119 CEST
+Begin processing the 418th record. Run 297425, Event 57946893, LumiSection 36 at 05-Jul-2017 18:40:05.145 CEST
+Begin processing the 419th record. Run 297425, Event 57393842, LumiSection 36 at 05-Jul-2017 18:40:05.171 CEST
+Begin processing the 420th record. Run 297425, Event 57945721, LumiSection 36 at 05-Jul-2017 18:40:05.243 CEST
+Begin processing the 421st record. Run 297425, Event 57278940, LumiSection 36 at 05-Jul-2017 18:40:05.276 CEST
+Begin processing the 422nd record. Run 297425, Event 56528941, LumiSection 36 at 05-Jul-2017 18:40:05.311 CEST
+Begin processing the 423rd record. Run 297425, Event 57107102, LumiSection 36 at 05-Jul-2017 18:40:05.340 CEST
+Begin processing the 424th record. Run 297425, Event 57790965, LumiSection 36 at 05-Jul-2017 18:40:05.358 CEST
+Begin processing the 425th record. Run 297425, Event 57454584, LumiSection 36 at 05-Jul-2017 18:40:05.394 CEST
+Begin processing the 426th record. Run 297425, Event 57036438, LumiSection 36 at 05-Jul-2017 18:40:05.473 CEST
+Begin processing the 427th record. Run 297425, Event 56624713, LumiSection 36 at 05-Jul-2017 18:40:05.566 CEST
+Begin processing the 428th record. Run 297425, Event 56805174, LumiSection 36 at 05-Jul-2017 18:40:05.601 CEST
+Begin processing the 429th record. Run 297425, Event 57510643, LumiSection 36 at 05-Jul-2017 18:40:05.630 CEST
+Begin processing the 430th record. Run 297425, Event 57482616, LumiSection 36 at 05-Jul-2017 18:40:05.657 CEST
+Begin processing the 431st record. Run 297425, Event 56646912, LumiSection 36 at 05-Jul-2017 18:40:05.694 CEST
+Begin processing the 432nd record. Run 297425, Event 56922556, LumiSection 36 at 05-Jul-2017 18:40:06.818 CEST
+Begin processing the 433rd record. Run 297425, Event 56626471, LumiSection 36 at 05-Jul-2017 18:40:06.838 CEST
+Begin processing the 434th record. Run 297425, Event 56925476, LumiSection 36 at 05-Jul-2017 18:40:06.864 CEST
+Begin processing the 435th record. Run 297425, Event 56561061, LumiSection 36 at 05-Jul-2017 18:40:06.890 CEST
+Begin processing the 436th record. Run 297425, Event 57741910, LumiSection 36 at 05-Jul-2017 18:40:06.928 CEST
+Begin processing the 437th record. Run 297425, Event 56425576, LumiSection 36 at 05-Jul-2017 18:40:06.951 CEST
+Begin processing the 438th record. Run 297425, Event 56763710, LumiSection 36 at 05-Jul-2017 18:40:07.005 CEST
+Begin processing the 439th record. Run 297425, Event 56865328, LumiSection 36 at 05-Jul-2017 18:40:07.033 CEST
+Begin processing the 440th record. Run 297425, Event 57235583, LumiSection 36 at 05-Jul-2017 18:40:07.064 CEST
+Begin processing the 441st record. Run 297425, Event 58009380, LumiSection 36 at 05-Jul-2017 18:40:07.119 CEST
+Begin processing the 442nd record. Run 297425, Event 57287559, LumiSection 36 at 05-Jul-2017 18:40:07.195 CEST
+Begin processing the 443rd record. Run 297425, Event 56625297, LumiSection 36 at 05-Jul-2017 18:40:07.232 CEST
+Begin processing the 444th record. Run 297425, Event 57289896, LumiSection 36 at 05-Jul-2017 18:40:07.268 CEST
+Begin processing the 445th record. Run 297425, Event 56819187, LumiSection 36 at 05-Jul-2017 18:40:07.295 CEST
+Begin processing the 446th record. Run 297425, Event 56594350, LumiSection 36 at 05-Jul-2017 18:40:07.324 CEST
+Begin processing the 447th record. Run 297425, Event 57282633, LumiSection 36 at 05-Jul-2017 18:40:07.866 CEST
+Begin processing the 448th record. Run 297425, Event 57311838, LumiSection 36 at 05-Jul-2017 18:40:07.885 CEST
+Begin processing the 449th record. Run 297425, Event 57226574, LumiSection 36 at 05-Jul-2017 18:40:07.914 CEST
+Begin processing the 450th record. Run 297425, Event 57161751, LumiSection 36 at 05-Jul-2017 18:40:07.948 CEST
+Begin processing the 451st record. Run 297425, Event 57049621, LumiSection 36 at 05-Jul-2017 18:40:07.974 CEST
+Begin processing the 452nd record. Run 297425, Event 57372570, LumiSection 36 at 05-Jul-2017 18:40:07.994 CEST
+Begin processing the 453rd record. Run 297425, Event 57334612, LumiSection 36 at 05-Jul-2017 18:40:08.011 CEST
+Begin processing the 454th record. Run 297425, Event 57262777, LumiSection 36 at 05-Jul-2017 18:40:08.036 CEST
+Begin processing the 455th record. Run 297425, Event 56570159, LumiSection 36 at 05-Jul-2017 18:40:08.083 CEST
+Begin processing the 456th record. Run 297425, Event 57123791, LumiSection 36 at 05-Jul-2017 18:40:08.142 CEST
+Begin processing the 457th record. Run 297425, Event 57682678, LumiSection 36 at 05-Jul-2017 18:40:10.303 CEST
+Begin processing the 458th record. Run 297425, Event 56938080, LumiSection 36 at 05-Jul-2017 18:40:10.344 CEST
+Begin processing the 459th record. Run 297425, Event 56982459, LumiSection 36 at 05-Jul-2017 18:40:10.382 CEST
+Begin processing the 460th record. Run 297425, Event 57583400, LumiSection 36 at 05-Jul-2017 18:40:10.437 CEST
+Begin processing the 461st record. Run 297425, Event 57961827, LumiSection 36 at 05-Jul-2017 18:40:10.456 CEST
+Begin processing the 462nd record. Run 297425, Event 56539790, LumiSection 36 at 05-Jul-2017 18:40:10.487 CEST
+Begin processing the 463rd record. Run 297425, Event 58021983, LumiSection 36 at 05-Jul-2017 18:40:10.536 CEST
+Begin processing the 464th record. Run 297425, Event 56484896, LumiSection 36 at 05-Jul-2017 18:40:10.569 CEST
+Begin processing the 465th record. Run 297425, Event 57677419, LumiSection 36 at 05-Jul-2017 18:40:10.587 CEST
+Begin processing the 466th record. Run 297425, Event 58030154, LumiSection 36 at 05-Jul-2017 18:40:10.617 CEST
+Begin processing the 467th record. Run 297425, Event 56851647, LumiSection 36 at 05-Jul-2017 18:40:10.648 CEST
+Begin processing the 468th record. Run 297425, Event 56627391, LumiSection 36 at 05-Jul-2017 18:40:10.734 CEST
+Begin processing the 469th record. Run 297425, Event 57207885, LumiSection 36 at 05-Jul-2017 18:40:10.769 CEST
+Begin processing the 470th record. Run 297425, Event 57545433, LumiSection 36 at 05-Jul-2017 18:40:10.806 CEST
+Begin processing the 471st record. Run 297425, Event 57964745, LumiSection 36 at 05-Jul-2017 18:40:10.839 CEST
+Begin processing the 472nd record. Run 297425, Event 57530834, LumiSection 36 at 05-Jul-2017 18:40:10.879 CEST
+Begin processing the 473rd record. Run 297425, Event 56969611, LumiSection 36 at 05-Jul-2017 18:40:10.932 CEST
+Begin processing the 474th record. Run 297425, Event 58038336, LumiSection 36 at 05-Jul-2017 18:40:10.951 CEST
+Begin processing the 475th record. Run 297425, Event 57867803, LumiSection 36 at 05-Jul-2017 18:40:10.971 CEST
+Begin processing the 476th record. Run 297425, Event 56947420, LumiSection 36 at 05-Jul-2017 18:40:11.002 CEST
+Time since last check 87538; last check 477549; now 477636; next check 477669
+Reading from 131.225.205.148:21259, quality 3174
+Finished timer after 11670
+[13] Time for readv: 11670 (sub-readv requests: 1)
+Begin processing the 477th record. Run 297425, Event 57047287, LumiSection 36 at 05-Jul-2017 18:40:22.794 CEST
+Begin processing the 478th record. Run 297425, Event 57916864, LumiSection 36 at 05-Jul-2017 18:40:22.883 CEST
+Begin processing the 479th record. Run 297425, Event 57752628, LumiSection 36 at 05-Jul-2017 18:40:22.928 CEST
+Begin processing the 480th record. Run 297425, Event 56952096, LumiSection 36 at 05-Jul-2017 18:40:22.955 CEST
+Begin processing the 481st record. Run 297425, Event 56537449, LumiSection 36 at 05-Jul-2017 18:40:23.002 CEST
+Begin processing the 482nd record. Run 297425, Event 58055852, LumiSection 36 at 05-Jul-2017 18:40:23.082 CEST
+Begin processing the 483rd record. Run 297425, Event 57428639, LumiSection 36 at 05-Jul-2017 18:40:23.120 CEST
+Begin processing the 484th record. Run 297425, Event 57382953, LumiSection 36 at 05-Jul-2017 18:40:23.161 CEST
+Begin processing the 485th record. Run 297425, Event 57885782, LumiSection 36 at 05-Jul-2017 18:40:23.213 CEST
+Begin processing the 486th record. Run 297425, Event 57865339, LumiSection 36 at 05-Jul-2017 18:40:23.238 CEST
+Begin processing the 487th record. Run 297425, Event 57673207, LumiSection 36 at 05-Jul-2017 18:40:23.267 CEST
+Begin processing the 488th record. Run 297425, Event 57912645, LumiSection 36 at 05-Jul-2017 18:40:23.286 CEST
+Begin processing the 489th record. Run 297425, Event 57615387, LumiSection 36 at 05-Jul-2017 18:40:23.313 CEST
+Begin processing the 490th record. Run 297425, Event 57161617, LumiSection 36 at 05-Jul-2017 18:40:23.333 CEST
+Begin processing the 491st record. Run 297425, Event 58023022, LumiSection 36 at 05-Jul-2017 18:40:23.380 CEST
+Begin processing the 492nd record. Run 297425, Event 56942618, LumiSection 36 at 05-Jul-2017 18:40:23.405 CEST
+Begin processing the 493rd record. Run 297425, Event 57949439, LumiSection 36 at 05-Jul-2017 18:40:23.446 CEST
+Begin processing the 494th record. Run 297425, Event 56964229, LumiSection 36 at 05-Jul-2017 18:40:23.506 CEST
+Begin processing the 495th record. Run 297425, Event 56894146, LumiSection 36 at 05-Jul-2017 18:40:23.522 CEST
+Begin processing the 496th record. Run 297425, Event 57211260, LumiSection 36 at 05-Jul-2017 18:40:23.576 CEST
+Begin processing the 497th record. Run 297425, Event 58045794, LumiSection 36 at 05-Jul-2017 18:40:23.591 CEST
+Begin processing the 498th record. Run 297425, Event 57913814, LumiSection 36 at 05-Jul-2017 18:40:23.621 CEST
+Begin processing the 499th record. Run 297425, Event 57330394, LumiSection 36 at 05-Jul-2017 18:40:23.657 CEST
+Begin processing the 500th record. Run 297425, Event 56506954, LumiSection 36 at 05-Jul-2017 18:40:23.673 CEST
+Begin processing the 501st record. Run 297425, Event 57547647, LumiSection 36 at 05-Jul-2017 18:40:23.720 CEST
+Begin processing the 502nd record. Run 297425, Event 56620840, LumiSection 36 at 05-Jul-2017 18:40:23.782 CEST
+Begin processing the 503rd record. Run 297425, Event 56911081, LumiSection 36 at 05-Jul-2017 18:40:23.800 CEST
+Begin processing the 504th record. Run 297425, Event 56763917, LumiSection 36 at 05-Jul-2017 18:40:23.816 CEST
+Begin processing the 505th record. Run 297425, Event 57354343, LumiSection 36 at 05-Jul-2017 18:40:23.853 CEST
+Begin processing the 506th record. Run 297425, Event 57279002, LumiSection 36 at 05-Jul-2017 18:40:23.926 CEST
+Begin processing the 507th record. Run 297425, Event 57056503, LumiSection 36 at 05-Jul-2017 18:40:23.964 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:23 CEST Run: 297425 Event: 57056503
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -411  --> electrons = 0
+%MSG
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:23 CEST Run: 297425 Event: 57056503
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -992  --> electrons = 0
+%MSG
+Begin processing the 508th record. Run 297425, Event 57445446, LumiSection 36 at 05-Jul-2017 18:40:24.020 CEST
+Begin processing the 509th record. Run 297425, Event 56688000, LumiSection 36 at 05-Jul-2017 18:40:24.079 CEST
+Begin processing the 510th record. Run 297425, Event 57331482, LumiSection 36 at 05-Jul-2017 18:40:24.149 CEST
+Begin processing the 511th record. Run 297425, Event 56971739, LumiSection 36 at 05-Jul-2017 18:40:24.182 CEST
+Begin processing the 512th record. Run 297425, Event 56605576, LumiSection 36 at 05-Jul-2017 18:40:24.215 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:24 CEST Run: 297425 Event: 56605576
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -547  --> electrons = 0
+%MSG
+Begin processing the 513th record. Run 297425, Event 57191328, LumiSection 36 at 05-Jul-2017 18:40:24.246 CEST
+Begin processing the 514th record. Run 297425, Event 57688312, LumiSection 36 at 05-Jul-2017 18:40:24.284 CEST
+Begin processing the 515th record. Run 297425, Event 56635440, LumiSection 36 at 05-Jul-2017 18:40:24.319 CEST
+Begin processing the 516th record. Run 297425, Event 57325057, LumiSection 36 at 05-Jul-2017 18:40:24.419 CEST
+Begin processing the 517th record. Run 297425, Event 56835085, LumiSection 36 at 05-Jul-2017 18:40:24.444 CEST
+Begin processing the 518th record. Run 297425, Event 57100807, LumiSection 36 at 05-Jul-2017 18:40:25.682 CEST
+Begin processing the 519th record. Run 297425, Event 56590392, LumiSection 36 at 05-Jul-2017 18:40:25.758 CEST
+Begin processing the 520th record. Run 297425, Event 57389885, LumiSection 36 at 05-Jul-2017 18:40:25.786 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:25 CEST Run: 297425 Event: 57389885
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -483  --> electrons = 0
+%MSG
+Begin processing the 521st record. Run 297425, Event 57205338, LumiSection 36 at 05-Jul-2017 18:40:25.821 CEST
+Begin processing the 522nd record. Run 297425, Event 57828468, LumiSection 36 at 05-Jul-2017 18:40:25.858 CEST
+Begin processing the 523rd record. Run 297425, Event 57454121, LumiSection 36 at 05-Jul-2017 18:40:25.937 CEST
+Begin processing the 524th record. Run 297425, Event 57486828, LumiSection 36 at 05-Jul-2017 18:40:25.991 CEST
+Begin processing the 525th record. Run 297425, Event 57541727, LumiSection 36 at 05-Jul-2017 18:40:26.010 CEST
+Begin processing the 526th record. Run 297425, Event 57960449, LumiSection 36 at 05-Jul-2017 18:40:26.027 CEST
+Begin processing the 527th record. Run 297425, Event 56985174, LumiSection 36 at 05-Jul-2017 18:40:26.053 CEST
+Begin processing the 528th record. Run 297425, Event 56485269, LumiSection 36 at 05-Jul-2017 18:40:26.090 CEST
+Begin processing the 529th record. Run 297425, Event 57704658, LumiSection 36 at 05-Jul-2017 18:40:26.149 CEST
+Begin processing the 530th record. Run 297425, Event 57181977, LumiSection 36 at 05-Jul-2017 18:40:26.181 CEST
+Begin processing the 531st record. Run 297425, Event 57636332, LumiSection 36 at 05-Jul-2017 18:40:26.211 CEST
+Begin processing the 532nd record. Run 297425, Event 57006778, LumiSection 36 at 05-Jul-2017 18:40:26.240 CEST
+Begin processing the 533rd record. Run 297425, Event 57232789, LumiSection 36 at 05-Jul-2017 18:40:26.258 CEST
+Begin processing the 534th record. Run 297425, Event 57188991, LumiSection 36 at 05-Jul-2017 18:40:26.359 CEST
+Begin processing the 535th record. Run 297425, Event 57568007, LumiSection 36 at 05-Jul-2017 18:40:26.414 CEST
+Begin processing the 536th record. Run 297425, Event 57715753, LumiSection 36 at 05-Jul-2017 18:40:26.457 CEST
+Begin processing the 537th record. Run 297425, Event 57163880, LumiSection 36 at 05-Jul-2017 18:40:26.480 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:26 CEST Run: 297425 Event: 57163880
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -131  --> electrons = 0
+%MSG
+Begin processing the 538th record. Run 297425, Event 57069641, LumiSection 36 at 05-Jul-2017 18:40:26.506 CEST
+Begin processing the 539th record. Run 297425, Event 57858628, LumiSection 36 at 05-Jul-2017 18:40:26.528 CEST
+Begin processing the 540th record. Run 297425, Event 57952275, LumiSection 36 at 05-Jul-2017 18:40:26.546 CEST
+Begin processing the 541st record. Run 297425, Event 57376245, LumiSection 36 at 05-Jul-2017 18:40:26.592 CEST
+Begin processing the 542nd record. Run 297425, Event 57983226, LumiSection 36 at 05-Jul-2017 18:40:26.621 CEST
+Begin processing the 543rd record. Run 297425, Event 57622107, LumiSection 36 at 05-Jul-2017 18:40:26.648 CEST
+Begin processing the 544th record. Run 297425, Event 57641961, LumiSection 36 at 05-Jul-2017 18:40:26.692 CEST
+Begin processing the 545th record. Run 297425, Event 57197539, LumiSection 36 at 05-Jul-2017 18:40:26.725 CEST
+Begin processing the 546th record. Run 297425, Event 56598563, LumiSection 36 at 05-Jul-2017 18:40:26.949 CEST
+Begin processing the 547th record. Run 297425, Event 56451186, LumiSection 36 at 05-Jul-2017 18:40:26.985 CEST
+Begin processing the 548th record. Run 297425, Event 57196958, LumiSection 36 at 05-Jul-2017 18:40:27.011 CEST
+Begin processing the 549th record. Run 297425, Event 57080740, LumiSection 36 at 05-Jul-2017 18:40:27.045 CEST
+Begin processing the 550th record. Run 297425, Event 57514068, LumiSection 36 at 05-Jul-2017 18:40:27.115 CEST
+Begin processing the 551st record. Run 297425, Event 58021564, LumiSection 36 at 05-Jul-2017 18:40:27.142 CEST
+Begin processing the 552nd record. Run 297425, Event 57247768, LumiSection 36 at 05-Jul-2017 18:40:27.197 CEST
+Begin processing the 553rd record. Run 297425, Event 57546190, LumiSection 36 at 05-Jul-2017 18:40:27.241 CEST
+Begin processing the 554th record. Run 297425, Event 57143225, LumiSection 36 at 05-Jul-2017 18:40:27.310 CEST
+Time since last check 103854; last check 477549; now 477653; next check 477669
+Reading from 131.225.205.148:21259, quality 4378
+Finished timer after 4255
+[14] Time for readv: 4255 (sub-readv requests: 1)
+Begin processing the 555th record. Run 297425, Event 57431139, LumiSection 36 at 05-Jul-2017 18:40:31.621 CEST
+Begin processing the 556th record. Run 297425, Event 58027986, LumiSection 36 at 05-Jul-2017 18:40:31.682 CEST
+Begin processing the 557th record. Run 297425, Event 57273460, LumiSection 36 at 05-Jul-2017 18:40:31.749 CEST
+Begin processing the 558th record. Run 297425, Event 57634956, LumiSection 36 at 05-Jul-2017 18:40:31.775 CEST
+Begin processing the 559th record. Run 297425, Event 57127700, LumiSection 36 at 05-Jul-2017 18:40:31.820 CEST
+Begin processing the 560th record. Run 297425, Event 57811561, LumiSection 36 at 05-Jul-2017 18:40:31.840 CEST
+Begin processing the 561st record. Run 297425, Event 57224644, LumiSection 36 at 05-Jul-2017 18:40:31.864 CEST
+Begin processing the 562nd record. Run 297425, Event 56669608, LumiSection 36 at 05-Jul-2017 18:40:31.882 CEST
+Begin processing the 563rd record. Run 297425, Event 57649798, LumiSection 36 at 05-Jul-2017 18:40:31.935 CEST
+Begin processing the 564th record. Run 297425, Event 57764841, LumiSection 36 at 05-Jul-2017 18:40:31.990 CEST
+Begin processing the 565th record. Run 297425, Event 57345531, LumiSection 36 at 05-Jul-2017 18:40:32.044 CEST
+Begin processing the 566th record. Run 297425, Event 56488565, LumiSection 36 at 05-Jul-2017 18:40:32.075 CEST
+Begin processing the 567th record. Run 297425, Event 57757249, LumiSection 36 at 05-Jul-2017 18:40:32.168 CEST
+Begin processing the 568th record. Run 297425, Event 57665561, LumiSection 36 at 05-Jul-2017 18:40:32.198 CEST
+Begin processing the 569th record. Run 297425, Event 57151057, LumiSection 36 at 05-Jul-2017 18:40:32.245 CEST
+Begin processing the 570th record. Run 297425, Event 57255600, LumiSection 36 at 05-Jul-2017 18:40:32.325 CEST
+Begin processing the 571st record. Run 297425, Event 57311661, LumiSection 36 at 05-Jul-2017 18:40:32.384 CEST
+Begin processing the 572nd record. Run 297425, Event 56737003, LumiSection 36 at 05-Jul-2017 18:40:32.415 CEST
+Begin processing the 573rd record. Run 297425, Event 57549934, LumiSection 36 at 05-Jul-2017 18:40:32.443 CEST
+Begin processing the 574th record. Run 297425, Event 56943154, LumiSection 36 at 05-Jul-2017 18:40:32.506 CEST
+Begin processing the 575th record. Run 297425, Event 56758616, LumiSection 36 at 05-Jul-2017 18:40:32.546 CEST
+Begin processing the 576th record. Run 297425, Event 57182014, LumiSection 36 at 05-Jul-2017 18:40:32.597 CEST
+Begin processing the 577th record. Run 297425, Event 57023168, LumiSection 36 at 05-Jul-2017 18:40:32.613 CEST
+Begin processing the 578th record. Run 297425, Event 57095584, LumiSection 36 at 05-Jul-2017 18:40:32.636 CEST
+Begin processing the 579th record. Run 297425, Event 57674905, LumiSection 36 at 05-Jul-2017 18:40:32.675 CEST
+Begin processing the 580th record. Run 297425, Event 58059765, LumiSection 36 at 05-Jul-2017 18:40:32.716 CEST
+Begin processing the 581st record. Run 297425, Event 57624688, LumiSection 36 at 05-Jul-2017 18:40:32.744 CEST
+Begin processing the 582nd record. Run 297425, Event 56510413, LumiSection 36 at 05-Jul-2017 18:40:32.804 CEST
+Begin processing the 583rd record. Run 297425, Event 57873157, LumiSection 36 at 05-Jul-2017 18:40:32.874 CEST
+Begin processing the 584th record. Run 297425, Event 57184936, LumiSection 36 at 05-Jul-2017 18:40:32.897 CEST
+Begin processing the 585th record. Run 297425, Event 57036865, LumiSection 36 at 05-Jul-2017 18:40:32.928 CEST
+Begin processing the 586th record. Run 297425, Event 57118043, LumiSection 36 at 05-Jul-2017 18:40:32.975 CEST
+Begin processing the 587th record. Run 297425, Event 56802104, LumiSection 36 at 05-Jul-2017 18:40:33.017 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:33 CEST Run: 297425 Event: 56802104
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -243  --> electrons = 0
+%MSG
+Begin processing the 588th record. Run 297425, Event 57219077, LumiSection 36 at 05-Jul-2017 18:40:33.048 CEST
+Begin processing the 589th record. Run 297425, Event 56729687, LumiSection 36 at 05-Jul-2017 18:40:33.086 CEST
+Begin processing the 590th record. Run 297425, Event 57519837, LumiSection 36 at 05-Jul-2017 18:40:33.111 CEST
+Begin processing the 591st record. Run 297425, Event 56783993, LumiSection 36 at 05-Jul-2017 18:40:33.145 CEST
+Begin processing the 592nd record. Run 297425, Event 56644420, LumiSection 36 at 05-Jul-2017 18:40:33.206 CEST
+Begin processing the 593rd record. Run 297425, Event 57153672, LumiSection 36 at 05-Jul-2017 18:40:33.257 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:33 CEST Run: 297425 Event: 57153672
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -1713  --> electrons = 0
+%MSG
+Begin processing the 594th record. Run 297425, Event 57450341, LumiSection 36 at 05-Jul-2017 18:40:33.292 CEST
+Begin processing the 595th record. Run 297425, Event 56435930, LumiSection 36 at 05-Jul-2017 18:40:33.343 CEST
+Begin processing the 596th record. Run 297425, Event 57073662, LumiSection 36 at 05-Jul-2017 18:40:33.380 CEST
+Begin processing the 597th record. Run 297425, Event 58057116, LumiSection 36 at 05-Jul-2017 18:40:33.406 CEST
+Begin processing the 598th record. Run 297425, Event 56955695, LumiSection 36 at 05-Jul-2017 18:40:33.432 CEST
+Begin processing the 599th record. Run 297425, Event 57270465, LumiSection 36 at 05-Jul-2017 18:40:33.486 CEST
+Begin processing the 600th record. Run 297425, Event 57273385, LumiSection 36 at 05-Jul-2017 18:40:33.514 CEST
+Begin processing the 601st record. Run 297425, Event 57848042, LumiSection 36 at 05-Jul-2017 18:40:33.548 CEST
+Begin processing the 602nd record. Run 297425, Event 58034343, LumiSection 36 at 05-Jul-2017 18:40:33.567 CEST
+Begin processing the 603rd record. Run 297425, Event 57233090, LumiSection 36 at 05-Jul-2017 18:40:34.040 CEST
+Begin processing the 604th record. Run 297425, Event 57757524, LumiSection 36 at 05-Jul-2017 18:40:35.222 CEST
+Begin processing the 605th record. Run 297425, Event 56973796, LumiSection 36 at 05-Jul-2017 18:40:35.245 CEST
+Begin processing the 606th record. Run 297425, Event 57218490, LumiSection 36 at 05-Jul-2017 18:40:35.279 CEST
+Begin processing the 607th record. Run 297425, Event 57799574, LumiSection 36 at 05-Jul-2017 18:40:35.306 CEST
+Begin processing the 608th record. Run 297425, Event 57048545, LumiSection 36 at 05-Jul-2017 18:40:35.333 CEST
+Begin processing the 609th record. Run 297425, Event 56977304, LumiSection 36 at 05-Jul-2017 18:40:37.240 CEST
+Begin processing the 610th record. Run 297425, Event 57763361, LumiSection 36 at 05-Jul-2017 18:40:37.268 CEST
+Begin processing the 611th record. Run 297425, Event 56725011, LumiSection 36 at 05-Jul-2017 18:40:37.330 CEST
+Begin processing the 612th record. Run 297425, Event 57015264, LumiSection 36 at 05-Jul-2017 18:40:37.357 CEST
+Begin processing the 613th record. Run 297425, Event 57519249, LumiSection 36 at 05-Jul-2017 18:40:37.385 CEST
+Begin processing the 614th record. Run 297425, Event 56946224, LumiSection 36 at 05-Jul-2017 18:40:37.415 CEST
+Begin processing the 615th record. Run 297425, Event 57286694, LumiSection 36 at 05-Jul-2017 18:40:37.452 CEST
+Begin processing the 616th record. Run 297425, Event 56494329, LumiSection 36 at 05-Jul-2017 18:40:37.510 CEST
+Begin processing the 617th record. Run 297425, Event 57880039, LumiSection 36 at 05-Jul-2017 18:40:37.564 CEST
+Begin processing the 618th record. Run 297425, Event 57795942, LumiSection 36 at 05-Jul-2017 18:40:37.583 CEST
+Begin processing the 619th record. Run 297425, Event 57642930, LumiSection 36 at 05-Jul-2017 18:40:37.599 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:37 CEST Run: 297425 Event: 57642930
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -336  --> electrons = 0
+%MSG
+Begin processing the 620th record. Run 297425, Event 57435611, LumiSection 36 at 05-Jul-2017 18:40:37.622 CEST
+Begin processing the 621st record. Run 297425, Event 57084632, LumiSection 36 at 05-Jul-2017 18:40:37.651 CEST
+Begin processing the 622nd record. Run 297425, Event 57351516, LumiSection 36 at 05-Jul-2017 18:40:37.694 CEST
+Begin processing the 623rd record. Run 297425, Event 56567789, LumiSection 36 at 05-Jul-2017 18:40:37.753 CEST
+Begin processing the 624th record. Run 297425, Event 56473182, LumiSection 36 at 05-Jul-2017 18:40:37.775 CEST
+Begin processing the 625th record. Run 297425, Event 56505881, LumiSection 36 at 05-Jul-2017 18:40:37.801 CEST
+Begin processing the 626th record. Run 297425, Event 56545600, LumiSection 36 at 05-Jul-2017 18:40:37.833 CEST
+Begin processing the 627th record. Run 297425, Event 57130766, LumiSection 36 at 05-Jul-2017 18:40:37.861 CEST
+Begin processing the 628th record. Run 297425, Event 56733061, LumiSection 36 at 05-Jul-2017 18:40:37.887 CEST
+Begin processing the 629th record. Run 297425, Event 57179239, LumiSection 36 at 05-Jul-2017 18:40:37.923 CEST
+Begin processing the 630th record. Run 297425, Event 57694324, LumiSection 36 at 05-Jul-2017 18:40:38.003 CEST
+Begin processing the 631st record. Run 297425, Event 57837405, LumiSection 36 at 05-Jul-2017 18:40:38.019 CEST
+Begin processing the 632nd record. Run 297425, Event 57934935, LumiSection 36 at 05-Jul-2017 18:40:38.036 CEST
+Begin processing the 633rd record. Run 297425, Event 57291947, LumiSection 36 at 05-Jul-2017 18:40:38.071 CEST
+Time since last check 114607; last check 477549; now 477663; next check 477669
+Reading from 131.225.205.148:21259, quality 4111
+Finished timer after 4007
+[15] Time for readv: 4008 (sub-readv requests: 1)
+Begin processing the 634th record. Run 297425, Event 57737541, LumiSection 36 at 05-Jul-2017 18:40:42.139 CEST
+Begin processing the 635th record. Run 297425, Event 56498874, LumiSection 36 at 05-Jul-2017 18:40:42.166 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:42 CEST Run: 297425 Event: 56498874
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -101  --> electrons = 0
+%MSG
+Begin processing the 636th record. Run 297425, Event 57976978, LumiSection 36 at 05-Jul-2017 18:40:42.208 CEST
+Begin processing the 637th record. Run 297425, Event 56902419, LumiSection 36 at 05-Jul-2017 18:40:42.282 CEST
+Begin processing the 638th record. Run 297425, Event 56957314, LumiSection 36 at 05-Jul-2017 18:40:42.312 CEST
+Begin processing the 639th record. Run 297425, Event 57075870, LumiSection 36 at 05-Jul-2017 18:40:42.344 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:42 CEST Run: 297425 Event: 57075870
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -411  --> electrons = 0
+%MSG
+Begin processing the 640th record. Run 297425, Event 57011044, LumiSection 36 at 05-Jul-2017 18:40:42.371 CEST
+Begin processing the 641st record. Run 297425, Event 57933768, LumiSection 36 at 05-Jul-2017 18:40:42.406 CEST
+Begin processing the 642nd record. Run 297425, Event 57599483, LumiSection 36 at 05-Jul-2017 18:40:42.498 CEST
+Begin processing the 643rd record. Run 297425, Event 56925783, LumiSection 36 at 05-Jul-2017 18:40:42.520 CEST
+Begin processing the 644th record. Run 297425, Event 57864038, LumiSection 36 at 05-Jul-2017 18:40:42.543 CEST
+Begin processing the 645th record. Run 297425, Event 56844602, LumiSection 36 at 05-Jul-2017 18:40:42.560 CEST
+Begin processing the 646th record. Run 297425, Event 57337498, LumiSection 36 at 05-Jul-2017 18:40:42.611 CEST
+Begin processing the 647th record. Run 297425, Event 56561719, LumiSection 36 at 05-Jul-2017 18:40:42.649 CEST
+Begin processing the 648th record. Run 297425, Event 57995083, LumiSection 36 at 05-Jul-2017 18:40:42.679 CEST
+Begin processing the 649th record. Run 297425, Event 56827440, LumiSection 36 at 05-Jul-2017 18:40:42.708 CEST
+Begin processing the 650th record. Run 297425, Event 57785781, LumiSection 36 at 05-Jul-2017 18:40:42.775 CEST
+Begin processing the 651st record. Run 297425, Event 57773515, LumiSection 36 at 05-Jul-2017 18:40:42.792 CEST
+Begin processing the 652nd record. Run 297425, Event 56933727, LumiSection 36 at 05-Jul-2017 18:40:42.824 CEST
+Begin processing the 653rd record. Run 297425, Event 57894985, LumiSection 36 at 05-Jul-2017 18:40:42.848 CEST
+Begin processing the 654th record. Run 297425, Event 57322669, LumiSection 36 at 05-Jul-2017 18:40:42.894 CEST
+Begin processing the 655th record. Run 297425, Event 57828996, LumiSection 36 at 05-Jul-2017 18:40:42.949 CEST
+Begin processing the 656th record. Run 297425, Event 57889149, LumiSection 36 at 05-Jul-2017 18:40:43.011 CEST
+Begin processing the 657th record. Run 297425, Event 57967986, LumiSection 36 at 05-Jul-2017 18:40:43.044 CEST
+Begin processing the 658th record. Run 297425, Event 58011786, LumiSection 36 at 05-Jul-2017 18:40:43.062 CEST
+Begin processing the 659th record. Run 297425, Event 56867729, LumiSection 36 at 05-Jul-2017 18:40:43.080 CEST
+Begin processing the 660th record. Run 297425, Event 57430705, LumiSection 36 at 05-Jul-2017 18:40:43.105 CEST
+Begin processing the 661st record. Run 297425, Event 57420193, LumiSection 36 at 05-Jul-2017 18:40:43.122 CEST
+Begin processing the 662nd record. Run 297425, Event 56697785, LumiSection 36 at 05-Jul-2017 18:40:43.138 CEST
+Begin processing the 663rd record. Run 297425, Event 57053443, LumiSection 36 at 05-Jul-2017 18:40:43.178 CEST
+Begin processing the 664th record. Run 297425, Event 58000106, LumiSection 36 at 05-Jul-2017 18:40:43.228 CEST
+Begin processing the 665th record. Run 297425, Event 56518500, LumiSection 36 at 05-Jul-2017 18:40:43.253 CEST
+Begin processing the 666th record. Run 297425, Event 57868711, LumiSection 36 at 05-Jul-2017 18:40:43.311 CEST
+Begin processing the 667th record. Run 297425, Event 56632381, LumiSection 36 at 05-Jul-2017 18:40:43.350 CEST
+Begin processing the 668th record. Run 297425, Event 56837950, LumiSection 36 at 05-Jul-2017 18:40:43.387 CEST
+Begin processing the 669th record. Run 297425, Event 57436545, LumiSection 36 at 05-Jul-2017 18:40:43.412 CEST
+Begin processing the 670th record. Run 297425, Event 57332015, LumiSection 36 at 05-Jul-2017 18:40:43.509 CEST
+Begin processing the 671st record. Run 297425, Event 56592669, LumiSection 36 at 05-Jul-2017 18:40:43.566 CEST
+Begin processing the 672nd record. Run 297425, Event 58055008, LumiSection 36 at 05-Jul-2017 18:40:43.613 CEST
+Begin processing the 673rd record. Run 297425, Event 56921462, LumiSection 36 at 05-Jul-2017 18:40:43.642 CEST
+Begin processing the 674th record. Run 297425, Event 57821712, LumiSection 36 at 05-Jul-2017 18:40:43.671 CEST
+Begin processing the 675th record. Run 297425, Event 56435290, LumiSection 36 at 05-Jul-2017 18:40:43.690 CEST
+Begin processing the 676th record. Run 297425, Event 57566778, LumiSection 36 at 05-Jul-2017 18:40:43.707 CEST
+Begin processing the 677th record. Run 297425, Event 57177833, LumiSection 36 at 05-Jul-2017 18:40:43.788 CEST
+Begin processing the 678th record. Run 297425, Event 57467220, LumiSection 36 at 05-Jul-2017 18:40:43.851 CEST
+Begin processing the 679th record. Run 297425, Event 56465360, LumiSection 36 at 05-Jul-2017 18:40:43.879 CEST
+Begin processing the 680th record. Run 297425, Event 57624899, LumiSection 36 at 05-Jul-2017 18:40:43.920 CEST
+Begin processing the 681st record. Run 297425, Event 57047912, LumiSection 36 at 05-Jul-2017 18:40:43.982 CEST
+Begin processing the 682nd record. Run 297425, Event 57700233, LumiSection 36 at 05-Jul-2017 18:40:44.015 CEST
+Begin processing the 683rd record. Run 297425, Event 56479680, LumiSection 36 at 05-Jul-2017 18:40:44.145 CEST
+Begin processing the 684th record. Run 297425, Event 57756301, LumiSection 36 at 05-Jul-2017 18:40:44.177 CEST
+Begin processing the 685th record. Run 297425, Event 57494081, LumiSection 36 at 05-Jul-2017 18:40:44.210 CEST
+Begin processing the 686th record. Run 297425, Event 57890624, LumiSection 36 at 05-Jul-2017 18:40:44.248 CEST
+Begin processing the 687th record. Run 297425, Event 56788616, LumiSection 36 at 05-Jul-2017 18:40:44.279 CEST
+Begin processing the 688th record. Run 297425, Event 57954274, LumiSection 36 at 05-Jul-2017 18:40:44.303 CEST
+Begin processing the 689th record. Run 297425, Event 57715424, LumiSection 36 at 05-Jul-2017 18:40:44.330 CEST
+Begin processing the 690th record. Run 297425, Event 57206175, LumiSection 36 at 05-Jul-2017 18:40:45.501 CEST
+Begin processing the 691st record. Run 297425, Event 57235373, LumiSection 36 at 05-Jul-2017 18:40:45.549 CEST
+Begin processing the 692nd record. Run 297425, Event 57735279, LumiSection 36 at 05-Jul-2017 18:40:45.589 CEST
+Begin processing the 693rd record. Run 297425, Event 56927024, LumiSection 36 at 05-Jul-2017 18:40:45.614 CEST
+Begin processing the 694th record. Run 297425, Event 56817814, LumiSection 36 at 05-Jul-2017 18:40:45.823 CEST
+Begin processing the 695th record. Run 297425, Event 57341073, LumiSection 36 at 05-Jul-2017 18:40:45.855 CEST
+Begin processing the 696th record. Run 297425, Event 56701595, LumiSection 36 at 05-Jul-2017 18:40:45.903 CEST
+Begin processing the 697th record. Run 297425, Event 57586359, LumiSection 36 at 05-Jul-2017 18:40:45.964 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:45 CEST Run: 297425 Event: 57586359
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -70  --> electrons = 0
+%MSG
+Begin processing the 698th record. Run 297425, Event 58060568, LumiSection 36 at 05-Jul-2017 18:40:46.041 CEST
+Begin processing the 699th record. Run 297425, Event 56972572, LumiSection 36 at 05-Jul-2017 18:40:46.085 CEST
+Begin processing the 700th record. Run 297425, Event 56594057, LumiSection 36 at 05-Jul-2017 18:40:46.123 CEST
+Begin processing the 701st record. Run 297425, Event 57986395, LumiSection 36 at 05-Jul-2017 18:40:46.148 CEST
+Begin processing the 702nd record. Run 297425, Event 57860833, LumiSection 36 at 05-Jul-2017 18:40:46.188 CEST
+Begin processing the 703rd record. Run 297425, Event 56848098, LumiSection 36 at 05-Jul-2017 18:40:46.226 CEST
+Begin processing the 704th record. Run 297425, Event 58033120, LumiSection 36 at 05-Jul-2017 18:40:46.276 CEST
+Begin processing the 705th record. Run 297425, Event 58050639, LumiSection 36 at 05-Jul-2017 18:40:46.349 CEST
+Begin processing the 706th record. Run 297425, Event 57403566, LumiSection 36 at 05-Jul-2017 18:40:46.412 CEST
+Begin processing the 707th record. Run 297425, Event 57787760, LumiSection 36 at 05-Jul-2017 18:40:46.496 CEST
+Begin processing the 708th record. Run 297425, Event 57360266, LumiSection 36 at 05-Jul-2017 18:40:46.567 CEST
+Begin processing the 709th record. Run 297425, Event 56574866, LumiSection 36 at 05-Jul-2017 18:40:46.609 CEST
+Begin processing the 710th record. Run 297425, Event 56476675, LumiSection 36 at 05-Jul-2017 18:40:46.715 CEST
+Begin processing the 711th record. Run 297425, Event 56523395, LumiSection 36 at 05-Jul-2017 18:40:46.788 CEST
+Begin processing the 712th record. Run 297425, Event 57371952, LumiSection 36 at 05-Jul-2017 18:40:46.825 CEST
+Begin processing the 713th record. Run 297425, Event 56735973, LumiSection 36 at 05-Jul-2017 18:40:46.907 CEST
+Time since last check 123454; last check 477549; now 477672; next check 477669
+Trying to open URL: root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?tried=cmsxrootd-site1.fnal.gov
+Reading from 131.225.205.148:21259, quality 3906
+Changing exclude list for URL root://131.225.205.148:21259//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?org.dcache.uuid=1137832e-d4a3-4bfd-9c91-876fa66270df&tried=cmsxrootd-site1.fnal.gov to cmsxrootd-site2.fnal.gov
+%MSG-i XrdAdaptorInternal:  (NoModuleName) 05-Jul-2017 18:40:49 CEST pre-events
+Xrootd server at 131.225.205.148:21259 did not provide a sitename.  Monitoring may be incomplete.
+%MSG
+%MSG-i XrdAdaptorInternal:  (NoModuleName) 05-Jul-2017 18:40:49 CEST pre-events
+Reading from new server 131.225.205.148:21259 at site fnal.gov
+%MSG
+Successfully opened new source: 131.225.205.148:21259 (unknown site)
+Xrootd server returned excluded source 131.225.205.148:21259 (unknown site); ignoring
+Finished timer after 3275
+[16] Time for readv: 3275 (sub-readv requests: 1)
+Begin processing the 714th record. Run 297425, Event 57304204, LumiSection 36 at 05-Jul-2017 18:40:50.240 CEST
+Begin processing the 715th record. Run 297425, Event 57180980, LumiSection 36 at 05-Jul-2017 18:40:50.401 CEST
+Begin processing the 716th record. Run 297425, Event 57060093, LumiSection 36 at 05-Jul-2017 18:40:50.431 CEST
+Begin processing the 717th record. Run 297425, Event 58014345, LumiSection 36 at 05-Jul-2017 18:40:50.453 CEST
+Begin processing the 718th record. Run 297425, Event 57527296, LumiSection 36 at 05-Jul-2017 18:40:50.506 CEST
+Begin processing the 719th record. Run 297425, Event 57108562, LumiSection 36 at 05-Jul-2017 18:40:50.545 CEST
+Begin processing the 720th record. Run 297425, Event 57469479, LumiSection 36 at 05-Jul-2017 18:40:50.612 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:50 CEST Run: 297425 Event: 57469479
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -12  --> electrons = 0
+%MSG
+Begin processing the 721st record. Run 297425, Event 57525544, LumiSection 36 at 05-Jul-2017 18:40:50.659 CEST
+Begin processing the 722nd record. Run 297425, Event 56643701, LumiSection 36 at 05-Jul-2017 18:40:50.728 CEST
+Begin processing the 723rd record. Run 297425, Event 57036735, LumiSection 36 at 05-Jul-2017 18:40:50.808 CEST
+Begin processing the 724th record. Run 297425, Event 57826887, LumiSection 36 at 05-Jul-2017 18:40:50.847 CEST
+Begin processing the 725th record. Run 297425, Event 57842653, LumiSection 36 at 05-Jul-2017 18:40:50.890 CEST
+Begin processing the 726th record. Run 297425, Event 57584527, LumiSection 36 at 05-Jul-2017 18:40:50.923 CEST
+Begin processing the 727th record. Run 297425, Event 57249890, LumiSection 36 at 05-Jul-2017 18:40:50.997 CEST
+Begin processing the 728th record. Run 297425, Event 56567195, LumiSection 36 at 05-Jul-2017 18:40:51.028 CEST
+Begin processing the 729th record. Run 297425, Event 57075280, LumiSection 36 at 05-Jul-2017 18:40:51.058 CEST
+Begin processing the 730th record. Run 297425, Event 57554737, LumiSection 36 at 05-Jul-2017 18:40:51.086 CEST
+Begin processing the 731st record. Run 297425, Event 57061842, LumiSection 36 at 05-Jul-2017 18:40:51.123 CEST
+Begin processing the 732nd record. Run 297425, Event 57508608, LumiSection 36 at 05-Jul-2017 18:40:51.145 CEST
+Begin processing the 733rd record. Run 297425, Event 57484075, LumiSection 36 at 05-Jul-2017 18:40:51.192 CEST
+Begin processing the 734th record. Run 297425, Event 57043155, LumiSection 36 at 05-Jul-2017 18:40:51.280 CEST
+Begin processing the 735th record. Run 297425, Event 56435793, LumiSection 36 at 05-Jul-2017 18:40:51.303 CEST
+Begin processing the 736th record. Run 297425, Event 57850885, LumiSection 36 at 05-Jul-2017 18:40:51.385 CEST
+Begin processing the 737th record. Run 297425, Event 57726436, LumiSection 36 at 05-Jul-2017 18:40:51.431 CEST
+Begin processing the 738th record. Run 297425, Event 56964316, LumiSection 36 at 05-Jul-2017 18:40:51.494 CEST
+Begin processing the 739th record. Run 297425, Event 57800603, LumiSection 36 at 05-Jul-2017 18:40:51.540 CEST
+Begin processing the 740th record. Run 297425, Event 57335793, LumiSection 36 at 05-Jul-2017 18:40:51.586 CEST
+Begin processing the 741st record. Run 297425, Event 56839981, LumiSection 36 at 05-Jul-2017 18:40:51.632 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:51 CEST Run: 297425 Event: 56839981
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -490  --> electrons = 0
+%MSG
+Begin processing the 742nd record. Run 297425, Event 56758217, LumiSection 36 at 05-Jul-2017 18:40:51.660 CEST
+Begin processing the 743rd record. Run 297425, Event 56934007, LumiSection 36 at 05-Jul-2017 18:40:51.689 CEST
+Begin processing the 744th record. Run 297425, Event 56857448, LumiSection 36 at 05-Jul-2017 18:40:51.718 CEST
+Begin processing the 745th record. Run 297425, Event 57261632, LumiSection 36 at 05-Jul-2017 18:40:51.755 CEST
+Begin processing the 746th record. Run 297425, Event 57379014, LumiSection 36 at 05-Jul-2017 18:40:51.774 CEST
+Begin processing the 747th record. Run 297425, Event 57666339, LumiSection 36 at 05-Jul-2017 18:40:51.807 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:40:51 CEST Run: 297425 Event: 57666339
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -2834  --> electrons = 0
+%MSG
+Begin processing the 748th record. Run 297425, Event 56441105, LumiSection 36 at 05-Jul-2017 18:40:51.861 CEST
+Begin processing the 749th record. Run 297425, Event 56557326, LumiSection 36 at 05-Jul-2017 18:40:51.877 CEST
+Begin processing the 750th record. Run 297425, Event 57940233, LumiSection 36 at 05-Jul-2017 18:40:51.899 CEST
+Begin processing the 751st record. Run 297425, Event 57099273, LumiSection 36 at 05-Jul-2017 18:40:51.984 CEST
+Begin processing the 752nd record. Run 297425, Event 57353317, LumiSection 36 at 05-Jul-2017 18:40:52.050 CEST
+Begin processing the 753rd record. Run 297425, Event 57773800, LumiSection 36 at 05-Jul-2017 18:40:52.081 CEST
+Begin processing the 754th record. Run 297425, Event 57645899, LumiSection 36 at 05-Jul-2017 18:40:52.116 CEST
+Begin processing the 755th record. Run 297425, Event 56584192, LumiSection 36 at 05-Jul-2017 18:40:52.153 CEST
+Begin processing the 756th record. Run 297425, Event 58030759, LumiSection 36 at 05-Jul-2017 18:40:52.194 CEST
+Begin processing the 757th record. Run 297425, Event 57448509, LumiSection 36 at 05-Jul-2017 18:40:52.755 CEST
+Begin processing the 758th record. Run 297425, Event 58043020, LumiSection 36 at 05-Jul-2017 18:40:52.790 CEST
+Begin processing the 759th record. Run 297425, Event 56583829, LumiSection 36 at 05-Jul-2017 18:40:52.820 CEST
+Begin processing the 760th record. Run 297425, Event 56705076, LumiSection 36 at 05-Jul-2017 18:40:52.870 CEST
+Begin processing the 761st record. Run 297425, Event 57330768, LumiSection 36 at 05-Jul-2017 18:40:54.850 CEST
+Begin processing the 762nd record. Run 297425, Event 57867822, LumiSection 36 at 05-Jul-2017 18:40:54.908 CEST
+Begin processing the 763rd record. Run 297425, Event 56938320, LumiSection 36 at 05-Jul-2017 18:40:54.941 CEST
+Begin processing the 764th record. Run 297425, Event 56993793, LumiSection 36 at 05-Jul-2017 18:40:54.959 CEST
+Begin processing the 765th record. Run 297425, Event 57063880, LumiSection 36 at 05-Jul-2017 18:40:54.980 CEST
+Begin processing the 766th record. Run 297425, Event 57377488, LumiSection 36 at 05-Jul-2017 18:40:54.995 CEST
+Begin processing the 767th record. Run 297425, Event 57953889, LumiSection 36 at 05-Jul-2017 18:40:55.028 CEST
+Begin processing the 768th record. Run 297425, Event 57485524, LumiSection 36 at 05-Jul-2017 18:40:55.048 CEST
+Begin processing the 769th record. Run 297425, Event 57633279, LumiSection 36 at 05-Jul-2017 18:40:55.073 CEST
+Begin processing the 770th record. Run 297425, Event 57974332, LumiSection 36 at 05-Jul-2017 18:40:55.113 CEST
+Begin processing the 771st record. Run 297425, Event 57699270, LumiSection 36 at 05-Jul-2017 18:40:55.173 CEST
+Begin processing the 772nd record. Run 297425, Event 56852465, LumiSection 36 at 05-Jul-2017 18:40:55.202 CEST
+Begin processing the 773rd record. Run 297425, Event 57211044, LumiSection 36 at 05-Jul-2017 18:40:55.233 CEST
+Begin processing the 774th record. Run 297425, Event 56811587, LumiSection 36 at 05-Jul-2017 18:40:55.260 CEST
+Begin processing the 775th record. Run 297425, Event 57601157, LumiSection 36 at 05-Jul-2017 18:40:55.313 CEST
+Begin processing the 776th record. Run 297425, Event 57579547, LumiSection 36 at 05-Jul-2017 18:40:56.458 CEST
+Begin processing the 777th record. Run 297425, Event 57822489, LumiSection 36 at 05-Jul-2017 18:40:56.489 CEST
+Begin processing the 778th record. Run 297425, Event 57976082, LumiSection 36 at 05-Jul-2017 18:40:56.517 CEST
+Begin processing the 779th record. Run 297425, Event 57816652, LumiSection 36 at 05-Jul-2017 18:40:56.555 CEST
+Begin processing the 780th record. Run 297425, Event 56812176, LumiSection 36 at 05-Jul-2017 18:40:56.585 CEST
+Begin processing the 781st record. Run 297425, Event 56948830, LumiSection 36 at 05-Jul-2017 18:40:56.638 CEST
+Begin processing the 782nd record. Run 297425, Event 57497791, LumiSection 36 at 05-Jul-2017 18:40:56.654 CEST
+Begin processing the 783rd record. Run 297425, Event 57070598, LumiSection 36 at 05-Jul-2017 18:40:56.694 CEST
+Begin processing the 784th record. Run 297425, Event 58043826, LumiSection 36 at 05-Jul-2017 18:40:56.713 CEST
+Begin processing the 785th record. Run 297425, Event 56862984, LumiSection 36 at 05-Jul-2017 18:40:56.738 CEST
+Begin processing the 786th record. Run 297425, Event 56775381, LumiSection 36 at 05-Jul-2017 18:40:56.770 CEST
+Begin processing the 787th record. Run 297425, Event 56552004, LumiSection 36 at 05-Jul-2017 18:40:56.822 CEST
+Begin processing the 788th record. Run 297425, Event 57848774, LumiSection 36 at 05-Jul-2017 18:40:56.845 CEST
+Begin processing the 789th record. Run 297425, Event 56748812, LumiSection 36 at 05-Jul-2017 18:40:56.876 CEST
+Begin processing the 790th record. Run 297425, Event 57834753, LumiSection 36 at 05-Jul-2017 18:40:56.943 CEST
+Begin processing the 791st record. Run 297425, Event 56865030, LumiSection 36 at 05-Jul-2017 18:40:57.017 CEST
+Time since last check 10118; last check 477672; now 477682; next check 477682
+Trying to open URL: root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?tried=cmsxrootd-site1.fnal.gov
+Reading from 131.225.205.148:21259, quality 3545
+Changing exclude list for URL root://131.225.205.148:21259//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?org.dcache.uuid=a738b85c-c211-4d9f-95c3-6b44f47b669b&tried=cmsxrootd-site1.fnal.gov to cmsxrootd-site2.fnal.gov
+%MSG-i XrdAdaptorInternal:  (NoModuleName) 05-Jul-2017 18:40:59 CEST pre-events
+Xrootd server at 131.225.205.148:21259 did not provide a sitename.  Monitoring may be incomplete.
+%MSG
+%MSG-i XrdAdaptorInternal:  (NoModuleName) 05-Jul-2017 18:40:59 CEST pre-events
+Reading from new server 131.225.205.148:21259 at site fnal.gov
+%MSG
+Successfully opened new source: 131.225.205.148:21259 (unknown site)
+Xrootd server returned excluded source 131.225.205.148:21259 (unknown site); ignoring
+Finished timer after 3305
+[17] Time for readv: 3305 (sub-readv requests: 1)
+Begin processing the 792nd record. Run 297425, Event 57869210, LumiSection 36 at 05-Jul-2017 18:41:00.385 CEST
+Begin processing the 793rd record. Run 297425, Event 56441046, LumiSection 36 at 05-Jul-2017 18:41:00.435 CEST
+Begin processing the 794th record. Run 297425, Event 57803520, LumiSection 36 at 05-Jul-2017 18:41:00.509 CEST
+Begin processing the 795th record. Run 297425, Event 57641168, LumiSection 36 at 05-Jul-2017 18:41:00.554 CEST
+Begin processing the 796th record. Run 297425, Event 56988256, LumiSection 36 at 05-Jul-2017 18:41:00.574 CEST
+Begin processing the 797th record. Run 297425, Event 56549083, LumiSection 36 at 05-Jul-2017 18:41:00.612 CEST
+Begin processing the 798th record. Run 297425, Event 56769255, LumiSection 36 at 05-Jul-2017 18:41:00.665 CEST
+Begin processing the 799th record. Run 297425, Event 57470049, LumiSection 36 at 05-Jul-2017 18:41:00.717 CEST
+Begin processing the 800th record. Run 297425, Event 57235288, LumiSection 36 at 05-Jul-2017 18:41:00.745 CEST
+Begin processing the 801st record. Run 297425, Event 57253387, LumiSection 36 at 05-Jul-2017 18:41:00.810 CEST
+Begin processing the 802nd record. Run 297425, Event 57647007, LumiSection 36 at 05-Jul-2017 18:41:00.836 CEST
+Begin processing the 803rd record. Run 297425, Event 57369601, LumiSection 36 at 05-Jul-2017 18:41:00.880 CEST
+Begin processing the 804th record. Run 297425, Event 57837976, LumiSection 36 at 05-Jul-2017 18:41:00.910 CEST
+Begin processing the 805th record. Run 297425, Event 57174551, LumiSection 36 at 05-Jul-2017 18:41:00.941 CEST
+Begin processing the 806th record. Run 297425, Event 57768474, LumiSection 36 at 05-Jul-2017 18:41:00.978 CEST
+Begin processing the 807th record. Run 297425, Event 57929073, LumiSection 36 at 05-Jul-2017 18:41:01.036 CEST
+Begin processing the 808th record. Run 297425, Event 57322300, LumiSection 36 at 05-Jul-2017 18:41:01.065 CEST
+Begin processing the 809th record. Run 297425, Event 57557654, LumiSection 36 at 05-Jul-2017 18:41:01.119 CEST
+Begin processing the 810th record. Run 297425, Event 56714944, LumiSection 36 at 05-Jul-2017 18:41:01.149 CEST
+Begin processing the 811th record. Run 297425, Event 56895398, LumiSection 36 at 05-Jul-2017 18:41:01.185 CEST
+Begin processing the 812th record. Run 297425, Event 57432095, LumiSection 36 at 05-Jul-2017 18:41:01.220 CEST
+Begin processing the 813th record. Run 297425, Event 57683793, LumiSection 36 at 05-Jul-2017 18:41:01.247 CEST
+Begin processing the 814th record. Run 297425, Event 57102131, LumiSection 36 at 05-Jul-2017 18:41:01.266 CEST
+Begin processing the 815th record. Run 297425, Event 57262731, LumiSection 36 at 05-Jul-2017 18:41:01.293 CEST
+Begin processing the 816th record. Run 297425, Event 58057556, LumiSection 36 at 05-Jul-2017 18:41:01.345 CEST
+Begin processing the 817th record. Run 297425, Event 57602039, LumiSection 36 at 05-Jul-2017 18:41:01.378 CEST
+Begin processing the 818th record. Run 297425, Event 56445714, LumiSection 36 at 05-Jul-2017 18:41:01.445 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:01 CEST Run: 297425 Event: 56445714
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -345  --> electrons = 0
+%MSG
+Begin processing the 819th record. Run 297425, Event 57481147, LumiSection 36 at 05-Jul-2017 18:41:01.462 CEST
+Begin processing the 820th record. Run 297425, Event 57770812, LumiSection 36 at 05-Jul-2017 18:41:01.494 CEST
+Begin processing the 821st record. Run 297425, Event 58044121, LumiSection 36 at 05-Jul-2017 18:41:01.521 CEST
+Begin processing the 822nd record. Run 297425, Event 57239957, LumiSection 36 at 05-Jul-2017 18:41:01.586 CEST
+Begin processing the 823rd record. Run 297425, Event 58064562, LumiSection 36 at 05-Jul-2017 18:41:01.614 CEST
+Begin processing the 824th record. Run 297425, Event 57992152, LumiSection 36 at 05-Jul-2017 18:41:01.711 CEST
+Begin processing the 825th record. Run 297425, Event 56846187, LumiSection 36 at 05-Jul-2017 18:41:01.739 CEST
+Begin processing the 826th record. Run 297425, Event 57634592, LumiSection 36 at 05-Jul-2017 18:41:01.768 CEST
+Begin processing the 827th record. Run 297425, Event 57249150, LumiSection 36 at 05-Jul-2017 18:41:01.803 CEST
+Begin processing the 828th record. Run 297425, Event 56676832, LumiSection 36 at 05-Jul-2017 18:41:01.849 CEST
+Begin processing the 829th record. Run 297425, Event 56665732, LumiSection 36 at 05-Jul-2017 18:41:01.884 CEST
+Begin processing the 830th record. Run 297425, Event 57069862, LumiSection 36 at 05-Jul-2017 18:41:01.962 CEST
+Begin processing the 831st record. Run 297425, Event 56818738, LumiSection 36 at 05-Jul-2017 18:41:01.994 CEST
+Begin processing the 832nd record. Run 297425, Event 56444400, LumiSection 36 at 05-Jul-2017 18:41:02.038 CEST
+Begin processing the 833rd record. Run 297425, Event 56721949, LumiSection 36 at 05-Jul-2017 18:41:02.096 CEST
+Begin processing the 834th record. Run 297425, Event 57214112, LumiSection 36 at 05-Jul-2017 18:41:02.238 CEST
+Begin processing the 835th record. Run 297425, Event 56826919, LumiSection 36 at 05-Jul-2017 18:41:02.268 CEST
+Begin processing the 836th record. Run 297425, Event 56885901, LumiSection 36 at 05-Jul-2017 18:41:02.285 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:02 CEST Run: 297425 Event: 56885901
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -432  --> electrons = 0
+%MSG
+Begin processing the 837th record. Run 297425, Event 56843849, LumiSection 36 at 05-Jul-2017 18:41:02.312 CEST
+Begin processing the 838th record. Run 297425, Event 56636531, LumiSection 36 at 05-Jul-2017 18:41:02.332 CEST
+Begin processing the 839th record. Run 297425, Event 56530829, LumiSection 36 at 05-Jul-2017 18:41:02.352 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:02 CEST Run: 297425 Event: 56530829
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -992  --> electrons = 0
+%MSG
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:02 CEST Run: 297425 Event: 56530829
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -1785  --> electrons = 0
+%MSG
+Begin processing the 840th record. Run 297425, Event 56869546, LumiSection 36 at 05-Jul-2017 18:41:02.378 CEST
+Begin processing the 841st record. Run 297425, Event 57916662, LumiSection 36 at 05-Jul-2017 18:41:02.410 CEST
+Begin processing the 842nd record. Run 297425, Event 57276597, LumiSection 36 at 05-Jul-2017 18:41:02.444 CEST
+Begin processing the 843rd record. Run 297425, Event 57125337, LumiSection 36 at 05-Jul-2017 18:41:02.474 CEST
+Begin processing the 844th record. Run 297425, Event 57287693, LumiSection 36 at 05-Jul-2017 18:41:02.534 CEST
+Begin processing the 845th record. Run 297425, Event 56982261, LumiSection 36 at 05-Jul-2017 18:41:02.568 CEST
+Begin processing the 846th record. Run 297425, Event 57300540, LumiSection 36 at 05-Jul-2017 18:41:02.595 CEST
+Begin processing the 847th record. Run 297425, Event 57399233, LumiSection 36 at 05-Jul-2017 18:41:02.833 CEST
+Begin processing the 848th record. Run 297425, Event 57568596, LumiSection 36 at 05-Jul-2017 18:41:02.887 CEST
+Begin processing the 849th record. Run 297425, Event 56841514, LumiSection 36 at 05-Jul-2017 18:41:02.914 CEST
+Begin processing the 850th record. Run 297425, Event 56654639, LumiSection 36 at 05-Jul-2017 18:41:02.948 CEST
+Begin processing the 851st record. Run 297425, Event 57130014, LumiSection 36 at 05-Jul-2017 18:41:02.975 CEST
+Begin processing the 852nd record. Run 297425, Event 57927760, LumiSection 36 at 05-Jul-2017 18:41:03.011 CEST
+Begin processing the 853rd record. Run 297425, Event 56874807, LumiSection 36 at 05-Jul-2017 18:41:03.046 CEST
+Begin processing the 854th record. Run 297425, Event 56641789, LumiSection 36 at 05-Jul-2017 18:41:03.062 CEST
+Begin processing the 855th record. Run 297425, Event 57690654, LumiSection 36 at 05-Jul-2017 18:41:03.079 CEST
+Begin processing the 856th record. Run 297425, Event 57213525, LumiSection 36 at 05-Jul-2017 18:41:03.116 CEST
+Begin processing the 857th record. Run 297425, Event 57144696, LumiSection 36 at 05-Jul-2017 18:41:03.135 CEST
+Begin processing the 858th record. Run 297425, Event 56435636, LumiSection 36 at 05-Jul-2017 18:41:03.151 CEST
+Begin processing the 859th record. Run 297425, Event 57478155, LumiSection 36 at 05-Jul-2017 18:41:03.175 CEST
+Begin processing the 860th record. Run 297425, Event 57559256, LumiSection 36 at 05-Jul-2017 18:41:03.200 CEST
+Begin processing the 861st record. Run 297425, Event 57366536, LumiSection 36 at 05-Jul-2017 18:41:03.235 CEST
+Begin processing the 862nd record. Run 297425, Event 57325070, LumiSection 36 at 05-Jul-2017 18:41:04.434 CEST
+Begin processing the 863rd record. Run 297425, Event 56595734, LumiSection 36 at 05-Jul-2017 18:41:04.485 CEST
+Begin processing the 864th record. Run 297425, Event 57158045, LumiSection 36 at 05-Jul-2017 18:41:04.508 CEST
+Begin processing the 865th record. Run 297425, Event 56600906, LumiSection 36 at 05-Jul-2017 18:41:04.582 CEST
+Begin processing the 866th record. Run 297425, Event 56796046, LumiSection 36 at 05-Jul-2017 18:41:04.640 CEST
+Begin processing the 867th record. Run 297425, Event 57532391, LumiSection 36 at 05-Jul-2017 18:41:04.669 CEST
+Begin processing the 868th record. Run 297425, Event 56536748, LumiSection 36 at 05-Jul-2017 18:41:04.699 CEST
+Begin processing the 869th record. Run 297425, Event 57725775, LumiSection 36 at 05-Jul-2017 18:41:04.726 CEST
+Begin processing the 870th record. Run 297425, Event 58002002, LumiSection 36 at 05-Jul-2017 18:41:04.753 CEST
+Begin processing the 871st record. Run 297425, Event 56452067, LumiSection 36 at 05-Jul-2017 18:41:04.788 CEST
+Time since last check 7776; last check 477682; now 477690; next check 477692
+Reading from 131.225.205.148:21259, quality 3554
+Finished timer after 3746
+[18] Time for readv: 3746 (sub-readv requests: 1)
+Begin processing the 872nd record. Run 297425, Event 56534413, LumiSection 36 at 05-Jul-2017 18:41:08.671 CEST
+Begin processing the 873rd record. Run 297425, Event 56467255, LumiSection 36 at 05-Jul-2017 18:41:08.720 CEST
+Begin processing the 874th record. Run 297425, Event 56880723, LumiSection 36 at 05-Jul-2017 18:41:08.749 CEST
+Begin processing the 875th record. Run 297425, Event 57311135, LumiSection 36 at 05-Jul-2017 18:41:08.823 CEST
+Begin processing the 876th record. Run 297425, Event 57912656, LumiSection 36 at 05-Jul-2017 18:41:08.860 CEST
+Begin processing the 877th record. Run 297425, Event 57222946, LumiSection 36 at 05-Jul-2017 18:41:08.956 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:08 CEST Run: 297425 Event: 57222946
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -249  --> electrons = 0
+%MSG
+Begin processing the 878th record. Run 297425, Event 56830499, LumiSection 36 at 05-Jul-2017 18:41:08.989 CEST
+Begin processing the 879th record. Run 297425, Event 56553102, LumiSection 36 at 05-Jul-2017 18:41:09.058 CEST
+Begin processing the 880th record. Run 297425, Event 57058847, LumiSection 36 at 05-Jul-2017 18:41:09.122 CEST
+Begin processing the 881st record. Run 297425, Event 57177981, LumiSection 36 at 05-Jul-2017 18:41:09.140 CEST
+Begin processing the 882nd record. Run 297425, Event 57471149, LumiSection 36 at 05-Jul-2017 18:41:09.167 CEST
+Begin processing the 883rd record. Run 297425, Event 56846854, LumiSection 36 at 05-Jul-2017 18:41:09.266 CEST
+Begin processing the 884th record. Run 297425, Event 56677494, LumiSection 36 at 05-Jul-2017 18:41:09.297 CEST
+Begin processing the 885th record. Run 297425, Event 56675744, LumiSection 36 at 05-Jul-2017 18:41:09.330 CEST
+Begin processing the 886th record. Run 297425, Event 57548238, LumiSection 36 at 05-Jul-2017 18:41:09.367 CEST
+Begin processing the 887th record. Run 297425, Event 56517945, LumiSection 36 at 05-Jul-2017 18:41:09.458 CEST
+Begin processing the 888th record. Run 297425, Event 56854441, LumiSection 36 at 05-Jul-2017 18:41:09.492 CEST
+Begin processing the 889th record. Run 297425, Event 58063323, LumiSection 36 at 05-Jul-2017 18:41:09.529 CEST
+Begin processing the 890th record. Run 297425, Event 57099144, LumiSection 36 at 05-Jul-2017 18:41:09.566 CEST
+Begin processing the 891st record. Run 297425, Event 56909343, LumiSection 36 at 05-Jul-2017 18:41:09.608 CEST
+Begin processing the 892nd record. Run 297425, Event 57718069, LumiSection 36 at 05-Jul-2017 18:41:09.677 CEST
+Begin processing the 893rd record. Run 297425, Event 57709893, LumiSection 36 at 05-Jul-2017 18:41:09.708 CEST
+Begin processing the 894th record. Run 297425, Event 56763340, LumiSection 36 at 05-Jul-2017 18:41:09.731 CEST
+Begin processing the 895th record. Run 297425, Event 57830783, LumiSection 36 at 05-Jul-2017 18:41:09.798 CEST
+Begin processing the 896th record. Run 297425, Event 56499263, LumiSection 36 at 05-Jul-2017 18:41:09.836 CEST
+Begin processing the 897th record. Run 297425, Event 57843044, LumiSection 36 at 05-Jul-2017 18:41:09.880 CEST
+Begin processing the 898th record. Run 297425, Event 56860756, LumiSection 36 at 05-Jul-2017 18:41:09.935 CEST
+Begin processing the 899th record. Run 297425, Event 56885870, LumiSection 36 at 05-Jul-2017 18:41:09.981 CEST
+Begin processing the 900th record. Run 297425, Event 57655579, LumiSection 36 at 05-Jul-2017 18:41:10.036 CEST
+Begin processing the 901st record. Run 297425, Event 57063990, LumiSection 36 at 05-Jul-2017 18:41:10.086 CEST
+Begin processing the 902nd record. Run 297425, Event 58019415, LumiSection 36 at 05-Jul-2017 18:41:10.196 CEST
+Begin processing the 903rd record. Run 297425, Event 57352488, LumiSection 36 at 05-Jul-2017 18:41:10.274 CEST
+Begin processing the 904th record. Run 297425, Event 57355402, LumiSection 36 at 05-Jul-2017 18:41:10.303 CEST
+Begin processing the 905th record. Run 297425, Event 57020773, LumiSection 36 at 05-Jul-2017 18:41:10.334 CEST
+Begin processing the 906th record. Run 297425, Event 57278313, LumiSection 36 at 05-Jul-2017 18:41:10.397 CEST
+Begin processing the 907th record. Run 297425, Event 57604774, LumiSection 36 at 05-Jul-2017 18:41:10.462 CEST
+Begin processing the 908th record. Run 297425, Event 57176697, LumiSection 36 at 05-Jul-2017 18:41:10.484 CEST
+Begin processing the 909th record. Run 297425, Event 57845380, LumiSection 36 at 05-Jul-2017 18:41:10.503 CEST
+Begin processing the 910th record. Run 297425, Event 56631831, LumiSection 36 at 05-Jul-2017 18:41:10.605 CEST
+Begin processing the 911th record. Run 297425, Event 57181953, LumiSection 36 at 05-Jul-2017 18:41:11.142 CEST
+Begin processing the 912th record. Run 297425, Event 57028367, LumiSection 36 at 05-Jul-2017 18:41:11.202 CEST
+Begin processing the 913th record. Run 297425, Event 56996826, LumiSection 36 at 05-Jul-2017 18:41:13.735 CEST
+Begin processing the 914th record. Run 297425, Event 56861923, LumiSection 36 at 05-Jul-2017 18:41:13.782 CEST
+Begin processing the 915th record. Run 297425, Event 57448260, LumiSection 36 at 05-Jul-2017 18:41:13.843 CEST
+Begin processing the 916th record. Run 297425, Event 56471809, LumiSection 36 at 05-Jul-2017 18:41:13.902 CEST
+Begin processing the 917th record. Run 297425, Event 57986708, LumiSection 36 at 05-Jul-2017 18:41:13.964 CEST
+Begin processing the 918th record. Run 297425, Event 57977362, LumiSection 36 at 05-Jul-2017 18:41:14.022 CEST
+Begin processing the 919th record. Run 297425, Event 57694121, LumiSection 36 at 05-Jul-2017 18:41:14.176 CEST
+Begin processing the 920th record. Run 297425, Event 56682050, LumiSection 36 at 05-Jul-2017 18:41:14.252 CEST
+Begin processing the 921st record. Run 297425, Event 57367338, LumiSection 36 at 05-Jul-2017 18:41:14.312 CEST
+Begin processing the 922nd record. Run 297425, Event 57018440, LumiSection 36 at 05-Jul-2017 18:41:14.341 CEST
+Begin processing the 923rd record. Run 297425, Event 56545398, LumiSection 36 at 05-Jul-2017 18:41:14.424 CEST
+Begin processing the 924th record. Run 297425, Event 56435601, LumiSection 36 at 05-Jul-2017 18:41:14.476 CEST
+Begin processing the 925th record. Run 297425, Event 56955618, LumiSection 36 at 05-Jul-2017 18:41:14.580 CEST
+Begin processing the 926th record. Run 297425, Event 57581412, LumiSection 36 at 05-Jul-2017 18:41:14.621 CEST
+Begin processing the 927th record. Run 297425, Event 56460971, LumiSection 36 at 05-Jul-2017 18:41:14.655 CEST
+Begin processing the 928th record. Run 297425, Event 57561815, LumiSection 36 at 05-Jul-2017 18:41:14.699 CEST
+Begin processing the 929th record. Run 297425, Event 57443257, LumiSection 36 at 05-Jul-2017 18:41:14.772 CEST
+Begin processing the 930th record. Run 297425, Event 57497574, LumiSection 36 at 05-Jul-2017 18:41:14.811 CEST
+Begin processing the 931st record. Run 297425, Event 56566675, LumiSection 36 at 05-Jul-2017 18:41:14.869 CEST
+Begin processing the 932nd record. Run 297425, Event 57614953, LumiSection 36 at 05-Jul-2017 18:41:14.904 CEST
+Begin processing the 933rd record. Run 297425, Event 57891187, LumiSection 36 at 05-Jul-2017 18:41:14.938 CEST
+Begin processing the 934th record. Run 297425, Event 57628390, LumiSection 36 at 05-Jul-2017 18:41:14.983 CEST
+Begin processing the 935th record. Run 297425, Event 57656422, LumiSection 36 at 05-Jul-2017 18:41:15.108 CEST
+Begin processing the 936th record. Run 297425, Event 57891192, LumiSection 36 at 05-Jul-2017 18:41:15.175 CEST
+Begin processing the 937th record. Run 297425, Event 57759207, LumiSection 36 at 05-Jul-2017 18:41:15.224 CEST
+Begin processing the 938th record. Run 297425, Event 57891769, LumiSection 36 at 05-Jul-2017 18:41:15.307 CEST
+Begin processing the 939th record. Run 297425, Event 56906567, LumiSection 36 at 05-Jul-2017 18:41:15.351 CEST
+Begin processing the 940th record. Run 297425, Event 57897613, LumiSection 36 at 05-Jul-2017 18:41:15.431 CEST
+Begin processing the 941st record. Run 297425, Event 57660506, LumiSection 36 at 05-Jul-2017 18:41:15.482 CEST
+Begin processing the 942nd record. Run 297425, Event 56970808, LumiSection 36 at 05-Jul-2017 18:41:15.560 CEST
+Begin processing the 943rd record. Run 297425, Event 56757059, LumiSection 36 at 05-Jul-2017 18:41:15.583 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:15 CEST Run: 297425 Event: 56757059
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -601  --> electrons = 0
+%MSG
+Begin processing the 944th record. Run 297425, Event 57287917, LumiSection 36 at 05-Jul-2017 18:41:15.625 CEST
+Begin processing the 945th record. Run 297425, Event 57404720, LumiSection 36 at 05-Jul-2017 18:41:15.653 CEST
+Begin processing the 946th record. Run 297425, Event 58000393, LumiSection 36 at 05-Jul-2017 18:41:15.693 CEST
+Begin processing the 947th record. Run 297425, Event 56777498, LumiSection 36 at 05-Jul-2017 18:41:15.791 CEST
+Begin processing the 948th record. Run 297425, Event 57658754, LumiSection 36 at 05-Jul-2017 18:41:17.572 CEST
+Begin processing the 949th record. Run 297425, Event 56688730, LumiSection 36 at 05-Jul-2017 18:41:17.655 CEST
+Time since last check 20678; last check 477682; now 477703; next check 477692
+Trying to open URL: root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?tried=cmsxrootd-site1.fnal.gov
+Reading from 131.225.205.148:21259, quality 3640
+Changing exclude list for URL root://131.225.205.148:21259//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root?org.dcache.uuid=e91fabd4-0c7e-434d-be4b-4217742926e3&tried=cmsxrootd-site1.fnal.gov to cmsxrootd-site2.fnal.gov
+%MSG-i XrdAdaptorInternal:  (NoModuleName) 05-Jul-2017 18:41:19 CEST pre-events
+Xrootd server at 131.225.205.148:21259 did not provide a sitename.  Monitoring may be incomplete.
+%MSG
+%MSG-i XrdAdaptorInternal:  (NoModuleName) 05-Jul-2017 18:41:19 CEST pre-events
+Reading from new server 131.225.205.148:21259 at site fnal.gov
+%MSG
+Successfully opened new source: 131.225.205.148:21259 (unknown site)
+Xrootd server returned excluded source 131.225.205.148:21259 (unknown site); ignoring
+Finished timer after 3690
+[19] Time for readv: 3690 (sub-readv requests: 1)
+Begin processing the 950th record. Run 297425, Event 56814873, LumiSection 36 at 05-Jul-2017 18:41:21.444 CEST
+Begin processing the 951st record. Run 297425, Event 57489980, LumiSection 36 at 05-Jul-2017 18:41:21.512 CEST
+Begin processing the 952nd record. Run 297425, Event 57393433, LumiSection 36 at 05-Jul-2017 18:41:21.591 CEST
+Begin processing the 953rd record. Run 297425, Event 56715012, LumiSection 36 at 05-Jul-2017 18:41:21.688 CEST
+Begin processing the 954th record. Run 297425, Event 57047310, LumiSection 36 at 05-Jul-2017 18:41:21.749 CEST
+Begin processing the 955th record. Run 297425, Event 57071650, LumiSection 36 at 05-Jul-2017 18:41:21.802 CEST
+Begin processing the 956th record. Run 297425, Event 56606788, LumiSection 36 at 05-Jul-2017 18:41:21.832 CEST
+Begin processing the 957th record. Run 297425, Event 56892949, LumiSection 36 at 05-Jul-2017 18:41:21.849 CEST
+Begin processing the 958th record. Run 297425, Event 57808660, LumiSection 36 at 05-Jul-2017 18:41:21.886 CEST
+Begin processing the 959th record. Run 297425, Event 57630540, LumiSection 36 at 05-Jul-2017 18:41:21.919 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:21 CEST Run: 297425 Event: 57630540
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -579  --> electrons = 0
+%MSG
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:21 CEST Run: 297425 Event: 57630540
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -569  --> electrons = 0
+%MSG
+Begin processing the 960th record. Run 297425, Event 56676284, LumiSection 36 at 05-Jul-2017 18:41:21.976 CEST
+Begin processing the 961st record. Run 297425, Event 57748507, LumiSection 36 at 05-Jul-2017 18:41:22.002 CEST
+Begin processing the 962nd record. Run 297425, Event 57281892, LumiSection 36 at 05-Jul-2017 18:41:22.054 CEST
+Begin processing the 963rd record. Run 297425, Event 57096181, LumiSection 36 at 05-Jul-2017 18:41:22.082 CEST
+Begin processing the 964th record. Run 297425, Event 57552286, LumiSection 36 at 05-Jul-2017 18:41:22.128 CEST
+Begin processing the 965th record. Run 297425, Event 57028436, LumiSection 36 at 05-Jul-2017 18:41:22.188 CEST
+Begin processing the 966th record. Run 297425, Event 57655071, LumiSection 36 at 05-Jul-2017 18:41:22.286 CEST
+Begin processing the 967th record. Run 297425, Event 57108443, LumiSection 36 at 05-Jul-2017 18:41:22.355 CEST
+Begin processing the 968th record. Run 297425, Event 57787049, LumiSection 36 at 05-Jul-2017 18:41:22.390 CEST
+Begin processing the 969th record. Run 297425, Event 57801654, LumiSection 36 at 05-Jul-2017 18:41:22.435 CEST
+Begin processing the 970th record. Run 297425, Event 57814504, LumiSection 36 at 05-Jul-2017 18:41:22.477 CEST
+Begin processing the 971st record. Run 297425, Event 57814497, LumiSection 36 at 05-Jul-2017 18:41:22.503 CEST
+Begin processing the 972nd record. Run 297425, Event 57420299, LumiSection 36 at 05-Jul-2017 18:41:22.531 CEST
+Begin processing the 973rd record. Run 297425, Event 56961859, LumiSection 36 at 05-Jul-2017 18:41:22.604 CEST
+Begin processing the 974th record. Run 297425, Event 57055887, LumiSection 36 at 05-Jul-2017 18:41:22.660 CEST
+Begin processing the 975th record. Run 297425, Event 57068146, LumiSection 36 at 05-Jul-2017 18:41:22.695 CEST
+Begin processing the 976th record. Run 297425, Event 57363650, LumiSection 36 at 05-Jul-2017 18:41:22.749 CEST
+Begin processing the 977th record. Run 297425, Event 56950765, LumiSection 36 at 05-Jul-2017 18:41:22.845 CEST
+Begin processing the 978th record. Run 297425, Event 57992040, LumiSection 36 at 05-Jul-2017 18:41:22.880 CEST
+Begin processing the 979th record. Run 297425, Event 56964198, LumiSection 36 at 05-Jul-2017 18:41:22.981 CEST
+Begin processing the 980th record. Run 297425, Event 56947841, LumiSection 36 at 05-Jul-2017 18:41:23.016 CEST
+Begin processing the 981st record. Run 297425, Event 57436070, LumiSection 36 at 05-Jul-2017 18:41:23.044 CEST
+Begin processing the 982nd record. Run 297425, Event 57904434, LumiSection 36 at 05-Jul-2017 18:41:23.088 CEST
+Begin processing the 983rd record. Run 297425, Event 57322776, LumiSection 36 at 05-Jul-2017 18:41:23.118 CEST
+Begin processing the 984th record. Run 297425, Event 56873673, LumiSection 36 at 05-Jul-2017 18:41:23.145 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:23 CEST Run: 297425 Event: 56873673
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -724  --> electrons = 0
+%MSG
+Begin processing the 985th record. Run 297425, Event 57784780, LumiSection 36 at 05-Jul-2017 18:41:23.168 CEST
+Begin processing the 986th record. Run 297425, Event 56862577, LumiSection 36 at 05-Jul-2017 18:41:23.185 CEST
+Begin processing the 987th record. Run 297425, Event 57641051, LumiSection 36 at 05-Jul-2017 18:41:23.234 CEST
+Begin processing the 988th record. Run 297425, Event 56818260, LumiSection 36 at 05-Jul-2017 18:41:23.282 CEST
+%MSG-i RPixCalibration:  CTPPSPixelClusterProducer:clusterProd  05-Jul-2017 18:41:23 CEST Run: 297425 Event: 56818260
+RPixDetClusterizer::calibrate: *** electrons < 0 *** --> -285  --> electrons = 0
+%MSG
+Begin processing the 989th record. Run 297425, Event 57213561, LumiSection 36 at 05-Jul-2017 18:41:23.307 CEST
+Begin processing the 990th record. Run 297425, Event 57443142, LumiSection 36 at 05-Jul-2017 18:41:23.516 CEST
+Begin processing the 991st record. Run 297425, Event 56832278, LumiSection 36 at 05-Jul-2017 18:41:23.582 CEST
+Begin processing the 992nd record. Run 297425, Event 56546704, LumiSection 36 at 05-Jul-2017 18:41:23.622 CEST
+Begin processing the 993rd record. Run 297425, Event 57999632, LumiSection 36 at 05-Jul-2017 18:41:23.638 CEST
+Begin processing the 994th record. Run 297425, Event 58048688, LumiSection 36 at 05-Jul-2017 18:41:23.674 CEST
+Begin processing the 995th record. Run 297425, Event 56853882, LumiSection 36 at 05-Jul-2017 18:41:23.705 CEST
+Begin processing the 996th record. Run 297425, Event 57346778, LumiSection 36 at 05-Jul-2017 18:41:23.735 CEST
+Begin processing the 997th record. Run 297425, Event 57242248, LumiSection 36 at 05-Jul-2017 18:41:23.761 CEST
+Begin processing the 998th record. Run 297425, Event 56877247, LumiSection 36 at 05-Jul-2017 18:41:23.795 CEST
+Begin processing the 999th record. Run 297425, Event 56429318, LumiSection 36 at 05-Jul-2017 18:41:23.852 CEST
+Begin processing the 1000th record. Run 297425, Event 57098582, LumiSection 36 at 05-Jul-2017 18:41:23.911 CEST
+%MSG-i XrdFileInfo:  file_close 05-Jul-2017 18:41:24 CEST PostGlobalEndRun
+Closed root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root
+%MSG
+05-Jul-2017 18:41:24 CEST  Closed file root://cms-xrd-global.cern.ch//store/data/Run2017B/ZeroBias/AOD/PromptReco-v1/000/297/425/00000/1CAC00AE-4F5A-E711-8EDE-02163E019C23.root

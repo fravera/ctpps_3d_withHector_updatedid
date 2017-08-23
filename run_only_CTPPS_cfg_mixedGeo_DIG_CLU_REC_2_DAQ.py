@@ -118,19 +118,19 @@ process.generation_step = cms.Path(process.pgen)
 process.simulation_step = cms.Path(process.psim)
 
 
-process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelClusterizer_cfi")
-process.clusterProd.RPixVerbosity = cms.int32(0)
-process.clusterProd.doSingleCalibration = cms.bool(True)
-process.clusterProd.label=cms.untracked.string("RPixDetDigitizer")
-process.clusterProd.doSingleCalibration = cms.bool(True)
-process.load("RecoCTPPS.CTPPSPixelLocal.CTPPSPixelRecHit_cfi")
-process.rechitProd.RPixVerbosity = cms.int32(2)
+process.load("RecoCTPPS.PixelLocal.ctppsPixelClusters_cfi")
+process.ctppsPixelClusters.RPixVerbosity = cms.int32(0)
+process.ctppsPixelClusters.doSingleCalibration = cms.bool(True)
+process.ctppsPixelClusters.label=cms.untracked.string("RPixDetDigitizer")
+process.ctppsPixelClusters.doSingleCalibration = cms.bool(True)
+process.load("RecoCTPPS.PixelLocal.ctppsPixelRecHits_cfi")
+process.ctppsPixelRecHits.RPixVerbosity = cms.int32(2)
 
 
 
 process.g4Simhits_step = cms.Path(process.g4SimHits)
 
-process.mixedigi_step = cms.Path(process.mix*process.RPixDetDigitizer*process.clusterProd*process.rechitProd)
+process.mixedigi_step = cms.Path(process.mix*process.RPixDetDigitizer*process.ctppsPixelClusters*process.ctppsPixelRecHits)
 
 # Transport
 process.transport_step = cms.Path(process.LHCTransport)

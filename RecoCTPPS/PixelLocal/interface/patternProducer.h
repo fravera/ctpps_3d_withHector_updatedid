@@ -33,7 +33,7 @@
 #include "RecoCTPPS/PixelLocal/interface/RPixClusterToHit.h" 
 
 #include "FWCore/Framework/interface/ESWatcher.h"
-#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
+#include "Geometry/VeryForwardGeometryBuilder/interface/CTPPSGeometry.h"
 #include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
 #include "Geometry/Records/interface/VeryForwardMisalignedGeometryRecord.h"
@@ -42,6 +42,13 @@
 #include <vector>
 #include <set>
 
+
+#include "TROOT.h"
+#include "TFile.h"
+#include "TTree.h"
+#include "TBranch.h"
+#include "TH1F.h"
+#include "TH2F.h"
 
 
 class patternProducer : public edm::stream::EDProducer<>
@@ -56,6 +63,9 @@ public:
   static void fillDescriptions(edm::ConfigurationDescriptions & descriptions);
   virtual void produce(edm::Event&, const edm::EventSetup&) override;
 
+  virtual void beginStream(const edm::StreamID) override;
+  virtual void endStream() override;
+  
 private:
   edm::ParameterSet param_;
   int verbosity_;
@@ -67,11 +77,25 @@ private:
   edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelRecHit>> tokenCTPPSPixelRecHit_;
   
   edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher;
-  void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const TotemRPGeometry & geometry, std::vector<Road> &roads);
+  void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const CTPPSGeometry & geometry, std::vector<Road> &roads);
   
 // void run(const edm::DetSetVector<CTPPSPixelCluster> &input, edm::DetSetVector<CTPPSPixelRecHit> &output);
  
- 
+   TFile* fFile;
+   TH2F * plane_plus_0;
+   TH2F * plane_plus_1;
+   TH2F * plane_plus_2;
+   TH2F * plane_plus_3;
+   TH2F * plane_plus_4;
+   TH2F * plane_plus_5;
+
+   TH2F * plane_minus_0;
+   TH2F * plane_minus_1;
+   TH2F * plane_minus_2;
+   TH2F * plane_minus_3;
+   TH2F * plane_minus_4;
+   TH2F * plane_minus_5;
+
 };
 
 

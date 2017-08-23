@@ -4,14 +4,12 @@
  * December 2016
  *
  **********************************************************************/
-#ifndef RecoCTPPS_PixelLocal_CTPPSPixelRecHitProducer
-#define RecoCTPPS_PixelLocal_CTPPSPixelRecHitProducer
+#ifndef RecoCTPPS_PixelLocal_CTPPSPixelRecHitProducer_H
+#define RecoCTPPS_PixelLocal_CTPPSPixelRecHitProducer_H
 
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "DataFormats/Common/interface/DetSetVector.h"
 #include "DataFormats/Common/interface/DetSet.h"
-//#include "DataFormats/Common/interface/DetSetVectorNew.h"
-//#include "FWCore/Framework/interface/EDProducer.h"
 
 #include "FWCore/Framework/interface/stream/EDProducer.h"
 #include "FWCore/Framework/interface/Event.h"
@@ -22,7 +20,6 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/Utilities/interface/InputTag.h"
 
-
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelCluster.h"
 #include "DataFormats/CTPPSReco/interface/CTPPSPixelRecHit.h"
 #include "DataFormats/DetId/interface/DetId.h"
@@ -30,41 +27,30 @@
 #include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
 #include "RecoCTPPS/PixelLocal/interface/RPixClusterToHit.h" 
 
-#include "FWCore/Framework/interface/ESWatcher.h"
-#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
-#include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
-#include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
-#include "Geometry/Records/interface/VeryForwardMisalignedGeometryRecord.h"
-
-
-#include <vector>
-#include <set>
-
-
 
 class CTPPSPixelRecHitProducer : public edm::stream::EDProducer<>
 {
 public:
   explicit CTPPSPixelRecHitProducer(const edm::ParameterSet& param);
- 
+  
   ~CTPPSPixelRecHitProducer();
-
- virtual void produce(edm::Event&, const edm::EventSetup&) override;
-
- static void fillDescriptions(edm::ConfigurationDescriptions & descriptions);
+  
+  virtual void produce(edm::Event&, const edm::EventSetup&) override;
+  
+  static void fillDescriptions(edm::ConfigurationDescriptions & descriptions);
 
 private:
- edm::ParameterSet param_;
- int verbosity_;
- 
- edm::InputTag src_;
- edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelCluster>> tokenCTPPSPixelCluster_;
+  edm::ParameterSet param_;
+  int verbosity_;
   
- edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher;
-
- RPixClusterToHit cluster2hit_;
+  edm::InputTag src_;
+  edm::EDGetTokenT<edm::DetSetVector<CTPPSPixelCluster>> tokenCTPPSPixelCluster_;
   
- void run(const edm::DetSetVector<CTPPSPixelCluster> &input, edm::DetSetVector<CTPPSPixelRecHit> &output);
+// edm::ESWatcher<VeryForwardMisalignedGeometryRecord> geometryWatcher;
+  
+  RPixClusterToHit cluster2hit_;
+  
+  void run(const edm::DetSetVector<CTPPSPixelCluster> &input, edm::DetSetVector<CTPPSPixelRecHit> &output);
 };
 
 #endif

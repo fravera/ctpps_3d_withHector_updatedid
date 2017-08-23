@@ -13,7 +13,7 @@ RPixDummyROCSimulator::RPixDummyROCSimulator(const edm::ParameterSet &params, ui
   electron_per_adc_ = params.getParameter<double>("RPixDummyROCElectronPerADC");
   dead_pixel_probability_ = params.getParameter<double>("RPixDeadPixelProbability");
   dead_pixels_simulation_on_ = params.getParameter<bool>("RPixDeadPixelSimulationOn");
-  pixels_no_ = CTPPSPixelTopology().DetPixelNo();
+  pixels_no_ = CTPPSPixelTopology().detPixelNo();
   verbosity_ = params.getParameter<int>("RPixVerbosity");
   links_persistence_ = params.getParameter<bool>("CTPPSPixelDigiSimHitRelationsPersistence");
   

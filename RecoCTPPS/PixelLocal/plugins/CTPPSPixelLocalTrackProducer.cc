@@ -119,9 +119,9 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
   edm::DetSetVector<CTPPSPixelRecHit> recHitVector = recHitVectorOrig;
 
   // get geometry
-  edm::ESHandle<TotemRPGeometry> geometryHandler;
+  edm::ESHandle<CTPPSGeometry> geometryHandler;
   iSetup.get<VeryForwardRealGeometryRecord>().get(geometryHandler);
-  const TotemRPGeometry &geometry = *geometryHandler;
+  const CTPPSGeometry &geometry = *geometryHandler;
   geometryWatcher_.check(iSetup);
 
   std::vector<CTPPSPixelDetId> listOfPotWithHighOccupancyPlanes; 
@@ -133,7 +133,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
 
   for(const auto & recHitSet : recHitVector){
     
-    if(verbosity_>2) cout<<"Hits found in plane = "<<recHitSet.detId()<< " number = " << recHitSet.size() <<std::endl;
+    if(verbosity_>2) std::cout<<"Hits found in plane = "<<recHitSet.detId()<< " number = " << recHitSet.size() <<std::endl;
     CTPPSPixelDetId tmpRomanPotId = CTPPSPixelDetId(recHitSet.detId()).getRPId();
     uint32_t hitOnPlane = recHitSet.size();
 
@@ -145,7 +145,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
       for(const auto & plane : listOfAllPlanes_){
         CTPPSPixelDetId tmpDetectorId = tmpRomanPotId;
         tmpDetectorId.setPlane(plane);
-        DDRotationMatrix theRotationMatrix = geometry.GetDetector(tmpDetectorId)->rotation();
+        DDRotationMatrix theRotationMatrix = geometry.getSensor(tmpDetectorId)->rotation();
         TMatrixD theRotationTMatrix;
         theRotationTMatrix.ResizeTo(3,3);
         theRotationMatrix.GetComponents(theRotationTMatrix[0][0], theRotationTMatrix[0][1], theRotationTMatrix[0][2],
@@ -155,7 +155,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
         planeRotationMatrixMap[tmpDetectorId].ResizeTo(3,3);
         planeRotationMatrixMap[tmpDetectorId] = theRotationTMatrix;
         CLHEP::Hep3Vector localV(0.,0.,0.);
-        CLHEP::Hep3Vector globalV = geometry.LocalToGlobal(tmpDetectorId,localV);
+        CLHEP::Hep3Vector globalV = geometry.localToGlobal(tmpDetectorId,localV);
         planePointMap[tmpDetectorId] = globalV;
       }
     }
@@ -246,7 +246,7 @@ void CTPPSPixelLocalTrackProducer::produce(edm::Event& iEvent, const edm::EventS
   if(verbosity_>1) std::cout<<"Number of tracks will be saved = "<<numberOfTracks<<std::endl;
 
   for(const auto & track : foundTracks){
-    if(verbosity_>1) cout<<"Track found in detId = "<<track.detId()<< " number = " << track.size() <<std::endl;
+    if(verbosity_>1) std::cout<<"Track found in detId = "<<track.detId()<< " number = " << track.size() <<std::endl;
     if(maxTrackPerRomanPot_>=0 && track.size()>(uint32_t)maxTrackPerRomanPot_){
       if(verbosity_>1) std::cout<<" ---> To many tracks in the pot, cleared"<<std::endl;
       CTPPSPixelDetId tmpRomanPotId = CTPPSPixelDetId(track.detId());

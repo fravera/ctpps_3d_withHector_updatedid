@@ -1,5 +1,6 @@
 __init__.py
 *.pyc
+<<<<<<< HEAD
 .*.swp
 .#*
 #*#
@@ -9,3 +10,5 @@ __init__.py
 *.sh
 *.pl
 Analysis/
+=======
+>>>>>>> upstream/recHits_93x_2

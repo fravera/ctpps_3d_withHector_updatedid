@@ -4,17 +4,17 @@
 #include "TH2D.h"
 
 RPixLinearInduceCharge::RPixLinearInduceCharge(const edm::ParameterSet &params, uint32_t det_id)
- : det_id_(det_id), theRPixDetTopology_(params), sqrt_2(sqrt(2.0))
+ : det_id_(det_id), theRPixDetTopology_(), sqrt_2(sqrt(2.0))
 {
   verbosity_ = params.getParameter<int>("RPixVerbosity");
   signalCoupling_.clear();
-  ChargeMapFile_ = params.getParameter<string>("ChargeMapFile");
+  ChargeMapFile_ = params.getParameter<std::string>("ChargeMapFile");
 // di default =1
   double coupling_constant_ = params.getParameter<double>("RPixCoupling");
   signalCoupling_.push_back(coupling_constant_);
   signalCoupling_.push_back( (1.0-coupling_constant_)/2 );
   
-  no_of_pixels_ = theRPixDetTopology_.DetPixelNo();
+  no_of_pixels_ = theRPixDetTopology_.detPixelNo();
  fChargeMap = new TFile(ChargeMapFile_.c_str());
  hChargeMap = (TH2D*)fChargeMap->Get("gChargeMap_Angle_0");
 }
@@ -32,17 +32,17 @@ std::map<unsigned short, double, std::less<unsigned short> >  RPixLinearInduceCh
 // Used to avoid the obort due to hits out of detector 
 
     if (((*i).X()+16.6/2)<0||((*i).X()+16.6/2)>16.6) {
-      cout << "**** Atention ((*i).X()+simX_width_/2.)<0||((*i).X()+simX_width_/2.)>simX_width  " << endl;
-      cout << "(*i).X() = " << (*i).X() << endl;
+      std::cout << "**** Atention ((*i).X()+simX_width_/2.)<0||((*i).X()+simX_width_/2.)>simX_width  " << std::endl;
+      std::cout << "(*i).X() = " << (*i).X() << std::endl;
       continue;
     }
     if (((*i).Y()+24.4/2.)<0||((*i).Y()+24.4/2.)>24.4) {
-      cout << "**** Atention ((*i).Y()+simY_width_/2.)<0||((*i).Y()+simY_width_/2.)>simY_width  " << endl;
-      cout << "(*i).Y() = " << (*i).Y() << endl;
+      std::cout << "**** Atention ((*i).Y()+simY_width_/2.)<0||((*i).Y()+simY_width_/2.)>simY_width  " << std::endl;
+      std::cout << "(*i).Y() = " << (*i).Y() << std::endl;
       continue;
     }
 
-    std::vector<pixel_info> relevant_pixels = theRPixDetTopology_.GetPixelsInvolved(
+    std::vector<pixel_info> relevant_pixels = theRPixDetTopology_.getPixelsInvolved(
     	(*i).X(), (*i).Y(), (*i).Sigma(), hit_pos_x, hit_pos_y);
     if(verbosity_)
     {
@@ -59,9 +59,9 @@ std::map<unsigned short, double, std::less<unsigned short> >  RPixLinearInduceCh
       double pixel_end_y = (*j).HigherSimYBorder();
       double sigma = (*i).Sigma();
 */
-      double effic = (*j).EffFactor();
+      double effic = (*j).effFactor();
  
-      unsigned short pixel_no = (*j).PixelIndex();
+      unsigned short pixel_no = (*j).pixelIndex();
       
       double charge_in_pixel =  (*i).Charge()*effic;
       if(verbosity_)
@@ -71,8 +71,8 @@ std::map<unsigned short, double, std::less<unsigned short> >  RPixLinearInduceCh
       if (signalCoupling_[0]==0.){
           thePixelChargeMap[pixel_no] += charge_in_pixel;
       } else {
-       int pixel_row = (*j).PixelRowNo();
-       int pixel_col = (*j).PixelColNo();
+       int pixel_row = (*j).pixelRowNo();
+       int pixel_col = (*j).pixelColNo();
        double pixel_lower_x=0;
        double pixel_lower_y=0;
        double pixel_upper_x=0;
@@ -80,7 +80,7 @@ std::map<unsigned short, double, std::less<unsigned short> >  RPixLinearInduceCh
        double pixel_center_x=0;
        double pixel_center_y=0;
 
-       theRPixDetTopology_.PixelRange(pixel_row,pixel_col,pixel_lower_x,pixel_upper_x,pixel_lower_y,pixel_upper_y);
+       theRPixDetTopology_.pixelRange(pixel_row,pixel_col,pixel_lower_x,pixel_upper_x,pixel_lower_y,pixel_upper_y);
        pixel_center_x = pixel_lower_x + (pixel_upper_x - pixel_lower_x)/2.;
        pixel_center_y = pixel_lower_y + (pixel_upper_y - pixel_lower_y)/2.;
 
@@ -103,7 +103,7 @@ std::map<unsigned short, double, std::less<unsigned short> >  RPixLinearInduceCh
            double neighbour_pixel_center_x=0;
            double neighbour_pixel_center_y=0;
 //         Check the hit approach to the neighbours
-           theRPixDetTopology_.PixelRange(k,l,neighbour_pixel_lower_x,neighbour_pixel_upper_x,neighbour_pixel_lower_y,neighbour_pixel_upper_y);
+           theRPixDetTopology_.pixelRange(k,l,neighbour_pixel_lower_x,neighbour_pixel_upper_x,neighbour_pixel_lower_y,neighbour_pixel_upper_y);
            neighbour_pixel_center_x = neighbour_pixel_lower_x + 
                  (neighbour_pixel_upper_x - neighbour_pixel_lower_x)/2.;
            neighbour_pixel_center_y = neighbour_pixel_lower_y + 

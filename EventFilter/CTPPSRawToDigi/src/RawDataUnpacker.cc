@@ -83,7 +83,7 @@ int RawDataUnpacker::ProcessOptoRxFrame(const word *buf, unsigned int frameSize,
   if (FOV == 1)
     return ProcessOptoRxFrameSerial(buf, frameSize, fc);
 
-  if (FOV == 2)
+  if (FOV == 2 || FOV ==3)
     return ProcessOptoRxFrameParallel(buf, frameSize, fedInfo, fc);
 
   if (verbosity)
@@ -218,7 +218,8 @@ int RawDataUnpacker::ProcessVFATDataParallel(const uint16_t *buf, unsigned int O
 
   // check header flag
   unsigned int hFlag = (buf[0] >> 8) & 0xFF;
-  if (hFlag != vmCluster && hFlag != vmRaw)
+//  if (hFlag != vmCluster && hFlag != vmRaw)
+  if (hFlag != vmCluster && hFlag != vmRaw && hFlag != vmDiamondCompact)
   {
     if (verbosity)
       LogWarning("Totem") << "Error in RawDataUnpacker::ProcessVFATDataParallel > "
@@ -275,7 +276,13 @@ int RawDataUnpacker::ProcessVFATDataParallel(const uint16_t *buf, unsigned int O
 
   if (hFlag == vmRaw)
     wordsProcessed += 9;
-
+ if (hFlag == vmDiamondCompact)
+  {
+    wordsProcessed--;
+    while ( (buf[wordsProcessed] & 0xFFF0)!= 0xF000 ) {
+      wordsProcessed++;
+    }
+  }
   // process trailer
   unsigned int tSig = buf[wordsProcessed] >> 12;
   unsigned int tErrFlags = (buf[wordsProcessed] >> 8) & 0xF;
@@ -374,6 +381,38 @@ int RawDataUnpacker::ProcessVFATDataParallel(const uint16_t *buf, unsigned int O
     presenceFlags |= 0x8;
     fd[0] = buf[dataOffset + 8];
   }
+
+ // get channel data for diamond compact mode
+if (hFlag == vmDiamondCompact)
+{
+  for (unsigned int i = 1; (buf[i+1] & 0xFFF0)!= 0xF000; i++) {
+    if ( ( buf[i] & 0xF000 ) == VFAT_HEADER_OF_EC ) {     // If Event Couter word is found
+      fd[10] = buf[i];
+      continue;
+    }
+    switch ( buf[i] & 0xF800 ) {
+      case VFAT_DIAMOND_HEADER_OF_WORD_2:     // If Word 2 of the diamond VFAT frame is found
+        fd[2] = buf[i];
+        fd[1] = buf[i + 1];
+        break;
+      case VFAT_DIAMOND_HEADER_OF_WORD_3:     // If Word 2 of the diamond VFAT frame is found
+        fd[3] = buf[i];
+        fd[4] = buf[i - 1];
+        break;
+      case VFAT_DIAMOND_HEADER_OF_WORD_5:     // If Word 2 of the diamond VFAT frame is found
+        fd[5] = buf[i];
+        fd[6] = buf[i - 1];
+        break;
+      case VFAT_DIAMOND_HEADER_OF_WORD_7:     // If Word 2 of the diamond VFAT frame is found
+        fd[7] = buf[i];
+        fd[8] = buf[i - 1];
+        break;
+      default:
+        break;
+    }
+    presenceFlags |= 0x8;
+  }
+}
 
   // save frame to output
   f.setPresenceFlags(presenceFlags);

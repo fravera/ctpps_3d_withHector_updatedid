@@ -22,7 +22,7 @@
 #include "DataFormats/CTPPSReco/interface/TotemRPLocalTrack.h"
 
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
-#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
+#include "Geometry/VeryForwardGeometryBuilder/interface/CTPPSGeometry.h"
 
 #include "RecoCTPPS/TotemRPLocal/interface/TotemRPLocalTrackFitterAlgorithm.h"
 
@@ -80,7 +80,7 @@ void TotemRPLocalTrackFitter::produce(edm::Event& e, const edm::EventSetup& setu
     LogVerbatim("TotemRPLocalTrackFitter") << ">> TotemRPLocalTrackFitter::produce";
 
   // get geometry
-  edm::ESHandle<TotemRPGeometry> geometry;
+  edm::ESHandle<CTPPSGeometry> geometry;
   setup.get<VeryForwardRealGeometryRecord>().get(geometry);
 
   if (geometryWatcher.check(setup))
@@ -159,7 +159,7 @@ void TotemRPLocalTrackFitter::produce(edm::Event& e, const edm::EventSetup& setu
     }
 
     // run fit
-    double z0 = geometry->GetRPGlobalTranslation(rpId).z();
+    double z0 = geometry->getRPTranslation(rpId).z();
 
     TotemRPLocalTrack track;
     fitter_.fitTrack(hits, z0, *geometry, track);

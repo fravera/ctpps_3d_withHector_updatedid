@@ -19,7 +19,7 @@
 #include "DataFormats/CTPPSDetId/interface/CTPPSPixelDetId.h"
 
 
-#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
+#include "Geometry/VeryForwardGeometryBuilder/interface/CTPPSGeometry.h"
 #include "CLHEP/Vector/ThreeVector.h"
 #include "CLHEP/Vector/RotationInterfaces.h"
 #include "TMatrixD.h"
@@ -47,14 +47,14 @@ public:
     patternVector_.clear();
   }
   std::vector<Road> getPatterns() {return patternVector_; }
-  void setGeometry(TotemRPGeometry geometry) {geometry_ = geometry; }
+  void setGeometry(CTPPSGeometry geometry) {geometry_ = geometry; }
   void setPlaneRotationMatrices(std::map<CTPPSPixelDetId, TMatrixD> planeRotationMatrixMap) { planeRotationMatrixMap_ = planeRotationMatrixMap; }
   
 protected:
   edm::ParameterSet parameterSet_;
   edm::DetSetVector<CTPPSPixelRecHit> hitVector_;
   std::vector<Road> patternVector_;
-  TotemRPGeometry geometry_;
+  CTPPSGeometry geometry_;
   std::map<CTPPSPixelDetId, TMatrixD> planeRotationMatrixMap_;
   
 };

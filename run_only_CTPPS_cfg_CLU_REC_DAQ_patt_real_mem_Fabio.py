@@ -5,8 +5,8 @@ import FWCore.ParameterSet.VarParsing as VarParsing
 
 process = cms.Process('CTPPS2',eras.Run2_25ns)
 
-# process.load("Geometry.VeryForwardGeometryBuilder.TotemRPIncludeAlignments_cfi")
-# process.TotemRPIncludeAlignments.RealFiles = cms.vstring("./RPixGeometryCorrections.xml")
+process.load("Geometry.VeryForwardGeometryBuilder.ctppsIncludeAlignments_cfi")
+process.ctppsIncludeAlignments.RealFiles = cms.vstring("./RPixGeometryCorrections.xml")
 
 process.options = cms.untracked.PSet(
     wantSummary = cms.untracked.bool(True),

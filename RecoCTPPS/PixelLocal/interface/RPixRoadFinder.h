@@ -28,7 +28,7 @@
 #include "RecoCTPPS/PixelLocal/interface/RPixDetPatternFinder.h"
 
 #include "FWCore/Framework/interface/ESWatcher.h"
-#include "Geometry/VeryForwardGeometryBuilder/interface/TotemRPGeometry.h"
+#include "Geometry/VeryForwardGeometryBuilder/interface/CTPPSGeometry.h"
 #include "Geometry/VeryForwardRPTopology/interface/RPTopology.h"
 #include "Geometry/Records/interface/VeryForwardRealGeometryRecord.h"
 #include "Geometry/Records/interface/VeryForwardMisalignedGeometryRecord.h"
@@ -52,7 +52,7 @@ class RPixRoadFinder : public RPixDetPatternFinder{
     double roadRadius_;
     unsigned int minRoadSize_;
     unsigned int maxRoadSize_;
-    void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const TotemRPGeometry & geometry, std::vector<Road> &roads);
+    void run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const CTPPSGeometry & geometry, std::vector<Road> &roads);
 
    
 };

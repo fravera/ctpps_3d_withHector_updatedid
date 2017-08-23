@@ -22,7 +22,7 @@ std::map<unsigned short, double, std::less<unsigned short> > Induce(const std::v
     double sqrt_2;
     int no_of_pixels_;
     int verbosity_;
-    string ChargeMapFile_;
+    std::string ChargeMapFile_;
     TFile * fChargeMap;
     TH2D * hChargeMap;
     //double sigmas_no_;

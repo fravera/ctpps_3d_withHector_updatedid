@@ -58,7 +58,7 @@ void RPixRoadFinder::findPattern(){
       PointInPlane thePointAndRecHit;
       thePointAndRecHit.recHit=_rh; 
       CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
-      CLHEP::Hep3Vector globalV = geometry_.LocalToGlobal(ds_rh2.id,localV);
+      CLHEP::Hep3Vector globalV = geometry_.localToGlobal(ds_rh2.id,localV);
       thePointAndRecHit.globalPoint=globalV;
       TMatrixD localError(3,3);
       localError[0][0] = _rh.getError().xx();

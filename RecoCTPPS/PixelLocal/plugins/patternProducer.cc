@@ -66,7 +66,7 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 // get geometry
 //----------------------------------
 
-  edm::ESHandle<TotemRPGeometry> geometry;
+  edm::ESHandle<CTPPSGeometry> geometry;
 //	iSetup.get<VeryForwardMisalignedGeometryRecord>().get(geometry);
   iSetup.get<VeryForwardRealGeometryRecord>().get(geometry);
 
@@ -80,7 +80,7 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
   unsigned int rpId = 2023292928;
 
   CLHEP::Hep3Vector localV(-4.43825,2.05224,0.115);
-  CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(rpId,localV);
+  CLHEP::Hep3Vector globalV = geometry->localToGlobal(rpId,localV);
 
 
   std::cout << "id: "<< rpId <<"   local " << localV <<"   to global "<<globalV<< std::endl;
@@ -110,12 +110,45 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
   if(idSS >=5 ){
 
     for(const auto & ds_rh2 : rpRhh){
+      CTPPSPixelDetId myid(ds_rh2.id);
+      int arm = myid.arm();
+      int plane = myid.plane();
+
       for (const auto & _rh : ds_rh2.data){
 
 	CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
-	CLHEP::Hep3Vector globalV = geometry->LocalToGlobal(ds_rh2.id,localV);
+	CLHEP::Hep3Vector globalV = geometry->localToGlobal(ds_rh2.id,localV);
 	if(verbosity_>1)std::cout << "ID : " << ds_rh2.id << " hit  " << _rh.getPoint().x()<<" "<<_rh.getPoint().y()<<" " <<_rh.getPoint().z()<< "   "<< globalV.x() << " " << globalV.y() <<" " <<std::setprecision(6) << globalV.z() <<std::endl;
 
+
+	switch (plane){
+	case 0 :
+//	  std::cout << arm << " " << plane << " FILLING" << std::endl;
+	  if(arm == 0)plane_plus_0->Fill(globalV.x(), globalV.y());
+	  if(arm == 1)plane_minus_0->Fill(globalV.x(), globalV.y());
+	  break;
+	case 1 :
+	  if(arm == 0)plane_plus_1->Fill(globalV.x(), globalV.y());
+	  if(arm == 1)plane_minus_1->Fill(globalV.x(), globalV.y());
+	  break;
+	case 2 :
+	  if(arm == 0)plane_plus_2->Fill(globalV.x(), globalV.y());
+	  if(arm == 1)plane_minus_2->Fill(globalV.x(), globalV.y());
+	  break;
+	case 3 :
+	  if(arm == 0)plane_plus_3->Fill(globalV.x(), globalV.y());
+	  if(arm == 1)plane_minus_3->Fill(globalV.x(), globalV.y());
+	  break;
+	case 4 :
+	  if(arm == 0)plane_plus_4->Fill(globalV.x(), globalV.y());
+	  if(arm == 1)plane_minus_4->Fill(globalV.x(), globalV.y());
+	  break;
+	case 5 :
+	  if(arm == 0)plane_plus_5->Fill(globalV.x(), globalV.y());
+	  if(arm == 1)plane_minus_5->Fill(globalV.x(), globalV.y());
+	  break;
+
+	}
       }
     }
   }
@@ -129,7 +162,7 @@ void patternProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
 }
 
-void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const TotemRPGeometry &geometry,   std::vector<Road> &roads){
+void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, const CTPPSGeometry &geometry,   std::vector<Road> &roads){
 
   Road temp_all_hits;
   temp_all_hits.clear();
@@ -140,7 +173,7 @@ void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, cons
 //    uint32_t plane = myid.plane();
     for (const auto & _rh : ds_rh2.data){
       CLHEP::Hep3Vector localV(_rh.getPoint().x(),_rh.getPoint().y(),_rh.getPoint().z() );
-      CLHEP::Hep3Vector globalV = geometry.LocalToGlobal(ds_rh2.id,localV);
+      CLHEP::Hep3Vector globalV = geometry.localToGlobal(ds_rh2.id,localV);
       PointInPlane pip = std::make_pair(globalV,myid);
       temp_all_hits.push_back(pip);
     }
@@ -192,5 +225,46 @@ void patternProducer::run(const edm::DetSetVector<CTPPSPixelRecHit> &input, cons
 
 }
 
+
+void patternProducer::beginStream(edm::StreamID SID){
+    fFile = new TFile("myHits.root","RECREATE");
+
+  //   fFile->cd();
+    plane_plus_0 = new TH2F("planep0","planep0",100,35,75,100,-15,15);
+    plane_plus_1 = new TH2F("planep1","planep1",100,35,75,100,-15,15);
+    plane_plus_2 = new TH2F("planep2","planep2",100,35,75,100,-15,15);
+    plane_plus_3 = new TH2F("planep3","planep3",100,35,75,100,-15,15);
+    plane_plus_4 = new TH2F("planep4","planep4",100,35,75,100,-15,15);
+    plane_plus_5 = new TH2F("planep5","planep5",100,35,75,100,-15,15);
+
+    plane_minus_0 = new TH2F("planem0","planem0",100,35,75,100,-15,15);
+    plane_minus_1 = new TH2F("planem1","planem1",100,35,75,100,-15,15);
+    plane_minus_2 = new TH2F("planem2","planem2",100,35,75,100,-15,15);
+    plane_minus_3 = new TH2F("planem3","planem3",100,35,75,100,-15,15);
+    plane_minus_4 = new TH2F("planem4","planem4",100,35,75,100,-15,15);
+    plane_minus_5 = new TH2F("planem5","planem5",100,35,75,100,-15,15);
+//    std::cout << "      -------------------------------------------------- INSIDE beginStream" << std::endl;
+
+}
+void patternProducer::endStream(){
+//    std::cout << "      -------------------------------------------------- INSIDE endStream" << std::endl;
+    fFile->cd();
+    plane_plus_0->Write();
+    plane_plus_1->Write();
+    plane_plus_2->Write();
+    plane_plus_3->Write();
+    plane_plus_4->Write();
+    plane_plus_5->Write();
+
+    plane_minus_0->Write();
+    plane_minus_1->Write();
+    plane_minus_2->Write();
+    plane_minus_3->Write();
+    plane_minus_4->Write();
+    plane_minus_5->Write();
+  fFile->Write();
+  fFile -> Close();
+
+}
 
 DEFINE_FWK_MODULE( patternProducer);

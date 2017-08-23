@@ -43,7 +43,7 @@ Single pixel DIGI-SIM comparison
 using namespace edm;
 using namespace std;
 
-CTPPSPixelDigiAnalyzer:: CTPPSPixelDigiAnalyzer(const ParameterSet& pset) : theRPixDetTopology_(pset)
+CTPPSPixelDigiAnalyzer:: CTPPSPixelDigiAnalyzer(const ParameterSet& pset) : theRPixDetTopology_()
 {
 
   label = pset.getUntrackedParameter<string>("label");  
@@ -154,7 +154,7 @@ void  CTPPSPixelDigiAnalyzer::analyze(const Event & event, const EventSetup& eve
   double myX=0;
   double myY=0;
 
-  theRPixDetTopology_.PixelRange(SELECTED_PIXEL_ROW,SELECTED_PIXEL_COLUMN,selected_pixel_lower_x,selected_pixel_upper_x,selected_pixel_lower_y,selected_pixel_upper_y);
+  theRPixDetTopology_.pixelRange(SELECTED_PIXEL_ROW,SELECTED_PIXEL_COLUMN,selected_pixel_lower_x,selected_pixel_upper_x,selected_pixel_lower_y,selected_pixel_upper_y);
 
 
 //cout << selected_pixel_lower_x << " " << selected_pixel_upper_x << " " << selected_pixel_lower_y << " " << selected_pixel_upper_y << endl;
@@ -256,8 +256,8 @@ void  CTPPSPixelDigiAnalyzer::analyze(const Event & event, const EventSetup& eve
   double uy;
   unsigned int rr = di->row();
   unsigned int cc = di->column();
-// theRPixDetTopology_.PixelRange(SELECTED_PIXEL_ROW,SELECTED_PIXEL_COLUMN,selected_pixel_lower_x,selected_pixel_upper_x,selected_pixel_lower_y,selected_pixel_upper_y);
-  theRPixDetTopology_.PixelRange(rr,cc,lx,ux,ly,uy);
+// theRPixDetTopology_.pixelRange(SELECTED_PIXEL_ROW,SELECTED_PIXEL_COLUMN,selected_pixel_lower_x,selected_pixel_upper_x,selected_pixel_lower_y,selected_pixel_upper_y);
+  theRPixDetTopology_.pixelRange(rr,cc,lx,ux,ly,uy);
 
 	       cout << " pixel boundaries x low up, y low up " << lx << " "<< ux << " "<< ly << " "<< uy << endl;
 
